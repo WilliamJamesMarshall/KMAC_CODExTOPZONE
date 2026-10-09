@@ -9,7 +9,8 @@ The v0.3 AX Task candidate import and its limits are documented in
 
 Fill the blank fields in `.env` at the repository root. `env.example` has the
 same fields and is safe to commit; `.env` is ignored by Git. The local web
-server reads `OSS_WORKBOOK_PATH`. The OpenAI AX extraction command reads
+server reads `OSS_WORKBOOK_PATH`. The OpenAI AX extraction command and local
+Business Model analysis read
 `OPENAI_API_KEY` and optionally `OPENAI_MODEL` (default `gpt-6-luna`). Both
 entry points load `.env` automatically without overriding process environment
 variables. Other batch commands still take an explicit `--workbook` path.
@@ -63,6 +64,7 @@ On Windows, double-click `dev.cmd` in the project root. It locates the supplied
 v0.3 workbook in OneDrive, starts the local server if needed, waits until it is
 ready, and opens the site in the default browser. If the workbook has moved,
 set `OSS_WORKBOOK_PATH` to its absolute path before running the file.
+Install the web analysis dependency with `python -m pip install -e ".[ax-llm]"`.
 
 ```powershell
 oss-web --workbook "PATH_TO_V0.3.xlsx"
@@ -70,6 +72,13 @@ oss-web --workbook "PATH_TO_V0.3.xlsx"
 
 Open `http://127.0.0.1:8765`. Enter a public demand-company homepage URL, or
 choose **예시 결과 보기** to inspect the layout using a fictional demand company.
+The Business Model field crawls company, product, R&D and production pages,
+extracts exact-quote facts, groups the core business and supported activities,
+then writes only **가치 제안** and **핵심 활동**. A separate model pass checks the
+two fields against their citations; unsupported claims are revised or left
+unknown. Each displayed field exposes its source quotes. This path requires an
+OpenAI API key in `.env` and does not write to Supabase.
+
 The result shows homepage statements separately from AX opportunity candidates.
 The left field presents task purpose as a qualitative expected effect; the
 right field shows at most three distinct-name supplier candidates from detailed

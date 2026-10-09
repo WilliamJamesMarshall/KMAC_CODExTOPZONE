@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import re
 from urllib.parse import urlparse
 
 from .analysis import analyze_demand_pages
@@ -10,42 +9,6 @@ from .identity import company_name_key
 from .matching import match_suppliers
 from .models import WebPage
 from .workbook import KnowledgeBase
-
-
-BUSINESS_FIELDS = (
-    ("industry", "산업·시장", r"자동차|부품|제조|농업|바이오|의료|콘텐츠|유통|금융|교육|건설"),
-    ("offering", "제품·서비스", r"제품|서비스|솔루션|생산|개발|제공|사업"),
-    ("customer", "주요 고객", r"고객사|고객|납품|기업\s*대상|소비자|B2B|B2C"),
-    ("value", "가치 제안", r"품질|효율|생산성|비용|안전|편의|맞춤|정확"),
-    ("activity", "핵심 활동", r"생산|제조|공정|검사|유지보수|연구개발|설계|상담|유통"),
-    ("revenue", "수익 구조", r"구독|수수료|라이선스|판매|매출|임대"),
-)
-
-
-def _sentences(text: str) -> list[str]:
-    return [part.strip(" \t-•") for part in re.split(r"(?:\r?\n)+|(?<=[.!?。])\s+", text) if part.strip(" \t-•")]
-
-
-def _business_model(pages: list[WebPage]) -> list[dict[str, str | None]]:
-    sentences = [
-        (page.url, sentence)
-        for page in pages for sentence in _sentences(page.text)
-        if 12 <= len(sentence) <= 500
-    ]
-    fields: list[dict[str, str | None]] = []
-    used_sentences: set[tuple[str, str]] = set()
-    for key, label, pattern in BUSINESS_FIELDS:
-        hits = [(url, sentence) for url, sentence in sentences if re.search(pattern, sentence, re.IGNORECASE)]
-        hit = next((item for item in hits if item not in used_sentences), None) or next(iter(hits), None)
-        if hit:
-            used_sentences.add(hit)
-        fields.append({
-            "key": key, "label": label,
-            "value": hit[1][:180] if hit else None,
-            "source_url": hit[0] if hit else None,
-            "status": "homepage_statement" if hit else "unknown",
-        })
-    return fields
 
 
 def _web_url(value: str | None) -> str | None:
@@ -58,7 +21,8 @@ def _web_url(value: str | None) -> str | None:
     return candidate if parsed.scheme in {"http", "https"} and parsed.hostname else None
 
 
-def build_front_result(pages: list[WebPage], kb: KnowledgeBase, *, max_suppliers: int = 3) -> dict:
+def build_front_result(pages: list[WebPage], kb: KnowledgeBase, business_analysis: dict,
+                       *, max_suppliers: int = 3) -> dict:
     """Create one screen response; suppliers come only from matching Task IDs."""
     if not pages:
         raise ValueError("No readable website pages were collected")
@@ -123,7 +87,9 @@ def build_front_result(pages: list[WebPage], kb: KnowledgeBase, *, max_suppliers
     return {
         "input_url": pages[0].url,
         "site_name": pages[0].title or urlparse(pages[0].url).hostname,
-        "business_model": _business_model(pages),
+        "business_model": business_analysis["fields"],
+        "business_profile": business_analysis["profile"],
+        "business_quality": business_analysis["quality"],
         "opportunities": opportunities,
         "suppliers": suppliers,
         "analysis_meta": {

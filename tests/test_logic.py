@@ -114,14 +114,18 @@ class LogicTests(unittest.TestCase):
                 page=page, quote=page.text, kb=self.kb, outcome="생산성 30% 향상",
             )
 
-    def test_front_result_limits_suppliers_and_marks_unknown_business_fields(self) -> None:
+    def test_front_result_limits_suppliers_and_shows_two_business_fields(self) -> None:
         page = WebPage("https://buyer.example", "예시 제조사", "당사는 품질예측 업무를 검토합니다.")
-        result = build_front_result([page], self.kb)
+        business = {"fields": [
+            {"key": "value", "label": "가치 제안", "value": None, "status": "unknown", "evidence": []},
+            {"key": "activity", "label": "핵심 활동", "value": None, "status": "unknown", "evidence": []},
+        ], "profile": {}, "quality": {"status": "insufficient"}}
+        result = build_front_result([page], self.kb, business)
         self.assertLessEqual(len(result["suppliers"]), 3)
         self.assertEqual(result["opportunities"][0]["task_id"], "J014")
         self.assertEqual(result["suppliers"][0]["status"], "provisional")
-        revenue = next(item for item in result["business_model"] if item["key"] == "revenue")
-        self.assertIsNone(revenue["value"])
+        self.assertEqual([item["key"] for item in result["business_model"]], ["value", "activity"])
+        self.assertIsNone(result["business_model"][1]["value"])
 
 
 if __name__ == "__main__":

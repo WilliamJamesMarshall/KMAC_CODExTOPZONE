@@ -9,6 +9,7 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 from .crawler import crawl_site
+from .business_profile import analyze_business
 from .config import load_project_env
 from .models import WebPage
 from .presentation import build_front_result
@@ -49,7 +50,23 @@ def handler_for(kb: KnowledgeBase):
                     "생산 설비 유지보수 업무를 운영합니다.\n"
                     "완성차 부품 기업에 제품을 납품합니다.",
                 )
-                result = build_front_result([demo_page], kb)
+                demo_business = {
+                    "fields": [
+                        {"key": "value", "label": "가치 제안",
+                         "value": "자동차 부품을 생산하며 품질관리와 공정 개선을 수행하는 제조기업",
+                         "status": "inferred", "source_url": None,
+                         "evidence": [{"quote": "당사는 자동차 부품을 제조하고 사출 제품을 생산합니다.",
+                                       "source_url": demo_page.url}]},
+                        {"key": "activity", "label": "핵심 활동",
+                         "value": "부품 생산 → 품질검사 → 설비 유지보수",
+                         "status": "inferred", "source_url": None,
+                         "evidence": [{"quote": "제품 품질검사를 수행하고 생산 공정 최적화를 검토합니다.",
+                                       "source_url": demo_page.url}]},
+                    ],
+                    "profile": {"sources": [], "facts": [], "structure": None},
+                    "quality": {"status": "demo", "issues": [], "source_count": 1, "fact_count": 0},
+                }
+                result = build_front_result([demo_page], kb, demo_business)
                 result["is_demo"] = True
                 self._json(200, result)
                 return
@@ -70,10 +87,14 @@ def handler_for(kb: KnowledgeBase):
                 url = data.get("url") if isinstance(data, dict) else None
                 if not isinstance(url, str) or not url.strip():
                     raise ValueError("수요기업 홈페이지 URL을 입력해 주세요.")
-                pages = crawl_site(url.strip(), max_pages=6)
+                pages = crawl_site(url.strip(), max_pages=12)
                 if not pages:
                     raise ValueError("읽을 수 있는 홈페이지 페이지를 찾지 못했습니다.")
-                result = build_front_result(pages, kb)
+                try:
+                    business = analyze_business(pages)
+                except ValueError as error:
+                    raise RuntimeError("사업구조 근거 검증에 실패했습니다.") from error
+                result = build_front_result(pages, kb, business)
                 result["is_demo"] = False
                 self._json(200, result)
             except (ValueError, json.JSONDecodeError) as error:

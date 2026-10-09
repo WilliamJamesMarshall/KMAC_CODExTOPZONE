@@ -53,13 +53,25 @@ function addEvidence(container, evidence, label = '판단 근거 보기') {
 function renderBusiness(fields) {
   const grid = document.querySelector('#business-grid');
   grid.replaceChildren();
-  for (const field of fields) {
+  for (const field of fields.filter((item) => ['value', 'activity'].includes(item.key))) {
     const item = element('div', `business-item ${field.status === 'unknown' ? 'unknown' : ''}`.trim());
     item.append(element('div', 'field-label', field.label));
-    item.append(element('div', 'field-value', field.value || '홈페이지에서 확인되지 않았습니다.'));
-    if (field.value) {
-      const link = safeLink(field.source_url, '홈페이지 문구 ↗');
-      if (link) item.append(link);
+    item.append(element('div', 'field-value', field.value || '공개된 정보만으로 확인하기 어렵습니다.'));
+    if (field.value && field.status === 'inferred') {
+      item.append(element('div', 'field-status', '홈페이지 근거를 종합한 분석'));
+    }
+    if (field.evidence?.length) {
+      const details = element('details', 'business-evidence');
+      const shownEvidence = field.evidence.slice(0, 12);
+      details.append(element('summary', '', `근거 ${shownEvidence.length}개 보기`));
+      for (const evidence of shownEvidence) {
+        const row = element('div', 'business-evidence-row');
+        row.append(element('blockquote', '', evidence.quote));
+        const link = safeLink(evidence.source_url, '원문 페이지 ↗');
+        if (link) row.append(link);
+        details.append(row);
+      }
+      item.append(details);
     }
     grid.append(item);
   }
@@ -139,7 +151,9 @@ function renderResult(data) {
   emptyState.hidden = true;
   resultContent.hidden = false;
   document.querySelector('#company-title').textContent = data.site_name || '수요기업 분석 결과';
-  document.querySelector('#result-subtitle').textContent = `${data.analysis_meta.pages_analyzed}개 페이지 분석 · ${data.analysis_meta.review_status}`;
+  const quality = { grounded: '사업구조 근거 검토 완료', partial: '일부 근거 부족',
+    insufficient: '사업구조 정보 부족', demo: '화면 예시' }[data.business_quality?.status] || '추가 확인 필요';
+  document.querySelector('#result-subtitle').textContent = `${data.analysis_meta.pages_analyzed}개 페이지 분석 · ${quality} · AX ${data.analysis_meta.review_status}`;
   document.querySelector('#demo-badge').hidden = !data.is_demo;
   renderBusiness(data.business_model || []);
   renderOpportunities(data.opportunities || []);
@@ -149,7 +163,7 @@ function renderResult(data) {
 
 async function requestResult(url, demo = false) {
   setBusy(true);
-  showFeedback(demo ? '예시 결과를 불러오는 중입니다.' : '홈페이지를 읽고 AX 과업과 공급기업 후보를 찾고 있습니다. 잠시 기다려 주세요.', 'loading');
+  showFeedback(demo ? '예시 결과를 불러오는 중입니다.' : '사업 페이지에서 근거를 추출·검토하고 AX 과업과 공급기업 후보를 찾고 있습니다. 잠시 기다려 주세요.', 'loading');
   try {
     const response = await fetch(demo ? '/api/demo' : '/api/analyze', demo ? undefined : {
       method: 'POST',
