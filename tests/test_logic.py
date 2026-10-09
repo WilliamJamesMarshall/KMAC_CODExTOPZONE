@@ -120,7 +120,13 @@ class LogicTests(unittest.TestCase):
             {"key": "value", "label": "가치 제안", "value": None, "status": "unknown", "evidence": []},
             {"key": "activity", "label": "핵심 활동", "value": None, "status": "unknown", "evidence": []},
         ], "profile": {}, "quality": {"status": "insufficient"}}
-        result = build_front_result([page], self.kb, business)
+        ax_analysis = {"opportunities": [{
+            "task_id": "J014", "task_name": "J014", "solution_name": "품질예측 후보",
+            "business_function": "품질관리", "business_evidence": [{
+                "fact_id": "F001", "quote": page.text, "url": page.url}],
+            "mapping_reason": "품질예측 업무", "priority": "medium",
+        }], "quality": {"status": "reviewed"}}
+        result = build_front_result([page], self.kb, business, ax_analysis)
         self.assertLessEqual(len(result["suppliers"]), 3)
         self.assertEqual(result["opportunities"][0]["task_id"], "J014")
         self.assertEqual(result["suppliers"][0]["status"], "provisional")

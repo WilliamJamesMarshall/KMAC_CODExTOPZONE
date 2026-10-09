@@ -84,25 +84,61 @@ function detailRow(label, text) {
   return row;
 }
 
+function supplierDescriptionRow(text) {
+  const row = element('div', 'detail-row');
+  row.append(element('div', 'detail-label', 'AI솔루션 설명'));
+  const content = element('div', 'detail-text');
+  if (text && text.length > 350) {
+    content.append(element('div', '', `${text.slice(0, 350)}…`));
+    const details = element('details', 'supplier-more');
+    details.append(element('summary', '', '전체 설명 보기'));
+    details.append(element('p', '', text));
+    content.append(details);
+  } else {
+    content.textContent = text || '원천 정보 없음';
+  }
+  row.append(content);
+  return row;
+}
+
 function renderOpportunities(items) {
   const list = document.querySelector('#opportunity-list');
   list.replaceChildren();
   document.querySelector('#ax-count').textContent = `${items.length}개 과업 후보`;
   if (!items.length) {
-    list.append(element('div', 'list-empty', '현재 분석 규칙으로 연결된 AX 과업이 없습니다. 홈페이지의 추가 페이지나 실제 업무 정보를 확인해 주세요.'));
+    list.append(element('div', 'list-empty', '공개 근거와 적용조건 검토를 통과한 AX 후보가 없습니다. 실제 업무와 내부 데이터 확인이 필요할 수 있습니다.'));
     return;
   }
   for (const item of items) {
     const card = element('article', 'result-card');
     const top = element('div', 'card-top');
     top.append(element('span', 'task-id', item.task_id));
-    top.append(element('span', 'card-status', '업무 적합성 확인 필요'));
+    top.append(element('span', 'card-status', `우선순위 ${item.priority_label} · 적용조건 확인 필요`));
     card.append(top);
-    card.append(element('h4', '', item.name));
-    card.append(detailRow('기대효과', item.expected_effect));
-    card.append(detailRow('예상 산출물', item.expected_output));
-    card.append(element('div', 'question-line', `도입 전 확인 · ${item.confirmation_question}`));
-    addEvidence(card, item.evidence, '수요기업 홈페이지 근거');
+    card.append(element('h4', '', item.solution_name));
+    card.append(detailRow('적용 업무', item.business_function));
+    card.append(detailRow('OSS 과업', `${item.task_id} · ${item.task_name}`));
+    card.append(detailRow('선정 이유', item.reason));
+    card.append(detailRow('필요 입력', item.inputs.join(' · ')));
+    card.append(detailRow('AI 기능', item.ai_process.join(' · ')));
+    card.append(detailRow('산출물', item.outputs.join(' · ')));
+    card.append(detailRow('작동 방식', item.mechanism));
+    card.append(detailRow('업무 변화', item.process_change));
+    card.append(detailRow('기대효과', item.expected_effects.join(' · ')));
+    card.append(detailRow('측정 KPI', item.kpis.join(' · ')));
+    card.append(detailRow('필요 데이터', item.required_data.join(' · ')));
+    card.append(detailRow('데이터 상태', '홈페이지에서 확인되지 않음'));
+    card.append(element('div', 'question-line', `도입 전 확인 · ${item.unknowns.join(' · ')}${item.safeguard ? ` · ${item.safeguard}` : ''}`));
+    if (item.business_evidence?.length) {
+      const details = element('details', 'evidence-details');
+      details.append(element('summary', '', `수요기업 홈페이지 근거 ${item.business_evidence.length}개`));
+      for (const evidence of item.business_evidence) {
+        details.append(element('blockquote', '', evidence.quote));
+        const source = safeLink(evidence.url, '원문 페이지 열기 ↗');
+        if (source) details.append(source);
+      }
+      card.append(details);
+    }
     list.append(card);
   }
 }
@@ -135,7 +171,28 @@ function renderSuppliers(items) {
     const solutionText = item.solution_descriptions.length
       ? item.solution_descriptions.join(' · ')
       : '연결된 솔루션의 상세 내용은 추가 확인이 필요합니다.';
+    card.append(element('div', 'supplier-summary-label', 'AX 과업 연결 설명 · 엑셀 자료'));
     card.append(element('p', 'supplier-summary', solutionText));
+    const profile = item.supplier_profile;
+    const profileSection = element('section', 'supplier-profile');
+    profileSection.append(element('div', 'supplier-profile-heading',
+      profile ? `AI바우처 공급기업 풀 · 2026 · No. ${profile.source_pool_no}` : 'AI바우처 공급기업 풀 · 2026'));
+    profileSection.append(detailRow('전문분야', profile?.specialization || '원천 정보 확인 전'));
+    profileSection.append(supplierDescriptionRow(profile?.ai_solution_description));
+    profileSection.append(detailRow('주소', profile?.address || '원천 정보 확인 전'));
+    profileSection.append(detailRow('전화번호', profile?.phone || '원천 정보 확인 전'));
+    profileSection.append(detailRow('대표자명', profile?.representative || '원천 정보 확인 전'));
+    if (!profile) {
+      const reasons = {
+        unavailable: 'Supabase 원본 정보를 불러오지 못했습니다. 서버 연결을 확인해 주세요.',
+        not_found: '2026 AI바우처 원본에서 이 기업을 찾지 못했습니다.',
+        ambiguous: '원본 기업이 둘 이상 일치해 식별 확인이 필요합니다.',
+        needs_review: '원본 기업과의 동일성 확인이 필요합니다.',
+      };
+      profileSection.append(element('div', 'supplier-profile-note',
+        reasons[item.profile_status] || '원본 정보 확인이 필요합니다.'));
+    }
+    card.append(profileSection);
     card.append(element('div', 'supplier-meta', `프로젝트: ${item.portfolio_status}`));
     if (item.identity_review_required) {
       card.append(element('div', 'question-line', '동일한 기업명으로 여러 원천 ID가 있어 기업 식별 확인이 필요합니다.'));

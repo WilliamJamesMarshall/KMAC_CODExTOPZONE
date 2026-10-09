@@ -1,4 +1,4 @@
-"""Local OSS front screen and database-independent analysis endpoint."""
+"""Local OSS front screen with server-side supplier source details."""
 
 from __future__ import annotations
 
@@ -9,10 +9,12 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 from .crawler import crawl_site
+from .ax_opportunity import analyze_ax_opportunities
 from .business_profile import analyze_business
 from .config import load_project_env
 from .models import WebPage
 from .presentation import build_front_result
+from .supplier_profile import SupplierProfileClient
 from .workbook import KnowledgeBase, load_knowledge_base
 
 
@@ -28,6 +30,10 @@ def default_workbook_path() -> str | None:
 
 
 def handler_for(kb: KnowledgeBase):
+    profiles = SupplierProfileClient(
+        os.environ.get("SUPABASE_URL"), os.environ.get("SUPABASE_SECRET_KEY"),
+    )
+
     class Handler(SimpleHTTPRequestHandler):
         def __init__(self, *args, **kwargs):
             super().__init__(*args, directory=str(WEB_DIR), **kwargs)
@@ -66,7 +72,31 @@ def handler_for(kb: KnowledgeBase):
                     "profile": {"sources": [], "facts": [], "structure": None},
                     "quality": {"status": "demo", "issues": [], "source_count": 1, "fact_count": 0},
                 }
-                result = build_front_result([demo_page], kb, demo_business)
+                demo_ax = {"opportunities": [{
+                    "task_id": "N009", "task_name": kb.tasks["N009"].name,
+                    "solution_name": "AI 영상 기반 제품 검사 지원",
+                    "business_function": "제품 품질검사", "target_function": "제품 품질검사",
+                    "inputs": ["제품 검사 이미지", "불량 판정 기준"],
+                    "ai_process": ["영상에서 이상 후보 탐지", "검토 우선순위 제시"],
+                    "outputs": ["이상 후보 목록", "검사 기록"],
+                    "mechanism": "영상의 이상 후보를 분류해 작업자 검토를 지원",
+                    "process_change": "작업자가 표시된 이상 후보를 우선 확인",
+                    "expected_effects": ["검사 기준 표준화와 불량 유출 감소 가능"],
+                    "kpis": ["검사시간", "불량 유출률", "오탐률"],
+                    "required_data": ["제품 이미지", "불량 유형과 판정 이력"],
+                    "unknowns": ["카메라 설치 여부", "이미지 데이터 보존 여부"],
+                    "safeguard": "최종 판정은 품질 담당자가 수행",
+                    "reason": "공개 문구에서 제품 품질검사 업무 확인",
+                    "mapping_reason": "제품 품질검사 업무와 직접 연결",
+                    "priority": "high", "priority_label": "높음",
+                    "status": "conditional", "data_feasibility": "unknown",
+                    "business_evidence": [{"fact_id": "DEMO", "source_url": demo_page.url,
+                                           "url": demo_page.url,
+                                           "quote": "제품 품질검사를 수행하고 생산 공정 최적화를 검토합니다."}],
+                }], "rejected": [], "quality": {"status": "demo", "candidate_count": 1,
+                                               "accepted_count": 1, "issues": []}}
+                result = build_front_result([demo_page], kb, demo_business, demo_ax)
+                profiles.enrich(result["suppliers"], kb)
                 result["is_demo"] = True
                 self._json(200, result)
                 return
@@ -92,9 +122,11 @@ def handler_for(kb: KnowledgeBase):
                     raise ValueError("읽을 수 있는 홈페이지 페이지를 찾지 못했습니다.")
                 try:
                     business = analyze_business(pages)
+                    ax_analysis = analyze_ax_opportunities(business, kb)
                 except ValueError as error:
-                    raise RuntimeError("사업구조 근거 검증에 실패했습니다.") from error
-                result = build_front_result(pages, kb, business)
+                    raise RuntimeError("사업구조 또는 AX 근거 검증에 실패했습니다.") from error
+                result = build_front_result(pages, kb, business, ax_analysis)
+                profiles.enrich(result["suppliers"], kb)
                 result["is_demo"] = False
                 self._json(200, result)
             except (ValueError, json.JSONDecodeError) as error:

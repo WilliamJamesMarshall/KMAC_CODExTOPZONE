@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from urllib.parse import urlparse
 
-from .analysis import analyze_demand_pages
+from .ax_opportunity import demand_tasks_for_matching
 from .identity import company_name_key
 from .matching import match_suppliers
 from .models import WebPage
@@ -22,32 +22,16 @@ def _web_url(value: str | None) -> str | None:
 
 
 def build_front_result(pages: list[WebPage], kb: KnowledgeBase, business_analysis: dict,
+                       ax_analysis: dict,
                        *, max_suppliers: int = 3) -> dict:
     """Create one screen response; suppliers come only from matching Task IDs."""
     if not pages:
         raise ValueError("No readable website pages were collected")
     if not 1 <= max_suppliers <= 3:
         raise ValueError("The screen supports one to three suppliers")
-    analysis = analyze_demand_pages(pages, kb)
-    opportunities = []
-    for candidate in analysis.task_candidates:
-        task = kb.tasks[candidate.task_id]
-        opportunities.append({
-            "task_id": task.task_id,
-            "name": task.name,
-            "group": task.parent_group,
-            "expected_effect": task.business_purpose,
-            "expected_output": task.expected_output,
-            "reason": candidate.reason,
-            "confirmation_question": candidate.confirmation_question,
-            "status": candidate.status,
-            "evidence": {
-                "quote": candidate.evidence.text,
-                "url": candidate.evidence.source_url,
-            },
-        })
-
-    matches = match_suppliers(analysis.task_candidates, kb, include_scan=False, limit=100)
+    opportunities = ax_analysis["opportunities"]
+    matches = match_suppliers(demand_tasks_for_matching(opportunities), kb,
+                              include_scan=False, limit=100)
     suppliers = []
     shown_names: set[str] = set()
     for match in matches:
@@ -91,11 +75,12 @@ def build_front_result(pages: list[WebPage], kb: KnowledgeBase, business_analysi
         "business_profile": business_analysis["profile"],
         "business_quality": business_analysis["quality"],
         "opportunities": opportunities,
+        "ax_quality": ax_analysis["quality"],
         "suppliers": suppliers,
         "analysis_meta": {
             "pages_analyzed": len(pages),
             "basis": "홈페이지 공개 문구와 AX Task Seed 지식베이스",
             "review_status": "초기 후보 · 추가 확인 필요",
-            "taxonomy_scope": "자동 문구 분류 6개 과업; 나머지는 구조화 제안 검토 대상",
+            "taxonomy_scope": f"사업기능을 {len(kb.tasks)}개 활성 AX 과업과 대조",
         },
     }

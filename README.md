@@ -7,20 +7,19 @@ The v0.3 AX Task candidate import and its limits are documented in
 
 ## Local environment
 
-Fill the blank fields in `.env` at the repository root. `env.example` has the
-same fields and is safe to commit; `.env` is ignored by Git. The local web
+Fill the blank fields in `.env` at the repository root. `env.example` documents
+the required fields and is safe to commit; `.env` is ignored by Git. The local web
 server reads `OSS_WORKBOOK_PATH`. The OpenAI AX extraction command and local
-Business Model analysis read
+Business Model / AX opportunity analysis read
 `OPENAI_API_KEY` and optionally `OPENAI_MODEL` (default `gpt-6-luna`). Both
 entry points load `.env` automatically without overriding process environment
 variables. Other batch commands still take an explicit `--workbook` path.
-`SUPABASE_URL` and `SUPABASE_SECRET_KEY` are blank placeholders for future
-server-side database access. Current Supabase writes use the connected tool,
-so the code does not read these fields yet.
+The local server reads `SUPABASE_URL` and `SUPABASE_SECRET_KEY` to add source
+details to recommended supplier cards. The secret key stays on the server.
 
-This repository contains the first database-independent OSS logic slice. It
-reads the supplied v0.3 Excel workbook in memory, keeps workbook review states,
-maps website evidence to a small set of AX Task candidates, and retrieves
+The matching logic reads the supplied v0.3 Excel workbook in memory, keeps
+workbook review states,
+maps website evidence to AX Task candidates, and retrieves
 provisional supplier candidates through common Task IDs.
 
 ## What is implemented
@@ -57,8 +56,8 @@ oss --workbook "PATH_TO_V0.3.xlsx" analyze --demand-pages demand-pages.json
 
 ## Local front screen
 
-The front screen is a local web app. It uses the workbook in memory and does
-not connect to Supabase:
+The front screen is a local web app. It uses the workbook for Task matching
+and reads 2026 AI voucher supplier details from Supabase on the server:
 
 On Windows, double-click `dev.cmd` in the project root. It locates the supplied
 v0.3 workbook in OneDrive, starts the local server if needed, waits until it is
@@ -79,11 +78,18 @@ two fields against their citations; unsupported claims are revised or left
 unknown. Each displayed field exposes its source quotes. This path requires an
 OpenAI API key in `.env` and does not write to Supabase.
 
-The result shows homepage statements separately from AX opportunity candidates.
-The left field presents task purpose as a qualitative expected effect; the
-right field shows at most three distinct-name supplier candidates from detailed
-workbook links. Unknown business-model fields remain empty, and project history
-is marked as requiring separate verification.
+The AX field uses the verified business functions and value chain to propose
+active v0.3 Task IDs. It then checks business relevance, required inputs,
+AI mechanism, possible process change, expected effects, KPIs, missing internal
+data and human-review safeguards. An independent audit removes unsupported
+proposals. The field shows at most five conditional opportunities; only their
+Task IDs reach supplier matching. The right field shows at most three
+distinct-name supplier candidates from detailed workbook links. Homepage
+analysis does not establish data availability or numeric improvements. A
+source-linked pool record adds each supplier's specialization, AI solution
+description, address, phone number, and representative. If the workbook and
+pool identities cannot be corroborated, the card shows an explicit review
+status instead of another company's details.
 
 `demand-pages.json` is a UTF-8 array of page extracts:
 
