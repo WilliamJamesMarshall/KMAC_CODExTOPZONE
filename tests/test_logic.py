@@ -133,6 +133,30 @@ class LogicTests(unittest.TestCase):
         self.assertEqual([item["key"] for item in result["business_model"]], ["value", "activity"])
         self.assertIsNone(result["business_model"][1]["value"])
 
+    def test_front_result_backfills_after_excluding_incomplete_suppliers(self) -> None:
+        for number in range(2, 6):
+            sid = f"F{number:03d}"
+            self.kb.suppliers[sid] = Supplier(sid, f"예시기업{number}", None, "detailed")
+            self.kb.detailed_capabilities.append(Capability(
+                sid, "J014", None,
+                Evidence("https://pool.example", "품질예측 기능", "voucher_description",
+                         sid, "명시", "미검토"),
+                "detailed_unreviewed",
+            ))
+        page = WebPage("https://buyer.example", "예시 제조사", "품질예측 업무")
+        business = {"fields": [], "profile": {}, "quality": {}}
+        ax_analysis = {"opportunities": [{
+            "task_id": "J014", "business_evidence": [{
+                "fact_id": "DEMO", "quote": page.text, "url": page.url}],
+            "mapping_reason": "품질예측 업무", "priority": "medium",
+        }], "quality": {}}
+        result = build_front_result(
+            [page], self.kb, business, ax_analysis,
+            eligible_supplier_ids={"F003", "F004", "F005"},
+        )
+        self.assertEqual([item["supplier_id"] for item in result["suppliers"]],
+                         ["F003", "F004", "F005"])
+
 
 if __name__ == "__main__":
     unittest.main()

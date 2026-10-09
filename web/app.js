@@ -104,12 +104,13 @@ function supplierDescriptionRow(text) {
 function renderOpportunities(items) {
   const list = document.querySelector('#opportunity-list');
   list.replaceChildren();
-  document.querySelector('#ax-count').textContent = `${items.length}개 과업 후보`;
-  if (!items.length) {
+  const visibleItems = items.slice(0, 2);
+  document.querySelector('#ax-count').textContent = `${visibleItems.length}개 과업 후보`;
+  if (!visibleItems.length) {
     list.append(element('div', 'list-empty', '공개 근거와 적용조건 검토를 통과한 AX 후보가 없습니다. 실제 업무와 내부 데이터 확인이 필요할 수 있습니다.'));
     return;
   }
-  for (const item of items) {
+  for (const item of visibleItems) {
     const card = element('article', 'result-card');
     const top = element('div', 'card-top');
     top.append(element('span', 'task-id', item.task_id));

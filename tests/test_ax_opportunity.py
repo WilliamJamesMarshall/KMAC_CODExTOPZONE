@@ -29,7 +29,8 @@ def _kb():
     tasks = {tid: Task(tid, name, "", purpose, "", "", "", "", "", "미검토")
              for tid, name, purpose in (
                  ("N009", "제품 검사", "제품 검사를 지원한다"),
-                 ("J016", "예지보전", "설비 고장을 예측한다"))}
+                 ("J016", "예지보전", "설비 고장을 예측한다"),
+                 ("J014", "품질 예측", "제품 품질을 예측한다"))}
     return KnowledgeBase(tasks, {}, {}, {}, [], [], {}, [], [], {})
 
 
@@ -96,6 +97,30 @@ class AxOpportunityTests(unittest.TestCase):
         self.assertEqual(result["opportunities"][0]["data_feasibility"], "unknown")
         self.assertEqual([item.task_id for item in
                           demand_tasks_for_matching(result["opportunities"])], ["N009"])
+
+    def test_only_top_two_opportunities_are_returned(self):
+        task_ids = ("N009", "J016", "J014")
+        candidates = [{"task_id": task_id, "function_id": "BF0",
+                       "fact_ids": ["F001"], "reason": "근거가 있는 업무"}
+                      for task_id in task_ids]
+        opportunities = [_evaluation(task_id) for task_id in task_ids]
+        opportunities[0]["priority"] = "low"
+        opportunities[1]["priority"] = "high"
+        opportunities[2]["priority"] = "medium"
+        checks = [{"task_id": task_id, "grounded": True, "task_fit": True,
+                   "effect_causal": True, "data_honest": True, "safe_scope": True,
+                   "issues": []} for task_id in task_ids]
+        client = _Client({"candidates": candidates},
+                         {"opportunities": opportunities}, {"checks": checks})
+
+        result = analyze_ax_opportunities(_profile(), _kb(), client=client)
+
+        self.assertEqual([item["task_id"] for item in result["opportunities"]],
+                         ["J016", "J014"])
+        self.assertEqual(result["quality"]["accepted_count"], 2)
+        self.assertEqual([item.task_id for item in
+                          demand_tasks_for_matching(result["opportunities"])],
+                         ["J016", "J014"])
 
 
 if __name__ == "__main__":

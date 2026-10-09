@@ -14,6 +14,11 @@ from .identity import company_name_key
 from .workbook import KnowledgeBase
 
 
+REQUIRED_PROFILE_FIELDS = (
+    "specialization", "ai_solution_description", "address", "phone", "representative",
+)
+
+
 def _text(value: object) -> str | None:
     return value.strip() or None if isinstance(value, str) else None
 
@@ -82,7 +87,7 @@ class SupplierProfileClient:
         return bool(workbook_homepage and workbook_homepage == _host(candidate.get("homepage_url")))
 
     def enrich(self, items: list[dict], kb: KnowledgeBase) -> None:
-        """Mutate up to three result cards with verified source details."""
+        """Mutate result cards with verified source details."""
         for item in items:
             item["supplier_profile"] = None
             item["profile_status"] = "unavailable"
@@ -135,3 +140,17 @@ class SupplierProfileClient:
                 "source_pool_no": entry["sply_pool_no"],
             }
             item["profile_status"] = "matched"
+
+    def available_profiles(self, kb: KnowledgeBase) -> dict[str, dict]:
+        """Return detailed suppliers whose five source fields can all be shown."""
+        ids = sorted({cap.supplier_id for cap in kb.detailed_capabilities})
+        items = [{"supplier_id": sid, "name": kb.suppliers[sid].name} for sid in ids]
+        self.enrich(items, kb)
+        if any(item["profile_status"] == "unavailable" for item in items):
+            raise RuntimeError("Supabase 공급기업 상세정보를 조회할 수 없습니다.")
+        return {
+            item["supplier_id"]: item["supplier_profile"]
+            for item in items
+            if item["profile_status"] == "matched"
+            and all(item["supplier_profile"].get(field) for field in REQUIRED_PROFILE_FIELDS)
+        }

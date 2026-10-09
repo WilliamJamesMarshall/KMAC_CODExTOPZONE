@@ -34,6 +34,16 @@ def handler_for(kb: KnowledgeBase):
         os.environ.get("SUPABASE_URL"), os.environ.get("SUPABASE_SECRET_KEY"),
     )
 
+    def result_with_profiles(pages: list[WebPage], business: dict, ax_analysis: dict) -> dict:
+        available = profiles.available_profiles(kb)
+        result = build_front_result(
+            pages, kb, business, ax_analysis, eligible_supplier_ids=set(available),
+        )
+        for item in result["suppliers"]:
+            item["supplier_profile"] = available[item["supplier_id"]]
+            item["profile_status"] = "matched"
+        return result
+
     class Handler(SimpleHTTPRequestHandler):
         def __init__(self, *args, **kwargs):
             super().__init__(*args, directory=str(WEB_DIR), **kwargs)
@@ -95,8 +105,11 @@ def handler_for(kb: KnowledgeBase):
                                            "quote": "제품 품질검사를 수행하고 생산 공정 최적화를 검토합니다."}],
                 }], "rejected": [], "quality": {"status": "demo", "candidate_count": 1,
                                                "accepted_count": 1, "issues": []}}
-                result = build_front_result([demo_page], kb, demo_business, demo_ax)
-                profiles.enrich(result["suppliers"], kb)
+                try:
+                    result = result_with_profiles([demo_page], demo_business, demo_ax)
+                except RuntimeError as error:
+                    self._json(502, {"error": str(error)})
+                    return
                 result["is_demo"] = True
                 self._json(200, result)
                 return
@@ -125,8 +138,7 @@ def handler_for(kb: KnowledgeBase):
                     ax_analysis = analyze_ax_opportunities(business, kb)
                 except ValueError as error:
                     raise RuntimeError("사업구조 또는 AX 근거 검증에 실패했습니다.") from error
-                result = build_front_result(pages, kb, business, ax_analysis)
-                profiles.enrich(result["suppliers"], kb)
+                result = result_with_profiles(pages, business, ax_analysis)
                 result["is_demo"] = False
                 self._json(200, result)
             except (ValueError, json.JSONDecodeError) as error:

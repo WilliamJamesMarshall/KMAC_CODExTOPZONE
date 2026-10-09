@@ -23,7 +23,8 @@ def _web_url(value: str | None) -> str | None:
 
 def build_front_result(pages: list[WebPage], kb: KnowledgeBase, business_analysis: dict,
                        ax_analysis: dict,
-                       *, max_suppliers: int = 3) -> dict:
+                       *, max_suppliers: int = 3,
+                       eligible_supplier_ids: set[str] | None = None) -> dict:
     """Create one screen response; suppliers come only from matching Task IDs."""
     if not pages:
         raise ValueError("No readable website pages were collected")
@@ -31,10 +32,12 @@ def build_front_result(pages: list[WebPage], kb: KnowledgeBase, business_analysi
         raise ValueError("The screen supports one to three suppliers")
     opportunities = ax_analysis["opportunities"]
     matches = match_suppliers(demand_tasks_for_matching(opportunities), kb,
-                              include_scan=False, limit=100)
+                              include_scan=False, limit=len(kb.suppliers))
     suppliers = []
     shown_names: set[str] = set()
     for match in matches:
+        if eligible_supplier_ids is not None and match.supplier_id not in eligible_supplier_ids:
+            continue
         normalized_name = company_name_key(match.supplier_name)
         if normalized_name in shown_names:
             continue  # Display one source identity without merging its evidence.

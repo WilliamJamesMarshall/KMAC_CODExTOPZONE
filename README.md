@@ -82,7 +82,7 @@ The AX field uses the verified business functions and value chain to propose
 active v0.3 Task IDs. It then checks business relevance, required inputs,
 AI mechanism, possible process change, expected effects, KPIs, missing internal
 data and human-review safeguards. An independent audit removes unsupported
-proposals. The field shows at most five conditional opportunities; only their
+proposals. The field shows at most two conditional opportunities; only their
 Task IDs reach supplier matching. The right field shows at most three
 distinct-name supplier candidates from detailed workbook links. Homepage
 analysis does not establish data availability or numeric improvements. A
