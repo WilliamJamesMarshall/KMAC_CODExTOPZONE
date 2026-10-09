@@ -1,0 +1,2 @@
+[console_scripts]
+oss = oss.cli:main

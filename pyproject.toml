@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oss-ax-matching"
+version = "0.1.0"
+description = "Evidence-aware AX task matching logic for OSS"
+requires-python = ">=3.11"
+dependencies = ["openpyxl==3.1.5", "python-dotenv==1.2.2"]
+
+[project.optional-dependencies]
+ax-inference = ["scikit-learn==1.9.0"]
+ax-llm = ["openai==2.44.0"]
+
+[project.scripts]
+oss = "oss.cli:main"
+oss-web = "oss.web_server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

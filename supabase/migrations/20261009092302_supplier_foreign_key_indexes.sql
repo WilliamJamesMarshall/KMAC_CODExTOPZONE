@@ -1,0 +1,14 @@
+create index capability_evidence_chunk_idx on public.capability_evidence(chunk_id);
+create index capability_evidence_page_idx on public.capability_evidence(page_id);
+create index capability_evidence_pool_entry_idx on public.capability_evidence(pool_entry_id);
+create index capability_evidence_project_idx on public.capability_evidence(project_id);
+create index capability_evidence_solution_idx on public.capability_evidence(solution_id);
+create index capability_evidence_task_idx on public.capability_evidence(task_id);
+create index ncs_task_map_task_idx on public.ncs_task_map(task_id);
+create index processing_jobs_supplier_idx on public.processing_jobs(supplier_id);
+create index supplier_projects_source_page_idx on public.supplier_projects(source_page_id);
+create index supplier_projects_source_pool_entry_idx on public.supplier_projects(source_pool_entry_id);
+create index supplier_projects_supplier_idx on public.supplier_projects(supplier_id);
+create index supplier_solutions_source_page_idx on public.supplier_solutions(source_page_id);
+create index supplier_solutions_source_pool_entry_idx on public.supplier_solutions(source_pool_entry_id);
+create index supplier_solutions_supplier_idx on public.supplier_solutions(supplier_id);
