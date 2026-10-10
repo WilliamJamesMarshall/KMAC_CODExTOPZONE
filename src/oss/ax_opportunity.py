@@ -242,7 +242,7 @@ def analyze_ax_opportunities(business_analysis: dict, kb: KnowledgeBase,
         })
     accepted.sort(key=lambda item: (PRIORITY_ORDER[item["priority"]],
                                     -len(item["business_evidence"]), item["task_id"]))
-    displayed = accepted[:2]
+    displayed = accepted[:3]
     return {"opportunities": displayed, "rejected": rejected,
             "quality": {"status": "reviewed" if accepted else "insufficient",
                         "issues": [], "candidate_count": len(candidates),

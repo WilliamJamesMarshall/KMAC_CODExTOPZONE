@@ -113,7 +113,7 @@ function supplierDescriptionRow(text) {
 function renderOpportunities(items) {
   const list = document.querySelector('#opportunity-list');
   list.replaceChildren();
-  const visibleItems = items.slice(0, 2);
+  const visibleItems = items.slice(0, 3);
   document.querySelector('#ax-count').textContent = `${visibleItems.length}개 과업 후보`;
   if (!visibleItems.length) {
     list.append(element('div', 'list-empty', '공개 근거와 적용조건 검토를 통과한 AX 후보가 없습니다. 실제 업무와 내부 데이터 확인이 필요할 수 있습니다.'));
@@ -198,7 +198,6 @@ function renderSuppliers(items) {
         reasons[item.profile_status] || '원본 정보 확인이 필요합니다.'));
     }
     card.append(profileSection);
-    card.append(element('div', 'supplier-meta', `프로젝트: ${item.portfolio_status}`));
     if (item.identity_review_required) {
       card.append(element('div', 'question-line', '동일한 기업명으로 여러 원천 ID가 있어 기업 식별 확인이 필요합니다.'));
     }

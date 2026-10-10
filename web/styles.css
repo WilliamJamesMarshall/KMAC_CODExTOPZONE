@@ -130,7 +130,7 @@ h1,h2,h3,p{margin-top:0}
 .supplier-more summary{cursor:pointer;color:#486cce;font-size:12px;font-weight:800}
 .supplier-more p{margin:8px 0 0;white-space:pre-wrap}
 .supplier-profile-note{padding:9px 11px;background:#f6f8fc;color:#677791;font-size:12px;line-height:1.6}
-.supplier-meta{font-size:12px;color:#788596;border-top:1px solid #edf0f5;padding-top:11px}
+.question-line{margin-top:11px;background:#f6f8fc;padding:10px 11px;color:#677791;font-size:12px;line-height:1.6}
 .list-empty{border:1px dashed #cbd7ef;background:#fafcff;color:#788699;padding:22px;font-size:13px;line-height:1.7}
 .guide-section{display:flex;gap:26px;padding:30px 0 53px;border-top:1px solid #e2e7ef;margin-top:36px}
 .guide-label{flex:none;font-size:13px;font-weight:850;color:#4167cf}

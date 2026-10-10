@@ -30,7 +30,8 @@ def _kb():
              for tid, name, purpose in (
                  ("N009", "제품 검사", "제품 검사를 지원한다"),
                  ("J016", "예지보전", "설비 고장을 예측한다"),
-                 ("J014", "품질 예측", "제품 품질을 예측한다"))}
+                 ("J014", "품질 예측", "제품 품질을 예측한다"),
+                 ("J015", "공정 최적화", "공정 조건을 최적화한다"))}
     return KnowledgeBase(tasks, {}, {}, {}, [], [], {}, [], [], {})
 
 
@@ -116,8 +117,8 @@ class AxOpportunityTests(unittest.TestCase):
         self.assertEqual([item.task_id for item in
                           demand_tasks_for_matching(result["opportunities"])], ["N009"])
 
-    def test_only_top_two_opportunities_are_returned(self):
-        task_ids = ("N009", "J016", "J014")
+    def test_only_top_three_opportunities_are_returned(self):
+        task_ids = ("N009", "J016", "J014", "J015")
         candidates = [{"task_id": task_id, "function_id": "BF0",
                        "fact_ids": ["F001"], "reason": "근거가 있는 업무"}
                       for task_id in task_ids]
@@ -125,6 +126,7 @@ class AxOpportunityTests(unittest.TestCase):
         opportunities[0]["priority"] = "low"
         opportunities[1]["priority"] = "high"
         opportunities[2]["priority"] = "medium"
+        opportunities[3]["priority"] = "low"
         checks = [{"task_id": task_id, "grounded": True, "task_fit": True,
                    "effect_causal": True, "data_honest": True, "safe_scope": True,
                    "issues": []} for task_id in task_ids]
@@ -134,11 +136,11 @@ class AxOpportunityTests(unittest.TestCase):
         result = analyze_ax_opportunities(_profile(), _kb(), client=client)
 
         self.assertEqual([item["task_id"] for item in result["opportunities"]],
-                         ["J016", "J014"])
-        self.assertEqual(result["quality"]["accepted_count"], 2)
+                         ["J016", "J014", "J015"])
+        self.assertEqual(result["quality"]["accepted_count"], 3)
         self.assertEqual([item.task_id for item in
                           demand_tasks_for_matching(result["opportunities"])],
-                         ["J016", "J014"])
+                         ["J016", "J014", "J015"])
 
 
 if __name__ == "__main__":
