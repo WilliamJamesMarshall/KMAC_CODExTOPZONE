@@ -50,10 +50,14 @@ def _evaluation(task_id):
     return {
         "task_id": task_id, "status": "conditional", "priority": "high",
         "solution_name": "AI 영상 검사 지원", "target_function": "제품 품질검사",
-        "inputs": ["제품 검사 이미지"], "ai_process": ["이상 후보 탐지"],
-        "outputs": ["이상 후보 목록"], "mechanism": "이상 후보를 표시한다",
-        "process_change": "담당자가 이상 후보를 우선 검토한다",
-        "expected_effects": ["불량 유출 감소 가능"], "kpis": ["불량 유출률"],
+        "inputs": ["제품 검사 이미지"],
+        "ai_process": ["제품 이미지를 검사 구역별로 분석한다", "이상 후보를 구분해 담당자에게 제시한다"],
+        "outputs": ["이상 후보 목록"],
+        "mechanism": "제품 검사 이미지를 입력받아 검사 구역별 특징을 분석한다. 모델은 이상 가능성이 있는 위치와 판단 근거를 목록으로 제시한다. 담당자는 원본 이미지와 후보를 함께 검토해 최종 판정을 내린다.",
+        "process_change": "검사 담당자는 AI가 표시한 후보를 먼저 검토하도록 업무 순서를 조정할 수 있다. 후보 판정 결과를 기록하면 다음 검사 기준을 점검하는 데 활용할 수 있다.",
+        "expected_effects": ["담당자가 이상 후보를 먼저 검토하면 불량 유출을 줄일 가능성이 있다.",
+                             "검사 대상을 우선순위화하면 검토 시간을 줄일 가능성이 있다."],
+        "kpis": ["불량 유출률"],
         "required_data": ["제품 이미지", "불량 판정 이력"],
         "unknowns": ["이미지 데이터 존재 여부"],
         "safeguard": "담당자 최종 판정", "reason": "검사 업무에 직접 적용",
@@ -77,6 +81,20 @@ class AxOpportunityTests(unittest.TestCase):
     def test_invented_numeric_effect_is_rejected(self):
         item = _evaluation("N009")
         item["expected_effects"] = ["불량률 37% 감소"]
+        self.assertEqual(_validated_opportunities(
+            {"opportunities": [item]}, [{"task_id": "N009"}]), [])
+
+    def test_terse_explanation_is_rejected(self):
+        item = _evaluation("N009")
+        item["ai_process"] = ["이상 후보 탐지"]
+        item["mechanism"] = "이상 후보를 표시한다"
+        item["expected_effects"] = ["불량 유출 감소 가능"]
+        self.assertEqual(_validated_opportunities(
+            {"opportunities": [item]}, [{"task_id": "N009"}]), [])
+
+    def test_terse_workflow_change_is_rejected(self):
+        item = _evaluation("N009")
+        item["process_change"] = "담당자가 후보를 우선 검토한다"
         self.assertEqual(_validated_opportunities(
             {"opportunities": [item]}, [{"task_id": "N009"}]), [])
 

@@ -84,6 +84,15 @@ function detailRow(label, text) {
   return row;
 }
 
+function detailListRow(label, items) {
+  const row = element('div', 'detail-row');
+  row.append(element('div', 'detail-label', label));
+  const list = element('ul', 'detail-text detail-list');
+  for (const item of items) list.append(element('li', '', item));
+  row.append(list);
+  return row;
+}
+
 function supplierDescriptionRow(text) {
   const row = element('div', 'detail-row');
   row.append(element('div', 'detail-label', 'AI솔루션 설명'));
@@ -113,23 +122,18 @@ function renderOpportunities(items) {
   for (const item of visibleItems) {
     const card = element('article', 'result-card');
     const top = element('div', 'card-top');
-    top.append(element('span', 'task-id', item.task_id));
-    top.append(element('span', 'card-status', `우선순위 ${item.priority_label} · 적용조건 확인 필요`));
+    top.append(element('span', 'card-status', `우선순위 ${item.priority_label}`));
     card.append(top);
     card.append(element('h4', '', item.solution_name));
     card.append(detailRow('적용 업무', item.business_function));
-    card.append(detailRow('OSS 과업', `${item.task_id} · ${item.task_name}`));
-    card.append(detailRow('선정 이유', item.reason));
     card.append(detailRow('필요 입력', item.inputs.join(' · ')));
-    card.append(detailRow('AI 기능', item.ai_process.join(' · ')));
+    card.append(detailListRow('AI 기능', item.ai_process));
     card.append(detailRow('산출물', item.outputs.join(' · ')));
     card.append(detailRow('작동 방식', item.mechanism));
     card.append(detailRow('업무 변화', item.process_change));
-    card.append(detailRow('기대효과', item.expected_effects.join(' · ')));
+    card.append(detailListRow('기대효과', item.expected_effects));
     card.append(detailRow('측정 KPI', item.kpis.join(' · ')));
     card.append(detailRow('필요 데이터', item.required_data.join(' · ')));
-    card.append(detailRow('데이터 상태', '홈페이지에서 확인되지 않음'));
-    card.append(element('div', 'question-line', `도입 전 확인 · ${item.unknowns.join(' · ')}${item.safeguard ? ` · ${item.safeguard}` : ''}`));
     if (item.business_evidence?.length) {
       const details = element('details', 'evidence-details');
       details.append(element('summary', '', `수요기업 홈페이지 근거 ${item.business_evidence.length}개`));

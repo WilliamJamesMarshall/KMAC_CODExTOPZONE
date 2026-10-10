@@ -112,7 +112,14 @@ def _validated_opportunities(raw: dict, candidates: list[dict]) -> list[dict]:
                not all(isinstance(value, str) and value.strip() for value in row[key])
                for key in arrays):
             continue
-        if PERCENT_CLAIM.search(" ".join(row["expected_effects"])):
+        if len(row["ai_process"]) < 2 or len(row["expected_effects"]) < 2 \
+                or len(row["mechanism"].strip()) < 65 \
+                or len(row["process_change"].strip()) < 55:
+            continue
+        displayed_explanation = " ".join([
+            *row["ai_process"], row["mechanism"], row["process_change"],
+            *row["expected_effects"]])
+        if PERCENT_CLAIM.search(displayed_explanation):
             continue
         found.append(row)
     return found
@@ -172,23 +179,36 @@ def analyze_ax_opportunities(business_analysis: dict, kb: KnowledgeBase,
         "Evaluate each candidate as a CONDITIONAL first-pass AX opportunity. Rank by business "
         "criticality, direct Task fit, evidence strength and KPI measurability. Internal data "
         "availability is UNKNOWN from a website and must never receive an assumed positive score. "
-        "Exclude weak or peripheral ideas. For each retained idea specify target business function, "
-        "required inputs (not claimed available), AI processing, outputs, causal mechanism, changed "
-        "work, possible effects and measurable KPIs. List required internal data and concrete unknowns. "
+        "Return at most five strong, non-overlapping ideas; exclude weak or peripheral ones. "
+        "For each retained idea specify target business function, required inputs (not claimed "
+        "available), outputs and measurable KPIs. Make the user-facing explanations substantive: "
+        "ai_process must contain 2-4 concrete sequential steps explaining how AI transforms the "
+        "inputs; mechanism must contain 3-4 full Korean sentences tracing input capture, analysis, "
+        "output presentation and human review; process_change must contain 2-3 full Korean "
+        "sentences explaining how staff could conditionally change work sequence or decisions "
+        "using that output. Do not claim to know their current procedures. Keep mechanism about "
+        "system operation and process_change about people's work. expected_effects must contain "
+        "2-3 full Korean sentences, each linking a plausible qualitative effect to the process "
+        "change and a measurable KPI. State any prerequisites conditionally. Avoid vague claims "
+        "such as generic efficiency improvement, repeated ideas and unsupported implementation "
+        "details. Keep other fields concise. List required internal data and concrete unknowns. "
         "Never invent percentage gains, cost savings or current systems. In regulated or safety-critical "
         "work, limit AI to human-reviewed support; exclude autonomous final decisions. "
         "Every effect must follow from the stated mechanism. Keep the response in Korean.",
         {"facts": facts, "structure": structure, "candidates": candidates,
          "tasks": relevant_tasks},
-        EVALUATION_SCHEMA, "ax_opportunity_evaluation", max_output_tokens=6500)
+        EVALUATION_SCHEMA, "ax_opportunity_evaluation", max_output_tokens=9500)
     evaluated = _validated_opportunities(raw_eval, candidates)
     if not evaluated:
         return _empty("적용조건과 기대효과를 검증할 수 있는 AX 후보가 없습니다.")
     audit = _ask(client, selected_model,
         "Independently audit each conditional AX proposal. Grounding: the target activity must have "
         "cited facts; candidate AI use is a possibility, not an existing practice. Task fit must respect "
-        "the taxonomy boundary. Expected effects must follow from AI mechanism through a specific "
-        "process change, with relevant measurable KPIs. Required data must be identified without "
+        "the taxonomy boundary. Review every detailed AI step, mechanism sentence and proposed "
+        "workflow change without treating them as claims about current systems, procedures or data. "
+        "Expected effects must "
+        "follow from AI mechanism through a specific process change, with relevant measurable KPIs. "
+        "Required data must be identified without "
         "claiming it is available. No invented numeric improvement. In regulated or safety-sensitive "
         "work, human final approval must remain. Fail any proposal that violates one of these checks.",
         {"facts": facts, "structure": structure, "candidates": candidates,
