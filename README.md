@@ -69,8 +69,11 @@ Install the web analysis dependency with `python -m pip install -e ".[ax-llm]"`.
 oss-web --workbook "PATH_TO_V0.3.xlsx"
 ```
 
-Open `http://127.0.0.1:8765`. Enter a public demand-company homepage URL, or
-choose **예시 결과 보기** to inspect the layout using a fictional demand company.
+Open `http://127.0.0.1:8765` and enter a public demand-company homepage URL.
+Successful analyses are saved in this browser's IndexedDB. **검색 기록** lists
+the URLs; selecting one restores its saved result without another crawl or AI
+request, and the X button removes that record. Records are local to the browser
+and are not synchronized across devices.
 The Business Model field crawls company, product, R&D and production pages,
 extracts exact-quote facts, groups the core business and supported activities,
 then writes only **가치 제안** and **핵심 활동**. A separate model pass checks the

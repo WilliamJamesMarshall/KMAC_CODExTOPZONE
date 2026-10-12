@@ -62,7 +62,10 @@
         </form>
         <div class="search-bottom">
           <p id="url-hint">홈페이지에 공개된 정보만 분석합니다. 내부 업무와 기대효과는 도입 전 확인이 필요합니다.</p>
-          <button id="demo-button" class="demo-button" type="button">예시 결과 보기 <span aria-hidden="true">↗</span></button>
+          <button id="history-button" class="history-button" type="button" aria-controls="history-panel" aria-expanded="false">검색 기록 <span aria-hidden="true">⌄</span></button>
+        </div>
+        <div id="history-panel" class="history-panel" aria-label="검색 기록" hidden>
+          <div id="history-list" class="history-list"></div>
         </div>
       </section>
 

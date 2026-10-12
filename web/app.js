@@ -1,10 +1,136 @@
 const form = document.querySelector('#analysis-form');
 const input = document.querySelector('#company-url');
 const submitButton = document.querySelector('#submit-button');
-const demoButton = document.querySelector('#demo-button');
+const historyButton = document.querySelector('#history-button');
+const historyPanel = document.querySelector('#history-panel');
+const historyList = document.querySelector('#history-list');
 const feedback = document.querySelector('#feedback');
 const emptyState = document.querySelector('#empty-state');
 const resultContent = document.querySelector('#result-content');
+const historyRecords = new Map();
+let historyDbPromise;
+let historyLoadError = false;
+
+function historyKey(url) {
+  const parsed = new URL(url);
+  parsed.hash = '';
+  parsed.pathname = parsed.pathname.replace(/\/+$/, '') || '/';
+  return parsed.href;
+}
+
+function openHistoryDb() {
+  if (!('indexedDB' in window)) return Promise.reject(new Error('IndexedDB unavailable'));
+  if (!historyDbPromise) {
+    historyDbPromise = new Promise((resolve, reject) => {
+      const request = indexedDB.open('oss-search-history', 1);
+      request.onupgradeneeded = () => request.result.createObjectStore('results', { keyPath: 'key' });
+      request.onsuccess = () => {
+        const db = request.result;
+        db.onversionchange = () => {
+          db.close();
+          historyDbPromise = undefined;
+        };
+        resolve(db);
+      };
+      request.onerror = () => reject(request.error);
+      request.onblocked = () => reject(new Error('Search history database is blocked'));
+    }).catch((error) => {
+      historyDbPromise = undefined;
+      throw error;
+    });
+  }
+  return historyDbPromise;
+}
+
+async function historyRequest(mode, action) {
+  const db = await openHistoryDb();
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction('results', mode);
+    let value;
+    const request = action(transaction.objectStore('results'));
+    request.onsuccess = () => { value = request.result; };
+    transaction.oncomplete = () => resolve(value);
+    transaction.onerror = () => reject(transaction.error);
+    transaction.onabort = () => reject(transaction.error);
+  });
+}
+
+function resultSnapshot(data) {
+  const fields = ['input_url', 'site_name', 'business_model', 'business_quality',
+    'opportunities', 'suppliers', 'analysis_meta', 'is_demo'];
+  return Object.fromEntries(fields.map((field) => [field, data[field]]));
+}
+
+function closeHistory() {
+  historyPanel.hidden = true;
+  historyButton.setAttribute('aria-expanded', 'false');
+}
+
+function renderHistoryList() {
+  historyList.replaceChildren();
+  if (historyLoadError) {
+    historyList.append(element('div', 'history-empty', '이 브라우저에서 검색 기록을 불러올 수 없습니다.'));
+    return;
+  }
+  const records = [...historyRecords.values()].sort((a, b) =>
+    b.savedAt.localeCompare(a.savedAt));
+  if (!records.length) {
+    historyList.append(element('div', 'history-empty', '저장된 검색 기록이 없습니다.'));
+    return;
+  }
+  for (const record of records) {
+    const row = element('div', 'history-row');
+    const remove = element('button', 'history-remove', '×');
+    remove.type = 'button';
+    remove.title = '검색 기록 삭제';
+    remove.setAttribute('aria-label', `${record.url} 검색 기록 삭제`);
+    remove.addEventListener('click', async () => {
+      remove.disabled = true;
+      try {
+        await historyRequest('readwrite', (store) => store.delete(record.key));
+        historyRecords.delete(record.key);
+        renderHistoryList();
+      } catch {
+        remove.disabled = false;
+        showFeedback('검색 기록을 삭제하지 못했습니다.', 'error');
+      }
+    });
+    const select = element('button', 'history-entry');
+    select.type = 'button';
+    select.append(element('span', 'history-url', record.url));
+    select.append(element('span', 'history-date',
+      new Date(record.savedAt).toLocaleString('ko-KR')));
+    select.addEventListener('click', () => {
+      input.value = record.url;
+      closeHistory();
+      showFeedback('');
+      renderResult(record.result);
+    });
+    row.append(remove, select);
+    historyList.append(row);
+  }
+}
+
+async function loadHistory() {
+  try {
+    const records = await historyRequest('readonly', (store) => store.getAll());
+    for (const record of records) historyRecords.set(record.key, record);
+  } catch {
+    historyLoadError = true;
+  }
+  renderHistoryList();
+}
+
+async function saveHistory(url, data) {
+  const record = {
+    key: historyKey(url), url, savedAt: new Date().toISOString(),
+    result: resultSnapshot(data),
+  };
+  await historyRequest('readwrite', (store) => store.put(record));
+  historyLoadError = false;
+  historyRecords.set(record.key, record);
+  renderHistoryList();
+}
 
 function element(tag, className, text) {
   const node = document.createElement(tag);
@@ -35,7 +161,7 @@ function showFeedback(message, type = '') {
 
 function setBusy(busy) {
   submitButton.disabled = busy;
-  demoButton.disabled = busy;
+  historyButton.disabled = busy;
   form.setAttribute('aria-busy', String(busy));
   document.querySelector('#submit-label').textContent = busy ? '분석 중' : '분석 시작';
 }
@@ -222,11 +348,11 @@ function renderResult(data) {
   document.querySelector('#results').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-async function requestResult(url, demo = false) {
+async function requestResult(url) {
   setBusy(true);
-  showFeedback(demo ? '예시 결과를 불러오는 중입니다.' : '사업 페이지에서 근거를 추출·검토하고 AX 과업과 공급기업 후보를 찾고 있습니다. 잠시 기다려 주세요.', 'loading');
+  showFeedback('사업 페이지에서 근거를 추출·검토하고 AX 과업과 공급기업 후보를 찾고 있습니다. 잠시 기다려 주세요.', 'loading');
   try {
-    const response = await fetch(demo ? '/api/demo' : '/api/analyze', demo ? undefined : {
+    const response = await fetch('/api/analyze', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ url }),
@@ -235,6 +361,11 @@ async function requestResult(url, demo = false) {
     if (!response.ok) throw new Error(data.error || '분석 결과를 가져오지 못했습니다.');
     showFeedback('');
     renderResult(data);
+    try {
+      await saveHistory(url, data);
+    } catch {
+      showFeedback('분석 결과는 표시됐지만 검색 기록을 저장하지 못했습니다.', 'error');
+    }
   } catch (error) {
     showFeedback(error.message || '분석 중 오류가 발생했습니다.', 'error');
   } finally {
@@ -253,7 +384,14 @@ form.addEventListener('submit', (event) => {
     input.focus();
     return;
   }
+  closeHistory();
   requestResult(value);
 });
 
-demoButton.addEventListener('click', () => requestResult(null, true));
+historyButton.addEventListener('click', () => {
+  const opening = historyPanel.hidden;
+  historyPanel.hidden = !opening;
+  historyButton.setAttribute('aria-expanded', String(opening));
+});
+
+loadHistory();
