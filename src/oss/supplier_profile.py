@@ -121,7 +121,7 @@ class SupplierProfileClient:
                 item["profile_status"] = "not_found"
                 continue
             matched = [
-                entry
+                (candidate, entry)
                 for candidate in candidates
                 for entry in entries.get(candidate["id"], [])
                 if self._corroborated(item, candidate, entry, kb)
@@ -129,7 +129,7 @@ class SupplierProfileClient:
             if len(matched) != 1:
                 item["profile_status"] = "ambiguous" if len(matched) > 1 else "needs_review"
                 continue
-            entry = matched[0]
+            candidate, entry = matched[0]
             raw = entry.get("raw_record") or {}
             item["supplier_profile"] = {
                 "specialization": _text(entry.get("specialization")),
@@ -137,6 +137,7 @@ class SupplierProfileClient:
                 "address": _text(raw.get("splyCmpAddr")),
                 "phone": _text(raw.get("bizTelNo")),
                 "representative": _text(raw.get("splyCmpRpstNm")),
+                "homepage_url": _text(candidate.get("homepage_url")),
                 "source_pool_no": entry["sply_pool_no"],
             }
             item["profile_status"] = "matched"

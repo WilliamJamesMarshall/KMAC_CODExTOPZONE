@@ -54,7 +54,7 @@ def _evaluation(task_id):
         "inputs": ["제품 검사 이미지"],
         "ai_process": ["제품 이미지를 검사 구역별로 분석한다", "이상 후보를 구분해 담당자에게 제시한다"],
         "outputs": ["이상 후보 목록"],
-        "mechanism": "제품 검사 이미지를 입력받아 검사 구역별 특징을 분석한다. 모델은 이상 가능성이 있는 위치와 판단 근거를 목록으로 제시한다. 담당자는 원본 이미지와 후보를 함께 검토해 최종 판정을 내린다.",
+        "mechanism": "제품 검사 이미지를 분석해 이상 가능성이 있는 위치와 판단 근거를 목록으로 제시합니다. 담당자는 원본 이미지와 후보를 함께 검토해 최종 판정을 내립니다.",
         "process_change": "검사 담당자는 AI가 표시한 후보를 먼저 검토하도록 업무 순서를 조정할 수 있다. 후보 판정 결과를 기록하면 다음 검사 기준을 점검하는 데 활용할 수 있다.",
         "expected_effects": ["담당자가 이상 후보를 먼저 검토하면 불량 유출을 줄일 가능성이 있다.",
                              "검사 대상을 우선순위화하면 검토 시간을 줄일 가능성이 있다."],
@@ -85,19 +85,30 @@ class AxOpportunityTests(unittest.TestCase):
         self.assertEqual(_validated_opportunities(
             {"opportunities": [item]}, [{"task_id": "N009"}]), [])
 
-    def test_terse_explanation_is_rejected(self):
+    def test_short_concrete_explanation_is_accepted(self):
         item = _evaluation("N009")
         item["ai_process"] = ["이상 후보 탐지"]
-        item["mechanism"] = "이상 후보를 표시한다"
+        item["mechanism"] = "제품 이미지를 분석해 이상 후보를 표시합니다."
         item["expected_effects"] = ["불량 유출 감소 가능"]
+        self.assertEqual(len(_validated_opportunities(
+            {"opportunities": [item]}, [{"task_id": "N009"}])), 1)
+
+    def test_empty_or_overlong_display_answer_is_rejected(self):
+        item = _evaluation("N009")
+        item["process_change"] = ""
+        self.assertEqual(_validated_opportunities(
+            {"opportunities": [item]}, [{"task_id": "N009"}]), [])
+        item["process_change"] = "담당자가 후보를 우선 검토합니다." * 30
         self.assertEqual(_validated_opportunities(
             {"opportunities": [item]}, [{"task_id": "N009"}]), [])
 
-    def test_terse_workflow_change_is_rejected(self):
-        item = _evaluation("N009")
-        item["process_change"] = "담당자가 후보를 우선 검토한다"
-        self.assertEqual(_validated_opportunities(
-            {"opportunities": [item]}, [{"task_id": "N009"}]), [])
+    def test_long_or_technical_display_copy_is_rejected(self):
+        for text in ("모델 학습으로 MAE를 평가합니다.",
+                     "생산 기록을 분석합니다. 결과를 비교합니다. 다음 실험을 선택합니다."):
+            item = _evaluation("N009")
+            item["mechanism"] = text
+            self.assertEqual(_validated_opportunities(
+                {"opportunities": [item]}, [{"task_id": "N009"}]), [])
 
     def test_only_audited_opportunity_reaches_supplier_crosswalk(self):
         candidates = [
@@ -117,14 +128,14 @@ class AxOpportunityTests(unittest.TestCase):
         self.assertEqual([item.task_id for item in
                           demand_tasks_for_matching(result["opportunities"])], ["N009"])
 
-    def test_only_top_three_opportunities_are_returned(self):
+    def test_top_three_use_evidence_instead_of_assumed_urgency(self):
         task_ids = ("N009", "J016", "J014", "J015")
         candidates = [{"task_id": task_id, "function_id": "BF0",
                        "fact_ids": ["F001"], "reason": "근거가 있는 업무"}
                       for task_id in task_ids]
         opportunities = [_evaluation(task_id) for task_id in task_ids]
-        opportunities[0]["priority"] = "low"
-        opportunities[1]["priority"] = "high"
+        opportunities[0]["priority"] = "high"
+        opportunities[1]["priority"] = "low"
         opportunities[2]["priority"] = "medium"
         opportunities[3]["priority"] = "low"
         checks = [{"task_id": task_id, "grounded": True, "task_fit": True,
@@ -136,11 +147,11 @@ class AxOpportunityTests(unittest.TestCase):
         result = analyze_ax_opportunities(_profile(), _kb(), client=client)
 
         self.assertEqual([item["task_id"] for item in result["opportunities"]],
-                         ["J016", "J014", "J015"])
+                         ["J014", "J015", "J016"])
         self.assertEqual(result["quality"]["accepted_count"], 3)
         self.assertEqual([item.task_id for item in
                           demand_tasks_for_matching(result["opportunities"])],
-                         ["J016", "J014", "J015"])
+                         ["J014", "J015", "J016"])
 
 
 if __name__ == "__main__":

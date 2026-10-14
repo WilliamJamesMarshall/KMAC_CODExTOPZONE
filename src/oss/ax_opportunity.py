@@ -5,7 +5,7 @@ from __future__ import annotations
 import os
 import re
 
-from .business_profile import _array, _ask, _object
+from .business_profile import _array, _ask, _object, valid_display_text
 from .models import DemandTask, Evidence
 from .workbook import KnowledgeBase
 
@@ -112,9 +112,10 @@ def _validated_opportunities(raw: dict, candidates: list[dict]) -> list[dict]:
                not all(isinstance(value, str) and value.strip() for value in row[key])
                for key in arrays):
             continue
-        if len(row["ai_process"]) < 2 or len(row["expected_effects"]) < 2 \
-                or len(row["mechanism"].strip()) < 65 \
-                or len(row["process_change"].strip()) < 55:
+        if len(row["solution_name"]) > 80 or any(
+            not valid_display_text(text, max_sentences=2, max_length=320)
+            for text in (row["mechanism"], row["process_change"], " ".join(row["unknowns"]))
+        ):
             continue
         displayed_explanation = " ".join([
             *row["ai_process"], row["mechanism"], row["process_change"],
@@ -177,21 +178,24 @@ def analyze_ax_opportunities(business_analysis: dict, kb: KnowledgeBase,
     relevant_tasks = [row for row in task_rows if row["id"] in {c["task_id"] for c in candidates}]
     raw_eval = _ask(client, selected_model,
         "Evaluate each candidate as a CONDITIONAL first-pass AX opportunity. Rank by business "
-        "criticality, direct Task fit, evidence strength and KPI measurability. Internal data "
+        "direct Task fit and evidence strength, not assumed urgency. Internal data "
         "availability is UNKNOWN from a website and must never receive an assumed positive score. "
         "Return at most five strong, non-overlapping ideas; exclude weak or peripheral ones. "
         "For each retained idea specify target business function, required inputs (not claimed "
-        "available), outputs and measurable KPIs. Make the user-facing explanations substantive: "
-        "ai_process must contain 2-4 concrete sequential steps explaining how AI transforms the "
-        "inputs; mechanism must contain 3-4 full Korean sentences tracing input capture, analysis, "
-        "output presentation and human review; process_change must contain 2-3 full Korean "
-        "sentences explaining how staff could conditionally change work sequence or decisions "
-        "using that output. Do not claim to know their current procedures. Keep mechanism about "
-        "system operation and process_change about people's work. expected_effects must contain "
-        "2-3 full Korean sentences, each linking a plausible qualitative effect to the process "
-        "change and a measurable KPI. State any prerequisites conditionally. Avoid vague claims "
-        "such as generic efficiency improvement, repeated ideas and unsupported implementation "
-        "details. Keep other fields concise. List required internal data and concrete unknowns. "
+        "available), outputs and measurable KPIs for internal review. Write three concise display "
+        "answers, each 1-2 sentences and at most 320 characters. solution_name is a work-centered "
+        "title ending in a natural action such as ~찾기, ~비교하기 or ~좁히기 "
+        "(e.g. 실험할 항원·항체 후보 좁히기), not a model or technology name. "
+        "mechanism answers 무엇을 도와주나요?: trace the input, analysis and useful output. "
+        "process_change answers 어떤 점이 좋아지나요?: describe what staff can more easily "
+        "compare, check or process; never assume their current procedures. unknowns contains "
+        "1-2 short sentences answering 도입 전 확인할 점, covering required data and compatibility. "
+        "Put prerequisites ONLY in unknowns rather than repeating conditions in every answer. "
+        "Use polite ~합니다/~입니다 endings and plain verbs. Keep necessary domain terms, "
+        "Prefer 연결할 수 있는지 확인합니다 over nominal jargon such as 충분성, 적합성 or 제고. "
+        "but omit model training, MAE, Multi-Agent and independent evaluation from display answers. "
+        "Keep ai_process and expected_effects as brief internal notes; an array of one item is valid. "
+        "Do not repeat an explanation across the three display answers or invent implementation details. "
         "Never invent percentage gains, cost savings or current systems. In regulated or safety-critical "
         "work, limit AI to human-reviewed support; exclude autonomous final decisions. "
         "Every effect must follow from the stated mechanism. Keep the response in Korean.",
@@ -240,8 +244,7 @@ def analyze_ax_opportunities(business_analysis: dict, kb: KnowledgeBase,
                 "high": "높음", "medium": "중간", "low": "낮음",
             }[row["priority"]],
         })
-    accepted.sort(key=lambda item: (PRIORITY_ORDER[item["priority"]],
-                                    -len(item["business_evidence"]), item["task_id"]))
+    accepted.sort(key=lambda item: (-len(item["business_evidence"]), item["task_id"]))
     displayed = accepted[:3]
     return {"opportunities": displayed, "rejected": rejected,
             "quality": {"status": "reviewed" if accepted else "insufficient",

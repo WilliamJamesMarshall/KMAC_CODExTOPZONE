@@ -74,25 +74,31 @@ Successful analyses are saved in this browser's IndexedDB. **검색 기록** lis
 the URLs; selecting one restores its saved result without another crawl or AI
 request, and the X button removes that record. Records are local to the browser
 and are not synchronized across devices.
-The Business Model field crawls company, product, R&D and production pages,
-extracts exact-quote facts, groups the core business and supported activities,
-then writes only **가치 제안** and **핵심 활동**. A separate model pass checks the
-two fields against their citations; unsupported claims are revised or left
-unknown. Each displayed field exposes its source quotes. This path requires an
+The **기업 이해** section presents one short paragraph combining the company's
+business and core activities. The underlying fact extraction and independent
+grounding audit still retain source quotes internally. This path requires an
 OpenAI API key in `.env` and does not write to Supabase.
 
-The AX field uses the verified business functions and value chain to propose
-active v0.3 Task IDs. It then checks business relevance, required inputs,
-AI mechanism, possible process change, expected effects, KPIs, missing internal
-data and human-review safeguards. An independent audit removes unsupported
-proposals. The field shows at most three conditional opportunities; only their
-Task IDs reach supplier matching. The right field shows at most three
-distinct-name supplier candidates from detailed workbook links. Homepage
-analysis does not establish data availability or numeric improvements. A
-source-linked pool record adds each supplier's specialization, AI solution
-description, address, phone number, and representative. If the workbook and
-pool identities cannot be corroborated, the card shows an explicit review
-status instead of another company's details.
+**AI로 개선할 수 있는 업무** shows up to three audited work ideas. Each card
+answers what it helps with, what gets easier, and what to check before adoption.
+Selecting a card displays up to three suppliers for that specific work, rather
+than taking three suppliers across all work ideas. A supplier can appear under
+multiple work ideas with different explanations. Suppliers without corroborated,
+complete pool profiles remain excluded.
+
+A separate model pass writes four buyer-facing supplier answers (why this
+supplier, how to use it, how work changes, and what to ask). An independent audit
+checks actual supplier capability against the specific buyer work. A shared Task
+ID alone cannot establish domain suitability. Pairs without supported solution
+names, source quotations or an approving audit are excluded. These two model
+calls add to analysis time. Contact details are shown separately, and original
+solution descriptions are available under **상세정보**. Source IDs and internal
+review diagnostics are not shown on the result screen.
+
+New search-history snapshots retain the per-work supplier mapping and answers.
+Previous snapshots still open without another crawl or AI request: supplier
+links use their saved Task IDs, with concise consultation guidance until the
+company is analyzed again.
 
 `demand-pages.json` is a UTF-8 array of page extracts:
 
@@ -117,6 +123,12 @@ The source contract test runs when `OSS_WORKBOOK_PATH` points to the workbook:
 ```powershell
 $env:OSS_WORKBOOK_PATH = "PATH_TO_V0.3.xlsx"
 python -m unittest discover -s tests -v
+```
+
+With the local server running, Node.js, Playwright and Microsoft Edge available:
+
+```powershell
+node tests/test_frontend.cjs
 ```
 
 ## Current data limits

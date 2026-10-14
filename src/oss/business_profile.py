@@ -156,6 +156,13 @@ def _compact(value: str) -> str:
     return "".join(value.split())
 
 
+def valid_display_text(value: str, *, max_sentences: int, max_length: int) -> bool:
+    """Keep display answers short and free of implementation-only terminology."""
+    return bool(value.strip()) and len(value) <= max_length \
+        and len(re.split(r"(?<=[.!?。])\s+", value.strip())) <= max_sentences \
+        and not re.search(r"\bMAE\b|Multi[- ]?Agent|모델\s*학습|독립\s*평가", value, re.I)
+
+
 def validate_facts(payload: dict, sources: dict[str, dict], *, strict: bool = True) -> list[dict]:
     rows = payload.get("facts")
     if not isinstance(rows, list) or len(rows) > 70:
@@ -219,6 +226,9 @@ def validate_composition(composition: dict, facts: list[dict], structure: dict) 
                 or not set(ids) <= valid_ids or len(value) > 500:
             raise ValueError("Uncited business field text")
     core_ids = {fid for item in structure["core_businesses"] for fid in item["fact_ids"]}
+    if not valid_display_text(composition["value_proposition"]["text"],
+                              max_sentences=4, max_length=500):
+        raise ValueError("Business summary must use short plain-language sentences")
     if not set(composition["value_proposition"]["fact_ids"]) & core_ids:
         raise ValueError("Value proposition does not cite the core business")
     chain_ids = {fid for item in structure["value_chain"] for fid in item["fact_ids"]}
@@ -323,13 +333,18 @@ def analyze_business(pages: list[WebPage], *, client=None, model: str | None = N
     for _attempt in range(3):
         draft = _ask(client, selected_model,
             "Write Korean display fields from the supplied verified business structure and facts only. "
-            "Value proposition: one concise sentence covering the central business, supported inputs or "
+            "Value proposition is the single user-facing 기업 이해 paragraph: write 3-4 short Korean "
+            "sentences combining what the company makes or provides and its directly performed core "
+            "activities, without repeating the same fact. Use polite ~합니다/~입니다 endings and plain "
+            "verbs, not nominal jargon such as 제고. Preserve domain terms such as 항원 and 항체. "
+            "Cover the central business, supported inputs or "
             "technology, directly performed activities, and outputs; include customers or benefit only "
             "when explicit facts support them. An R&D claim for a business line does not prove that each "
             "individual product was developed by R&D. Do not flatten adjacent businesses into the core. "
             "Core activities: ordered short phrases for directly performed value-chain functions, each "
             "citing a fact ID used in that value-chain item. A partnership does not prove procurement. "
-            "Exclude generic slogans, certifications as activities, and unsupported steps. "
+            "Exclude generic slogans, implementation jargon, analysis-status messages, repeated "
+            "conditions, certifications as activities, and unsupported steps. "
             "If feedback is supplied, fix every cited issue. Do not read or infer from the original "
             "website outside these verified inputs.",
             {"facts": facts, "structure": structure, "feedback": feedback},

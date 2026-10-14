@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 import os
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -13,8 +14,9 @@ from .ax_opportunity import analyze_ax_opportunities
 from .business_profile import analyze_business
 from .config import load_project_env
 from .models import WebPage
-from .presentation import build_front_result
+from .presentation import _web_url, build_front_result
 from .supplier_profile import SupplierProfileClient
+from .supplier_advice import add_supplier_advice
 from .workbook import KnowledgeBase, load_knowledge_base
 
 
@@ -34,14 +36,19 @@ def handler_for(kb: KnowledgeBase):
         os.environ.get("SUPABASE_URL"), os.environ.get("SUPABASE_SECRET_KEY"),
     )
 
-    def result_with_profiles(pages: list[WebPage], business: dict, ax_analysis: dict) -> dict:
+    def result_with_profiles(pages: list[WebPage], business: dict, ax_analysis: dict,
+                             *, write_advice: bool = True) -> dict:
         available = profiles.available_profiles(kb)
         result = build_front_result(
             pages, kb, business, ax_analysis, eligible_supplier_ids=set(available),
         )
         for item in result["suppliers"]:
             item["supplier_profile"] = available[item["supplier_id"]]
+            item["homepage_url"] = _web_url(item["supplier_profile"].get("homepage_url")) \
+                or item["homepage_url"]
             item["profile_status"] = "matched"
+        if write_advice:
+            add_supplier_advice(result)
         return result
 
     class Handler(SimpleHTTPRequestHandler):
@@ -69,7 +76,7 @@ def handler_for(kb: KnowledgeBase):
                 demo_business = {
                     "fields": [
                         {"key": "value", "label": "가치 제안",
-                         "value": "자동차 부품을 생산하며 품질관리와 공정 개선을 수행하는 제조기업",
+                         "value": "자동차 부품과 사출 제품을 생산하는 기업입니다. 제품 품질검사와 생산 공정 개선, 설비 유지보수 업무를 수행합니다. 완성차 부품 기업에 제품을 납품합니다.",
                          "status": "inferred", "source_url": None,
                          "evidence": [{"quote": "당사는 자동차 부품을 제조하고 사출 제품을 생산합니다.",
                                        "source_url": demo_page.url}]},
@@ -84,17 +91,17 @@ def handler_for(kb: KnowledgeBase):
                 }
                 demo_ax = {"opportunities": [{
                     "task_id": "N009", "task_name": kb.tasks["N009"].name,
-                    "solution_name": "AI 영상 기반 제품 검사 지원",
+                    "solution_name": "제품 이미지에서 이상 후보 찾기",
                     "business_function": "제품 품질검사", "target_function": "제품 품질검사",
                     "inputs": ["제품 검사 이미지", "불량 판정 기준"],
                     "ai_process": ["영상에서 이상 후보 탐지", "검토 우선순위 제시"],
                     "outputs": ["이상 후보 목록", "검사 기록"],
-                    "mechanism": "영상의 이상 후보를 분류해 작업자 검토를 지원",
-                    "process_change": "작업자가 표시된 이상 후보를 우선 확인",
+                    "mechanism": "제품 이미지를 분석해 이상 후보를 표시합니다.",
+                    "process_change": "담당자가 표시된 이상 후보를 먼저 검토할 수 있습니다.",
                     "expected_effects": ["검사 기준 표준화와 불량 유출 감소 가능"],
                     "kpis": ["검사시간", "불량 유출률", "오탐률"],
                     "required_data": ["제품 이미지", "불량 유형과 판정 이력"],
-                    "unknowns": ["카메라 설치 여부", "이미지 데이터 보존 여부"],
+                    "unknowns": ["제품 이미지와 불량 판정 이력을 연결할 수 있는지 확인합니다."],
                     "safeguard": "최종 판정은 품질 담당자가 수행",
                     "reason": "공개 문구에서 제품 품질검사 업무 확인",
                     "mapping_reason": "제품 품질검사 업무와 직접 연결",
@@ -106,9 +113,11 @@ def handler_for(kb: KnowledgeBase):
                 }], "rejected": [], "quality": {"status": "demo", "candidate_count": 1,
                                                "accepted_count": 1, "issues": []}}
                 try:
-                    result = result_with_profiles([demo_page], demo_business, demo_ax)
-                except RuntimeError as error:
-                    self._json(502, {"error": str(error)})
+                    result = result_with_profiles([demo_page], demo_business, demo_ax,
+                                                  write_advice=False)
+                except RuntimeError:
+                    logging.exception("Demo supplier lookup failed")
+                    self._json(502, {"error": "화면 예시를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요."})
                     return
                 result["is_demo"] = True
                 self._json(200, result)
@@ -143,8 +152,9 @@ def handler_for(kb: KnowledgeBase):
                 self._json(200, result)
             except (ValueError, json.JSONDecodeError) as error:
                 self._json(422, {"error": str(error)})
-            except (RuntimeError, OSError) as error:
-                self._json(502, {"error": f"홈페이지 분석을 완료하지 못했습니다: {error}"})
+            except (RuntimeError, OSError):
+                logging.exception("Homepage analysis failed")
+                self._json(502, {"error": "홈페이지 분석을 완료하지 못했습니다. 주소를 확인하거나 잠시 후 다시 시도해 주세요."})
 
     return Handler
 

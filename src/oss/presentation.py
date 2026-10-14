@@ -25,51 +25,63 @@ def build_front_result(pages: list[WebPage], kb: KnowledgeBase, business_analysi
                        ax_analysis: dict,
                        *, max_suppliers: int = 3,
                        eligible_supplier_ids: set[str] | None = None) -> dict:
-    """Create one screen response; suppliers come only from matching Task IDs."""
+    """Select up to three suppliers independently for each audited opportunity."""
     if not pages:
         raise ValueError("No readable website pages were collected")
     if not 1 <= max_suppliers <= 3:
         raise ValueError("The screen supports one to three suppliers")
     opportunities = ax_analysis["opportunities"]
-    matches = match_suppliers(demand_tasks_for_matching(opportunities), kb,
-                              include_scan=False, limit=len(kb.suppliers))
-    suppliers = []
-    shown_names: set[str] = set()
-    for match in matches:
-        if eligible_supplier_ids is not None and match.supplier_id not in eligible_supplier_ids:
-            continue
-        normalized_name = company_name_key(match.supplier_name)
-        if normalized_name in shown_names:
-            continue  # Display one source identity without merging its evidence.
-        shown_names.add(normalized_name)
-        supplier = kb.suppliers[match.supplier_id]
-        solutions = [
-            kb.solutions[cap.solution_id].description
-            for cap in kb.detailed_capabilities
-            if cap.supplier_id == supplier.supplier_id
-            and cap.task_id in match.matched_tasks
-            and cap.solution_id in kb.solutions
-        ]
-        suppliers.append({
-            "supplier_id": supplier.supplier_id,
-            "name": supplier.name,
-            "homepage_url": _web_url(supplier.homepage_url),
-            "matched_tasks": [
-                {"task_id": task_id, "name": kb.tasks[task_id].name}
-                for task_id in match.matched_tasks
-            ],
-            "solution_descriptions": list(dict.fromkeys(solutions))[:2],
-            "portfolio_status": "공개 프로젝트 별도 확인 필요",
-            "status": match.status,
-            "identity_review_required": match.identity_review_required,
-            "evidence": [
-                {"quote": item.text[:300], "url": item.source_url,
-                 "source_kind": item.source_kind, "review_status": item.review_status}
-                for item in match.evidence[:2]
-            ],
-        })
-        if len(suppliers) >= max_suppliers:
-            break
+    by_supplier: dict[str, dict] = {}
+    suppliers_by_task: dict[str, list[str]] = {}
+    for opportunity in opportunities:
+        task_id = opportunity["task_id"]
+        matches = match_suppliers(demand_tasks_for_matching([opportunity]), kb,
+                                 include_scan=False, limit=len(kb.suppliers))
+        selected: list[str] = []
+        shown_names: set[str] = set()
+        for match in matches:
+            if eligible_supplier_ids is not None and match.supplier_id not in eligible_supplier_ids:
+                continue
+            normalized_name = company_name_key(match.supplier_name)
+            if normalized_name in shown_names:
+                continue  # Never merge evidence from different source identities.
+            shown_names.add(normalized_name)
+            selected.append(match.supplier_id)
+            supplier = kb.suppliers[match.supplier_id]
+            solutions = list(dict.fromkeys(
+                kb.solutions[cap.solution_id].description
+                for cap in kb.detailed_capabilities
+                if cap.supplier_id == supplier.supplier_id and cap.task_id == task_id
+                and cap.solution_id in kb.solutions
+            ))
+            item = by_supplier.setdefault(match.supplier_id, {
+                "supplier_id": supplier.supplier_id,
+                "name": supplier.name,
+                "homepage_url": _web_url(supplier.homepage_url),
+                "matched_tasks": [],
+                "solution_descriptions": [],
+                "task_solutions": {},
+                "task_evidence": {},
+                "portfolio_status": "공개 프로젝트 별도 확인 필요",
+                "status": match.status,
+                "identity_review_required": match.identity_review_required,
+                "evidence": [
+                    {"quote": item.text[:300], "url": item.source_url,
+                     "source_kind": item.source_kind, "review_status": item.review_status}
+                    for item in match.evidence[:2]
+                ],
+            })
+            item["matched_tasks"].append({"task_id": task_id, "name": kb.tasks[task_id].name})
+            item["task_solutions"][task_id] = solutions[:2]
+            item["task_evidence"][task_id] = [
+                {"quote": evidence.text, "url": evidence.source_url}
+                for evidence in match.evidence
+            ]
+            item["solution_descriptions"] = list(dict.fromkeys(
+                [*item["solution_descriptions"], *solutions]))
+            if len(selected) >= max_suppliers:
+                break
+        suppliers_by_task[task_id] = selected
 
     return {
         "input_url": pages[0].url,
@@ -79,7 +91,9 @@ def build_front_result(pages: list[WebPage], kb: KnowledgeBase, business_analysi
         "business_quality": business_analysis["quality"],
         "opportunities": opportunities,
         "ax_quality": ax_analysis["quality"],
-        "suppliers": suppliers,
+        "suppliers": list(by_supplier.values()),
+        "suppliers_by_task": suppliers_by_task,
+        "result_version": 2,
         "analysis_meta": {
             "pages_analyzed": len(pages),
             "basis": "홈페이지 공개 문구와 AX Task Seed 지식베이스",

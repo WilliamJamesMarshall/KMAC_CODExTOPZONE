@@ -157,6 +157,33 @@ class LogicTests(unittest.TestCase):
         self.assertEqual([item["supplier_id"] for item in result["suppliers"]],
                          ["F003", "F004", "F005"])
 
+    def test_each_work_has_its_own_supplier_limit_and_shared_supplier(self) -> None:
+        for number in range(2, 6):
+            sid = f"F{number:03d}"
+            self.kb.suppliers[sid] = Supplier(sid, f"업체{number}", None, "detailed")
+            self.kb.detailed_capabilities.append(Capability(
+                sid, "J014" if number < 5 else "J020", None,
+                Evidence("https://pool.example", "품질 분석 또는 문서 검색 기능", "voucher_description",
+                         sid, "명시", "미검토"), "detailed_unreviewed"))
+        self.kb.detailed_capabilities.append(Capability(
+            "F001", "J020", None,
+            Evidence("https://pool.example", "문서 검색 기능", "voucher_description",
+                     "L020", "명시", "미검토"), "detailed_unreviewed"))
+        page = WebPage("https://buyer.example", "예시 기업", "품질 분석과 문서 관리")
+        opportunities = [{"task_id": tid, "business_evidence": [{
+            "fact_id": "F001", "quote": page.text, "url": page.url}],
+            "mapping_reason": "업무 연결"} for tid in ("J014", "J020", "J016")]
+        result = build_front_result([page], self.kb,
+            {"fields": [], "profile": {}, "quality": {}},
+            {"opportunities": opportunities, "quality": {}})
+        self.assertEqual(len(result["suppliers_by_task"]["J014"]), 3)
+        self.assertEqual(set(result["suppliers_by_task"]["J020"]), {"F001", "F005"})
+        self.assertEqual(result["suppliers_by_task"]["J016"], [])
+        self.assertEqual(len(result["suppliers"]), 4)
+        shared = next(item for item in result["suppliers"] if item["supplier_id"] == "F001")
+        self.assertEqual(set(shared["task_evidence"]), {"J014", "J020"})
+        self.assertEqual(shared["task_evidence"]["J020"][0]["quote"], "문서 검색 기능")
+
 
 if __name__ == "__main__":
     unittest.main()

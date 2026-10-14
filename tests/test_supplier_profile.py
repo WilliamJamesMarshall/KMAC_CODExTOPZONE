@@ -42,6 +42,7 @@ class SupplierProfileTests(unittest.TestCase):
         self.assertEqual(self.item["profile_status"], "matched")
         self.assertEqual(self.item["supplier_profile"]["specialization"], "제조 AI")
         self.assertEqual(self.item["supplier_profile"]["address"], "서울")
+        self.assertEqual(self.item["supplier_profile"]["homepage_url"], self.candidate["homepage_url"])
         self.assertNotIn("raw_record", self.item["supplier_profile"])
         self.assertNotIn("sb_secret_test", str(self.item))
 

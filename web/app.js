@@ -10,6 +10,7 @@ const resultContent = document.querySelector('#result-content');
 const historyRecords = new Map();
 let historyDbPromise;
 let historyLoadError = false;
+let currentResult;
 
 function historyKey(url) {
   const parsed = new URL(url);
@@ -57,7 +58,7 @@ async function historyRequest(mode, action) {
 
 function resultSnapshot(data) {
   const fields = ['input_url', 'site_name', 'business_model', 'business_quality',
-    'opportunities', 'suppliers', 'analysis_meta', 'is_demo'];
+    'opportunities', 'suppliers', 'suppliers_by_task', 'result_version', 'analysis_meta', 'is_demo'];
   return Object.fromEntries(fields.map((field) => [field, data[field]]));
 }
 
@@ -166,191 +167,174 @@ function setBusy(busy) {
   document.querySelector('#submit-label').textContent = busy ? '분석 중' : '분석 시작';
 }
 
-function addEvidence(container, evidence, label = '판단 근거 보기') {
-  if (!evidence || !evidence.quote) return;
-  const details = element('details', 'evidence-details');
-  details.append(element('summary', '', label));
-  details.append(element('blockquote', '', evidence.quote));
-  const source = safeLink(evidence.url, '원문 페이지 열기 ↗');
-  if (source) details.append(source);
-  container.append(details);
-}
-
 function renderBusiness(fields) {
   const grid = document.querySelector('#business-grid');
   grid.replaceChildren();
-  for (const field of fields.filter((item) => ['value', 'activity'].includes(item.key))) {
-    const item = element('div', `business-item ${field.status === 'unknown' ? 'unknown' : ''}`.trim());
-    item.append(element('div', 'field-label', field.label));
-    item.append(element('div', 'field-value', field.value || '공개된 정보만으로 확인하기 어렵습니다.'));
-    if (field.value && field.status === 'inferred') {
-      item.append(element('div', 'field-status', '홈페이지 근거를 종합한 분석'));
-    }
-    if (field.evidence?.length) {
-      const details = element('details', 'business-evidence');
-      const shownEvidence = field.evidence.slice(0, 12);
-      details.append(element('summary', '', `근거 ${shownEvidence.length}개 보기`));
-      for (const evidence of shownEvidence) {
-        const row = element('div', 'business-evidence-row');
-        row.append(element('blockquote', '', evidence.quote));
-        const link = safeLink(evidence.source_url, '원문 페이지 ↗');
-        if (link) row.append(link);
-        details.append(row);
-      }
-      item.append(details);
-    }
-    grid.append(item);
-  }
+  const summary = fields.find((field) => field.key === 'value');
+  grid.append(element('p', 'business-summary',
+    summary?.value || '홈페이지에서 기업의 사업 정보를 확인하지 못했습니다.'));
 }
 
 function detailRow(label, text) {
   const row = element('div', 'detail-row');
   row.append(element('div', 'detail-label', label));
-  row.append(element('div', 'detail-text', text || '추가 확인 필요'));
+  row.append(element('div', 'detail-text', text || ''));
   return row;
 }
 
-function detailListRow(label, items) {
-  const row = element('div', 'detail-row');
-  row.append(element('div', 'detail-label', label));
-  const list = element('ul', 'detail-text detail-list');
-  for (const item of items) list.append(element('li', '', item));
-  row.append(list);
-  return row;
+// Older saved results keep their original data; adapt only their presentation.
+function shortAnswer(text, maxSentences = 2, maxLength = 320) {
+  const value = Array.isArray(text) ? text.join(' ') : String(text || '');
+  const sentences = value.trim().split(/(?<=[.!?。])\s+/).slice(0, maxSentences).join(' ');
+  return sentences.length > maxLength ? `${sentences.slice(0, maxLength - 1)}…` : sentences;
 }
 
-function supplierDescriptionRow(text) {
-  const row = element('div', 'detail-row');
-  row.append(element('div', 'detail-label', 'AI솔루션 설명'));
-  const content = element('div', 'detail-text');
-  if (text && text.length > 350) {
-    content.append(element('div', '', `${text.slice(0, 350)}…`));
-    const details = element('details', 'supplier-more');
-    details.append(element('summary', '', '전체 설명 보기'));
-    details.append(element('p', '', text));
-    content.append(details);
-  } else {
-    content.textContent = text || '원천 정보 없음';
+function workTitle(item) {
+  if (currentResult?.result_version === 2) return item.solution_name || item.business_function;
+  return item.business_function || item.target_function || item.solution_name || 'AI 활용 업무';
+}
+
+function selectWork(taskId) {
+  for (const button of document.querySelectorAll('.work-select')) {
+    const selected = button.dataset.taskId === taskId;
+    button.setAttribute('aria-pressed', String(selected));
+    button.closest('.work-card').classList.toggle('selected', selected);
+    button.textContent = selected ? '선택한 업무' : '관련 업체 보기';
   }
-  row.append(content);
-  return row;
+  const opportunity = (currentResult.opportunities || []).find((item) => item.task_id === taskId);
+  renderSuppliers(currentResult.suppliers || [], opportunity);
+  if (window.matchMedia('(max-width: 820px)').matches) {
+    document.querySelector('.supplier-column').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 
 function renderOpportunities(items) {
   const list = document.querySelector('#opportunity-list');
   list.replaceChildren();
   const visibleItems = items.slice(0, 3);
-  document.querySelector('#ax-count').textContent = `${visibleItems.length}개 과업 후보`;
+  document.querySelector('#ax-count').textContent = `활용 업무 ${visibleItems.length}개`;
   if (!visibleItems.length) {
-    list.append(element('div', 'list-empty', '공개 근거와 적용조건 검토를 통과한 AX 후보가 없습니다. 실제 업무와 내부 데이터 확인이 필요할 수 있습니다.'));
+    list.append(element('div', 'list-empty', '홈페이지 정보에서 추천할 활용 업무를 찾지 못했습니다.'));
     return;
   }
   for (const item of visibleItems) {
-    const card = element('article', 'result-card');
-    const top = element('div', 'card-top');
-    top.append(element('span', 'card-status', `우선순위 ${item.priority_label}`));
-    card.append(top);
-    card.append(element('h4', '', item.solution_name));
-    card.append(detailRow('적용 업무', item.business_function));
-    card.append(detailRow('필요 입력', item.inputs.join(' · ')));
-    card.append(detailListRow('AI 기능', item.ai_process));
-    card.append(detailRow('산출물', item.outputs.join(' · ')));
-    card.append(detailRow('작동 방식', item.mechanism));
-    card.append(detailRow('업무 변화', item.process_change));
-    card.append(detailListRow('기대효과', item.expected_effects));
-    card.append(detailRow('측정 KPI', item.kpis.join(' · ')));
-    card.append(detailRow('필요 데이터', item.required_data.join(' · ')));
-    if (item.business_evidence?.length) {
-      const details = element('details', 'evidence-details');
-      details.append(element('summary', '', `수요기업 홈페이지 근거 ${item.business_evidence.length}개`));
-      for (const evidence of item.business_evidence) {
-        details.append(element('blockquote', '', evidence.quote));
-        const source = safeLink(evidence.url, '원문 페이지 열기 ↗');
-        if (source) details.append(source);
-      }
+    const card = element('article', 'result-card work-card');
+    card.append(element('h4', '', workTitle(item)));
+    card.append(detailRow('무엇을 도와주나요?', shortAnswer(item.mechanism)
+      || '이 업무에 필요한 자료를 분석하고, 담당자가 검토할 결과를 제공합니다.'));
+    card.append(detailRow('어떤 점이 좋아지나요?', shortAnswer(item.process_change)
+      || shortAnswer(item.expected_effects)));
+    card.append(detailRow('도입 전 확인할 점', shortAnswer(item.unknowns)
+      || '업무 자료를 연결할 수 있는지 확인합니다.'));
+    const button = element('button', 'work-select', '관련 업체 보기');
+    button.type = 'button';
+    button.dataset.taskId = item.task_id;
+    button.setAttribute('aria-pressed', 'false');
+    button.setAttribute('aria-controls', 'supplier-list');
+    button.setAttribute('aria-label', `${workTitle(item)} 관련 업체 보기`);
+    button.addEventListener('click', () => selectWork(item.task_id));
+    card.append(button);
+    card.addEventListener('click', (event) => {
+      if (!event.target.closest('button')) selectWork(item.task_id);
+    });
+    list.append(card);
+  }
+}
+
+function legacyAdvice(item, opportunity) {
+  const work = workTitle(opportunity);
+  const inputs = (opportunity.inputs || opportunity.required_data || []).slice(0, 2).join('과 ');
+  return {
+    solution_name: shortAnswer((item.task_solutions?.[opportunity.task_id]
+      || item.solution_descriptions || [])[0], 1, 80),
+    why: `${work} 업무에 연결된 업체입니다. 제공 기능은 상세정보에서 확인할 수 있습니다.`,
+    how: inputs ? `${inputs} 자료를 이 업무에 활용할 수 있는지 업체와 상담합니다.`
+      : '이 업무에 필요한 자료와 제공받을 결과를 업체와 상담합니다.',
+    change: '업체의 제공 기능을 확인하고, 담당자의 검토 업무를 어떻게 지원할지 논의합니다.',
+    check: '업무 자료를 연결할 수 있는지, 해당 분야를 다룬 경험이 있는지 확인합니다.',
+  };
+}
+
+function renderSuppliers(items, opportunity) {
+  const list = document.querySelector('#supplier-list');
+  const selectedWork = document.querySelector('#selected-work');
+  const count = document.querySelector('#supplier-count');
+  list.replaceChildren();
+  selectedWork.hidden = !opportunity;
+  selectedWork.textContent = opportunity ? `선택한 업무: ${workTitle(opportunity)}` : '';
+  count.hidden = !opportunity;
+  if (!opportunity) {
+    list.append(element('div', 'list-empty', '관심 있는 업무를 선택하면 관련 업체가 표시됩니다.'));
+    return;
+  }
+  const ids = currentResult.suppliers_by_task?.[opportunity.task_id];
+  const related = (ids ? ids.map((id) => items.find((item) => item.supplier_id === id)).filter(Boolean)
+    : items.filter((item) => (item.matched_tasks || [])
+      .some((task) => task.task_id === opportunity.task_id))).slice(0, 3);
+  count.textContent = `관련 업체 ${related.length}곳`;
+  if (!related.length) {
+    list.append(element('div', 'list-empty', '이 업무에 연결된 업체가 아직 없습니다.'));
+    return;
+  }
+  for (const item of related) {
+    const card = element('article', 'result-card supplier-card');
+    const advice = item.task_advice?.[opportunity.task_id] || legacyAdvice(item, opportunity);
+    card.append(element('h4', '', item.name));
+    if (advice.solution_name) card.append(element('p', 'solution-name', advice.solution_name));
+    card.append(detailRow('왜 이 업체인가요?', advice.why));
+    card.append(detailRow('우리 업무에 어떻게 쓰나요?', advice.how));
+    card.append(detailRow('업무가 어떻게 달라지나요?', advice.change));
+    card.append(detailRow('상담할 때 무엇을 확인하나요?', advice.check));
+
+    const profile = item.supplier_profile || {};
+    const contact = element('section', 'supplier-contact');
+    contact.append(element('h5', '', '상담·문의'));
+    const phoneRow = detailRow('전화번호', profile.phone || '등록된 전화번호가 없습니다.');
+    if (profile.phone && /^[\d\s()+-]+$/.test(profile.phone)) {
+      const phoneText = phoneRow.querySelector('.detail-text');
+      const link = element('a', '', profile.phone);
+      link.href = `tel:${profile.phone.replace(/[\s()-]/g, '')}`;
+      phoneText.replaceChildren(link);
+    }
+    contact.append(phoneRow);
+    contact.append(detailRow('주소', profile.address || '등록된 주소가 없습니다.'));
+    contact.append(detailRow('대표자명', profile.representative || '등록된 대표자명이 없습니다.'));
+    const homepage = safeLink(item.homepage_url, item.homepage_url);
+    if (homepage) {
+      const row = detailRow('홈페이지', '');
+      row.querySelector('.detail-text').append(homepage);
+      contact.append(row);
+    } else {
+      contact.append(detailRow('홈페이지', '등록된 홈페이지가 없습니다.'));
+    }
+    card.append(contact);
+    const sourceText = profile.ai_solution_description || (item.solution_descriptions || []).join('\n');
+    if (sourceText) {
+      const details = element('details', 'supplier-more');
+      details.append(element('summary', '', '상세정보'));
+      if (profile.specialization) details.append(detailRow('전문분야', profile.specialization));
+      details.append(element('p', 'supplier-source', sourceText));
       card.append(details);
     }
     list.append(card);
   }
 }
 
-function renderSuppliers(items) {
-  const list = document.querySelector('#supplier-list');
-  list.replaceChildren();
-  document.querySelector('#supplier-count').textContent = `${items.length}개 기업 후보`;
-  if (!items.length) {
-    list.append(element('div', 'list-empty', '현재 상세 연결 자료에서 해당 과업의 공급기업을 확인하지 못했습니다. 확인되지 않은 기업을 채워 넣지 않습니다.'));
-    return;
-  }
-  items.slice(0, 3).forEach((item, index) => {
-    const card = element('article', 'result-card');
-    const top = element('div', 'card-top');
-    const nameWrap = element('div', 'supplier-name-wrap');
-    nameWrap.append(element('span', 'supplier-rank', String(index + 1)));
-    nameWrap.append(element('h4', '', item.name));
-    top.append(nameWrap);
-    const homepage = safeLink(item.homepage_url, '홈페이지 ↗');
-    if (homepage) {
-      homepage.className = 'supplier-link';
-      top.append(homepage);
-    }
-    card.append(top);
-
-    const tags = element('div', 'task-tags');
-    for (const task of item.matched_tasks) tags.append(element('span', '', `${task.task_id} · ${task.name}`));
-    card.append(tags);
-    const solutionText = item.solution_descriptions.length
-      ? item.solution_descriptions.join(' · ')
-      : '연결된 솔루션의 상세 내용은 추가 확인이 필요합니다.';
-    card.append(element('div', 'supplier-summary-label', 'AX 과업 연결 설명 · 엑셀 자료'));
-    card.append(element('p', 'supplier-summary', solutionText));
-    const profile = item.supplier_profile;
-    const profileSection = element('section', 'supplier-profile');
-    profileSection.append(element('div', 'supplier-profile-heading',
-      profile ? `AI바우처 공급기업 풀 · 2026 · No. ${profile.source_pool_no}` : 'AI바우처 공급기업 풀 · 2026'));
-    profileSection.append(detailRow('전문분야', profile?.specialization || '원천 정보 확인 전'));
-    profileSection.append(supplierDescriptionRow(profile?.ai_solution_description));
-    profileSection.append(detailRow('주소', profile?.address || '원천 정보 확인 전'));
-    profileSection.append(detailRow('전화번호', profile?.phone || '원천 정보 확인 전'));
-    profileSection.append(detailRow('대표자명', profile?.representative || '원천 정보 확인 전'));
-    if (!profile) {
-      const reasons = {
-        unavailable: 'Supabase 원본 정보를 불러오지 못했습니다. 서버 연결을 확인해 주세요.',
-        not_found: '2026 AI바우처 원본에서 이 기업을 찾지 못했습니다.',
-        ambiguous: '원본 기업이 둘 이상 일치해 식별 확인이 필요합니다.',
-        needs_review: '원본 기업과의 동일성 확인이 필요합니다.',
-      };
-      profileSection.append(element('div', 'supplier-profile-note',
-        reasons[item.profile_status] || '원본 정보 확인이 필요합니다.'));
-    }
-    card.append(profileSection);
-    if (item.identity_review_required) {
-      card.append(element('div', 'question-line', '동일한 기업명으로 여러 원천 ID가 있어 기업 식별 확인이 필요합니다.'));
-    }
-    if (item.evidence.length) {
-      addEvidence(card, item.evidence[0], '공급기업 연결 근거 · 미검토');
-    }
-    list.append(card);
-  });
-}
-
 function renderResult(data) {
+  currentResult = data;
   emptyState.hidden = true;
   resultContent.hidden = false;
   document.querySelector('#company-title').textContent = data.site_name || '수요기업 분석 결과';
-  const quality = { grounded: '사업구조 근거 검토 완료', partial: '일부 근거 부족',
-    insufficient: '사업구조 정보 부족', demo: '화면 예시' }[data.business_quality?.status] || '추가 확인 필요';
-  document.querySelector('#result-subtitle').textContent = `${data.analysis_meta.pages_analyzed}개 페이지 분석 · ${quality} · AX ${data.analysis_meta.review_status}`;
   document.querySelector('#demo-badge').hidden = !data.is_demo;
   renderBusiness(data.business_model || []);
   renderOpportunities(data.opportunities || []);
-  renderSuppliers(data.suppliers || []);
+  renderSuppliers(data.suppliers || [], null);
   document.querySelector('#results').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 async function requestResult(url) {
   setBusy(true);
-  showFeedback('사업 페이지에서 근거를 추출·검토하고 AX 과업과 공급기업 후보를 찾고 있습니다. 잠시 기다려 주세요.', 'loading');
+  showFeedback('기업 정보를 읽고 AI 활용 업무와 관련 업체를 찾고 있습니다. 잠시 기다려 주세요.', 'loading');
   try {
     const response = await fetch('/api/analyze', {
       method: 'POST',
