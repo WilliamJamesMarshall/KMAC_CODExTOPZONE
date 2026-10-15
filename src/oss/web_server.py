@@ -8,6 +8,7 @@ import logging
 import os
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from urllib.parse import quote
 
 from .crawler import crawl_site
 from .ax_opportunity import analyze_ax_opportunities
@@ -128,6 +129,30 @@ def handler_for(kb: KnowledgeBase):
             super().do_GET()
 
         def do_POST(self) -> None:
+            if self.path == "/api/report.pdf":
+                try:
+                    length = int(self.headers.get("Content-Length", "0"))
+                    if not 0 < length <= 1024 * 1024:
+                        raise ValueError("보고서 요청 크기가 올바르지 않습니다.")
+                    payload = json.loads(self.rfile.read(length))
+                    from .pdf_report import build_report
+                    body, filename = build_report(payload)
+                except (ValueError, UnicodeDecodeError):
+                    self._json(422, {"error": "보고서 데이터가 올바르지 않습니다. 분석 후 다시 시도해 주세요."})
+                    return
+                except (ImportError, OSError, RuntimeError):
+                    logging.exception("PDF report generation failed")
+                    self._json(502, {"error": "보고서를 만들지 못했습니다. 잠시 후 다시 시도해 주세요."})
+                    return
+                self.send_response(200)
+                self.send_header("Content-Type", "application/pdf")
+                self.send_header("Content-Length", str(len(body)))
+                self.send_header("Content-Disposition", "attachment; filename=AX-report.pdf; "
+                                 + "filename*=UTF-8''" + quote(filename, safe=""))
+                self.send_header("Cache-Control", "no-store")
+                self.end_headers()
+                self.wfile.write(body)
+                return
             if self.path != "/api/analyze":
                 self._json(404, {"error": "API 경로를 찾을 수 없습니다."})
                 return

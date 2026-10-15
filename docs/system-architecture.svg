@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1040" viewBox="0 0 1800 1040" role="img" aria-labelledby="title desc">
+  <title id="title">OSS AX 매칭 시스템 아키텍처</title>
+  <desc id="desc">사용자가 로그인 없이 웹 화면에 수요기업 URL을 입력하면 Python 서버가 홈페이지를 수집하고 OpenAI API를 이용해 기업 이해, AX 과제 도출, 공급기업 추천을 수행한다. 서버는 Excel 과업 지식베이스와 Supabase 공급기업 DB를 조회한다. 결과는 브라우저에 표시되며 전체 결과를 PDF 보고서로 다운로드할 수 있다. 검색 기록은 저장하지 않는다.</desc>
+  <defs>
+    <style>
+      text { font-family: 'Malgun Gothic',sans-serif; fill:#292568; }
+      .label { font-size:27px; font-weight:700; }
+      .detail { font-size:21px; fill:#595967; }
+      .small { font-size:19px; fill:#777784; }
+      .pink { fill:#e83c87; }
+      .icon { fill:none; stroke:currentColor; stroke-width:4.5; stroke-linecap:round; stroke-linejoin:round; }
+      .arrow { fill:none; stroke:#d7d7de; stroke-width:5; stroke-linecap:round; stroke-linejoin:round; marker-end:url(#arrow); }
+      .data-arrow { fill:none; stroke:#d7d7de; stroke-width:4; stroke-linecap:round; stroke-linejoin:round; marker-end:url(#small-arrow); }
+    </style>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 2L7 6L2 10" fill="none" stroke="#d7d7de" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="small-arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 2L7 6L2 10" fill="none" stroke="#d7d7de" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <g id="person"><circle cx="0" cy="0" r="38" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="0" cy="-10" r="12" fill="currentColor"/><path d="M-24 25C-24 0 24 0 24 25A33 33 0 0 1-24 25" fill="currentColor"/></g>
+    <g id="browser" class="icon"><rect x="-42" y="-33" width="84" height="66" rx="6"/><path d="M-42-14H42"/><circle cx="-29" cy="-24" r="1"/><circle cx="-19" cy="-24" r="1"/><path d="M-15 0L-26 10L-15 20M15 0L26 10L15 20M4-2L-4 22"/></g>
+    <g id="server"><rect x="-40" y="-39" width="80" height="22" rx="6" fill="currentColor"/><rect x="-40" y="-10" width="80" height="22" rx="6" fill="currentColor"/><rect x="-40" y="19" width="80" height="22" rx="6" fill="currentColor"/><g fill="#fff"><circle cx="-26" cy="-28" r="2.5"/><circle cx="-16" cy="-28" r="2.5"/><circle cx="-26" cy="1" r="2.5"/><circle cx="-16" cy="1" r="2.5"/><circle cx="-26" cy="30" r="2.5"/><circle cx="-16" cy="30" r="2.5"/><rect x="7" y="-30" width="20" height="4" rx="2"/><rect x="7" y="-1" width="20" height="4" rx="2"/><rect x="7" y="28" width="20" height="4" rx="2"/></g></g>
+    <g id="globe" class="icon"><circle r="28"/><ellipse rx="12" ry="28"/><path d="M-27 0H27M-23-15H23M-23 15H23"/></g>
+    <g id="business" class="icon"><path d="M-37 34H37M-28 34V-32H13V34M13-9H30V34M-16-20H-8M2-20H5M-16-6H-8M2-6H5M-16 8H-8M2 8H5M-11 34V22H0V34M20 3H22M20 16H22"/></g>
+    <g id="tasks" class="icon"><rect x="-31" y="-34" width="62" height="70" rx="5"/><path d="M-20-16L-15-11L-7-22M3-16H20M-20 3L-15 8L-7-3M3 3H20M-20 22L-15 27L-7 16M3 22H20"/></g>
+    <g id="fit" class="icon"><circle cx="-13" cy="-12" r="23"/><path d="M4 6L18 20M-22-12L-15-5L-3-20"/><path d="M8 32L16 38L35 15M-38 32H-15"/></g>
+    <g id="database"><path d="M-34-23V24C-34 44 34 44 34 24V-23" fill="currentColor"/><ellipse cy="-23" rx="34" ry="12" fill="currentColor" stroke="#fff" stroke-width="2"/><path d="M-34-6C-34 10 34 10 34-6M-34 11C-34 27 34 27 34 11" fill="none" stroke="#fff" stroke-width="3"/></g>
+    <g id="sheet" class="icon"><path d="M-28-35H12L30-17V35H-28ZM12-35V-17H30M-15-2H17M-15 10H17M-15 22H17M-4-2V22M7-2V22"/></g>
+    <g id="result" class="icon"><path d="M-29-34H-13M13-34H29V37H-29V-34M-13-39H13V-26H-13Z"/><path d="M-17-9H17M-17 3H4M-15 19L-7 27L15 10"/></g>
+  </defs>
+  <rect width="1800" height="1040" fill="white"/>
+  <text x="112" y="102" font-size="25" class="pink">Technical Details</text>
+  <text x="110" y="159" font-size="44" font-weight="700">시스템 아키텍처</text>
+  <text x="112" y="207" font-size="25" fill="#55555d">공개 홈페이지의 근거를 분석해 AX 개선 업무와 적합한 공급기업을 연결합니다.</text>
+
+  <!-- Public website is collected by the Python server. -->
+  <use href="#globe" x="700" y="278" color="#8480a8"/>
+  <text x="758" y="272" class="detail">수요기업 홈페이지</text>
+  <text x="758" y="301" class="small">공개 웹페이지 수집</text>
+  <path d="M700 318V391" class="data-arrow"/>
+
+  <!-- Main request path. -->
+  <use href="#person" x="160" y="451" color="#8480a8"/>
+  <text x="160" y="530" text-anchor="middle" class="label">사용자</text>
+  <path d="M220 451H324" class="arrow"/>
+  <text x="270" y="414" text-anchor="middle" class="small">URL 입력</text>
+
+  <use href="#browser" x="400" y="451" color="#8480a8"/>
+  <text x="400" y="530" text-anchor="middle" class="label">웹 화면</text>
+  <text x="400" y="566" text-anchor="middle" class="detail">HTML · CSS · JavaScript</text>
+  <path d="M463 451H627" class="arrow"/>
+  <text x="545" y="414" text-anchor="middle" class="small">분석 요청</text>
+  <text x="545" y="489" text-anchor="middle" font-size="16" fill="#858591">POST /api/analyze</text>
+
+  <use href="#server" x="700" y="451" color="#8480a8"/>
+  <text x="700" y="530" text-anchor="middle" class="label">백엔드 서버</text>
+  <text x="700" y="566" text-anchor="middle" class="detail">Python · http.server</text>
+  <text x="700" y="597" text-anchor="middle" class="small">홈페이지 최대 12페이지 수집</text>
+  <path d="M763 451H900" class="arrow"/>
+
+  <!-- These are logical stages within the server, not separate services. -->
+  <text x="1300" y="304" text-anchor="middle" font-size="28" font-weight="700" class="pink">근거 기반 3단계 분석·추천</text>
+  <rect x="923" y="335" width="765" height="320" rx="23" fill="#fcf9fc" stroke="#e83c87" stroke-width="4" stroke-dasharray="12 14"/>
+  <text x="1305" y="374" text-anchor="middle" font-size="19" fill="#777381">서버 내부 처리 · OpenAI Responses API 연계</text>
+  <use href="#business" x="1058" y="451" color="#292568"/>
+  <use href="#tasks" x="1305" y="451" color="#292568"/>
+  <use href="#fit" x="1552" y="451" color="#292568"/>
+  <path d="M1124 451H1232" class="data-arrow"/>
+  <path d="M1375 451H1475" class="data-arrow"/>
+  <text x="1058" y="530" text-anchor="middle" class="label">기업 이해</text>
+  <text x="1305" y="530" text-anchor="middle" class="label">AX 과제 도출</text>
+  <text x="1552" y="530" text-anchor="middle" class="label">공급기업 추천</text>
+  <text x="1058" y="565" text-anchor="middle" class="detail">사실 추출</text>
+  <text x="1058" y="595" text-anchor="middle" class="detail">사업구조 분석</text>
+  <text x="1305" y="565" text-anchor="middle" class="detail">과업 매핑</text>
+  <text x="1305" y="595" text-anchor="middle" class="detail">적용조건 평가</text>
+  <text x="1552" y="565" text-anchor="middle" class="detail">Task ID 매칭</text>
+  <text x="1552" y="595" text-anchor="middle" class="detail">추천 설명</text>
+  <text x="1058" y="632" text-anchor="middle" font-size="20" class="pink">원문 근거 검증</text>
+  <text x="1305" y="632" text-anchor="middle" font-size="20" class="pink">독립 AI 검증</text>
+  <text x="1552" y="632" text-anchor="middle" font-size="20" class="pink">독립 AI 검증</text>
+  <text x="1305" y="690" text-anchor="middle" class="small">기본 모델: gpt-6-luna · OPENAI_MODEL로 변경 가능</text>
+
+  <!-- User-triggered PDF export and server-side knowledge sources. -->
+  <path d="M400 588V654H315V703" class="data-arrow"/>
+  <use href="#result" x="315" y="760" color="#8480a8"/>
+  <text x="315" y="834" text-anchor="middle" class="label">PDF 보고서</text>
+  <text x="315" y="870" text-anchor="middle" class="detail">ReportLab · 한글 글꼴 내장</text>
+  <text x="315" y="902" text-anchor="middle" class="small">현재 결과 전체 다운로드</text>
+
+  <path d="M666 623V654H620V703" class="data-arrow"/>
+  <text x="550" y="687" text-anchor="middle" font-size="17" fill="#858591">시작 시 로드</text>
+  <use href="#sheet" x="620" y="760" color="#8480a8"/>
+  <text x="620" y="834" text-anchor="middle" class="label">과업 지식베이스</text>
+  <text x="620" y="870" text-anchor="middle" class="detail">Excel v0.3 · openpyxl</text>
+  <text x="620" y="902" text-anchor="middle" class="small">과업 · 기업 · 매핑 근거</text>
+
+  <path d="M734 623V654H925V703" class="data-arrow"/>
+  <text x="825" y="687" text-anchor="middle" font-size="17" fill="#858591">서버에서 REST 조회</text>
+  <use href="#database" x="925" y="760" color="#8480a8"/>
+  <text x="925" y="834" text-anchor="middle" class="label">공급기업 DB</text>
+  <text x="925" y="870" text-anchor="middle" class="detail">Supabase · PostgreSQL</text>
+  <text x="925" y="902" text-anchor="middle" class="small">솔루션 원문 · 기업 정보</text>
+
+  <path d="M1552 715V750H1404" class="arrow"/>
+  <use href="#result" x="1335" y="760" color="#292568"/>
+  <text x="1335" y="834" text-anchor="middle" class="label">맞춤 분석 결과</text>
+  <text x="1335" y="870" text-anchor="middle" class="detail">기업 이해 · AX 개선 업무 최대 3개</text>
+  <text x="1335" y="902" text-anchor="middle" class="small">업무별 공급기업 최대 3개 · JSON 응답 → 웹 화면</text>
+
+  <text x="900" y="979" text-anchor="middle" font-size="27" fill="#55555d">홈페이지 근거에서 출발해, 검증을 통과한 AX 개선 업무와 공급기업 후보를 제안하는 구조</text>
+  <text x="1688" y="1017" text-anchor="end" font-size="16" fill="#9999a2">OSS AX Matching · 현재 저장소 구현 기준 · 2026.10.15</text>
+</svg>

@@ -70,10 +70,10 @@ oss-web --workbook "PATH_TO_V0.3.xlsx"
 ```
 
 Open `http://127.0.0.1:8765` and enter a public demand-company homepage URL.
-Successful analyses are saved in this browser's IndexedDB. **검색 기록** lists
-the URLs; selecting one restores its saved result without another crawl or AI
-request, and the X button removes that record. Records are local to the browser
-and are not synchronized across devices.
+The service requires no login or account. Results remain only in the current
+page's memory and are cleared on reload. There is no search-history button or
+automatic result storage. The retired `oss-search-history` IndexedDB database
+is deleted when the page opens; unrelated browser databases are untouched.
 The **기업 이해** section presents one short paragraph combining the company's
 business and core activities. The underlying fact extraction and independent
 grounding audit still retain source quotes internally. This path requires an
@@ -95,10 +95,19 @@ calls add to analysis time. Contact details are shown separately, and original
 solution descriptions are available under **상세정보**. Source IDs and internal
 review diagnostics are not shown on the result screen.
 
-New search-history snapshots retain the per-work supplier mapping and answers.
-Previous snapshots still open without another crawl or AI request: supplier
-links use their saved Task IDs, with concise consultation guidance until the
-company is analyzed again.
+**보고서 다운로드**, opposite **추천 결과**, downloads an A4 Korean PDF of the
+current result. It includes the company summary, every recommended work and its
+related suppliers, all four supplier answers, contact details, and expanded
+solution descriptions, regardless of the work selected on screen. The button
+is disabled before a result exists, during analysis, and while exporting.
+
+`POST /api/report.pdf` accepts the screen's display fields and returns a PDF
+attachment. ReportLab builds it in memory without another crawl, AI request,
+database query, or server-side file/result storage. Korean filenames include
+the report generation date in Korean time. The bundled Nanum Gothic regular
+and bold fonts are embedded in the PDF and distributed under the SIL Open Font
+License in `src/oss/fonts/OFL.txt`. Reinstall the project dependencies after
+updating an older checkout: `python -m pip install -e ".[ax-llm]"`.
 
 `demand-pages.json` is a UTF-8 array of page extracts:
 
@@ -121,6 +130,7 @@ proposed Task IDs and exact quotations through `validate_task_evidence`.
 The source contract test runs when `OSS_WORKBOOK_PATH` points to the workbook:
 
 ```powershell
+python -m pip install -e ".[ax-llm,test]"
 $env:OSS_WORKBOOK_PATH = "PATH_TO_V0.3.xlsx"
 python -m unittest discover -s tests -v
 ```

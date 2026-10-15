@@ -18,7 +18,7 @@ if not defined OSS_PYTHON if exist "%USERPROFILE%\.cache\codex-runtimes\codex-pr
 if not defined OSS_PYTHON for /f "delims=" %%P in ('where python 2^>nul') do if not defined OSS_PYTHON call :choose_python "%%P"
 if not defined OSS_PYTHON for /f "delims=" %%P in ('py -3 -c "import sys; print(sys.executable)" 2^>nul') do if not defined OSS_PYTHON call :choose_python "%%P"
 if not defined OSS_PYTHON (
-    echo Python 3.11 or newer with openpyxl, python-dotenv, and openai was not found.
+    echo Python 3.11 or newer with openpyxl, python-dotenv, openai, and reportlab was not found.
     echo Run python -m pip install -e ".[ax-llm]" in this folder, then retry.
     pause
     exit /b 1
@@ -35,6 +35,6 @@ if errorlevel 1 (
 exit /b 0
 
 :choose_python
-"%~1" -c "import sys, openpyxl, dotenv, openai; assert sys.version_info >= (3, 11)" >nul 2>&1
+"%~1" -c "import sys, openpyxl, dotenv, openai, reportlab; assert sys.version_info >= (3, 11)" >nul 2>&1
 if not errorlevel 1 set "OSS_PYTHON=%~1"
 exit /b 0

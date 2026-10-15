@@ -1,6 +1,8 @@
 // Run with Node and Playwright installed, against the local OSS server.
 const assert = require('node:assert/strict');
 const { chromium } = require('playwright');
+const fs = require('node:fs/promises');
+const path = require('node:path');
 
 const work = (task_id, solution_name) => ({
   task_id, solution_name, business_function: solution_name,
@@ -36,8 +38,19 @@ const fixture = {
     const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
     const errors = [];
     page.on('pageerror', (error) => errors.push(error.message));
-    await page.route('**/api/analyze', (route) => route.fulfill({ json: fixture }));
+    let analysisRequests = 0;
+    const reportRequests = [];
+    await page.route('**/api/analyze', (route) => {
+      analysisRequests += 1;
+      return route.fulfill({ json: fixture });
+    });
+    await page.route('**/api/report.pdf', (route) => {
+      reportRequests.push(route.request().postDataJSON());
+      return route.continue();
+    });
     await page.goto(process.env.OSS_TEST_URL || 'http://127.0.0.1:8765');
+    assert.equal(await page.locator('#history-button').count(), 0);
+    assert.equal(await page.locator('#report-button').isDisabled(), true);
     await page.locator('#company-url').fill(fixture.input_url);
     await page.locator('#submit-button').click();
     await page.locator('#result-content').waitFor({ state: 'visible' });
@@ -77,46 +90,70 @@ const fixture = {
       await page.screenshot({ path: `${process.env.OSS_SCREENSHOT_DIR}/output-mobile.png`, fullPage: true });
     }
 
-    // Restore the new response from IndexedDB without issuing a new analysis.
-    await page.reload();
-    await page.locator('#history-button').click();
-    await page.locator('.history-entry').filter({ hasText: fixture.input_url }).click();
-    assert.equal(await page.locator('.supplier-card').count(), 0);
-    await page.locator('.work-select').nth(1).click();
-    assert.match(await page.locator('.supplier-card').innerText(), /생산 조건을 비교/);
-
-    // Seed a previous-format history record and confirm it opens without AI calls.
-    const legacy = structuredClone(fixture);
-    delete legacy.result_version;
-    delete legacy.suppliers_by_task;
-    legacy.input_url = 'https://legacy.example/';
-    for (const supplier of legacy.suppliers) {
-      delete supplier.task_advice;
-      supplier.solution_descriptions = ['기존 솔루션'];
+    // Export every work, even when the screen currently selects one work.
+    const [download] = await Promise.all([
+      page.waitForEvent('download'),
+      page.evaluate(() => {
+        document.querySelector('#report-button').click();
+        document.querySelector('#report-button').click();
+      }),
+    ]);
+    const chunks = [];
+    for await (const chunk of await download.createReadStream()) chunks.push(chunk);
+    const pdf = Buffer.concat(chunks);
+    assert.equal(pdf.subarray(0, 5).toString(), '%PDF-');
+    assert.match(download.suggestedFilename(), /^예시 제조사_AX분석보고서_\d{8}\.pdf$/);
+    assert.equal(reportRequests.length, 1);
+    assert.equal(reportRequests[0].works.length, 3);
+    assert.deepEqual(reportRequests[0].works.map((w) => w.suppliers.length), [2, 1, 0]);
+    assert.match(reportRequests[0].works[1].suppliers[0].how, /생산 조건을 비교/);
+    assert.equal(analysisRequests, 1);
+    await page.waitForFunction(() => !document.querySelector('#report-button').disabled);
+    if (process.env.OSS_SCREENSHOT_DIR) {
+      await fs.writeFile(path.join(process.env.OSS_SCREENSHOT_DIR, 'sample-report.pdf'), pdf);
     }
-    await page.evaluate(async (data) => {
-      const db = await new Promise((resolve, reject) => {
-        const request = indexedDB.open('oss-search-history', 1);
-        request.onsuccess = () => resolve(request.result);
-        request.onerror = () => reject(request.error);
-      });
-      await new Promise((resolve, reject) => {
-        const tx = db.transaction('results', 'readwrite');
-        tx.objectStore('results').put({ key: data.input_url, url: data.input_url,
-          savedAt: new Date().toISOString(), result: data });
-        tx.oncomplete = resolve;
-        tx.onerror = () => reject(tx.error);
-      });
-      db.close();
-    }, legacy);
+
+    // A failed export keeps the result and lets the user retry.
+    await page.route('**/api/report.pdf', (route) => route.fulfill({
+      status: 502, json: { error: '보고서를 만들지 못했습니다.' },
+    }), { times: 1 });
+    await page.locator('#report-button').click();
+    await page.waitForFunction(() => document.querySelector('#feedback').textContent.includes('만들지 못했습니다'));
+    assert.equal(await page.locator('#report-button').isEnabled(), true);
+    assert.equal(await page.locator('#result-content').isVisible(), true);
+
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 900 });
+      const label = await page.locator('.section-rule > span').boundingBox();
+      const button = await page.locator('#report-button').boundingBox();
+      const row = await page.locator('.section-rule').boundingBox();
+      assert.ok(Math.abs(label.y - button.y) <= 1, 'same row');
+      assert.ok(Math.abs(label.width - button.width) <= 1, 'symmetric widths');
+      assert.ok(Math.abs((label.x - row.x) - (row.x + row.width - button.x - button.width)) <= 1);
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
+    }
+
+    // Only the retired app database is removed; analysis is not saved again.
+    await page.evaluate(async () => {
+      for (const name of ['oss-search-history', 'unrelated-data']) {
+        await new Promise((resolve, reject) => {
+          const request = indexedDB.open(name, 1);
+          request.onupgradeneeded = () => request.result.createObjectStore('results');
+          request.onsuccess = () => { request.result.close(); resolve(); };
+          request.onerror = () => reject(request.error);
+        });
+      }
+    });
     await page.reload();
-    await page.locator('#history-button').click();
-    await page.locator('.history-entry').filter({ hasText: legacy.input_url }).click();
-    await page.locator('.work-select').nth(1).click();
-    assert.equal(await page.locator('.supplier-card').count(), 1);
-    assert.match(await page.locator('.supplier-card').innerText(), /기존 솔루션/);
+    await page.waitForFunction(async () => !(await indexedDB.databases())
+      .some((db) => db.name === 'oss-search-history'));
+    assert.equal(await page.evaluate(async () => (await indexedDB.databases())
+      .some((db) => db.name === 'unrelated-data')), true);
+    assert.equal(await page.locator('#result-content').isHidden(), true);
+    assert.equal(await page.locator('#report-button').isDisabled(), true);
+    assert.equal(await page.locator('#history-button').count(), 0);
     assert.deepEqual(errors, []);
-    console.log('Frontend checks passed: selection, per-work explanations, empty state, contacts, details, mobile, new/legacy history.');
+    console.log('Frontend checks passed: work selection, contacts, details, PDF download, all-work export, failure recovery, 320px/mobile/desktop alignment, retired database cleanup, no result persistence.');
   } finally {
     await browser.close();
   }

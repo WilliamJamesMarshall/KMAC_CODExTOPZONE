@@ -1,136 +1,20 @@
 const form = document.querySelector('#analysis-form');
 const input = document.querySelector('#company-url');
 const submitButton = document.querySelector('#submit-button');
-const historyButton = document.querySelector('#history-button');
-const historyPanel = document.querySelector('#history-panel');
-const historyList = document.querySelector('#history-list');
+const reportButton = document.querySelector('#report-button');
 const feedback = document.querySelector('#feedback');
 const emptyState = document.querySelector('#empty-state');
 const resultContent = document.querySelector('#result-content');
-const historyRecords = new Map();
-let historyDbPromise;
-let historyLoadError = false;
 let currentResult;
+let analyzing = false;
+let downloading = false;
 
-function historyKey(url) {
-  const parsed = new URL(url);
-  parsed.hash = '';
-  parsed.pathname = parsed.pathname.replace(/\/+$/, '') || '/';
-  return parsed.href;
-}
-
-function openHistoryDb() {
-  if (!('indexedDB' in window)) return Promise.reject(new Error('IndexedDB unavailable'));
-  if (!historyDbPromise) {
-    historyDbPromise = new Promise((resolve, reject) => {
-      const request = indexedDB.open('oss-search-history', 1);
-      request.onupgradeneeded = () => request.result.createObjectStore('results', { keyPath: 'key' });
-      request.onsuccess = () => {
-        const db = request.result;
-        db.onversionchange = () => {
-          db.close();
-          historyDbPromise = undefined;
-        };
-        resolve(db);
-      };
-      request.onerror = () => reject(request.error);
-      request.onblocked = () => reject(new Error('Search history database is blocked'));
-    }).catch((error) => {
-      historyDbPromise = undefined;
-      throw error;
-    });
-  }
-  return historyDbPromise;
-}
-
-async function historyRequest(mode, action) {
-  const db = await openHistoryDb();
-  return new Promise((resolve, reject) => {
-    const transaction = db.transaction('results', mode);
-    let value;
-    const request = action(transaction.objectStore('results'));
-    request.onsuccess = () => { value = request.result; };
-    transaction.oncomplete = () => resolve(value);
-    transaction.onerror = () => reject(transaction.error);
-    transaction.onabort = () => reject(transaction.error);
-  });
-}
-
-function resultSnapshot(data) {
-  const fields = ['input_url', 'site_name', 'business_model', 'business_quality',
-    'opportunities', 'suppliers', 'suppliers_by_task', 'result_version', 'analysis_meta', 'is_demo'];
-  return Object.fromEntries(fields.map((field) => [field, data[field]]));
-}
-
-function closeHistory() {
-  historyPanel.hidden = true;
-  historyButton.setAttribute('aria-expanded', 'false');
-}
-
-function renderHistoryList() {
-  historyList.replaceChildren();
-  if (historyLoadError) {
-    historyList.append(element('div', 'history-empty', '이 브라우저에서 검색 기록을 불러올 수 없습니다.'));
-    return;
-  }
-  const records = [...historyRecords.values()].sort((a, b) =>
-    b.savedAt.localeCompare(a.savedAt));
-  if (!records.length) {
-    historyList.append(element('div', 'history-empty', '저장된 검색 기록이 없습니다.'));
-    return;
-  }
-  for (const record of records) {
-    const row = element('div', 'history-row');
-    const remove = element('button', 'history-remove', '×');
-    remove.type = 'button';
-    remove.title = '검색 기록 삭제';
-    remove.setAttribute('aria-label', `${record.url} 검색 기록 삭제`);
-    remove.addEventListener('click', async () => {
-      remove.disabled = true;
-      try {
-        await historyRequest('readwrite', (store) => store.delete(record.key));
-        historyRecords.delete(record.key);
-        renderHistoryList();
-      } catch {
-        remove.disabled = false;
-        showFeedback('검색 기록을 삭제하지 못했습니다.', 'error');
-      }
-    });
-    const select = element('button', 'history-entry');
-    select.type = 'button';
-    select.append(element('span', 'history-url', record.url));
-    select.append(element('span', 'history-date',
-      new Date(record.savedAt).toLocaleString('ko-KR')));
-    select.addEventListener('click', () => {
-      input.value = record.url;
-      closeHistory();
-      showFeedback('');
-      renderResult(record.result);
-    });
-    row.append(remove, select);
-    historyList.append(row);
-  }
-}
-
-async function loadHistory() {
-  try {
-    const records = await historyRequest('readonly', (store) => store.getAll());
-    for (const record of records) historyRecords.set(record.key, record);
-  } catch {
-    historyLoadError = true;
-  }
-  renderHistoryList();
-}
-
-async function saveHistory(url, data) {
-  const record = {
-    key: historyKey(url), url, savedAt: new Date().toISOString(),
-    result: resultSnapshot(data),
-  };
-  await historyRequest('readwrite', (store) => store.put(record));
-  historyLoadError = false;
-  historyRecords.set(record.key, record);
-  renderHistoryList();
+// Remove only this app's retired search-history database.
+try {
+  const request = window.indexedDB?.deleteDatabase('oss-search-history');
+  if (request) request.onerror = () => {};
+} catch {
+  // The service still works when browser storage is unavailable.
 }
 
 function element(tag, className, text) {
@@ -161,8 +45,9 @@ function showFeedback(message, type = '') {
 }
 
 function setBusy(busy) {
-  submitButton.disabled = busy;
-  historyButton.disabled = busy;
+  analyzing = busy;
+  submitButton.disabled = busy || downloading;
+  updateReportButton();
   form.setAttribute('aria-busy', String(busy));
   document.querySelector('#submit-label').textContent = busy ? '분석 중' : '분석 시작';
 }
@@ -182,7 +67,6 @@ function detailRow(label, text) {
   return row;
 }
 
-// Older saved results keep their original data; adapt only their presentation.
 function shortAnswer(text, maxSentences = 2, maxLength = 320) {
   const value = Array.isArray(text) ? text.join(' ') : String(text || '');
   const sentences = value.trim().split(/(?<=[.!?。])\s+/).slice(0, maxSentences).join(' ');
@@ -241,7 +125,7 @@ function renderOpportunities(items) {
   }
 }
 
-function legacyAdvice(item, opportunity) {
+function fallbackAdvice(item, opportunity) {
   const work = workTitle(opportunity);
   const inputs = (opportunity.inputs || opportunity.required_data || []).slice(0, 2).join('과 ');
   return {
@@ -253,6 +137,13 @@ function legacyAdvice(item, opportunity) {
     change: '업체의 제공 기능을 확인하고, 담당자의 검토 업무를 어떻게 지원할지 논의합니다.',
     check: '업무 자료를 연결할 수 있는지, 해당 분야를 다룬 경험이 있는지 확인합니다.',
   };
+}
+
+function relatedSuppliers(items, opportunity) {
+  const ids = currentResult.suppliers_by_task?.[opportunity.task_id];
+  return (ids ? ids.map((id) => items.find((item) => item.supplier_id === id)).filter(Boolean)
+    : items.filter((item) => (item.matched_tasks || [])
+      .some((task) => task.task_id === opportunity.task_id))).slice(0, 3);
 }
 
 function renderSuppliers(items, opportunity) {
@@ -267,10 +158,7 @@ function renderSuppliers(items, opportunity) {
     list.append(element('div', 'list-empty', '관심 있는 업무를 선택하면 관련 업체가 표시됩니다.'));
     return;
   }
-  const ids = currentResult.suppliers_by_task?.[opportunity.task_id];
-  const related = (ids ? ids.map((id) => items.find((item) => item.supplier_id === id)).filter(Boolean)
-    : items.filter((item) => (item.matched_tasks || [])
-      .some((task) => task.task_id === opportunity.task_id))).slice(0, 3);
+  const related = relatedSuppliers(items, opportunity);
   count.textContent = `관련 업체 ${related.length}곳`;
   if (!related.length) {
     list.append(element('div', 'list-empty', '이 업무에 연결된 업체가 아직 없습니다.'));
@@ -278,7 +166,7 @@ function renderSuppliers(items, opportunity) {
   }
   for (const item of related) {
     const card = element('article', 'result-card supplier-card');
-    const advice = item.task_advice?.[opportunity.task_id] || legacyAdvice(item, opportunity);
+    const advice = item.task_advice?.[opportunity.task_id] || fallbackAdvice(item, opportunity);
     card.append(element('h4', '', item.name));
     if (advice.solution_name) card.append(element('p', 'solution-name', advice.solution_name));
     card.append(detailRow('왜 이 업체인가요?', advice.why));
@@ -322,6 +210,7 @@ function renderSuppliers(items, opportunity) {
 
 function renderResult(data) {
   currentResult = data;
+  updateReportButton();
   emptyState.hidden = true;
   resultContent.hidden = false;
   document.querySelector('#company-title').textContent = data.site_name || '수요기업 분석 결과';
@@ -345,11 +234,6 @@ async function requestResult(url) {
     if (!response.ok) throw new Error(data.error || '분석 결과를 가져오지 못했습니다.');
     showFeedback('');
     renderResult(data);
-    try {
-      await saveHistory(url, data);
-    } catch {
-      showFeedback('분석 결과는 표시됐지만 검색 기록을 저장하지 못했습니다.', 'error');
-    }
   } catch (error) {
     showFeedback(error.message || '분석 중 오류가 발생했습니다.', 'error');
   } finally {
@@ -368,14 +252,79 @@ form.addEventListener('submit', (event) => {
     input.focus();
     return;
   }
-  closeHistory();
   requestResult(value);
 });
 
-historyButton.addEventListener('click', () => {
-  const opening = historyPanel.hidden;
-  historyPanel.hidden = !opening;
-  historyButton.setAttribute('aria-expanded', String(opening));
-});
+function updateReportButton() {
+  reportButton.disabled = !currentResult || analyzing || downloading;
+  reportButton.textContent = downloading ? 'PDF 생성 중' : '보고서 다운로드';
+  reportButton.setAttribute('aria-busy', String(downloading));
+}
 
-loadHistory();
+function reportPayload() {
+  return {
+    company_name: currentResult.site_name || '수요기업 분석 결과',
+    source_url: currentResult.input_url || '',
+    business_summary: document.querySelector('.business-summary').textContent,
+    is_demo: Boolean(currentResult.is_demo),
+    works: (currentResult.opportunities || []).slice(0, 3).map((work) => ({
+      title: workTitle(work),
+      mechanism: shortAnswer(work.mechanism)
+        || '이 업무에 필요한 자료를 분석하고, 담당자가 검토할 결과를 제공합니다.',
+      process_change: shortAnswer(work.process_change) || shortAnswer(work.expected_effects),
+      check: shortAnswer(work.unknowns) || '업무 자료를 연결할 수 있는지 확인합니다.',
+      suppliers: relatedSuppliers(currentResult.suppliers || [], work).map((supplier) => {
+        const profile = supplier.supplier_profile || {};
+        const advice = supplier.task_advice?.[work.task_id] || fallbackAdvice(supplier, work);
+        return {
+          name: supplier.name, solution_name: advice.solution_name || '',
+          why: advice.why || '', how: advice.how || '',
+          change: advice.change || '', check: advice.check || '',
+          phone: profile.phone || '등록된 전화번호가 없습니다.',
+          address: profile.address || '등록된 주소가 없습니다.',
+          representative: profile.representative || '등록된 대표자명이 없습니다.',
+          homepage_url: safeLink(supplier.homepage_url, '')
+            ? supplier.homepage_url : '등록된 홈페이지가 없습니다.',
+          specialization: profile.specialization || '',
+          description: profile.ai_solution_description
+            || (supplier.solution_descriptions || []).join('\n'),
+        };
+      }),
+    })),
+  };
+}
+
+reportButton.addEventListener('click', async () => {
+  if (!currentResult || analyzing || downloading) return;
+  downloading = true;
+  submitButton.disabled = true;
+  updateReportButton();
+  showFeedback('보고서를 만들고 있습니다. 잠시 기다려 주세요.', 'loading');
+  try {
+    const response = await fetch('/api/report.pdf', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(reportPayload()),
+    });
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || '보고서를 다운로드하지 못했습니다.');
+    }
+    const blob = await response.blob();
+    const url = URL.createObjectURL(blob);
+    const filename = response.headers.get('Content-Disposition')?.match(/filename\*=UTF-8''([^;]+)/i);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename ? decodeURIComponent(filename[1]) : 'AX분석보고서.pdf';
+    document.body.append(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+    showFeedback('');
+  } catch (error) {
+    showFeedback(error.message || '보고서를 다운로드하지 못했습니다. 다시 시도해 주세요.', 'error');
+  } finally {
+    downloading = false;
+    submitButton.disabled = analyzing;
+    updateReportButton();
+  }
+});
