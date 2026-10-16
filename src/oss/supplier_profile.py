@@ -142,11 +142,17 @@ class SupplierProfileClient:
             }
             item["profile_status"] = "matched"
 
-    def available_profiles(self, kb: KnowledgeBase) -> dict[str, dict]:
+    def available_profiles(self, kb: KnowledgeBase, *, diagnostics: dict | None = None) -> dict[str, dict]:
         """Return detailed suppliers whose five source fields can all be shown."""
         ids = sorted({cap.supplier_id for cap in kb.detailed_capabilities})
         items = [{"supplier_id": sid, "name": kb.suppliers[sid].name} for sid in ids]
         self.enrich(items, kb)
+        if diagnostics is not None:
+            diagnostics["candidates"] = [{
+                "supplier_id": item["supplier_id"], "status": item["profile_status"],
+                "missing_fields": [field for field in REQUIRED_PROFILE_FIELDS
+                                   if not (item["supplier_profile"] or {}).get(field)],
+            } for item in items]
         if any(item["profile_status"] == "unavailable" for item in items):
             raise RuntimeError("Supabase 공급기업 상세정보를 조회할 수 없습니다.")
         return {

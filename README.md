@@ -61,9 +61,23 @@ and reads 2026 AI voucher supplier details from Supabase on the server:
 
 On Windows, double-click `dev.cmd` in the project root. It locates the supplied
 v0.3 workbook in OneDrive, starts the local server if needed, waits until it is
-ready, and opens the site in the default browser. If the workbook has moved,
+ready, and opens the site in the default browser. The launcher checks the running
+server's project and source revision and restarts its own outdated instance.
+Screen files are served without browser caching, and the opened URL includes
+the current revision. If the workbook has moved,
 set `OSS_WORKBOOK_PATH` to its absolute path before running the file.
 Install the web analysis dependency with `python -m pip install -e ".[ax-llm]"`.
+For JavaScript-rendered sites, also install the headless browser with
+`python -m playwright install chromium`. An installed Chrome or Edge is used
+as a fallback on local Windows machines. The server renders only HTML pages
+whose static body is empty and contains scripts; ordinary sites keep the
+existing HTTP collection path. Browser resources are fetched through the same
+public-address and robots checks, limited to the site's exact www alias pair.
+The renderer blocks writes, third-party resources, frames and service workers;
+browser profiles and cookies are discarded after each analysis. Each page has
+a 25-second render budget, a 60-request cap and the existing 3 MB resource cap.
+An analysis is limited to 20 MB of fetched render resources. Rendering failure
+has its own error code and remains in the separate diagnostic log.
 
 ```powershell
 oss-web --workbook "PATH_TO_V0.3.xlsx"
@@ -72,7 +86,9 @@ oss-web --workbook "PATH_TO_V0.3.xlsx"
 Open `http://127.0.0.1:8765` and enter a public demand-company homepage URL.
 The service requires no login or account. Results remain only in the current
 page's memory and are cleared on reload. There is no search-history button or
-automatic result storage. The retired `oss-search-history` IndexedDB database
+routine result storage. Incomplete/error cases alone retain a separate local
+diagnostic snapshot for later investigation, as described below. The retired
+`oss-search-history` IndexedDB database
 is deleted when the page opens; unrelated browser databases are untouched.
 The **기업 이해** section presents one short paragraph combining the company's
 business and core activities. The underlying fact extraction and independent
@@ -126,6 +142,53 @@ and `--supplier-pages`/`--supplier-url` to examine one known supplier homepage.
 `--output result.json` writes UTF-8 JSON. The page-text baseline intentionally
 abstains for wording it does not recognize; an LLM extractor can later submit
 proposed Task IDs and exact quotations through `validate_task_evidence`.
+
+## Search processing times
+
+Every accepted `POST /api/analyze` records the elapsed server processing time
+from request receipt through the response write, including crawling, AI calls,
+supplier lookup and result assembly. Durations use a monotonic clock; timestamps
+use Korean time. Browser network transfer and rendering are not included.
+
+- `reports/search-timing/searches.jsonl`: one entry per completed search,
+  containing timestamps, duration in seconds, success/failure, HTTP status,
+  and code revision. No URL, company name, search content, result, or user
+  identifier is stored.
+- `reports/search-timing/summary.json`: cumulative search counts and mean
+  duration, plus separate means for successful and failed searches. Means are
+  `null` until samples exist. The summary is updated after each search and
+  rebuilt from the timing log on server restart.
+
+Demo requests, PDF exports, health checks and malformed/missing-URL requests
+are excluded. Concurrent requests are serialized only when writing the log.
+These local operational files survive `dev.cmd` restarts and are ignored by
+Git. This timing log does not restore the removed search-history feature.
+
+## Empty output diagnostics
+
+If any display field in **01.기업 이해**, **02.AI로 개선할 수 있는 업무**, or
+**03.추천 공급기업** is missing, a case is recorded in `reports/empty-output/`.
+This includes empty sections, an individual work without suppliers, missing
+card answers/contact fields, and absent underlying values hidden by generic
+screen fallback messages. An unselected supplier panel is a normal UI state
+and is not an incident. Failed accepted analyses also retain the failed stage.
+
+- `index.jsonl`: incident time, input URL, affected section/field paths, code
+  revision, HTTP status, and the corresponding detail filename.
+- `case-*.json`: the input page texts actually selected for analysis, business
+  and AX quality/rejection evidence, profile eligibility and missing-field
+  diagnostics, matching exclusions, supplier explanation drafts and audit
+  decisions, and a diagnostic output snapshot. Contact profile values and
+  server credentials are not included.
+
+Only incomplete/error cases are saved; normal complete results are not.
+The diagnostic files are local, ignored by Git, survive server restarts, and
+are not exposed by the result API or the static web server. No extra AI call,
+crawl or database query is performed to create a case. Logging does not relax
+existing validation or alter supplier selection. See
+[the investigation guide](docs/empty-output-diagnostics.md).
+
+## Tests
 
 The source contract test runs when `OSS_WORKBOOK_PATH` points to the workbook:
 

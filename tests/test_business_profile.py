@@ -26,6 +26,36 @@ class _Client:
 
 
 class BusinessProfileTests(unittest.TestCase):
+    def test_single_verified_business_fact_does_not_require_value_chain(self):
+        quote = "당사는 산업용 센서를 공급하는 기업입니다."
+        page = WebPage("https://company.example", "회사소개", quote)
+        structure = {key: [] for key in ("core_businesses", "adjacent_businesses", "inputs",
+            "products", "customers", "channels", "functions", "value_chain")}
+        structure["core_businesses"] = [{"name": "산업용 센서 공급", "fact_ids": ["F001"]}]
+        client = _Client({"facts": [{"kind": "business_line", "label": "산업용 센서 공급",
+            "source_id": "P0", "quote": quote}]}, structure,
+            {"value_proposition": {"text": quote, "fact_ids": ["F001"]}, "core_activities": []},
+            {"value_supported": True, "activities_supported": True, "core_coverage_ok": True, "issues": []})
+        result = analyze_business([page], client=client)
+        self.assertEqual(result["fields"][0]["value"], quote)
+        self.assertIsNone(result["fields"][1]["value"])
+
+    def test_failed_generated_summary_keeps_only_exact_business_quotes(self):
+        quote = "당사는 산업용 센서를 공급하는 기업입니다."
+        page = WebPage("https://company.example", "회사소개", quote)
+        structure = {key: [] for key in ("core_businesses", "adjacent_businesses", "inputs",
+            "products", "customers", "channels", "functions", "value_chain")}
+        structure["core_businesses"] = [{"name": "산업용 센서 공급", "fact_ids": ["F001"]}]
+        draft = {"value_proposition": {"text": "센서를 직접 제조합니다.", "fact_ids": ["F001"]}, "core_activities": []}
+        audit = {"value_supported": False, "activities_supported": True,
+                 "core_coverage_ok": True, "issues": ["직접 제조 근거 없음"]}
+        client = _Client({"facts": [{"kind": "business_line", "label": "산업용 센서 공급",
+            "source_id": "P0", "quote": quote}]}, structure, draft, audit, draft, audit, draft, audit)
+        result = analyze_business([page], client=client)
+        self.assertEqual(result["fields"][0]["value"], '“' + quote + '”')
+        self.assertNotIn("직접 제조", result["fields"][0]["value"])
+        self.assertEqual(result["fields"][0]["status"], "fact")
+
     def test_navigation_links_are_discovered_without_menu_text_in_body(self):
         html = ("<body><nav><a href='/rnd'>연구개발</a></nav>"
                 "<main><p>당사는 자체 연구소에서 식품을 개발합니다.</p></main></body>")

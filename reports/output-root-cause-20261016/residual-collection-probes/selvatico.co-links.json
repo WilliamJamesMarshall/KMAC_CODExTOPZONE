@@ -1,0 +1,478 @@
+{
+  "host": "https://selvatico.co/",
+  "requests": [
+    {
+      "url": "https://selvatico.co/",
+      "links": [
+        [
+          "%7B#link%7D",
+          "{#text_1}"
+        ],
+        [
+          "/index.html",
+          ""
+        ],
+        [
+          "/category/by-scent/62/",
+          "BY SCENT"
+        ],
+        [
+          "/category/perfume/24/",
+          "PERFUME"
+        ],
+        [
+          "/category/handbody/32/",
+          "HAND/BODY"
+        ],
+        [
+          "/category/gift/31/",
+          "GIFT"
+        ],
+        [
+          "/category/acc/27/",
+          "ACC"
+        ],
+        [
+          "#none",
+          "ABOUT"
+        ],
+        [
+          "/brand/about.html",
+          "BRAND STORY"
+        ],
+        [
+          "/library/list.html?board_no=101",
+          "LIBRARY"
+        ],
+        [
+          "/board/gallery/list.html?board_no=8",
+          "EVENT"
+        ],
+        [
+          "/board/product/list.html?board_no=4",
+          "REVIEW"
+        ],
+        [
+          "/brand/store.html?board_no=3001",
+          "STORE"
+        ],
+        [
+          "/member/login.html",
+          ""
+        ],
+        [
+          "/order/basket.html",
+          "0"
+        ],
+        [
+          "/product/search.html?keyword=오 드 퍼퓸",
+          "오 드 퍼퓸"
+        ],
+        [
+          "/product/search.html?keyword=살롱 드 파리",
+          "살롱 드 파리"
+        ],
+        [
+          "/product/search.html?keyword=핸드솔루션",
+          "핸드솔루션"
+        ],
+        [
+          "/product/search.html?keyword=크림",
+          "크림"
+        ],
+        [
+          "/product/search.html?keyword=바디워시",
+          "바디워시"
+        ],
+        [
+          "/product/search.html?keyword=꼼뜨와 드 떼",
+          "꼼뜨와 드 떼"
+        ],
+        [
+          "/product/detail.html##param##",
+          ""
+        ],
+        [
+          "/product/detail.html##param##",
+          "##name##"
+        ],
+        [
+          "/product/detail.html##param##",
+          ""
+        ],
+        [
+          "/product/detail.html##param##",
+          "##name##"
+        ],
+        [
+          "/category/by-scent/62/",
+          "BY SCENT"
+        ],
+        [
+          "/category/perfume/24/",
+          "PERFUME"
+        ],
+        [
+          "/category/handbody/32/",
+          "HAND/BODY"
+        ],
+        [
+          "/category/gift/31/",
+          "GIFT"
+        ],
+        [
+          "/category/acc/27/",
+          "ACC"
+        ],
+        [
+          "#none",
+          "ABOUT"
+        ],
+        [
+          "/brand/about.html",
+          "BRAND STORY"
+        ],
+        [
+          "/library/list.html?board_no=101",
+          "LIBRARY"
+        ],
+        [
+          "/board/gallery/list.html?board_no=8",
+          "EVENT"
+        ],
+        [
+          "/board/product/list.html?board_no=4",
+          "REVIEW"
+        ],
+        [
+          "/brand/store.html?board_no=3001",
+          "STORE"
+        ],
+        [
+          "/member/login.html",
+          "ACCOUNT"
+        ],
+        [
+          "%7B#link%7D",
+          "{#text_3}"
+        ],
+        [
+          "/product/살롱-드-파리-오-드-퍼퓸-30ml/49/category/1/display/4/?icid=MAIN.product_listmain_3",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/살롱-드-파리-오-드-퍼퓸-30ml/49/category/1/display/4/?icid=MAIN.product_listmain_3",
+          "살롱 드 파리 오 드 퍼퓸 30ml"
+        ],
+        [
+          "/product/꼼뜨와-드-떼-오-드-퍼퓸-30ml/50/category/1/display/4/?icid=MAIN.product_listmain_3",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/꼼뜨와-드-떼-오-드-퍼퓸-30ml/50/category/1/display/4/?icid=MAIN.product_listmain_3",
+          "꼼뜨와 드 떼 오 드 퍼퓸 30ml"
+        ],
+        [
+          "/product/포레-드-퐁텐블로-오-드-퍼퓸-30ml/52/category/1/display/4/?icid=MAIN.product_listmain_3",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/포레-드-퐁텐블로-오-드-퍼퓸-30ml/52/category/1/display/4/?icid=MAIN.product_listmain_3",
+          "포레 드 퐁텐블로 오 드 퍼퓸 30ml"
+        ],
+        [
+          "/product/떼알라-프랑세즈-오-드-퍼퓸-30ml/57/category/1/display/4/?icid=MAIN.product_listmain_3",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/떼알라-프랑세즈-오-드-퍼퓸-30ml/57/category/1/display/4/?icid=MAIN.product_listmain_3",
+          "떼알라 프랑세즈 오 드 퍼퓸 30ml"
+        ],
+        [
+          "/product/미드나잇-스파-오-드-퍼퓸-30ml/59/category/1/display/4/?icid=MAIN.product_listmain_3",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/미드나잇-스파-오-드-퍼퓸-30ml/59/category/1/display/4/?icid=MAIN.product_listmain_3",
+          "미드나잇 스파 오 드 퍼퓸 30ml"
+        ],
+        [
+          "/product/스트레스-릴리프-오-드-퍼퓸-30ml/61/category/1/display/4/?icid=MAIN.product_listmain_3",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/스트레스-릴리프-오-드-퍼퓸-30ml/61/category/1/display/4/?icid=MAIN.product_listmain_3",
+          "스트레스 릴리프 오 드 퍼퓸 30ml"
+        ],
+        [
+          "/product/수보아-드-생제르망-오-드-퍼퓸-30ml/51/category/1/display/4/?icid=MAIN.product_listmain_3",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/수보아-드-생제르망-오-드-퍼퓸-30ml/51/category/1/display/4/?icid=MAIN.product_listmain_3",
+          "수보아 드 생제르망 오 드 퍼퓸 30ml"
+        ],
+        [
+          "%7B#link%7D",
+          "{#text_3}"
+        ],
+        [
+          "/product/살롱-드-파리-핸드솔루션/83/category/1/display/5/?icid=MAIN.product_listmain_4",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/살롱-드-파리-핸드솔루션/83/category/1/display/5/?icid=MAIN.product_listmain_4",
+          "살롱 드 파리 핸드솔루션"
+        ],
+        [
+          "/product/살롱-드-파리-오-드-퍼퓸-100ml/56/category/1/display/5/?icid=MAIN.product_listmain_4",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/살롱-드-파리-오-드-퍼퓸-100ml/56/category/1/display/5/?icid=MAIN.product_listmain_4",
+          "살롱 드 파리 오 드 퍼퓸 100ml"
+        ],
+        [
+          "/product/살롱-드-파리-퍼퓸-핸드바디-워시-500ml/29/category/1/display/5/?icid=MAIN.product_listmain_4",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/살롱-드-파리-퍼퓸-핸드바디-워시-500ml/29/category/1/display/5/?icid=MAIN.product_listmain_4",
+          "살롱 드 파리 퍼퓸 핸드&바디 워시 500ml"
+        ],
+        [
+          "/product/살롱-드-파리-퍼퓸-핸드바디-크림/45/category/1/display/5/?icid=MAIN.product_listmain_4",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/살롱-드-파리-퍼퓸-핸드바디-크림/45/category/1/display/5/?icid=MAIN.product_listmain_4",
+          "살롱 드 파리 퍼퓸 핸드&바디 크림"
+        ],
+        [
+          "/product/살롱-드-파리-오-드-퍼퓸-30ml/49/category/1/display/5/?icid=MAIN.product_listmain_4",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/살롱-드-파리-오-드-퍼퓸-30ml/49/category/1/display/5/?icid=MAIN.product_listmain_4",
+          "살롱 드 파리 오 드 퍼퓸 30ml"
+        ],
+        [
+          "/product/포레-드-퐁텐블로-오-드-퍼퓸-30ml/52/category/1/display/6/?icid=MAIN.product_listmain_5",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/포레-드-퐁텐블로-오-드-퍼퓸-30ml/52/category/1/display/6/?icid=MAIN.product_listmain_5",
+          "포레 드 퐁텐블로 오 드 퍼퓸 30ml"
+        ],
+        [
+          "/product/포레-드-퐁텐블로-퍼퓸-핸드바디-워시-500ml/30/category/1/display/6/?icid=MAIN.product_listmain_5",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/포레-드-퐁텐블로-퍼퓸-핸드바디-워시-500ml/30/category/1/display/6/?icid=MAIN.product_listmain_5",
+          "포레 드 퐁텐블로 퍼퓸 핸드&바디 워시 500ml"
+        ],
+        [
+          "/product/포레-드-퐁텐블로-오-드-퍼퓸-100ml/53/category/1/display/6/?icid=MAIN.product_listmain_5",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/포레-드-퐁텐블로-오-드-퍼퓸-100ml/53/category/1/display/6/?icid=MAIN.product_listmain_5",
+          "포레 드 퐁텐블로 오 드 퍼퓸 100ml"
+        ],
+        [
+          "/product/포레-드-퐁텐블로-퍼퓸-핸드바디-크림/46/category/1/display/6/?icid=MAIN.product_listmain_5",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/포레-드-퐁텐블로-퍼퓸-핸드바디-크림/46/category/1/display/6/?icid=MAIN.product_listmain_5",
+          "포레 드 퐁텐블로 퍼퓸 핸드&바디 크림"
+        ],
+        [
+          "/product/수보아-드-생제르망-퍼퓸-핸드바디-워시-500ml/28/category/1/display/7/?icid=MAIN.product_listmain_6",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/수보아-드-생제르망-퍼퓸-핸드바디-워시-500ml/28/category/1/display/7/?icid=MAIN.product_listmain_6",
+          "수보아 드 생제르망 퍼퓸 핸드&바디 워시 500ml"
+        ],
+        [
+          "/product/수보아-드-생제르망-오-드-퍼퓸-100ml/54/category/1/display/7/?icid=MAIN.product_listmain_6",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/수보아-드-생제르망-오-드-퍼퓸-100ml/54/category/1/display/7/?icid=MAIN.product_listmain_6",
+          "수보아 드 생제르망 오 드 퍼퓸 100ml"
+        ],
+        [
+          "/product/수보아-드-생제르망-퍼퓸-핸드바디-크림/44/category/1/display/7/?icid=MAIN.product_listmain_6",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/수보아-드-생제르망-퍼퓸-핸드바디-크림/44/category/1/display/7/?icid=MAIN.product_listmain_6",
+          "수보아 드 생제르망 퍼퓸 핸드&바디 크림"
+        ],
+        [
+          "/product/수보아-드-생제르망-오-드-퍼퓸-30ml/51/category/1/display/7/?icid=MAIN.product_listmain_6",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/수보아-드-생제르망-오-드-퍼퓸-30ml/51/category/1/display/7/?icid=MAIN.product_listmain_6",
+          "수보아 드 생제르망 오 드 퍼퓸 30ml"
+        ],
+        [
+          "/product/꼼뜨와-드-떼-오-드-퍼퓸-30ml/50/category/1/display/8/?icid=MAIN.product_listmain_7",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/꼼뜨와-드-떼-오-드-퍼퓸-30ml/50/category/1/display/8/?icid=MAIN.product_listmain_7",
+          "꼼뜨와 드 떼 오 드 퍼퓸 30ml"
+        ],
+        [
+          "/product/꼼뜨와-드-떼-퍼퓸-핸드바디-워시-500ml/31/category/1/display/8/?icid=MAIN.product_listmain_7",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/꼼뜨와-드-떼-퍼퓸-핸드바디-워시-500ml/31/category/1/display/8/?icid=MAIN.product_listmain_7",
+          "꼼뜨와 드 떼 퍼퓸 핸드&바디 워시 500ml"
+        ],
+        [
+          "/product/꼼뜨와-드-떼-오-드-퍼퓸-100ml/55/category/1/display/8/?icid=MAIN.product_listmain_7",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/꼼뜨와-드-떼-오-드-퍼퓸-100ml/55/category/1/display/8/?icid=MAIN.product_listmain_7",
+          "꼼뜨와 드 떼 오 드 퍼퓸 100ml"
+        ],
+        [
+          "/product/꼼뜨와-드-떼-퍼퓸-핸드바디-크림/47/category/1/display/8/?icid=MAIN.product_listmain_7",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/꼼뜨와-드-떼-퍼퓸-핸드바디-크림/47/category/1/display/8/?icid=MAIN.product_listmain_7",
+          "꼼뜨와 드 떼 퍼퓸 핸드&바디 크림"
+        ],
+        [
+          "/product/꼼뜨와-드-떼-모이스처-퍼퓸-바디미스트/41/category/1/display/8/?icid=MAIN.product_listmain_7",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/꼼뜨와-드-떼-모이스처-퍼퓸-바디미스트/41/category/1/display/8/?icid=MAIN.product_listmain_7",
+          "꼼뜨와 드 떼 모이스처 퍼퓸 바디미스트"
+        ],
+        [
+          "/product/떼알라-프랑세즈-핸드솔루션/84/category/1/display/9/?icid=MAIN.product_listmain_8",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/떼알라-프랑세즈-핸드솔루션/84/category/1/display/9/?icid=MAIN.product_listmain_8",
+          "떼알라 프랑세즈 핸드솔루션"
+        ],
+        [
+          "/product/떼알라-프랑세즈-오-드-퍼퓸-30ml/57/category/1/display/9/?icid=MAIN.product_listmain_8",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/떼알라-프랑세즈-오-드-퍼퓸-30ml/57/category/1/display/9/?icid=MAIN.product_listmain_8",
+          "떼알라 프랑세즈 오 드 퍼퓸 30ml"
+        ],
+        [
+          "/product/떼알라-프랑세즈-오-드-퍼퓸-100ml/58/category/1/display/9/?icid=MAIN.product_listmain_8",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/떼알라-프랑세즈-오-드-퍼퓸-100ml/58/category/1/display/9/?icid=MAIN.product_listmain_8",
+          "떼알라 프랑세즈 오 드 퍼퓸 100ml"
+        ],
+        [
+          "/product/떼알라-프랑세즈-퍼퓸-핸드바디-워시-500ml/38/category/1/display/9/?icid=MAIN.product_listmain_8",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/떼알라-프랑세즈-퍼퓸-핸드바디-워시-500ml/38/category/1/display/9/?icid=MAIN.product_listmain_8",
+          "떼알라 프랑세즈 퍼퓸 핸드&바디 워시 500ml"
+        ],
+        [
+          "/product/떼알라-프랑세즈-퍼퓸-핸드바디-크림/48/category/1/display/9/?icid=MAIN.product_listmain_8",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/떼알라-프랑세즈-퍼퓸-핸드바디-크림/48/category/1/display/9/?icid=MAIN.product_listmain_8",
+          "떼알라 프랑세즈 퍼퓸 핸드&바디 크림"
+        ],
+        [
+          "/product/떼알라-프랑세즈-모이스처-퍼퓸-바디미스트/42/category/1/display/9/?icid=MAIN.product_listmain_8",
+          "BEST SELLERSNEW ARRIVALS"
+        ],
+        [
+          "/product/떼알라-프랑세즈-모이스처-퍼퓸-바디미스트/42/category/1/display/9/?icid=MAIN.product_listmain_8",
+          "떼알라 프랑세즈 모이스처 퍼퓸 바디미스트"
+        ],
+        [
+          "%7B#link%7D",
+          "{#text_1}"
+        ],
+        [
+          "%7B#link%7D",
+          "{#text_2}"
+        ],
+        [
+          "%7B#link%7D",
+          "{#pc_thumb_tag}"
+        ],
+        [
+          "/board/product/list.html?board_no=6",
+          "GO TO Q/A"
+        ],
+        [
+          "/member/mall_agreement.html",
+          "TERMS & CONDITIONS"
+        ],
+        [
+          "/shopinfo/guide.html",
+          "GUIDE"
+        ],
+        [
+          "/member/privacy.html",
+          "PRIVACY POLICY"
+        ],
+        [
+          "/brand/about.html",
+          "BRAND STORY"
+        ],
+        [
+          "/library/list.html?board_no=101",
+          "LIBRARY"
+        ],
+        [
+          "/board/product/list.html?board_no=6",
+          "GO TO Q/A"
+        ],
+        [
+          "/board/free/list.html?board_no=1",
+          "공지사항"
+        ],
+        [
+          "%7B#link%7D",
+          "{#text_1}"
+        ],
+        [
+          "#none",
+          "[사업자정보확인]"
+        ],
+        [
+          "mailto:selvatico@selvatico.co",
+          "( selvatico@selvatico.co )"
+        ],
+        [
+          "%7B#link%7D",
+          "{#pc_thumb_tag}"
+        ],
+        [
+          "https://www.instagram.com/selvatico.co/",
+          ""
+        ]
+      ]
+    }
+  ]
+}

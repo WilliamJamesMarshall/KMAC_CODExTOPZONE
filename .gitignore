@@ -7,3 +7,5 @@ data/
 .env.*
 output/pdf/
 tmp/pdfs/
+reports/search-timing/
+reports/empty-output/

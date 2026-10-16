@@ -1,0 +1,20 @@
+--- before/tests/test_crawler.py
++++ after/tests/test_crawler.py
+@@ -167,6 +167,8 @@
+         for target in ["https://other.com/", "https://shop.example.com/", "https://127.0.0.1/",
+                        "https://www.example.com:8443/", "https://user:password@www.example.com/"]:
+             for kind in ["robots", "page"]:
++                if kind == "robots" and target in {"https://other.com/", "https://shop.example.com/"}:
++                    continue  # RFC 9309 permits public cross-authority robots redirects.
+                 with self.subTest(target=target, kind=kind):
+                     routes = {"https://example.com/robots.txt": robots(), "https://example.com/": redirect(target)}
+                     if kind == "robots":
+@@ -202,7 +204,7 @@
+         self.assertEqual(len(self.crawl("https://example.com/", {
+             "https://example.com/robots.txt": robots("", 404), "https://example.com/": page(),
+         })), 1)
+-        for policy, code in [(robots("", 429), "rate_limited"), (robots("", 403), "robots_unavailable"),
++        for policy, code in [(robots("", 429), "rate_limited"), (robots("", 521), "robots_unreachable"),
+                              (robots("<html>Not a policy</html>"), "robots_unavailable"),
+                              (robots("User-agent: *\nCrawl-delay: 11"), "crawl_delay_exceeded"),
+                              (TimeoutError(), "fetch_timeout"), (URLError(TimeoutError()), "fetch_timeout")]:

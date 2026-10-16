@@ -6,7 +6,9 @@ from http.client import HTTPConnection
 from http.server import ThreadingHTTPServer
 from io import BytesIO
 import json
+from pathlib import Path
 import re
+from tempfile import TemporaryDirectory
 from threading import Thread
 import unittest
 from unittest.mock import patch
@@ -49,8 +51,40 @@ def pdf_text(body: bytes) -> str:
 
 
 class PdfReportTests(unittest.TestCase):
+    def test_missing_cjk_glyphs_preserve_literal_text_with_an_embedded_fallback(self):
+        fixture = report_fixture()
+        fixture['business_summary'] = '担当자가 <원문> & 자료를 확인합니다.'
+        original = deepcopy(fixture)
+        body, _ = build_report(fixture)
+        self.assertIn('担当자가 <원문> & 자료를 확인합니다.', pdf_text(body))
+        self.assertEqual(fixture, original)
+        fonts = [font.get_object() for page in PdfReader(BytesIO(body)).pages
+                 for font in page['/Resources']['/Font'].get_object().values()]
+        fallback = [font for font in fonts if 'OSSFallbackCJK' in str(font.get('/BaseFont', ''))]
+        self.assertTrue(fallback)
+        self.assertTrue(all('/FontFile2' in font['/FontDescriptor'].get_object() for font in fallback))
+
+    def test_supplier_boundary_does_not_create_header_only_page(self):
+        fixture = report_fixture()
+        fixture["works"][0]["suppliers"][0]["description"] = (
+            "공정 데이터를 분석해 담당자가 검토할 결과를 제시합니다.\n" * 42)
+        body, _ = build_report(fixture)
+        for page in PdfReader(BytesIO(body)).pages:
+            self.assertGreater(len((page.extract_text() or '').splitlines()), 3)
+
+    def test_subscript_and_legacy_bullet_have_readable_glyphs(self):
+        fixture = report_fixture()
+        fixture["business_summary"] = "CO₂ 농도를 분석합니다. ￮ 센서 기록을 활용합니다. ① 자료 확인 ② 예측 비교"
+        body, _ = build_report(fixture)
+        text = pdf_text(body)
+        self.assertIn("CO2", text)
+        self.assertIn("○ 센서", text)
+        self.assertIn("1 자료 확인 2 예측 비교", text)
+        self.assertNotIn("\x00", text)
+
     def test_all_work_pairs_contacts_and_literal_text_are_included(self):
         fixture = report_fixture()
+        fixture["works"][0]["suppliers"][0]["coverage_note"] = "일부 단계 지원 · 추가 확인 필요\n미확인 기능: 결과 근거 표시"
         original = deepcopy(fixture)
         body, filename = build_report(fixture, created_at=datetime(2026, 10, 15, tzinfo=KST))
         self.assertTrue(body.startswith(b"%PDF-"))
@@ -58,7 +92,7 @@ class PdfReportTests(unittest.TestCase):
         text = pdf_text(body)
         for value in ("품질 관련 요인 찾기", "생산 조건 비교하기", "연구 자료 찾기",
                       "품질 관련 요인을 비교합니다.", "생산 조건별 차이를 비교합니다.",
-                      "02-123-4567", "홍길동", "<원문> & 상세정보", "아직 없습니다"):
+                      "02-123-4567", "홍길동", "<원문> & 상세정보", "아직 없습니다", "일부 단계 지원", "미확인 기능"):
             self.assertIn(value, text)
         self.assertEqual(fixture, original)
         for page in PdfReader(BytesIO(body)).pages:
@@ -106,9 +140,24 @@ class PdfReportTests(unittest.TestCase):
 
 
 class PdfEndpointTests(unittest.TestCase):
+    def test_failure_diagnostic_download_never_reanalyzes_or_invents_results(self):
+        from oss.analysis_failure import failure_record
+        payload = failure_record("https://buyer.example/?token=PRIVATE", stage="crawl", code="dns_failed",
+            message="도메인 주소를 찾지 못했습니다.", revision="test", started_at=datetime.now(KST))
+        with patch("oss.web_server.crawl_site", side_effect=AssertionError("Must not crawl")), \
+             patch("oss.web_server.analyze_business", side_effect=AssertionError("Must not call AI")):
+            status, headers, body = self.request(json.dumps(payload).encode())
+        self.assertEqual(status, 200)
+        self.assertEqual(headers["Content-Type"], "application/pdf")
+        self.assertIn("dns_failed", pdf_text(body))
+        self.assertNotIn("PRIVATE", pdf_text(body))
+        self.assertNotIn("추천 공급기업", pdf_text(body))
+
     @classmethod
     def setUpClass(cls):
-        handler = handler_for(None)
+        cls.timings = TemporaryDirectory()
+        handler = handler_for(None, timing_dir=Path(cls.timings.name),
+                              diagnostics_dir=Path(cls.timings.name) / "empty-output")
         handler.log_message = lambda *args: None
         cls.server = ThreadingHTTPServer(("127.0.0.1", 0), handler)
         cls.thread = Thread(target=cls.server.serve_forever, daemon=True)
@@ -119,6 +168,7 @@ class PdfEndpointTests(unittest.TestCase):
         cls.server.shutdown()
         cls.server.server_close()
         cls.thread.join()
+        cls.timings.cleanup()
 
     def request(self, body: bytes, *, length: int | None = None):
         connection = HTTPConnection(*self.server.server_address, timeout=20)
@@ -150,6 +200,24 @@ class PdfEndpointTests(unittest.TestCase):
                 self.assertEqual(status, 422)
                 self.assertTrue(headers["Content-Type"].startswith("application/json"))
                 self.assertIn("error", json.loads(content))
+
+    def test_screen_files_disable_caching_and_health_identifies_the_server(self):
+        for path in ("/", "/app.js?v=pdf-report-1", "/styles.css?v=pdf-report-1", "/api/health"):
+            connection = HTTPConnection(*self.server.server_address, timeout=10)
+            connection.request("GET", path)
+            response = connection.getresponse()
+            body = response.read()
+            self.assertEqual(response.status, 200)
+            self.assertEqual(response.getheader("Cache-Control"), "no-store")
+            if path == "/":
+                self.assertIn(b'id="report-button"', body)
+                self.assertNotIn(b'id="history-button"', body)
+            if path == "/api/health":
+                data = json.loads(body)
+                self.assertRegex(data["revision"], r"^[a-f0-9]{16}$")
+                self.assertTrue(data["project_dir"])
+                self.assertGreater(data["pid"], 0)
+            connection.close()
 
 
 if __name__ == "__main__":

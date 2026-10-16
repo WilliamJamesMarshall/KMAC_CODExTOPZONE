@@ -1,0 +1,35 @@
+.s.............................................ERROR:root:Supplier profile stage failed; retaining buyer analysis
+Traceback (most recent call last):
+  File "C:\KMAC_CODExTOPZONE\src\oss\web_server.py", line 70, in result_with_profiles
+    available = profiles.available_profiles(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\unittest\mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\unittest\mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\unittest\mock.py", line 1198, in _execute_mock_call
+    raise effect
+RuntimeError: lookup unavailable
+ERROR:root:Supplier advice stage failed; retaining buyer analysis
+Traceback (most recent call last):
+  File "C:\KMAC_CODExTOPZONE\src\oss\web_server.py", line 95, in result_with_profiles
+    add_supplier_advice(
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\unittest\mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\unittest\mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\unittest\mock.py", line 1198, in _execute_mock_call
+    raise effect
+RuntimeError: model unavailable
+........................................................................................s
+----------------------------------------------------------------------
+Ran 136 tests in 13.250s
+
+OK (skipped=2)
+http://127.0.0.1:8765/?v=current
+Restarting the development server with the current code.
+http://127.0.0.1:8765/?v=current

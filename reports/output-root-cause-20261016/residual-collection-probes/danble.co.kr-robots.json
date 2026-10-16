@@ -1,0 +1,6 @@
+{
+  "url": "https://danble.co.kr/robots.txt",
+  "final_url": "https://danble.co.kr/robots.txt",
+  "status": 200,
+  "text": "User-agent: *\nAllow: /\nDisallow: /login\nDisallow: /kakao_login\nDisallow: /oauth/apple/callback\nDisallow: /oauth/kakao/callback\nDisallow: /oauth/kakao/logout\nDisallow: /oauth/naver/callback\n\n\n\nSitemap: https://danble.co.kr/sitemap/sitemap.xml\nSitemap: https://danble.co.kr/sitemap/brand.xml\nSitemap: https://danble.co.kr/sitemap/detail.xml\nSitemap: https://danble.co.kr/sitemap/common.xml\n\n#DaumWebMasterTool:f9cec1ec865185e24e8867e4d3d5519ecfeecd93d22e14c6cd010d5227297459:cUneGUYaR4W+DmiBdNRc+g=="
+}

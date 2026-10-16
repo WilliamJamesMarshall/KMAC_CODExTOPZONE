@@ -1,0 +1,50 @@
+{
+  "host": "https://eyecane.com/",
+  "requests": [
+    {
+      "url": "https://eyecane.com/",
+      "links": [
+        [
+          "https://eyecane.com/",
+          ""
+        ],
+        [
+          "https://eyecane.com/",
+          ""
+        ],
+        [
+          "https://eyecane.com/",
+          "HOME"
+        ],
+        [
+          "https://eyecane.com/home/eyecane/",
+          "EyeCane™"
+        ],
+        [
+          "https://eyecane.com/home/faqs/",
+          "FAQs"
+        ],
+        [
+          "https://eyecane.com/author/punk2000js/",
+          "punk2000js"
+        ],
+        [
+          "https://pofo.themezaa.com/portfolio-grid-transform/",
+          "Cellico Triumps with 3 Consecutive CES Innovation Awards and Edison Awards!"
+        ],
+        [
+          "https://pofo.themezaa.com/portfolio-grid-transform/",
+          "The Smartest Way to Support Individuals with Vision Loss"
+        ],
+        [
+          "https://eyecane.com/wp-content/uploads/2025/01/eyecane_ces2025_catalog_s2_web5.pdf",
+          "Download EyeCane™ Catalog"
+        ],
+        [
+          "javascript:void(0);",
+          ""
+        ]
+      ]
+    }
+  ]
+}

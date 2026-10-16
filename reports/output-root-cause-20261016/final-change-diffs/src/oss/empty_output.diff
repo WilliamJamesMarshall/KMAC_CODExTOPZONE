@@ -1,0 +1,26 @@
+--- before/src/oss/empty_output.py
++++ after/src/oss/empty_output.py
+@@ -79,12 +79,13 @@
+ 
+ 
+ class EmptyOutputRecorder:
+-    def __init__(self, directory: Path = DEFAULT_DIAGNOSTICS_DIR):
++    def __init__(self, directory: Path = DEFAULT_DIAGNOSTICS_DIR, *, record_complete: bool = False):
+         self.directory = Path(directory)
+         self.directory.mkdir(parents=True, exist_ok=True)
+         self.index_path = self.directory / "index.jsonl"
+         self.index_path.touch(exist_ok=True)
+         self._lock = Lock()
++        self.record_complete = record_complete
+ 
+     def record(self, *, result: dict | None, source_url: str, pages: list[WebPage],
+                business: dict | None, ax_analysis: dict | None, pipeline: dict,
+@@ -94,7 +95,7 @@
+             {"section": number, "label": label, "path": "result",
+              "reason": "analysis_not_completed"} for number, label in SECTIONS.items()
+         ]
+-        if not missing:
++        if not missing and not self.record_complete:
+             return None
+         recorded_at = datetime.now(KST)
+         case_id = uuid4().hex

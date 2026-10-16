@@ -1,0 +1,35 @@
+--- before/src/oss/source_quality.py
++++ after/src/oss/source_quality.py
+@@ -0,0 +1,32 @@
++"""Source provenance and URL deduplication shared by collection and extraction."""
++
++import re
++from urllib.parse import parse_qsl, urlencode, urlparse
++
++
++TEMPLATE = re.compile(r"\{[#$][^{}\n]{1,100}\}|\{\{[^{}\n]{1,100}\}\}")
++
++
++def source_role(url: str, title: str = "") -> str:
++    parsed = urlparse(url)
++    path = parsed.path.lower()
++    query = dict(parse_qsl(parsed.query))
++    if re.search(r"/(?:member|login|myshop|order|cart)(?:/|\.|$)", path):
++        return "account"
++    if (re.search(r"/(?:review|qna|qanda)(?:/|\.|$)", path)
++            or ("/board/" in path and query.get("board_no") in {"4", "6"})
++            or re.search(r"(?:상품\s*(?:문의|후기)|구매\s*후기|Q\s*&\s*A)", title, re.I)):
++        return "customer_content"
++    return "corporate"
++
++
++def canonical_source_url(url: str) -> str:
++    parsed = urlparse(url)
++    query = [(key, value) for key, value in parse_qsl(parsed.query, keep_blank_values=True)
++             if not key.lower().startswith("utm_") and key.lower() not in
++             {"fbclid", "gclid", "viewcount", "hit_count", "_", "timestamp"}]
++    return parsed._replace(query=urlencode(sorted(query)), fragment="").geturl()
++
++
++def clean_source_text(text: str) -> str:
++    return TEMPLATE.sub("", text)

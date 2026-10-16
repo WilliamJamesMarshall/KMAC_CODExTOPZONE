@@ -88,6 +88,7 @@ h1,h2,h3,p{margin-top:0}
 .supplier-contact h5{font-size:14px;margin:0 0 8px;color:#2b384d}
 .supplier-contact a{color:#486cce;overflow-wrap:anywhere}
 .supplier-source{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.7}
+.coverage-note{padding:10px 12px;border-left:3px solid #bd8b2d;background:#fff7e8;color:#6e501c}
 .match-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);margin-top:39px;border-top:3px solid var(--blue);border-left:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
 .result-column{padding:24px 24px 28px;min-width:0}
 .ax-column{border-right:1px solid var(--line)}

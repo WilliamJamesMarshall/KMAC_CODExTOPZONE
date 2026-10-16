@@ -1,0 +1,18 @@
+{
+  "url": "http://www.os-semi.com/",
+  "error": "Invalid robots.txt response",
+  "code": "robots_unavailable",
+  "diagnostics": {
+    "request_url": "https://www.os-semi.com/",
+    "request_kind": "robots",
+    "redirects": [
+      {
+        "from": "http://www.os-semi.com/robots.txt",
+        "to": "https://www.os-semi.com/",
+        "http_status": 301,
+        "request_kind": "robots"
+      }
+    ],
+    "http_status": 200
+  }
+}

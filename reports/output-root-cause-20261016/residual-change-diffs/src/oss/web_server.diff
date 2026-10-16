@@ -1,0 +1,99 @@
+--- before/src/oss/web_server.py
++++ after/src/oss/web_server.py
+@@ -13,8 +13,9 @@
+ from time import perf_counter
+ from urllib.parse import quote
+ 
+-from .crawler import CrawlError, crawl_site, diagnostic_url
++from .crawler import CrawlError, RobotsPolicyCache, crawl_site, diagnostic_url
+ from .ax_opportunity import analyze_ax_opportunities
++from .analysis_failure import failure_record
+ from .business_profile import MODEL_DEFAULT, analyze_business
+ from .config import load_project_env
+ from .empty_output import DEFAULT_DIAGNOSTICS_DIR, EmptyOutputRecorder
+@@ -54,6 +55,7 @@
+     revision = application_revision()
+     timings = SearchTimingRecorder(timing_dir)
+     empty_outputs = EmptyOutputRecorder(diagnostics_dir)
++    robots_cache = RobotsPolicyCache()
+     profiles = SupplierProfileClient(
+         os.environ.get("SUPABASE_URL"), os.environ.get("SUPABASE_SECRET_KEY"),
+     )
+@@ -76,7 +78,7 @@
+             diagnostics["stage"] = "supplier_matching"
+             diagnostics["available_profile_count"] = len(available)
+         result = build_front_result(
+-            pages, kb, business, ax_analysis, eligible_supplier_ids=set(available), candidate_limit=6,
++            pages, kb, business, ax_analysis, eligible_supplier_ids=set(available), candidate_limit=12,
+             diagnostics=diagnostics.setdefault("matching", {}) if diagnostics is not None else None,
+         )
+         for item in result["suppliers"]:
+@@ -233,24 +235,31 @@
+                     raise ValueError("수요기업 홈페이지 URL을 입력해 주세요.")
+                 accepted = True
+                 pipeline["stage"] = "crawl"
+-                pages = crawl_site(url.strip(), max_pages=12, diagnostics=pipeline.setdefault("crawl", {}))
++                pages = crawl_site(url.strip(), max_pages=12, diagnostics=pipeline.setdefault("crawl", {}),
++                                   robots_cache=robots_cache)
+                 if not pages:
+                     raise ValueError("읽을 수 있는 홈페이지 페이지를 찾지 못했습니다.")
+                 try:
+                     pipeline["stage"] = "business_analysis"
+                     business = analyze_business(pages)
+                     pipeline["stage"] = "ax_analysis"
+-                    ax_analysis = analyze_ax_opportunities(business, kb)
++                    ax_analysis = analyze_ax_opportunities(
++                        business, kb, diagnostics=pipeline.setdefault("ax_analysis", {}))
+                 except ValueError as error:
+                     raise RuntimeError("사업구조 또는 AX 근거 검증에 실패했습니다.") from error
+                 result = result_with_profiles(pages, business, ax_analysis, diagnostics=pipeline)
++                result["input_url"] = diagnostic_url(url.strip())
++                result["analysis_meta"]["canonical_source_url"] = pages[0].url
+                 result["is_demo"] = False
+                 self._json(200, result)
+                 response_status = 200
+             except (ValueError, json.JSONDecodeError) as error:
+                 response_status = 422
+                 pipeline["exception_type"] = type(error).__name__
+-                self._json(422, {"error": str(error)})
++                self._json(422, {"error": str(error), **({"failure": failure_record(
++                    url, stage=pipeline["stage"], code="invalid_request", message=str(error),
++                    revision=revision, started_at=started_at, crawl=pipeline.get("crawl"))}
++                    if accepted else {})})
+             except CrawlError as error:
+                 response_status = 502
+                 pipeline.update(exception_type=type(error).__name__, error_code=error.code)
+@@ -262,6 +271,7 @@
+                     "redirect_loop": "홈페이지의 주소 이동이 반복되어 수집하지 못했습니다. 최종 홈페이지 주소를 입력해 주세요.",
+                     "robots_disallowed": "이 홈페이지는 자동 수집을 허용하지 않아 분석할 수 없습니다.",
+                     "robots_unavailable": "홈페이지의 자동 수집 정책(robots.txt)을 확인하지 못했습니다. 잠시 후 다시 시도해 주세요.",
++                    "robots_unreachable": "홈페이지 서버 오류로 robots.txt를 읽지 못했습니다. 서버 복구 후 다시 시도해 주세요.",
+                     "rate_limited": "홈페이지가 요청을 제한하고 있습니다. 잠시 후 다시 시도해 주세요.",
+                     "fetch_timeout": "홈페이지 응답 시간이 초과되었습니다. 잠시 후 다시 시도해 주세요.",
+                     "crawl_delay_exceeded": "홈페이지가 요구하는 수집 대기 시간이 현재 지원 범위를 초과합니다.",
+@@ -270,8 +280,11 @@
+                     "render_failed": "홈페이지의 자바스크립트 실행 후에도 본문을 읽지 못했습니다. 회사 소개나 사업 안내 페이지 주소로 다시 시도해 주세요.",
+                     "render_limit": "홈페이지의 동적 콘텐츠가 수집 시간 또는 용량 제한을 초과했습니다. 회사 소개 페이지 주소로 다시 시도해 주세요.",
+                 }
+-                self._json(502, {"error": messages.get(error.code, "홈페이지에 접속하지 못했습니다. 주소와 접속 상태를 확인해 주세요."),
+-                                 "error_code": error.code})
++                message = messages.get(error.code, "홈페이지에 접속하지 못했습니다. 주소와 접속 상태를 확인해 주세요.")
++                self._json(502, {"error": message, "error_code": error.code,
++                    "failure": failure_record(url, stage=pipeline["stage"], code=error.code,
++                        message=message, revision=revision, started_at=started_at,
++                        crawl=pipeline.get("crawl"), business=business)})
+             except (RuntimeError, OSError) as error:
+                 response_status = 502
+                 pipeline["exception_type"] = type(error).__name__
+@@ -286,7 +299,10 @@
+                 else:
+                     code, message = "analysis_failed", "홈페이지 분석을 완료하지 못했습니다. 잠시 후 다시 시도해 주세요."
+                 pipeline["error_code"] = code
+-                self._json(502, {"error": message, "error_code": code})
++                self._json(502, {"error": message, "error_code": code,
++                    "failure": failure_record(url, stage=stage, code=code, message=message,
++                        revision=revision, started_at=started_at,
++                        crawl=pipeline.get("crawl"), business=business)})
+             finally:
+                 if accepted:
+                     elapsed = perf_counter() - started

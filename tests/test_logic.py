@@ -150,12 +150,16 @@ class LogicTests(unittest.TestCase):
                 "fact_id": "DEMO", "quote": page.text, "url": page.url}],
             "mapping_reason": "품질예측 업무", "priority": "medium",
         }], "quality": {}}
+        diagnostics = {}
         result = build_front_result(
             [page], self.kb, business, ax_analysis,
             eligible_supplier_ids={"F003", "F004", "F005"},
+            diagnostics=diagnostics,
         )
         self.assertEqual([item["supplier_id"] for item in result["suppliers"]],
                          ["F003", "F004", "F005"])
+        self.assertEqual(set(diagnostics["J014"]["excluded_profile_ids"]), {"F001", "F002"})
+        self.assertEqual(diagnostics["J014"]["selected_supplier_ids"], ["F003", "F004", "F005"])
 
     def test_each_work_has_its_own_supplier_limit_and_shared_supplier(self) -> None:
         for number in range(2, 6):

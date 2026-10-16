@@ -1,0 +1,452 @@
+"""Regressions for the 14 cases left by the full URL audit."""
+
+from copy import deepcopy
+from datetime import datetime
+from io import BytesIO
+import json
+from unittest.mock import patch
+import unittest
+
+from pypdf import PdfReader
+
+from oss.analysis_failure import failure_record
+from oss.ax_opportunity import _task_rows, analyze_ax_opportunities
+from oss.browser_render import _allowed_resource
+from oss.business_profile import build_sources, validate_facts
+from oss.crawler import CrawlError, RobotsPolicyCache, _SiteAccess, has_readable_content
+from oss.models import WebPage
+from oss.pdf_report import build_report, KST
+from oss.presentation import build_front_result
+from oss.supplier_advice import _audit_accepts, _source_spans, _validated_cards, add_supplier_advice
+from test_ax_opportunity import _Client, _evaluation, _kb, _profile
+import test_crawler as crawler_fixture
+from test_crawler import page, redirect, robots
+from test_supplier_advice import Client, card, result
+from test_logic import test_kb
+
+
+def ax_check(tid="N009", **flags):
+    return {"task_id": tid, **dict.fromkeys(
+        ("grounded", "task_fit", "effect_causal", "data_honest", "safe_scope"), True),
+        "issues": [], **flags}
+
+
+class PartialAxRepairTests(unittest.TestCase):
+    def test_catalog_tags_are_distinct_from_exclusive_task_boundaries(self):
+        rows = _task_rows(_kb())
+        self.assertTrue(all('catalog_domain_tags' in row and 'domains' not in row for row in rows))
+        self.assertTrue(all('boundary' in row and 'purpose' in row and 'output' in row for row in rows))
+
+    def run_ax(self, checks, *extra, evaluations=None):
+        evaluations = evaluations or [_evaluation("N009")]
+        candidates = [{"task_id": row["task_id"], "function_id": "BF0", "fact_ids": ["F001"],
+                       "reason": "검증된 검사 업무"} for row in evaluations]
+        diagnostics = {}
+        output = analyze_ax_opportunities(_profile(), _kb(), client=_Client(
+            {"candidates": candidates}, {"opportunities": evaluations}, {"checks": checks}, *extra),
+            diagnostics=diagnostics)
+        return output, diagnostics
+
+    def test_causal_repair_cannot_change_work_inputs_outputs_or_grounding(self):
+        patch_row = {**_evaluation("N009"), "inputs": ["만들어낸 임상자료"],
+                     "target_function": "임상 대조군 예측", "process_change": "표시된 후보를 먼저 검토합니다."}
+        output, diagnostics = self.run_ax([ax_check(effect_causal=False)],
+            {"repairs": [patch_row]}, {"checks": [ax_check()]})
+        work = output["opportunities"][0]
+        self.assertEqual(work["inputs"], _evaluation("N009")["inputs"])
+        self.assertEqual(work["outputs"], _evaluation("N009")["outputs"])
+        self.assertEqual(work["target_function"], "제품 품질검사")
+        self.assertEqual(work["process_change"], patch_row["process_change"])
+        self.assertEqual(len(diagnostics["attempts"]), 2)
+
+    def test_grounding_failure_is_not_repaired_and_missing_reaudit_is_not_accepted(self):
+        output, _ = self.run_ax([ax_check(grounded=False, effect_causal=False)])
+        self.assertEqual(output["opportunities"], [])
+        output, _ = self.run_ax([ax_check(effect_causal=False)],
+            {"repairs": [_evaluation("N009")]}, {"checks": []})
+        self.assertEqual(output["opportunities"], [])
+
+    def test_repair_service_failure_preserves_other_audited_work(self):
+        output, diagnostics = self.run_ax([ax_check(), ax_check("J014", effect_causal=False)],
+            evaluations=[_evaluation("N009"), _evaluation("J014")])
+        self.assertEqual([row["task_id"] for row in output["opportunities"]], ["N009"])
+        self.assertEqual(diagnostics["repair_error"], "model_call_failed")
+
+
+class SupplierScopeTests(unittest.TestCase):
+    def test_direct_partial_support_discloses_the_missing_feature_without_changing_work(self):
+        data = result(); data['suppliers_by_task'] = {'J014': ['F001']}
+        data['opportunities'][0]['outputs'] = ['품질 관련 요인과 근거']
+        original = deepcopy(data['opportunities'])
+        draft = {**card(), 'supported_output_id': 'O0', 'supported_component': '품질 관련 요인'}
+        check = {'task_id': 'J014', 'supplier_id': 'F001', 'demand_fit': False, 'outputs_aligned': False,
+                 **dict.fromkeys(('supplier_supported', 'capability_fit', 'intrinsic_domain_fit',
+                    'workflow_scope_supported', 'conditions_explicit', 'honest', 'safe_scope'), True),
+                 'coverage_level': 'partial', 'component_aligned': True,
+                 'uncovered_requirements': ['결과 근거를 표시하는 기능']}
+        add_supplier_advice(data, client=Client({'cards': [draft]}, {'checks': [check]}))
+        self.assertEqual(data['suppliers_by_task']['J014'], ['F001'])
+        advice = data['suppliers'][0]['task_advice']['J014']
+        self.assertIn('일부 단계 지원', advice['coverage_note'])
+        self.assertIn('결과 근거를 표시하는 기능', advice['coverage_note'])
+        self.assertEqual(data['opportunities'], original)
+
+    def test_partial_label_cannot_hide_adjacent_operation_missing_source_or_unspecified_gaps(self):
+        card_row = {'supported_output': '문서의 누락·불일치 검토 항목', 'supported_component': '누락·불일치 검토 항목'}
+        check = {**dict.fromkeys(('supplier_supported', 'capability_fit', 'intrinsic_domain_fit',
+                    'workflow_scope_supported', 'conditions_explicit', 'honest', 'safe_scope'), True),
+                 'coverage_level': 'partial', 'component_aligned': True,
+                 'uncovered_requirements': ['일부 자료 형식의 처리는 확인되지 않았습니다.']}
+        for override in ({'coverage_level': 'adjacent'}, {'component_aligned': False},
+                         {'supplier_supported': False}, {'intrinsic_domain_fit': False},
+                         {'uncovered_requirements': []}):
+            self.assertFalse(_audit_accepts({**check, **override}, card_row))
+        self.assertFalse(_audit_accepts(check, {**card_row, 'supported_component': '검토'}))
+
+    def test_wrong_product_reference_can_be_repaired_with_verified_same_supplier_source(self):
+        data = result(); data['suppliers_by_task'] = {'J014': ['F001']}
+        data['suppliers'][0]['supplier_profile']['ai_solution_description'] += (
+            '\nSecond QA\n검사 자료를 분석하고 담당자가 확인할 관련 요인을 제시합니다.')
+        bad = {'task_id': 'J014', 'supplier_id': 'F001', 'supplier_supported': False,
+               'demand_fit': False, 'honest': True, 'safe_scope': True, 'capability_fit': False,
+               'intrinsic_domain_fit': True, 'workflow_scope_supported': False,
+               'conditions_explicit': True, 'outputs_aligned': False, 'issues': ['다른 제품 근거를 선택했습니다.'],
+               'repairable_within_scope': True, 'repair_solution_name': 'Second QA', 'repair_source_span_id': 'S003'}
+        good = {**bad, **dict.fromkeys(('supplier_supported', 'demand_fit', 'capability_fit',
+                 'workflow_scope_supported', 'outputs_aligned'), True), 'repairable_within_scope': False}
+        fixed = {**card(), 'solution_name': 'Second QA', 'source_span_id': 'S003'}
+        diagnostics = {}
+        add_supplier_advice(data, repair_attempts=1, diagnostics=diagnostics, client=Client(
+            {'cards': [card()]}, {'checks': [bad]}, {'cards': [fixed]}, {'checks': [good]}))
+        self.assertEqual(data['suppliers_by_task']['J014'], ['F001'])
+        self.assertEqual(data['suppliers'][0]['task_advice']['J014']['solution_name'], 'Second QA')
+        self.assertEqual(len(diagnostics['attempts']), 2)
+
+    def test_invented_repair_reference_or_intrinsic_conflict_cannot_force_retry(self):
+        for name, intrinsic in [('invented product', True), ('A²LAB', False)]:
+            data = result(); data['suppliers_by_task'] = {'J014': ['F001']}
+            check = {'task_id': 'J014', 'supplier_id': 'F001', 'supplier_supported': False,
+                'demand_fit': False, 'capability_fit': False, 'outputs_aligned': False,
+                'intrinsic_domain_fit': intrinsic, 'repairable_within_scope': True,
+                'repair_solution_name': name, 'repair_source_span_id': 'S001'}
+            add_supplier_advice(data, repair_attempts=1, client=Client(
+                {'cards': [card()]}, {'checks': [check]}))
+            self.assertEqual(data['suppliers_by_task']['J014'], [])
+
+    def test_unrequested_or_duplicate_audits_do_not_authorize_cards(self):
+        check = {"task_id": "J014", "supplier_id": "F001", "supplier_supported": True,
+                 "demand_fit": True, "honest": True, "safe_scope": True,
+                 **dict.fromkeys(("capability_fit", "intrinsic_domain_fit", "workflow_scope_supported",
+                                  "conditions_explicit", "outputs_aligned"), True)}
+        data = result(); diagnostics = {}
+        add_supplier_advice(data, diagnostics=diagnostics, client=Client(
+            {"cards": [card()]}, {"checks": [check, {**check, "task_id": "J020"}]}))
+        self.assertEqual(data["suppliers_by_task"], {"J014": ["F001"], "J020": []})
+        self.assertEqual(len(diagnostics["audit_checks"]), 1)
+        self.assertEqual(len(diagnostics["attempts"][0]["unexpected_audit_checks"]), 1)
+        data = result(); data["suppliers_by_task"] = {"J014": ["F001"]}
+        add_supplier_advice(data, client=Client({"cards": [card()]}, {"checks": [check, check]}))
+        self.assertEqual(data["suppliers_by_task"]["J014"], [])
+
+    def test_a_supplier_cannot_substitute_a_new_output_for_document_checking(self):
+        pairs = {("J014", "F001"): {"supplier_source": "A²LAB. " + card()["source_quote"],
+                 "demand": {"outputs": ["자료의 누락·불일치 목록"]}}}
+        issues = {}
+        self.assertEqual(_validated_cards({"cards": [{**card(), "supported_output_id": "O99"}]},
+                                          pairs, issues=issues), [])
+        self.assertIn("supported_output_id", issues[("J014", "F001")][0])
+
+    def test_correct_output_label_does_not_override_failed_output_alignment_audit(self):
+        data = result(); data["suppliers_by_task"] = {"J014": ["F001"]}
+        data["opportunities"][0]["outputs"] = ["자료의 누락·불일치 목록"]
+        check = {"task_id": "J014", "supplier_id": "F001", "supplier_supported": True,
+                 "demand_fit": True, "honest": True, "safe_scope": True,
+                 **dict.fromkeys(("capability_fit", "intrinsic_domain_fit", "workflow_scope_supported", "conditions_explicit"), True),
+                 "outputs_aligned": False, "issues": ["자료 점검 대신 예측을 제안했습니다."]}
+        add_supplier_advice(data, repair_attempts=1, client=Client(
+            {"cards": [{**card(), "supported_output_id": "O0", "supported_component": "누락·불일치 목록"}]}, {"checks": [check]}))
+        self.assertEqual(data["suppliers_by_task"]["J014"], [])
+
+    def test_source_id_resolves_to_original_characters_without_model_transcription(self):
+        source = "Zenitics\n통계 분석 → 시각화 → 리포트 작성까지를 역할별로 수행합니다."
+        spans = _source_spans(source)
+        pair = {("J014", "F001"): {"supplier_source": source, "source_spans": spans}}
+        draft = {**card(), "solution_name": "Zenitics", "source_span_id": "S002",
+                 "source_quote": "통계 분석–시각화–리포트 작성까지를 역할별로 수행합니다."}
+        cards = _validated_cards({"cards": [draft]}, pair)
+        self.assertEqual(cards[0]["source_quote"], spans[1]["text"])
+        self.assertIn("→", cards[0]["source_quote"])
+        self.assertNotEqual(draft["source_quote"], cards[0]["source_quote"])
+
+    def test_missing_source_id_cannot_fall_back_to_a_fabricated_quote(self):
+        source = "분석 자료와 검사 결과를 비교하는 솔루션을 제공합니다."
+        pair = {("J014", "F001"): {"supplier_source": source, "source_spans": _source_spans(source)}}
+        draft = {**card(), "solution_name": "솔루션", "source_span_id": "S999", "source_quote": source}
+        issues = {}
+        self.assertEqual(_validated_cards({"cards": [draft]}, pair, issues=issues), [])
+        self.assertIn("source_span_id", issues[("J014", "F001")][0])
+
+    def test_dimension_failure_cannot_be_hidden_by_legacy_fit_flag(self):
+        data = result(); data["suppliers_by_task"] = {"J014": ["F001"]}
+        check = {"task_id": "J014", "supplier_id": "F001", "supplier_supported": True,
+                 "demand_fit": True, "honest": True, "safe_scope": True,
+                 "capability_fit": True, "intrinsic_domain_fit": False,
+                 "workflow_scope_supported": True, "conditions_explicit": True, "outputs_aligned": True, "issues": []}
+        add_supplier_advice(data, repair_attempts=1,
+                            client=Client({"cards": [card()]}, {"checks": [check]}))
+        self.assertEqual(data["suppliers_by_task"]["J014"], [])
+
+    def test_every_omitted_pair_keeps_reason_and_missing_disposition_gets_one_retry(self):
+        data = result(); data["suppliers_by_task"] = {"J014": ["F001"]}
+        disposition = {"task_id": "J014", "supplier_id": "F001", "disposition": "unsupported",
+                       "supported_scope": "품질 분석", "source_quote": "",
+                       "missing_capabilities": ["항체 탐색"], "consultation_conditions": [],
+                       "reason": "공개 기능에 항체 탐색이 없습니다."}
+        diagnostics = {}
+        add_supplier_advice(data, repair_attempts=1, diagnostics=diagnostics, client=Client(
+            {"cards": [], "dispositions": []}, {"cards": [], "dispositions": [disposition]}))
+        self.assertEqual(len(diagnostics["attempts"]), 2)
+        self.assertEqual(diagnostics["dispositions"], [disposition])
+        self.assertEqual(diagnostics["excluded_pairs"][0]["reason"], "unsupported")
+
+    def test_seventh_candidate_is_examined_if_first_six_have_no_fit(self):
+        data = result(); data["opportunities"] = data["opportunities"][:1]
+        base = data["suppliers"][0]
+        ids = [f"F{i:03}" for i in range(1, 8)]
+        data["suppliers"] = [{**deepcopy(base), "supplier_id": sid} for sid in ids]
+        data["suppliers_by_task"] = {"J014": ids}
+        seventh = {**card(), "supplier_id": ids[-1]}
+        check = {"task_id": "J014", "supplier_id": ids[-1], "supplier_supported": True,
+                 "demand_fit": True, "honest": True, "safe_scope": True,
+                 **dict.fromkeys(("capability_fit", "intrinsic_domain_fit", "workflow_scope_supported", "conditions_explicit", "outputs_aligned"), True)}
+        diagnostics = {}
+        add_supplier_advice(data, diagnostics=diagnostics, client=Client(
+            {"cards": []}, {"cards": []}, {"cards": [seventh]}, {"checks": [check]}))
+        self.assertEqual(data["suppliers_by_task"], {"J014": [ids[-1]]})
+        self.assertEqual(len(diagnostics["input_pairs"]), 7)
+
+
+class SourceProvenanceTests(unittest.TestCase):
+    def test_official_pdf_page_references_remain_distinct_sources(self):
+        pages = [WebPage(f"https://company.example/catalog.pdf#page={i}", "카탈로그",
+                         "공식 제품의 기능과 고객 지원을 설명하는 문장입니다." + str(i)) for i in range(1, 4)]
+        sources = build_sources(pages)
+        self.assertEqual(len(sources), 3)
+        self.assertTrue(all(source["page_type"] == "official_document" for source in sources.values()))
+
+    def test_customer_questions_and_account_pages_are_not_company_evidence(self):
+        pages = [WebPage("https://shop.example/board/product/read.html?board_no=6&no=5", "상품 문의",
+                         "향기 샘플을 배송해 주실 수 있나요?"),
+                 WebPage("https://shop.example/member/login.html", "로그인", "회원 로그인 안내"),
+                 WebPage("https://shop.example/product/1", "향 제품", "향 제품을 온라인으로 판매하고 배송합니다.")]
+        sources = build_sources(pages)
+        self.assertEqual(len(sources), 1)
+        self.assertIn("/product/1", sources["P0"]["url"])
+        self.assertEqual(sources["P0"]["source_role"], "corporate")
+        sources["P0"]["source_role"] = "customer_content"
+        self.assertEqual(validate_facts({"facts": [{"kind": "service", "label": "샘플 배송",
+            "source_id": "P0", "quote": pages[-1].text}]}, sources, strict=False), [])
+
+    def test_template_fragments_are_not_readable_content_or_fact_quotes(self):
+        page = WebPage("https://shop.example/", "Shop", "{#html} {#m_thumb_tag} {#text_2}")
+        self.assertFalse(has_readable_content(page))
+        sources = build_sources([page])
+        self.assertNotIn("{#", sources["P0"]["text"])
+        self.assertTrue(sources["P0"]["template_residue_detected"])
+
+    def test_tracking_query_variants_do_not_consume_source_budget(self):
+        pages = [WebPage("https://shop.example/product?id=1&viewcount=" + str(i), "제품",
+                         "향 제품을 온라인으로 판매하고 배송합니다." + str(i)) for i in range(4)]
+        self.assertEqual(len(build_sources(pages)), 1)
+
+
+class FunctionalRetrievalTests(unittest.TestCase):
+    def build(self, profiles, eligible, budget=12):
+        from oss.models import Supplier
+        kb = test_kb()
+        for sid in profiles:
+            kb.suppliers[sid] = Supplier(sid, '기능검색 업체 ' + sid, 'https://supplier.example/', 'detailed')
+        before = deepcopy(kb.detailed_capabilities)
+        work = {'task_id': 'J020', 'solution_name': '승인된 상품 문서의 문의 답변 찾기',
+                'mechanism': '상품 문서에서 질문의 답변을 검색합니다.', 'inputs': ['승인된 상품 문서'],
+                'outputs': ['문의 답변 초안'], 'mapping_reason': '공개 상품 정보 제공',
+                'business_evidence': [{'url': 'https://buyer.example/', 'quote': '상품 정보를 온라인으로 제공합니다.',
+                                       'fact_id': 'F001'}]}
+        diagnostics = {}
+        output = build_front_result([WebPage('https://buyer.example/', '공식 상품 안내', '상품 안내')],
+            kb, {'fields': [], 'profile': {}, 'quality': {}}, {'opportunities': [work], 'quality': {}},
+            eligible_supplier_ids=eligible, candidate_limit=budget, supplier_profiles=profiles, diagnostics=diagnostics)
+        self.assertEqual(kb.detailed_capabilities, before)
+        return output, diagnostics
+
+    def test_verified_source_can_be_candidate_without_a_preexisting_exact_task_link(self):
+        source = '승인된 상품 문서를 검색하고 질문에 대한 답변을 생성하는 지식 검색 및 질의응답 솔루션입니다.'
+        output, trace = self.build({'G001': {'ai_solution_description': source}}, {'G001'})
+        self.assertEqual(output['suppliers_by_task']['J020'], ['G001'])
+        self.assertEqual(output['suppliers'][0]['status'], 'functional_candidate')
+        self.assertEqual(trace['J020']['source_retrieval_ids'], ['G001'])
+        self.assertEqual(trace['J020']['candidate_supplier_ids'], [])
+        self.assertNotIn('task_advice', output['suppliers'][0])  # Retrieval is not acceptance.
+
+    def test_source_retrieval_keeps_identity_eligibility_and_candidate_budget(self):
+        profiles = {f'G{i:03d}': {'ai_solution_description': '상품 문서 검색과 문의 답변 생성 서비스를 제공합니다.'}
+                    for i in range(1, 8)}
+        eligible = {'G001', 'G002', 'G003', 'G004'}
+        output, _ = self.build(profiles, eligible, budget=3)
+        self.assertEqual(len(output['suppliers_by_task']['J020']), 3)
+        self.assertTrue(set(output['suppliers_by_task']['J020']) <= eligible)
+
+
+class CrawlHarness(unittest.TestCase):
+    crawl = crawler_fixture.CrawlerRedirectTests.crawl
+
+
+class RobotsAndDomainTests(CrawlHarness):
+    def test_korean_product_path_and_space_query_are_encoded_before_http(self):
+        product = "https://example.com/product/%ED%96%A5%EC%88%98?keyword=%ED%95%B8%EB%93%9C%20%ED%81%AC%EB%A6%BC"
+        pages = self.crawl("https://example.com/", {
+            "https://example.com/robots.txt": robots(),
+            "https://example.com/": page('<a href="/product/향수?keyword=핸드 크림">제품</a>'),
+            product: page()}, max_pages=2)
+        self.assertEqual(len(pages), 2)
+        self.assertIn(product, self.transport.requests)
+
+    def test_official_linked_pdf_is_checked_and_collected_as_page_sources(self):
+        from reportlab.pdfgen.canvas import Canvas
+        from email.message import Message
+        from urllib.response import addinfourl
+        buffer = BytesIO(); canvas = Canvas(buffer)
+        canvas.drawString(30, 700, 'Official product instructions and customer support service.')
+        canvas.showPage(); canvas.drawString(30, 700, 'We provide product manuals and technical assistance.')
+        canvas.save()
+        headers = Message(); headers['Content-Type'] = 'application/pdf'
+        response = addinfourl(BytesIO(buffer.getvalue()), headers, 'https://example.com/catalog.pdf', 200)
+        response.msg = 'test PDF'
+        # Transport accepts text fixtures; wrap this one PDF response as bytes.
+        original = crawler_fixture.Transport.http_open
+        def transport(handler, request):
+            if request.full_url.endswith('/catalog.pdf'):
+                handler.requests.append(request.full_url)
+                return response
+            return original(handler, request)
+        with patch.object(crawler_fixture.Transport, 'http_open', transport), \
+             patch.object(crawler_fixture.Transport, 'https_open', transport):
+            pages = self.crawl('https://example.com/', {
+                'https://example.com/robots.txt': robots(),
+                'https://example.com/': page('<a href="/catalog.pdf">Product Catalog</a>')}, max_pages=3)
+        self.assertEqual(len(pages), 3)
+        self.assertEqual(pages[1].url, 'https://example.com/catalog.pdf#page=1')
+        self.assertIn('technical assistance', pages[2].text)
+        self.assertEqual(self.diagnostics['official_documents'][0]['pages_read'], 2)
+
+    def test_legacy_verified_script_navigation_checks_new_policy_without_browser(self):
+        with patch("oss.browser_render.BrowserRenderer") as browser:
+            pages = self.crawl("http://os2019.co.kr/", {
+                "http://os2019.co.kr/robots.txt": robots(),
+                "http://os2019.co.kr/": (200, {"Content-Type": "text/html"},
+                    '<script>document.location.replace("http://www.os-semi.com/");</script>'),
+                "http://www.os-semi.com/robots.txt": robots(),
+                "http://www.os-semi.com/": page()})
+        self.assertEqual(pages[0].url, "http://www.os-semi.com/")
+        browser.assert_not_called()
+
+    def test_public_cross_authority_robots_policy_applies_to_original_site(self):
+        with self.assertRaises(CrawlError) as error:
+            self.crawl("https://example.com/", {
+                "https://example.com/robots.txt": redirect("https://policy.example/policy.txt"),
+                "https://policy.example/policy.txt": robots("User-agent: *\nDisallow: /")})
+        self.assertEqual(error.exception.code, "robots_disallowed")
+        self.assertNotIn("https://example.com/", self.transport.requests)
+
+    def test_robots_403_allows_public_page_but_does_not_bypass_page_403(self):
+        self.assertEqual(len(self.crawl("https://example.com/", {
+            "https://example.com/robots.txt": robots("", 403), "https://example.com/": page()})), 1)
+        with self.assertRaises(CrawlError) as error:
+            self.crawl("https://example.com/", {
+                "https://example.com/robots.txt": robots("", 403),
+                "https://example.com/": (403, {}, "Protected")})
+        self.assertEqual(error.exception.code, "fetch_failed")
+
+    def test_verified_domain_redirect_still_checks_destination_robots(self):
+        with self.assertRaises(CrawlError) as error:
+            self.crawl("http://www.cellico.com/", {
+                "http://www.cellico.com/robots.txt": robots(),
+                "http://www.cellico.com/": redirect("https://eyecane.com/"),
+                "https://eyecane.com/robots.txt": robots("User-agent: *\nDisallow: /")})
+        self.assertEqual(error.exception.code, "robots_disallowed")
+        self.assertNotIn("https://eyecane.com/", self.transport.requests)
+
+
+class BoundedRendererTests(CrawlHarness):
+    def test_aborted_image_retry_loop_is_prevented_without_fetching_image(self):
+        html = '<body><img src="/loading.png" onerror="this.src=\'/loading.png\'"><div id="root"></div><script src="/app.js"></script></body>'
+        pages = self.crawl("https://example.com/", {
+            "https://example.com/robots.txt": robots(),
+            "https://example.com/": (200, {"Content-Type": "text/html"}, html),
+            "https://example.com/app.js": (200, {"Content-Type": "application/javascript"},
+                "document.querySelector('#root').textContent='We sell and deliver public industrial products to corporate customers.';")})
+        self.assertTrue(pages)
+        self.assertNotIn("https://example.com/loading.png", self.transport.requests)
+        self.assertLess(self.diagnostics["rendering"][0]["requests"], 10)
+
+    def test_content_dependency_allowlist_does_not_include_write_or_unrelated_api(self):
+        self.assertTrue(_allowed_resource("danble.co.kr", "https://production-api.danble.co.kr/api/v1/home2/feed"))
+        for site, url in [("evil.example", "https://production-api.danble.co.kr/api/v1/home2/feed"),
+                          ("danble.co.kr", "https://production-api.danble.co.kr/api/likes/product-like-list"),
+                          ("danble.co.kr", "https://arbitrary.danble.co.kr/api/v1/home2/feed")]:
+            self.assertFalse(_allowed_resource(site, url))
+
+    def test_repeated_blocked_fetches_stop_without_discarding_business_content(self):
+        pages = self.crawl("https://example.com/", {
+                "https://example.com/robots.txt": robots(),
+                "https://example.com/": (200, {"Content-Type": "text/html"},
+                    '<body><script src="/app.js"></script></body>'),
+                "https://example.com/app.js": (200, {"Content-Type": "application/javascript"},
+                    "function repeat(){fetch('https://blocked.example/api').catch(repeat).then(()=>{document.body.append('We sell and deliver industrial products to corporate customers.')})};repeat();")})
+        self.assertTrue(pages)
+        self.assertLessEqual(self.diagnostics["rendering"][0]["requests"], 10)
+        self.assertLessEqual(len(self.diagnostics["blocked_resources"]), 2)
+        self.assertNotIn("https://blocked.example/api", self.transport.requests)
+
+    def test_public_content_api_get_is_rendered_after_its_robots_check(self):
+        api = "https://production-api.danble.co.kr/api/v1/home2/feed"
+        script = f"fetch('{api}').then(r=>r.json()).then(d=>document.body.append(d.text));"
+        pages = self.crawl("https://danble.co.kr/", {
+            "https://danble.co.kr/robots.txt": robots(),
+            "https://danble.co.kr/": (200, {"Content-Type": "text/html"},
+                '<body><script src="/app.js"></script></body>'),
+            "https://danble.co.kr/app.js": (200, {"Content-Type": "application/javascript"}, script),
+            "https://production-api.danble.co.kr/robots.txt": robots("", 404),
+            api: (200, {"Content-Type": "application/json", "Access-Control-Allow-Origin": "*"},
+                  json.dumps({"text": "We sell and deliver clothing with an online styling service."}))})
+        self.assertIn("online styling", pages[0].text)
+        self.assertLess(self.transport.requests.index("https://production-api.danble.co.kr/robots.txt"),
+                        self.transport.requests.index(api))
+
+
+class FailureReportTests(unittest.TestCase):
+    def test_failure_is_downloadable_without_inventing_business_or_recommendations(self):
+        record = failure_record("https://buyer.example/?token=PRIVATE", stage="crawl", code="dns_failed",
+            message="홈페이지 주소를 찾지 못했습니다.", revision="test", started_at=datetime.now(KST),
+            crawl={"request_url": "https://user:password@buyer.example/robots.txt?token=PRIVATE"})
+        body, name = build_report(record)
+        text = "\n".join(page.extract_text() for page in PdfReader(BytesIO(body)).pages)
+        for expected in ("분석 실패 진단 기록", "dns_failed", "buyer.example", "A/AAAA"):
+            self.assertIn(expected, text)
+        for forbidden in ("PRIVATE", "password", "추천 공급기업", "01.기업 이해"):
+            self.assertNotIn(forbidden, text)
+        self.assertIn("분석실패_진단보고서", name)
+
+    def test_only_valid_cached_robots_are_reused_until_expiry(self):
+        cache = RobotsPolicyCache()
+        policy = object()
+        with patch("oss.crawler.time.monotonic", return_value=0):
+            cache.put("https://example.com", policy)
+        with patch("oss.crawler.time.monotonic", return_value=3599):
+            self.assertIs(cache.get("https://example.com"), policy)
+        with patch("oss.crawler.time.monotonic", return_value=3601):
+            self.assertIsNone(cache.get("https://example.com"))
+
+
+if __name__ == "__main__":
+    unittest.main()

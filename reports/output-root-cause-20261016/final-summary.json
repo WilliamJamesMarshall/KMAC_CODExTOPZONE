@@ -1,0 +1,97 @@
+{
+  "revision": "21d5bd29f0cd43c8",
+  "pdf_revision": "a548e37d9093ea07",
+  "cases": 14,
+  "prefix_counts": {
+    "[010203불량][분석실패_진단]": 3,
+    "[03비정상]": 2,
+    "[정상]": 9
+  },
+  "analysis_reports": 11,
+  "diagnostic_reports": 3,
+  "all_zero_supplier_indices": [],
+  "previous_54_pdfs_preserved": 54,
+  "pdf_verification_passed": 14,
+  "server_diagnostics_matched": 14,
+  "causal_repair_attempted_indices": [
+    15
+  ],
+  "partial_supplier_cards": 23,
+  "unit_tests": {
+    "run": 136,
+    "passed": 134,
+    "skipped": 2
+  },
+  "warnings": [],
+  "frozen_work_recheck": {
+    "works": 7,
+    "works_with_suppliers": 4,
+    "rows": [
+      {
+        "index": 20,
+        "task_id": "N018",
+        "title": "용해성 바이러스 후보 설계 좁히기",
+        "supplier_ids": [],
+        "partial_supplier_ids": []
+      },
+      {
+        "index": 20,
+        "task_id": "N019",
+        "title": "질병 표적·타깃 조합 좁히기",
+        "supplier_ids": [
+          "I048"
+        ],
+        "partial_supplier_ids": [
+          "I048"
+        ]
+      },
+      {
+        "index": 23,
+        "task_id": "J063",
+        "title": "치료 제어 AI 모델·실험 결과 비교하기",
+        "supplier_ids": [
+          "F039"
+        ],
+        "partial_supplier_ids": [
+          "F039"
+        ]
+      },
+      {
+        "index": 23,
+        "task_id": "N072",
+        "title": "임상연구 설계·분석 자료 검토하기",
+        "supplier_ids": [],
+        "partial_supplier_ids": []
+      },
+      {
+        "index": 62,
+        "task_id": "N002",
+        "title": "매장별 추천 상품 좁히기",
+        "supplier_ids": [
+          "I002"
+        ],
+        "partial_supplier_ids": [
+          "I002"
+        ]
+      },
+      {
+        "index": 62,
+        "task_id": "N030",
+        "title": "상품별 권장 발주량 좁히기",
+        "supplier_ids": [
+          "I097"
+        ],
+        "partial_supplier_ids": [
+          "I097"
+        ]
+      },
+      {
+        "index": 62,
+        "task_id": "N053",
+        "title": "소싱 상품·공급사 조건 비교하기",
+        "supplier_ids": [],
+        "partial_supplier_ids": []
+      }
+    ]
+  }
+}

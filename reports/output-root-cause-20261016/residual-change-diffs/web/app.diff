@@ -1,0 +1,72 @@
+--- before/web/app.js
++++ after/web/app.js
+@@ -6,6 +6,7 @@
+ const emptyState = document.querySelector('#empty-state');
+ const resultContent = document.querySelector('#result-content');
+ let currentResult;
++let currentFailure;
+ let analyzing = false;
+ let downloading = false;
+ 
+@@ -210,6 +211,7 @@
+ 
+ function renderResult(data) {
+   currentResult = data;
++  currentFailure = null;
+   updateReportButton();
+   emptyState.hidden = true;
+   resultContent.hidden = false;
+@@ -222,6 +224,12 @@
+ }
+ 
+ async function requestResult(url) {
++  currentResult = null;
++  currentFailure = null;
++  resultContent.hidden = true;
++  emptyState.hidden = false;
++  document.querySelector('#results-heading').textContent = '기업을 분석하고 있습니다';
++  emptyState.querySelector('p').textContent = '홈페이지의 공개 사업 정보를 확인하고 있습니다.';
+   setBusy(true);
+   showFeedback('기업 정보를 읽고 AI 활용 업무와 관련 업체를 찾고 있습니다. 잠시 기다려 주세요.', 'loading');
+   try {
+@@ -231,7 +239,14 @@
+       body: JSON.stringify({ url }),
+     });
+     const data = await response.json();
+-    if (!response.ok) throw new Error(data.error || '분석 결과를 가져오지 못했습니다.');
++    if (!response.ok) {
++      currentFailure = data.failure?.kind === 'analysis_failure' ? data.failure : null;
++      document.querySelector('#results-heading').textContent = '분석을 완료하지 못했습니다';
++      emptyState.querySelector('p').textContent = currentFailure
++        ? `${currentFailure.message} ${currentFailure.action} 실패 진단 보고서를 다운로드할 수 있습니다.`
++        : (data.error || '잠시 후 다시 시도해 주세요.');
++      throw new Error(data.error || '분석 결과를 가져오지 못했습니다.');
++    }
+     const stageErrors = data.analysis_meta?.stage_errors || [];
+     showFeedback(stageErrors.map(item => item.message).join(' '), stageErrors.length ? 'error' : '');
+     renderResult(data);
+@@ -257,12 +272,13 @@
+ });
+ 
+ function updateReportButton() {
+-  reportButton.disabled = !currentResult || analyzing || downloading;
+-  reportButton.textContent = downloading ? 'PDF 생성 중' : '보고서 다운로드';
++  reportButton.disabled = (!currentResult && !currentFailure) || analyzing || downloading;
++  reportButton.textContent = downloading ? 'PDF 생성 중' : currentFailure ? '실패 진단 보고서 다운로드' : '보고서 다운로드';
+   reportButton.setAttribute('aria-busy', String(downloading));
+ }
+ 
+ function reportPayload() {
++  if (currentFailure) return currentFailure;
+   return {
+     company_name: currentResult.site_name || '수요기업 분석 결과',
+     source_url: currentResult.input_url || '',
+@@ -296,7 +312,7 @@
+ }
+ 
+ reportButton.addEventListener('click', async () => {
+-  if (!currentResult || analyzing || downloading) return;
++  if ((!currentResult && !currentFailure) || analyzing || downloading) return;
+   downloading = true;
+   submitButton.disabled = true;
+   updateReportButton();

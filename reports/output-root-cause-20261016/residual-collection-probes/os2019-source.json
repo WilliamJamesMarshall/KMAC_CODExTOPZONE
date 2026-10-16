@@ -1,0 +1,6 @@
+{
+  "url": "http://os2019.co.kr/",
+  "html": "\n\n<script language=\"JavaScript\"> document.location.replace(\"http://www.os-semi.com\");</script>",
+  "error": "Rendered page left the website",
+  "code": "redirect_blocked"
+}

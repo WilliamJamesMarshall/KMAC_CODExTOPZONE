@@ -6,6 +6,7 @@ const feedback = document.querySelector('#feedback');
 const emptyState = document.querySelector('#empty-state');
 const resultContent = document.querySelector('#result-content');
 let currentResult;
+let currentFailure;
 let analyzing = false;
 let downloading = false;
 
@@ -169,6 +170,7 @@ function renderSuppliers(items, opportunity) {
     const advice = item.task_advice?.[opportunity.task_id] || fallbackAdvice(item, opportunity);
     card.append(element('h4', '', item.name));
     if (advice.solution_name) card.append(element('p', 'solution-name', advice.solution_name));
+    if (advice.coverage_note) card.append(element('p', 'coverage-note supplier-source', advice.coverage_note));
     card.append(detailRow('왜 이 업체인가요?', advice.why));
     card.append(detailRow('우리 업무에 어떻게 쓰나요?', advice.how));
     card.append(detailRow('업무가 어떻게 달라지나요?', advice.change));
@@ -210,6 +212,7 @@ function renderSuppliers(items, opportunity) {
 
 function renderResult(data) {
   currentResult = data;
+  currentFailure = null;
   updateReportButton();
   emptyState.hidden = true;
   resultContent.hidden = false;
@@ -222,6 +225,12 @@ function renderResult(data) {
 }
 
 async function requestResult(url) {
+  currentResult = null;
+  currentFailure = null;
+  resultContent.hidden = true;
+  emptyState.hidden = false;
+  document.querySelector('#results-heading').textContent = '기업을 분석하고 있습니다';
+  emptyState.querySelector('p').textContent = '홈페이지의 공개 사업 정보를 확인하고 있습니다.';
   setBusy(true);
   showFeedback('기업 정보를 읽고 AI 활용 업무와 관련 업체를 찾고 있습니다. 잠시 기다려 주세요.', 'loading');
   try {
@@ -231,8 +240,16 @@ async function requestResult(url) {
       body: JSON.stringify({ url }),
     });
     const data = await response.json();
-    if (!response.ok) throw new Error(data.error || '분석 결과를 가져오지 못했습니다.');
-    showFeedback('');
+    if (!response.ok) {
+      currentFailure = data.failure?.kind === 'analysis_failure' ? data.failure : null;
+      document.querySelector('#results-heading').textContent = '분석을 완료하지 못했습니다';
+      emptyState.querySelector('p').textContent = currentFailure
+        ? `${currentFailure.message} ${currentFailure.action} 실패 진단 보고서를 다운로드할 수 있습니다.`
+        : (data.error || '잠시 후 다시 시도해 주세요.');
+      throw new Error(data.error || '분석 결과를 가져오지 못했습니다.');
+    }
+    const stageErrors = data.analysis_meta?.stage_errors || [];
+    showFeedback(stageErrors.map(item => item.message).join(' '), stageErrors.length ? 'error' : '');
     renderResult(data);
   } catch (error) {
     showFeedback(error.message || '분석 중 오류가 발생했습니다.', 'error');
@@ -256,12 +273,13 @@ form.addEventListener('submit', (event) => {
 });
 
 function updateReportButton() {
-  reportButton.disabled = !currentResult || analyzing || downloading;
-  reportButton.textContent = downloading ? 'PDF 생성 중' : '보고서 다운로드';
+  reportButton.disabled = (!currentResult && !currentFailure) || analyzing || downloading;
+  reportButton.textContent = downloading ? 'PDF 생성 중' : currentFailure ? '실패 진단 보고서 다운로드' : '보고서 다운로드';
   reportButton.setAttribute('aria-busy', String(downloading));
 }
 
 function reportPayload() {
+  if (currentFailure) return currentFailure;
   return {
     company_name: currentResult.site_name || '수요기업 분석 결과',
     source_url: currentResult.input_url || '',
@@ -278,6 +296,7 @@ function reportPayload() {
         const advice = supplier.task_advice?.[work.task_id] || fallbackAdvice(supplier, work);
         return {
           name: supplier.name, solution_name: advice.solution_name || '',
+          coverage_note: advice.coverage_note || '',
           why: advice.why || '', how: advice.how || '',
           change: advice.change || '', check: advice.check || '',
           phone: profile.phone || '등록된 전화번호가 없습니다.',
@@ -295,7 +314,7 @@ function reportPayload() {
 }
 
 reportButton.addEventListener('click', async () => {
-  if (!currentResult || analyzing || downloading) return;
+  if ((!currentResult && !currentFailure) || analyzing || downloading) return;
   downloading = true;
   submitButton.disabled = true;
   updateReportButton();

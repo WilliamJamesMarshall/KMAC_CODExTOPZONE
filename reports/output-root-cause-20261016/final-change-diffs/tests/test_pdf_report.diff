@@ -1,0 +1,22 @@
+--- before/tests/test_pdf_report.py
++++ after/tests/test_pdf_report.py
+@@ -125,6 +125,19 @@
+ 
+ 
+ class PdfEndpointTests(unittest.TestCase):
++    def test_failure_diagnostic_download_never_reanalyzes_or_invents_results(self):
++        from oss.analysis_failure import failure_record
++        payload = failure_record("https://buyer.example/?token=PRIVATE", stage="crawl", code="dns_failed",
++            message="도메인 주소를 찾지 못했습니다.", revision="test", started_at=datetime.now(KST))
++        with patch("oss.web_server.crawl_site", side_effect=AssertionError("Must not crawl")), \
++             patch("oss.web_server.analyze_business", side_effect=AssertionError("Must not call AI")):
++            status, headers, body = self.request(json.dumps(payload).encode())
++        self.assertEqual(status, 200)
++        self.assertEqual(headers["Content-Type"], "application/pdf")
++        self.assertIn("dns_failed", pdf_text(body))
++        self.assertNotIn("PRIVATE", pdf_text(body))
++        self.assertNotIn("추천 공급기업", pdf_text(body))
++
+     @classmethod
+     def setUpClass(cls):
+         cls.timings = TemporaryDirectory()

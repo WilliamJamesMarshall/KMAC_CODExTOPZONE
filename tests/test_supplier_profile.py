@@ -56,9 +56,12 @@ class SupplierProfileTests(unittest.TestCase):
 
     def test_available_profiles_excludes_missing_display_field(self) -> None:
         entry = {**self.entry, "raw_record": {**self.entry["raw_record"], "bizTelNo": ""}}
+        diagnostics = {}
         with patch.object(self.client, "_supplier_index", return_value={"예시ai": [self.candidate]}), \
              patch.object(self.client, "_rows", return_value=[entry]):
-            self.assertEqual(self.client.available_profiles(workbook_supplier()), {})
+            self.assertEqual(self.client.available_profiles(workbook_supplier(), diagnostics=diagnostics), {})
+        self.assertEqual(diagnostics["candidates"], [
+            {"supplier_id": "F001", "status": "matched", "missing_fields": ["phone"]}])
 
 
 if __name__ == "__main__":

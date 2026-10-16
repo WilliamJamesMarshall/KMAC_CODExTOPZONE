@@ -7,7 +7,8 @@ from urllib.parse import urlparse
 from .ax_opportunity import demand_tasks_for_matching
 from .identity import company_name_key
 from .matching import match_suppliers
-from .models import WebPage
+from .models import Evidence, SupplierMatch, WebPage
+from .source_retrieval import SupplierSourceIndex
 from .workbook import KnowledgeBase
 
 
@@ -24,26 +25,70 @@ def _web_url(value: str | None) -> str | None:
 def build_front_result(pages: list[WebPage], kb: KnowledgeBase, business_analysis: dict,
                        ax_analysis: dict,
                        *, max_suppliers: int = 3,
-                       eligible_supplier_ids: set[str] | None = None) -> dict:
+                       eligible_supplier_ids: set[str] | None = None,
+                       candidate_limit: int | None = None,
+                       supplier_profiles: dict[str, dict] | None = None,
+                       diagnostics: dict | None = None) -> dict:
     """Select up to three suppliers independently for each audited opportunity."""
     if not pages:
         raise ValueError("No readable website pages were collected")
     if not 1 <= max_suppliers <= 3:
         raise ValueError("The screen supports one to three suppliers")
+    candidate_limit = candidate_limit or max_suppliers
+    if not max_suppliers <= candidate_limit <= 12:
+        raise ValueError("Supplier candidate budget must be between the display limit and twelve")
     opportunities = ax_analysis["opportunities"]
+    descriptions = {sid: profile.get('ai_solution_description') or ''
+                    for sid, profile in (supplier_profiles or {}).items() if sid in kb.suppliers
+                    and (eligible_supplier_ids is None or sid in eligible_supplier_ids)}
+    source_index = SupplierSourceIndex(descriptions) if descriptions else None
     by_supplier: dict[str, dict] = {}
     suppliers_by_task: dict[str, list[str]] = {}
     for opportunity in opportunities:
         task_id = opportunity["task_id"]
         matches = match_suppliers(demand_tasks_for_matching([opportunity]), kb,
                                  include_scan=False, limit=len(kb.suppliers))
+        trace = {"candidate_supplier_ids": [match.supplier_id for match in matches],
+                 "excluded_profile_ids": [], "excluded_duplicate_name_ids": [],
+                 "source_retrieval_ids": []}
+        if diagnostics is not None:
+            diagnostics[task_id] = trace
+        if source_index is not None:
+            exact = [match for match in matches if match.supplier_id in descriptions][:min(6, candidate_limit)]
+            used = {match.supplier_id for match in exact}
+            by_id = {match.supplier_id: match for match in matches}
+            additional = []
+            for sid in source_index.candidates(kb.tasks[task_id], opportunity):
+                if len(exact) + len(additional) >= candidate_limit:
+                    break
+                if sid in used:
+                    continue
+                profile = supplier_profiles[sid]
+                supplier = kb.suppliers[sid]
+                candidate = by_id.get(sid) or SupplierMatch(
+                    supplier_id=sid, source_supplier_ids=(sid,), supplier_name=supplier.name,
+                    task_fit_score=0, status='functional_candidate', identity_review_required=sum(
+                        company_name_key(item.name) == company_name_key(supplier.name)
+                        for item in kb.suppliers.values()) > 1,
+                    matched_tasks=(task_id,),
+                    evidence=(Evidence(profile.get('homepage_url') or supplier.homepage_url or '',
+                        descriptions[sid][:3000], 'supplier_profile_description', sid,
+                        'source_text_retrieval_candidate', '미검토'),),
+                    explanation='원문 유사검색 후보 · 실제 기능과 업무 적합성 별도 검증')
+                additional.append(candidate); used.add(sid)
+                trace['source_retrieval_ids'].append(sid)
+                if len(exact) + len(additional) >= candidate_limit:
+                    break
+            matches = exact + additional + [match for match in matches if match.supplier_id not in used]
         selected: list[str] = []
         shown_names: set[str] = set()
         for match in matches:
             if eligible_supplier_ids is not None and match.supplier_id not in eligible_supplier_ids:
+                trace["excluded_profile_ids"].append(match.supplier_id)
                 continue
             normalized_name = company_name_key(match.supplier_name)
             if normalized_name in shown_names:
+                trace["excluded_duplicate_name_ids"].append(match.supplier_id)
                 continue  # Never merge evidence from different source identities.
             shown_names.add(normalized_name)
             selected.append(match.supplier_id)
@@ -79,9 +124,10 @@ def build_front_result(pages: list[WebPage], kb: KnowledgeBase, business_analysi
             ]
             item["solution_descriptions"] = list(dict.fromkeys(
                 [*item["solution_descriptions"], *solutions]))
-            if len(selected) >= max_suppliers:
+            if len(selected) >= candidate_limit:
                 break
         suppliers_by_task[task_id] = selected
+        trace["selected_supplier_ids"] = selected.copy()
 
     return {
         "input_url": pages[0].url,

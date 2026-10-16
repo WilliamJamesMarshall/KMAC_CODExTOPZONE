@@ -1,0 +1,56 @@
+{
+  "pages": [
+    {
+      "url": "https://www.os-semi.com/",
+      "title": "오스",
+      "characters": 718
+    },
+    {
+      "url": "https://www.os-semi.com/page.php?p_id=business1",
+      "title": "오스",
+      "characters": 1725
+    },
+    {
+      "url": "https://www.os-semi.com/page.php?p_id=business2",
+      "title": "오스",
+      "characters": 891
+    }
+  ],
+  "diagnostics": {
+    "request_url": "https://www.os-semi.com/page.php",
+    "request_kind": "page",
+    "robots_warnings": [
+      {
+        "url": "http://os2019.co.kr/robots.txt",
+        "http_status": 404,
+        "policy": "unavailable_allow_public_pages"
+      },
+      {
+        "url": "http://www.os-semi.com/robots.txt",
+        "http_status": 200,
+        "policy": "html_response_parseable_rules_only"
+      }
+    ],
+    "canonical_url": "https://www.os-semi.com/",
+    "redirects": [
+      {
+        "from": "http://os2019.co.kr/",
+        "to": "http://www.os-semi.com",
+        "request_kind": "javascript_navigation"
+      },
+      {
+        "from": "http://www.os-semi.com/robots.txt",
+        "to": "https://www.os-semi.com/",
+        "http_status": 301,
+        "request_kind": "robots"
+      },
+      {
+        "from": "http://www.os-semi.com",
+        "to": "https://www.os-semi.com/",
+        "http_status": 301,
+        "request_kind": "page"
+      }
+    ],
+    "http_status": 200
+  }
+}

@@ -1,0 +1,13 @@
+--- before/src/oss/presentation.py
++++ after/src/oss/presentation.py
+@@ -33,8 +33,8 @@
+     if not 1 <= max_suppliers <= 3:
+         raise ValueError("The screen supports one to three suppliers")
+     candidate_limit = candidate_limit or max_suppliers
+-    if not max_suppliers <= candidate_limit <= 6:
+-        raise ValueError("Supplier candidate budget must be between the display limit and six")
++    if not max_suppliers <= candidate_limit <= 12:
++        raise ValueError("Supplier candidate budget must be between the display limit and twelve")
+     opportunities = ax_analysis["opportunities"]
+     by_supplier: dict[str, dict] = {}
+     suppliers_by_task: dict[str, list[str]] = {}

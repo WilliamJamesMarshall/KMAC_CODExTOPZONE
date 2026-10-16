@@ -1,0 +1,290 @@
+--- before/src/oss/crawler.py
++++ after/src/oss/crawler.py
+@@ -6,6 +6,7 @@
+ import re
+ import socket
+ import time
++from threading import Lock
+ from contextlib import ExitStack
+ from html.parser import HTMLParser
+ from http.client import InvalidURL
+@@ -16,6 +17,7 @@
+ from urllib.robotparser import RobotFileParser
+ 
+ from .models import WebPage
++from .source_quality import canonical_source_url, clean_source_text, source_role, TEMPLATE
+ 
+ 
+ USER_AGENT = "OSS-AX-Research/0.1 (+public company page analysis)"
+@@ -50,9 +52,23 @@
+     if parsed.port not in {None, 80, 443}:
+         raise ValueError("Nonstandard URL ports are not allowed")
+     try:
+-        addresses = {item[4][0] for item in socket.getaddrinfo(parsed.hostname, None)}
++        literal = ipaddress.ip_address(parsed.hostname)
++    except ValueError:
++        literal = None
++    if literal is not None and not literal.is_global:
++        raise ValueError("Private or local network addresses are not allowed")
++    try:
++        try:
++            addresses = {item[4][0] for item in socket.getaddrinfo(parsed.hostname, None)}
++        except socket.gaierror as error:
++            if error.errno != socket.EAI_AGAIN:
++                raise
++            time.sleep(0.2)
++            addresses = {item[4][0] for item in socket.getaddrinfo(parsed.hostname, None)}
+     except socket.gaierror as error:
+         raise CrawlError("Website hostname could not be resolved", code="dns_failed") from error
++    if not addresses:
++        raise CrawlError("Website hostname has no usable address", code="dns_failed")
+     for address in addresses:
+         if not ipaddress.ip_address(address).is_global:
+             raise ValueError("Private or local network addresses are not allowed")
+@@ -69,7 +85,14 @@
+ 
+ 
+ def _same_site_host(host: str | None, other: str | None) -> bool:
+-    return bool(host and other and host.removeprefix("www.") == other.removeprefix("www."))
++    # Official destinations inspected 2026-10-16; evidence is recorded in
++    # docs/residual-output-fixes-2026-10-16.md. Never trust arbitrary redirects.
++    aliases = {"cellico.com": "eyecane.com", "noul.kr": "noul.com",
++               "os2019.co.kr": "os-semi.com"}
++    def canonical(value):
++        value = value.lower().removeprefix("www.")
++        return aliases.get(value, value)
++    return bool(host and other and canonical(host) == canonical(other))
+ 
+ 
+ class CrawlError(RuntimeError):
+@@ -99,7 +122,9 @@
+             _public_http_url(newurl)
+         except ValueError as error:
+             raise CrawlError("Unsafe redirect blocked", code="redirect_blocked") from error
+-        if not _same_site_host(self.host, urlparse(newurl).hostname):
++        # RFC 9309 robots redirects may cross authorities; body redirects still
++        # require a verified company relation. Every hop retains public-IP checks.
++        if self.request_kind != "robots" and not _same_site_host(self.host, urlparse(newurl).hostname):
+             raise CrawlError("Cross-host redirect blocked", code="redirect_blocked")
+         if self.check_page:
+             self.check_page(newurl)
+@@ -118,14 +143,49 @@
+     code = "rate_limited"
+ 
+ 
++class RobotsPolicyCache:
++    """Keep successfully fetched policies for at most one hour, bounded in memory."""
++
++    def __init__(self):
++        self.entries = {}
++        self.lock = Lock()
++
++    def get(self, origin):
++        with self.lock:
++            item = self.entries.get(origin)
++            return item[1] if item and item[0] > time.monotonic() else None
++
++    def put(self, origin, robots):
++        with self.lock:
++            self.entries = {key: item for key, item in self.entries.items()
++                            if item[0] > time.monotonic()}
++            if len(self.entries) >= 128:
++                self.entries.pop(next(iter(self.entries)))
++            self.entries[origin] = (time.monotonic() + 3600, robots)
++
++
+ class _SiteAccess:
+     """Check each origin's robots policy before fetching any page on it."""
+ 
+-    def __init__(self, host: str, diagnostics: dict | None) -> None:
++    def __init__(self, host: str, diagnostics: dict | None, *, policy_cache=None) -> None:
+         self.host = host
+         self.diagnostics = diagnostics
+         self.policies: dict[str, RobotFileParser] = {}
+         self.delay = 1
++        self.policy_cache = policy_cache
++
++    def _open_robots(self, opener, url):
++        for attempt in range(2):
++            try:
++                return opener.open(Request(url, headers={"User-Agent": USER_AGENT}), timeout=12)
++            except HTTPError as error:
++                if error.code < 500 or attempt:
++                    raise
++                if self.diagnostics is not None:
++                    self.diagnostics.setdefault("robots_retries", []).append({
++                        "url": diagnostic_url(url), "http_status": error.code})
++                error.close()
++                time.sleep(0.5)
+ 
+     def mark(self, url: str, kind: str) -> None:
+         if self.diagnostics is not None:
+@@ -135,6 +195,12 @@
+     def check_page(self, url: str) -> RobotFileParser:
+         parsed = urlparse(url)
+         origin = f"{parsed.scheme}://{parsed.netloc}"
++        if origin not in self.policies and self.policy_cache:
++            cached = self.policy_cache.get(origin)
++            if cached is not None:
++                self.policies[origin] = cached
++                if self.diagnostics is not None:
++                    self.diagnostics.setdefault("robots_cache_hits", []).append(origin)
+         if origin not in self.policies:
+             robots_url = origin + "/robots.txt"
+             self.mark(robots_url, "robots")
+@@ -143,7 +209,7 @@
+             ))
+             robots = RobotFileParser()
+             try:
+-                with opener.open(Request(robots_url, headers={"User-Agent": USER_AGENT}), timeout=12) as response:
++                with self._open_robots(opener, robots_url) as response:
+                     if self.diagnostics is not None:
+                         self.diagnostics["http_status"] = response.status
+                     raw = response.read(200_001)
+@@ -151,14 +217,21 @@
+                     if len(raw) > 200_000 or re.search(r"<\s*(?:!doctype|html)\b", text[:500], re.IGNORECASE):
+                         raise CrawlError("Invalid robots.txt response", code="robots_unavailable")
+                     robots.parse(text.splitlines())
++                    if self.policy_cache:
++                        self.policy_cache.put(origin, robots)
+             except HTTPError as error:
+                 if self.diagnostics is not None:
+                     self.diagnostics["http_status"] = error.code
+                 if error.code == 429:
+                     raise RateLimited("Website returned HTTP 429 for robots.txt") from error
+-                if error.code != 404:
+-                    code = "redirect_loop" if 300 <= error.code < 400 else "robots_unavailable"
++                if error.code not in {403, 404, 410}:
++                    code = ("redirect_loop" if 300 <= error.code < 400 else
++                            "robots_unreachable" if error.code >= 500 else "robots_unavailable")
+                     raise CrawlError("Could not read robots.txt", code=code) from error
++                if self.diagnostics is not None:
++                    self.diagnostics.setdefault("robots_warnings", []).append({
++                        "url": diagnostic_url(robots_url), "http_status": error.code,
++                        "policy": "unavailable_allow_public_pages"})
+                 robots.parse([])
+             except TimeoutError as error:
+                 raise CrawlError("robots.txt request timed out", code="fetch_timeout") from error
+@@ -264,7 +337,7 @@
+ 
+ 
+ def has_readable_content(page: WebPage) -> bool:
+-    lines = [line.strip() for line in page.text.splitlines() if line.strip()]
++    lines = [line.strip() for line in clean_source_text(page.text).splitlines() if line.strip()]
+     substantive = [line for line in lines if line != page.title and not re.fullmatch(
+         r"loading[.\s]*|로딩\s*중[.\s]*|to\s*top|top|menu|메뉴", line, re.I)]
+     return bool(substantive) and len("".join(substantive)) >= 20
+@@ -296,36 +369,39 @@
+ def crawl_site(
+     url: str, max_pages: int = 6, *, on_page: Callable[[str, bytes], None] | None = None,
+     diagnostics: dict | None = None,
++    robots_cache: RobotsPolicyCache | None = None,
+ ) -> list[WebPage]:
+     with ExitStack() as resources:
+-        return _crawl_site(url, max_pages, on_page=on_page, diagnostics=diagnostics, resources=resources)
+-
+-
+-def _crawl_site(url: str, max_pages: int, *, on_page, diagnostics, resources: ExitStack) -> list[WebPage]:
++        return _crawl_site(url, max_pages, on_page=on_page, diagnostics=diagnostics,
++                           resources=resources, robots_cache=robots_cache)
++
++
++def _crawl_site(url: str, max_pages: int, *, on_page, diagnostics, resources: ExitStack,
++                robots_cache=None) -> list[WebPage]:
+     """Fetch public pages, allowing exact www aliases and checking robots per origin."""
+     if not 1 <= max_pages <= 20:
+         raise ValueError("max_pages must be between 1 and 20")
+     homepage = _public_http_url(url)
+     host = urlparse(homepage).hostname
+-    access = _SiteAccess(host, diagnostics)
++    access = _SiteAccess(host, diagnostics, policy_cache=robots_cache)
+     redirects = _SameHostRedirects(host, check_page=access.check_page, diagnostics=diagnostics)
+     opener = build_opener(redirects)
+     pending = [(-1, homepage)]
+-    scheduled = {homepage}
++    scheduled = {canonical_source_url(homepage)}
+     visited: set[str] = set()
+     type_counts: dict[str, int] = {}
+     pages: list[WebPage] = []
+     renderer = None
+-    while pending and len(pages) < max_pages:
++    while pending and len(pages) < max_pages and len(visited) < 30:
+         pending.sort(key=lambda item: (
+             item[0] >= 8, type_counts.get(_crawl_bucket(*item), 0), item[0],
+             bool(urlparse(item[1]).query),
+         ))
+         priority, current = pending.pop(0)
+         current, _ = urldefrag(current)
+-        if current in visited:
+-            continue
+-        visited.add(current)
++        if canonical_source_url(current) in visited:
++            continue
++        visited.add(canonical_source_url(current))
+         _public_http_url(current)
+         if not _same_site_host(host, urlparse(current).hostname):
+             continue
+@@ -388,6 +464,23 @@
+             on_page(final_url, raw)
+         decoded = decode_html(raw, charset)
+         page, links = extract_html(final_url, decoded)
++        # Literal navigation on legacy company landing pages needs no browser.
++        script_redirect = re.search(
++            r'(?:document|window)\.location(?:\.replace\(\s*|\.href\s*=\s*)["\']([^"\']+)["\']',
++            decoded, re.I)
++        if script_redirect and not has_readable_content(page):
++            target = urljoin(final_url, script_redirect.group(1))
++            _public_http_url(target)
++            if not _same_site_host(host, urlparse(target).hostname):
++                raise CrawlError("Cross-host script navigation blocked", code="redirect_blocked")
++            if canonical_source_url(target) in visited:
++                raise CrawlError("Script navigation loop", code="redirect_loop")
++            if diagnostics is not None:
++                diagnostics.setdefault("redirects", []).append({"from": diagnostic_url(final_url),
++                    "to": diagnostic_url(target), "request_kind": "javascript_navigation"})
++            scheduled.add(canonical_source_url(target))
++            pending.append((-1, target))
++            continue
+         refresh = re.search(r'<meta\b[^>]*http-equiv\s*=\s*["\']?refresh["\']?[^>]*>', decoded, re.I)
+         if refresh:
+             destination = re.search(r'url\s*=\s*([^"\'<>]+)', refresh.group(), re.I)
+@@ -402,7 +495,8 @@
+                     pending.append((-1, target))
+                 if not has_readable_content(page):
+                     continue
+-        if not has_readable_content(page) and re.search(r"<script\b", decoded, re.IGNORECASE):
++        sparse_template = TEMPLATE.search(page.text) and len(clean_source_text(page.text).strip()) < 160
++        if (not has_readable_content(page) or sparse_template) and re.search(r"<script\b", decoded, re.IGNORECASE):
+             if renderer is None:
+                 from .browser_render import BrowserRenderer
+                 renderer = resources.enter_context(BrowserRenderer(access, diagnostics))
+@@ -415,9 +509,10 @@
+                     break
+                 raise
+             page, links = extract_html(final_url, rendered)
+-        visited.add(final_url)
+-        scheduled.add(final_url)
+-        if has_readable_content(page):
++        visited.add(canonical_source_url(final_url))
++        scheduled.add(canonical_source_url(final_url))
++        if has_readable_content(page) and not any(
++                canonical_source_url(existing.url) == canonical_source_url(page.url) for existing in pages):
+             pages.append(page)
+             bucket = _crawl_bucket(priority, current)
+             type_counts[bucket] = type_counts.get(bucket, 0) + 1
+@@ -432,11 +527,13 @@
+                 continue
+             if not _same_site_host(host, parsed.hostname) or parsed.scheme not in {"http", "https"}:
+                 continue
+-            if target in scheduled:
++            if source_role(target, label) != "corporate":
++                continue
++            if canonical_source_url(target) in scheduled:
+                 continue
+             if any(hint in (parsed.path + " " + label).lower() for hint in PAGE_HINTS):
+                 candidates.append((_link_priority(parsed.path + " " + label), target))
+-                scheduled.add(target)
++                scheduled.add(canonical_source_url(target))
+         pending.extend(candidates)
+     if not pages:
+         raise CrawlError("No readable homepage content", code="no_content")

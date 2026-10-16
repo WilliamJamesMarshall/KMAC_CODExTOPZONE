@@ -1,0 +1,47 @@
+--- before/tests/test_supplier_advice.py
++++ after/tests/test_supplier_advice.py
+@@ -50,7 +50,7 @@
+         data["suppliers_by_task"] = {"J014": ["F001", "F002", "F003", "F004"]}
+         fourth = {**card(), "supplier_id": "F004"}
+         check = {"task_id": "J014", "supplier_id": "F004", "supplier_supported": True,
+-                 "demand_fit": True, "honest": True, "safe_scope": True, "issues": []}
++                 "demand_fit": True, "honest": True, "safe_scope": True, **dict.fromkeys(("capability_fit", "intrinsic_domain_fit", "workflow_scope_supported", "conditions_explicit", "outputs_aligned"), True), "issues": []}
+         add_supplier_advice(data, client=Client({"cards": []}, {"cards": [fourth]}, {"checks": [check]}))
+         self.assertEqual(data["suppliers_by_task"], {"J014": ["F004"]})
+         self.assertEqual([s["supplier_id"] for s in data["suppliers"]], ["F004"])
+@@ -60,7 +60,7 @@
+         data["suppliers_by_task"] = {"J014": ["F001"]}
+         bad = {**card(), "solution_name": "발명된 이름"}
+         check = {"task_id": "J014", "supplier_id": "F001", "supplier_supported": True,
+-                 "demand_fit": True, "honest": True, "safe_scope": True}
++                 "demand_fit": True, "honest": True, "safe_scope": True, **dict.fromkeys(("capability_fit", "intrinsic_domain_fit", "workflow_scope_supported", "conditions_explicit", "outputs_aligned"), True)}
+         add_supplier_advice(data, repair_attempts=1, client=Client(
+             {"cards": [bad]}, {"cards": [card()]}, {"checks": [check]}))
+         self.assertEqual(data["suppliers_by_task"]["J014"], ["F001"])
+@@ -69,7 +69,7 @@
+         data = result()
+         data["suppliers_by_task"] = {"J014": ["F001"]}
+         check = {"task_id": "J014", "supplier_id": "F001", "supplier_supported": True,
+-                 "demand_fit": False, "honest": True, "safe_scope": True}
++                 "demand_fit": False, "honest": True, "safe_scope": True, **dict.fromkeys(("capability_fit", "intrinsic_domain_fit", "workflow_scope_supported", "conditions_explicit", "outputs_aligned"), True)}
+         add_supplier_advice(data, repair_attempts=1, client=Client(
+             {"cards": [card()]}, {"checks": [check]}))
+         self.assertEqual(data["suppliers_by_task"]["J014"], [])
+@@ -89,7 +89,7 @@
+         data = result()
+         diagnostics = {}
+         checks = [{"task_id": tid, "supplier_id": "F001", "supplier_supported": True,
+-                   "demand_fit": tid == "J014", "honest": True, "safe_scope": True}
++                   "demand_fit": tid == "J014", "honest": True, "safe_scope": True, **dict.fromkeys(("capability_fit", "intrinsic_domain_fit", "workflow_scope_supported", "conditions_explicit", "outputs_aligned"), True)}
+                   for tid in ("J014", "J020")]
+         add_supplier_advice(data, client=Client(
+             {"cards": [card(), card("J020")]}, {"checks": checks}), diagnostics=diagnostics)
+@@ -111,7 +111,7 @@
+         second = card("J020")
+         second["how"] = "검사 결과의 관련 요인을 확인하는 활용을 제안합니다."
+         checks = [{"task_id": tid, "supplier_id": "F001", "supplier_supported": True,
+-                   "demand_fit": True, "honest": True, "safe_scope": True}
++                   "demand_fit": True, "honest": True, "safe_scope": True, **dict.fromkeys(("capability_fit", "intrinsic_domain_fit", "workflow_scope_supported", "conditions_explicit", "outputs_aligned"), True)}
+                   for tid in ("J014", "J020")]
+         add_supplier_advice(data, client=Client(
+             {"cards": [card(), second]}, {"checks": checks}))

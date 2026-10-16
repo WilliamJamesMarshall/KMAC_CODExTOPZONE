@@ -7,7 +7,7 @@ name = "oss-ax-matching"
 version = "0.1.0"
 description = "Evidence-aware AX task matching logic for OSS"
 requires-python = ">=3.11"
-dependencies = ["openpyxl==3.1.5", "python-dotenv==1.2.2", "reportlab==4.4.9"]
+dependencies = ["openpyxl==3.1.5", "python-dotenv==1.2.2", "reportlab==4.4.9", "playwright==1.64.0", "pypdf==6.10.0"]
 
 [project.optional-dependencies]
 ax-inference = ["scikit-learn==1.9.0"]
@@ -22,4 +22,4 @@ oss-web = "oss.web_server:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-oss = ["fonts/*.ttf", "fonts/OFL.txt"]
+oss = ["fonts/*.ttf", "fonts/*.txt"]

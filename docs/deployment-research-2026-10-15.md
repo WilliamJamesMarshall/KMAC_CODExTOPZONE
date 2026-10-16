@@ -56,10 +56,10 @@ flowchart LR
 ## 배포 전 필요한 작업
 
 1. 운영용 Python 서버 구성과 HTTPS 주소를 준비한다. 서버는 플랫폼의 PORT와 `0.0.0.0`에 바인딩한다.
-2. 배포 이미지에 `web/`, Python 소스, ReportLab, 내장 한글 글꼴 및 라이선스를 포함한다.
+2. 배포 이미지에 `web/`, Python 소스, ReportLab, 내장 한글 글꼴 및 라이선스를 포함한다. 자바스크립트 홈페이지 수집을 위해 Playwright와 Chromium 및 OS 의존성도 설치한다(`python -m playwright install --with-deps chromium`). [Playwright 브라우저 설치](https://playwright.dev/python/docs/browsers)
 3. Excel 지식베이스를 배포 서버에서 읽을 수 있는 비공개 경로로 제공한다. 개인 PC의 OneDrive 경로에 의존하지 않는다.
 4. OpenAI·Supabase 비밀키는 서버 환경변수에 둔다. 현재 공급기업 DB의 비공개 접근을 유지한다.
-5. 실제 분석 시간·메모리·동시 실행량·API 비용을 측정한다. 등록 사용자 50명과 동시 분석 50건을 같은 조건으로 가정하지 않는다.
+5. 실제 분석 시간·메모리·동시 실행량·API 비용을 측정한다. 동적 페이지에서 실행되는 브라우저 프로세스의 메모리도 포함한다. 등록 사용자 50명과 동시 분석 50건을 같은 조건으로 가정하지 않는다.
 6. 카카오톡 iOS·Android 인앱 브라우저와 외부 브라우저에서 접속·결과 표시·PDF 다운로드를 확인한다.
 
 홈페이지 수집과 여러 AI 호출은 현재 하나의 HTTP 요청에서 실행된다. 로그인·기록 저장이 불필요하더라도 처리시간과 모바일 연결 지속 문제는 별도로 측정해야 한다. 실제 사용에서 긴 연결 문제가 확인되면 분석 처리만 별도 워커로 분리하는 방식을 후속 검토한다. 이는 개인 계정·영구 검색 기록 기능을 도입한다는 뜻이 아니다. [Render 워커](https://render.com/docs/background-workers), [Cloud Run 비동기 작업](https://docs.cloud.google.com/run/docs/triggering/using-tasks)

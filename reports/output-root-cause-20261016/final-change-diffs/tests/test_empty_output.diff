@@ -1,0 +1,18 @@
+--- before/tests/test_empty_output.py
++++ after/tests/test_empty_output.py
+@@ -68,6 +68,15 @@
+ 
+ 
+ class EmptyOutputRecorderTests(unittest.TestCase):
++    def test_explicit_audit_mode_records_normal_decisions_with_contact_redaction(self):
++        self.recorder = EmptyOutputRecorder(Path(self.directory.name), record_complete=True)
++        self.record(complete_result())
++        entry = self.entries()[0]
++        self.assertEqual(entry["missing_fields"], [])
++        content = (self.recorder.directory / entry["detail_file"]).read_text(encoding="utf-8")
++        for private in ("02-PRIVATE-PHONE", "PRIVATE-ADDRESS", "PRIVATE-NAME"):
++            self.assertNotIn(private, content)
++
+     def setUp(self):
+         self.directory = TemporaryDirectory()
+         self.recorder = EmptyOutputRecorder(Path(self.directory.name))

@@ -1,0 +1,65 @@
+{
+  "error": "Rendering resource retry loop stopped",
+  "code": "render_limit",
+  "diagnostics": {
+    "request_url": "https://danble.co.kr/_next/static/tNZrzbWEKAhGLku-JSDyM/_ssgManifest.js",
+    "request_kind": "render_resource",
+    "canonical_url": "https://danble.co.kr/",
+    "blocked_resources": [
+      {
+        "url": "https://ds1l559sry31l.cloudfront.net/media/homebanner/fb5d890cb2eb41c0afff255fab440af0.jpg",
+        "type": "image",
+        "count": 1,
+        "reason": "method_type_frame_or_host"
+      },
+      {
+        "url": "https://danble.co.kr/fonts/pretendard/Pretendard-Regular.subset.woff2",
+        "type": "font",
+        "count": 1,
+        "reason": "method_type_frame_or_host"
+      },
+      {
+        "url": "https://danble.co.kr/fonts/pretendard/Pretendard-Medium.subset.woff2",
+        "type": "font",
+        "count": 1,
+        "reason": "method_type_frame_or_host"
+      },
+      {
+        "url": "https://danble.co.kr/fonts/pretendard/Pretendard-Bold.subset.woff2",
+        "type": "font",
+        "count": 1,
+        "reason": "method_type_frame_or_host"
+      },
+      {
+        "url": "https://danble.co.kr/fonts/pretendard/Pretendard-SemiBold.subset.woff2",
+        "type": "font",
+        "count": 1,
+        "reason": "method_type_frame_or_host"
+      },
+      {
+        "url": "https://danble.co.kr/images/logo-black.svg",
+        "type": "image",
+        "count": 1,
+        "reason": "method_type_frame_or_host"
+      },
+      {
+        "url": "https://o4505825821392896.ingest.us.sentry.io/api/4505830843482112/envelope/",
+        "type": "fetch",
+        "count": 3,
+        "reason": "method_type_frame_or_host"
+      }
+    ],
+    "rendering": [
+      {
+        "url": "https://danble.co.kr/",
+        "requests": 39,
+        "unique_resources": 36,
+        "cancelled_after_stop": 16,
+        "blocked_count": 9,
+        "status": "failed",
+        "duration_seconds": 2.969
+      }
+    ]
+  },
+  "seconds": 4.796999999991385
+}
