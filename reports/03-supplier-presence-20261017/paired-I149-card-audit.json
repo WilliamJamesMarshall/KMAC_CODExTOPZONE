@@ -1,0 +1,751 @@
+{
+  "recorded_at": "2026-10-17T16:49:45.243107+09:00",
+  "application_revision": "a548e37d9093ea07",
+  "method": "Single paired offline audit, no UI/DB mutation; original supplier ID, work, full source and production audit prompt fixed; draft input intentionally controlled; audit calls real.",
+  "records": [
+    {
+      "label": "original_captured_card",
+      "card_input": {
+        "task_id": "N013",
+        "supplier_id": "I149",
+        "solution_name": "AquaTwin Simulator",
+        "source_span_id": "S006",
+        "supported_output_id": "O0",
+        "supported_component": "환경 추세",
+        "why": "양어장 생육 환경 정보를 분석하는 기능이 있어 환경 데이터를 살펴보는 일부 단계에 활용할 수 있습니다. 어류 생육 데이터까지 통합 분석하는 기능으로 확대해 해석하지 않습니다.",
+        "how": "양식장 환경 관측값을 연결하는 구성을 제안합니다. 분석된 환경 정보 중 추세 부분을 담당자가 확인할 자료로 정리하고, 생육 데이터와의 비교는 담당자가 수행합니다.",
+        "change": "담당자는 정리된 환경 추세를 살펴보고 생육 데이터 및 사육 기록과 직접 비교합니다. 이상 징후 판별과 관리 조치는 담당자가 결정합니다.",
+        "check": "양식장 환경 관측값과 어류 생육 데이터를 연결할 수 있는지 확인합니다. 생육·행동 데이터 분석과 양식 도메인 경험도 확인합니다."
+      },
+      "result": {
+        "site_name": "TIDEPOOL",
+        "opportunities": [
+          {
+            "task_id": "N013",
+            "status": "conditional",
+            "priority": "high",
+            "solution_name": "생육·양식환경 상태와 관리 방향 좁히기",
+            "target_function": "양식장 생육 모니터링 및 운영관리",
+            "inputs": [
+              "어류 생장·행동 데이터",
+              "양식장 환경 관측 데이터",
+              "사육·관리 기록"
+            ],
+            "ai_process": [
+              "생육 변화와 환경 관측값의 추세·이상 징후를 함께 분석합니다."
+            ],
+            "outputs": [
+              "생육·환경 추세와 이상 징후 요약",
+              "검토할 관리 방향"
+            ],
+            "mechanism": "생육 데이터와 환경 관측값을 함께 분석해 변화 추세와 이상 징후를 정리하고, 담당자가 검토할 관리 방향을 제시합니다.",
+            "process_change": "담당자가 생육 변화와 환경 상태를 함께 비교하고 점검할 대상을 좁히기 쉽게 합니다.",
+            "expected_effects": [
+              "생육·환경 상태를 함께 검토하는 데 도움을 줍니다.",
+              "이상 징후 확인과 관리 검토의 일관성을 지원합니다."
+            ],
+            "kpis": [
+              "이상 징후 검토 소요시간",
+              "담당자 검토 후 유효하다고 판단한 경보 비율",
+              "관리 검토에 활용된 분석 결과 비율"
+            ],
+            "required_data": [
+              "어류 생장·행동 데이터",
+              "환경 센서 또는 관측 데이터",
+              "사육·관리 기록과 시간 정보"
+            ],
+            "unknowns": [
+              "필요한 생육·환경 데이터의 항목, 기간, 품질을 확인해야 합니다. IoT 데이터와 운영 기록을 연계할 수 있는지 확인합니다."
+            ],
+            "safeguard": "AI 결과는 참고 정보로 제공하며, 환경 제어와 관리 조치는 담당자가 검토·결정합니다.",
+            "reason": "성장 모니터링, 사료 최적화, 원격 모니터링 및 양식장 운영 지원이 확인되어 업무 목적과 가깝습니다. 환경 데이터와 운영 기록의 확보 여부는 확인되지 않아 조건부 기회입니다.",
+            "task_name": "생육 모니터링·재배환경 제어 지원",
+            "business_function": "양식장 생육 모니터링 및 운영관리",
+            "business_evidence": [
+              {
+                "fact_id": "F004",
+                "quote": "Growth Monitoring\nFeed Optimization\nDamage Monitoring",
+                "url": "https://tidepool.kr/"
+              },
+              {
+                "fact_id": "F005",
+                "quote": "Growth Monitoring\nFeed Optimization\nDamage Monitoring",
+                "url": "https://tidepool.kr/"
+              },
+              {
+                "fact_id": "F007",
+                "quote": "IoT 원격 모니터링, AI 운영 자동화 기능을 통해",
+                "url": "https://tidepool.kr/"
+              },
+              {
+                "fact_id": "F009",
+                "quote": "양식장 운영 · 관리를 편하게 합니다.",
+                "url": "https://tidepool.kr/"
+              }
+            ],
+            "mapping_reason": "The company supports fish growth monitoring, feed optimization, remote monitoring, and farm operations. This supports a new AI opportunity for integrated growth and rearing-environment analysis with management recommendations; availability of suitable historical and environmental data is unknown.",
+            "data_feasibility": "unknown",
+            "priority_label": "높음"
+          }
+        ],
+        "suppliers_by_task": {
+          "N013": []
+        },
+        "suppliers": []
+      },
+      "diagnostics": {
+        "model": "gpt-6-luna",
+        "input_pairs": [
+          {
+            "task_id": "N013",
+            "supplier_id": "I149",
+            "supplier_name": "나모웹비즈주식회사",
+            "supplier_source": "▣ HealthTwin Simulator\r\n- 생체 데이터 기반 질병 발병 예측 알고리즘 및 건강관리\r\n▣ AgTwin Simulator\r\n- 축사 내외부 환경 데이터 분석을 통한 최적 제어 알고리즘 및 디지털트윈 시스템\r\n▣ AquaTwin Simulator\r\n- 양어장 생육 환경 정보 분석을 통한 최적제어 알고리즘 및 디지털트윈 시스템",
+            "source_spans": [
+              {
+                "id": "S001",
+                "text": "▣ HealthTwin Simulator"
+              },
+              {
+                "id": "S002",
+                "text": "- 생체 데이터 기반 질병 발병 예측 알고리즘 및 건강관리"
+              },
+              {
+                "id": "S003",
+                "text": "▣ AgTwin Simulator"
+              },
+              {
+                "id": "S004",
+                "text": "- 축사 내외부 환경 데이터 분석을 통한 최적 제어 알고리즘 및 디지털트윈 시스템"
+              },
+              {
+                "id": "S005",
+                "text": "▣ AquaTwin Simulator"
+              },
+              {
+                "id": "S006",
+                "text": "- 양어장 생육 환경 정보 분석을 통한 최적제어 알고리즘 및 디지털트윈 시스템"
+              }
+            ],
+            "task_solutions": [
+              "AgTwin Simulator",
+              "AquaTwin Simulator"
+            ],
+            "task_evidence": [
+              {
+                "quote": "- 축사 내외부 환경 데이터 분석을 통한 최적 제어 알고리즘 및 디지털트윈 시스템",
+                "url": "https://pms.ai-voucher.or.kr/supply/pool"
+              }
+            ],
+            "demand": {
+              "task_id": "N013",
+              "status": "conditional",
+              "priority": "high",
+              "solution_name": "생육·양식환경 상태와 관리 방향 좁히기",
+              "target_function": "양식장 생육 모니터링 및 운영관리",
+              "inputs": [
+                "어류 생장·행동 데이터",
+                "양식장 환경 관측 데이터",
+                "사육·관리 기록"
+              ],
+              "ai_process": [
+                "생육 변화와 환경 관측값의 추세·이상 징후를 함께 분석합니다."
+              ],
+              "outputs": [
+                "생육·환경 추세와 이상 징후 요약",
+                "검토할 관리 방향"
+              ],
+              "mechanism": "생육 데이터와 환경 관측값을 함께 분석해 변화 추세와 이상 징후를 정리하고, 담당자가 검토할 관리 방향을 제시합니다.",
+              "process_change": "담당자가 생육 변화와 환경 상태를 함께 비교하고 점검할 대상을 좁히기 쉽게 합니다.",
+              "expected_effects": [
+                "생육·환경 상태를 함께 검토하는 데 도움을 줍니다.",
+                "이상 징후 확인과 관리 검토의 일관성을 지원합니다."
+              ],
+              "kpis": [
+                "이상 징후 검토 소요시간",
+                "담당자 검토 후 유효하다고 판단한 경보 비율",
+                "관리 검토에 활용된 분석 결과 비율"
+              ],
+              "required_data": [
+                "어류 생장·행동 데이터",
+                "환경 센서 또는 관측 데이터",
+                "사육·관리 기록과 시간 정보"
+              ],
+              "unknowns": [
+                "필요한 생육·환경 데이터의 항목, 기간, 품질을 확인해야 합니다. IoT 데이터와 운영 기록을 연계할 수 있는지 확인합니다."
+              ],
+              "safeguard": "AI 결과는 참고 정보로 제공하며, 환경 제어와 관리 조치는 담당자가 검토·결정합니다.",
+              "reason": "성장 모니터링, 사료 최적화, 원격 모니터링 및 양식장 운영 지원이 확인되어 업무 목적과 가깝습니다. 환경 데이터와 운영 기록의 확보 여부는 확인되지 않아 조건부 기회입니다.",
+              "task_name": "생육 모니터링·재배환경 제어 지원",
+              "business_function": "양식장 생육 모니터링 및 운영관리",
+              "business_evidence": [
+                {
+                  "fact_id": "F004",
+                  "quote": "Growth Monitoring\nFeed Optimization\nDamage Monitoring",
+                  "url": "https://tidepool.kr/"
+                },
+                {
+                  "fact_id": "F005",
+                  "quote": "Growth Monitoring\nFeed Optimization\nDamage Monitoring",
+                  "url": "https://tidepool.kr/"
+                },
+                {
+                  "fact_id": "F007",
+                  "quote": "IoT 원격 모니터링, AI 운영 자동화 기능을 통해",
+                  "url": "https://tidepool.kr/"
+                },
+                {
+                  "fact_id": "F009",
+                  "quote": "양식장 운영 · 관리를 편하게 합니다.",
+                  "url": "https://tidepool.kr/"
+                }
+              ],
+              "mapping_reason": "The company supports fish growth monitoring, feed optimization, remote monitoring, and farm operations. This supports a new AI opportunity for integrated growth and rearing-environment analysis with management recommendations; availability of suitable historical and environmental data is unknown.",
+              "data_feasibility": "unknown",
+              "priority_label": "높음"
+            }
+          }
+        ],
+        "draft_cards": [
+          {
+            "task_id": "N013",
+            "supplier_id": "I149",
+            "solution_name": "AquaTwin Simulator",
+            "source_span_id": "S006",
+            "supported_output_id": "O0",
+            "supported_component": "환경 추세",
+            "why": "양어장 생육 환경 정보를 분석하는 기능이 있어 환경 데이터를 살펴보는 일부 단계에 활용할 수 있습니다. 어류 생육 데이터까지 통합 분석하는 기능으로 확대해 해석하지 않습니다.",
+            "how": "양식장 환경 관측값을 연결하는 구성을 제안합니다. 분석된 환경 정보 중 추세 부분을 담당자가 확인할 자료로 정리하고, 생육 데이터와의 비교는 담당자가 수행합니다.",
+            "change": "담당자는 정리된 환경 추세를 살펴보고 생육 데이터 및 사육 기록과 직접 비교합니다. 이상 징후 판별과 관리 조치는 담당자가 결정합니다.",
+            "check": "양식장 환경 관측값과 어류 생육 데이터를 연결할 수 있는지 확인합니다. 생육·행동 데이터 분석과 양식 도메인 경험도 확인합니다."
+          }
+        ],
+        "validated_cards": [
+          {
+            "task_id": "N013",
+            "supplier_id": "I149",
+            "solution_name": "AquaTwin Simulator",
+            "source_span_id": "S006",
+            "supported_output_id": "O0",
+            "supported_component": "환경 추세",
+            "why": "양어장 생육 환경 정보를 분석하는 기능이 있어 환경 데이터를 살펴보는 일부 단계에 활용할 수 있습니다. 어류 생육 데이터까지 통합 분석하는 기능으로 확대해 해석하지 않습니다.",
+            "how": "양식장 환경 관측값을 연결하는 구성을 제안합니다. 분석된 환경 정보 중 추세 부분을 담당자가 확인할 자료로 정리하고, 생육 데이터와의 비교는 담당자가 수행합니다.",
+            "change": "담당자는 정리된 환경 추세를 살펴보고 생육 데이터 및 사육 기록과 직접 비교합니다. 이상 징후 판별과 관리 조치는 담당자가 결정합니다.",
+            "check": "양식장 환경 관측값과 어류 생육 데이터를 연결할 수 있는지 확인합니다. 생육·행동 데이터 분석과 양식 도메인 경험도 확인합니다.",
+            "supported_output": "생육·환경 추세와 이상 징후 요약",
+            "source_quote": "- 양어장 생육 환경 정보 분석을 통한 최적제어 알고리즘 및 디지털트윈 시스템"
+          }
+        ],
+        "audit_checks": [
+          {
+            "task_id": "N013",
+            "supplier_id": "I149",
+            "supplier_supported": true,
+            "demand_fit": false,
+            "honest": true,
+            "safe_scope": true,
+            "capability_fit": false,
+            "intrinsic_domain_fit": true,
+            "workflow_scope_supported": true,
+            "conditions_explicit": false,
+            "outputs_aligned": false,
+            "supported_scope": "AquaTwin Simulator는 양어장 생육 환경 정보 분석과 디지털트윈 기반 최적제어 알고리즘을 지원한다고 명시되어 있습니다. 환경 관측값을 분석하는 단계는 지원 범위에 들어가지만, 환경 추세를 요약하는 기능까지는 출처에서 확인되지 않습니다. 카드가 제안한 데이터 연결은 확인이 필요한 구성으로 제시되어 있습니다.",
+            "consultation_conditions": [
+              "환경 관측값 연계 가능 여부와 필요한 데이터 형식·품질을 확인해야 합니다.",
+              "환경 정보에서 추세를 산출·정리하는 기능의 지원 여부를 확인해야 합니다.",
+              "어류 생육·행동 데이터 분석 및 생육 데이터와의 통합 분석은 지원이 확인되지 않았습니다."
+            ],
+            "repairable_within_scope": false,
+            "repair_solution_name": "",
+            "repair_source_span_id": "",
+            "coverage_level": "adjacent",
+            "component_aligned": false,
+            "uncovered_requirements": [
+              "환경 추세 산출·요약 기능은 확인되지 않았습니다.",
+              "이상 징후 요약 및 생육 데이터와의 통합 비교는 확인되지 않았습니다.",
+              "검토할 관리 방향 제시는 확인되지 않았습니다."
+            ],
+            "issues": [
+              "capability_fit=false: 카드가 환경 관측값의 ‘추세 부분’을 정리한다고 제안하지만, S006은 양어장 생육 환경 정보 분석과 최적제어 알고리즘을 설명할 뿐 추세 산출·요약을 명시하지 않습니다.",
+              "outputs_aligned=false, component_aligned=false: 선택한 O0의 ‘환경 추세’ 구성요소를 제품이 직접 산출한다는 근거가 없으며, 출처가 뒷받침하는 일반 환경 정보 분석은 추세 요약 출력과 동일하다고 볼 수 없습니다.",
+              "conditions_explicit=false: 확인 항목에 환경 추세 산출 기능의 지원 여부가 포함되지 않았습니다. 데이터 연결 가능성 및 생육 데이터 분석·도메인 경험 확인만으로는 이 공백을 명시하지 못합니다."
+            ]
+          }
+        ],
+        "dispositions": [
+          {
+            "task_id": "N013",
+            "supplier_id": "I149",
+            "disposition": "supported",
+            "reason": "Controlled draft input only; acceptance determined by the real independent audit.",
+            "source_quote": ""
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "input_ids": [
+              [
+                "N013",
+                "I149"
+              ]
+            ],
+            "draft_cards": [
+              {
+                "task_id": "N013",
+                "supplier_id": "I149",
+                "solution_name": "AquaTwin Simulator",
+                "source_span_id": "S006",
+                "supported_output_id": "O0",
+                "supported_component": "환경 추세",
+                "why": "양어장 생육 환경 정보를 분석하는 기능이 있어 환경 데이터를 살펴보는 일부 단계에 활용할 수 있습니다. 어류 생육 데이터까지 통합 분석하는 기능으로 확대해 해석하지 않습니다.",
+                "how": "양식장 환경 관측값을 연결하는 구성을 제안합니다. 분석된 환경 정보 중 추세 부분을 담당자가 확인할 자료로 정리하고, 생육 데이터와의 비교는 담당자가 수행합니다.",
+                "change": "담당자는 정리된 환경 추세를 살펴보고 생육 데이터 및 사육 기록과 직접 비교합니다. 이상 징후 판별과 관리 조치는 담당자가 결정합니다.",
+                "check": "양식장 환경 관측값과 어류 생육 데이터를 연결할 수 있는지 확인합니다. 생육·행동 데이터 분석과 양식 도메인 경험도 확인합니다."
+              }
+            ],
+            "audit_checks": [
+              {
+                "task_id": "N013",
+                "supplier_id": "I149",
+                "supplier_supported": true,
+                "demand_fit": false,
+                "honest": true,
+                "safe_scope": true,
+                "capability_fit": false,
+                "intrinsic_domain_fit": true,
+                "workflow_scope_supported": true,
+                "conditions_explicit": false,
+                "outputs_aligned": false,
+                "supported_scope": "AquaTwin Simulator는 양어장 생육 환경 정보 분석과 디지털트윈 기반 최적제어 알고리즘을 지원한다고 명시되어 있습니다. 환경 관측값을 분석하는 단계는 지원 범위에 들어가지만, 환경 추세를 요약하는 기능까지는 출처에서 확인되지 않습니다. 카드가 제안한 데이터 연결은 확인이 필요한 구성으로 제시되어 있습니다.",
+                "consultation_conditions": [
+                  "환경 관측값 연계 가능 여부와 필요한 데이터 형식·품질을 확인해야 합니다.",
+                  "환경 정보에서 추세를 산출·정리하는 기능의 지원 여부를 확인해야 합니다.",
+                  "어류 생육·행동 데이터 분석 및 생육 데이터와의 통합 분석은 지원이 확인되지 않았습니다."
+                ],
+                "repairable_within_scope": false,
+                "repair_solution_name": "",
+                "repair_source_span_id": "",
+                "coverage_level": "adjacent",
+                "component_aligned": false,
+                "uncovered_requirements": [
+                  "환경 추세 산출·요약 기능은 확인되지 않았습니다.",
+                  "이상 징후 요약 및 생육 데이터와의 통합 비교는 확인되지 않았습니다.",
+                  "검토할 관리 방향 제시는 확인되지 않았습니다."
+                ],
+                "issues": [
+                  "capability_fit=false: 카드가 환경 관측값의 ‘추세 부분’을 정리한다고 제안하지만, S006은 양어장 생육 환경 정보 분석과 최적제어 알고리즘을 설명할 뿐 추세 산출·요약을 명시하지 않습니다.",
+                  "outputs_aligned=false, component_aligned=false: 선택한 O0의 ‘환경 추세’ 구성요소를 제품이 직접 산출한다는 근거가 없으며, 출처가 뒷받침하는 일반 환경 정보 분석은 추세 요약 출력과 동일하다고 볼 수 없습니다.",
+                  "conditions_explicit=false: 확인 항목에 환경 추세 산출 기능의 지원 여부가 포함되지 않았습니다. 데이터 연결 가능성 및 생육 데이터 분석·도메인 경험 확인만으로는 이 공백을 명시하지 못합니다."
+                ]
+              }
+            ],
+            "dispositions": [
+              {
+                "task_id": "N013",
+                "supplier_id": "I149",
+                "disposition": "supported",
+                "reason": "Controlled draft input only; acceptance determined by the real independent audit."
+              }
+            ],
+            "unexpected_audit_checks": [],
+            "validation_issues": []
+          }
+        ],
+        "unexamined_pairs": [],
+        "excluded_pairs": [
+          {
+            "task_id": "N013",
+            "supplier_id": "I149",
+            "reason": "audit_rejected"
+          }
+        ]
+      }
+    },
+    {
+      "label": "source_bounded_alternate_original_output",
+      "card_input": {
+        "task_id": "N013",
+        "supplier_id": "I149",
+        "solution_name": "AquaTwin Simulator",
+        "source_span_id": "S006",
+        "supported_output_id": "O1",
+        "supported_component": "관리 방향",
+        "why": "AquaTwin Simulator는 양어장 생육 환경 정보를 분석하는 최적제어 알고리즘을 제공합니다. 그 결과를 담당자가 검토할 관리 방향의 참고자료로 활용하도록 제안합니다.",
+        "how": "양어장 생육 환경 정보를 연결하는 구성을 제안하고, 알고리즘의 최적제어 결과를 관리 방향 검토 자료로 사용합니다. 담당자가 현장 상황과 대조해 최종 조치를 결정합니다.",
+        "change": "담당자는 제안된 관리 방향을 현장 상황과 함께 검토하고 조치를 결정합니다. 환경 제어를 자동으로 맡기는 방식으로 제안하지 않습니다.",
+        "check": "연결할 생육 환경 정보의 항목과 기간, 운영 기록 연계 가능성을 확인합니다. 결과를 담당자가 검토할 관리 방향으로 제공할 수 있는지와 양어장 데이터 적용 경험을 상담합니다."
+      },
+      "result": {
+        "site_name": "TIDEPOOL",
+        "opportunities": [
+          {
+            "task_id": "N013",
+            "status": "conditional",
+            "priority": "high",
+            "solution_name": "생육·양식환경 상태와 관리 방향 좁히기",
+            "target_function": "양식장 생육 모니터링 및 운영관리",
+            "inputs": [
+              "어류 생장·행동 데이터",
+              "양식장 환경 관측 데이터",
+              "사육·관리 기록"
+            ],
+            "ai_process": [
+              "생육 변화와 환경 관측값의 추세·이상 징후를 함께 분석합니다."
+            ],
+            "outputs": [
+              "생육·환경 추세와 이상 징후 요약",
+              "검토할 관리 방향"
+            ],
+            "mechanism": "생육 데이터와 환경 관측값을 함께 분석해 변화 추세와 이상 징후를 정리하고, 담당자가 검토할 관리 방향을 제시합니다.",
+            "process_change": "담당자가 생육 변화와 환경 상태를 함께 비교하고 점검할 대상을 좁히기 쉽게 합니다.",
+            "expected_effects": [
+              "생육·환경 상태를 함께 검토하는 데 도움을 줍니다.",
+              "이상 징후 확인과 관리 검토의 일관성을 지원합니다."
+            ],
+            "kpis": [
+              "이상 징후 검토 소요시간",
+              "담당자 검토 후 유효하다고 판단한 경보 비율",
+              "관리 검토에 활용된 분석 결과 비율"
+            ],
+            "required_data": [
+              "어류 생장·행동 데이터",
+              "환경 센서 또는 관측 데이터",
+              "사육·관리 기록과 시간 정보"
+            ],
+            "unknowns": [
+              "필요한 생육·환경 데이터의 항목, 기간, 품질을 확인해야 합니다. IoT 데이터와 운영 기록을 연계할 수 있는지 확인합니다."
+            ],
+            "safeguard": "AI 결과는 참고 정보로 제공하며, 환경 제어와 관리 조치는 담당자가 검토·결정합니다.",
+            "reason": "성장 모니터링, 사료 최적화, 원격 모니터링 및 양식장 운영 지원이 확인되어 업무 목적과 가깝습니다. 환경 데이터와 운영 기록의 확보 여부는 확인되지 않아 조건부 기회입니다.",
+            "task_name": "생육 모니터링·재배환경 제어 지원",
+            "business_function": "양식장 생육 모니터링 및 운영관리",
+            "business_evidence": [
+              {
+                "fact_id": "F004",
+                "quote": "Growth Monitoring\nFeed Optimization\nDamage Monitoring",
+                "url": "https://tidepool.kr/"
+              },
+              {
+                "fact_id": "F005",
+                "quote": "Growth Monitoring\nFeed Optimization\nDamage Monitoring",
+                "url": "https://tidepool.kr/"
+              },
+              {
+                "fact_id": "F007",
+                "quote": "IoT 원격 모니터링, AI 운영 자동화 기능을 통해",
+                "url": "https://tidepool.kr/"
+              },
+              {
+                "fact_id": "F009",
+                "quote": "양식장 운영 · 관리를 편하게 합니다.",
+                "url": "https://tidepool.kr/"
+              }
+            ],
+            "mapping_reason": "The company supports fish growth monitoring, feed optimization, remote monitoring, and farm operations. This supports a new AI opportunity for integrated growth and rearing-environment analysis with management recommendations; availability of suitable historical and environmental data is unknown.",
+            "data_feasibility": "unknown",
+            "priority_label": "높음"
+          }
+        ],
+        "suppliers_by_task": {
+          "N013": [
+            "I149"
+          ]
+        },
+        "suppliers": [
+          {
+            "supplier_id": "I149",
+            "name": "나모웹비즈주식회사",
+            "supplier_profile": {
+              "ai_solution_description": "▣ HealthTwin Simulator\r\n- 생체 데이터 기반 질병 발병 예측 알고리즘 및 건강관리\r\n▣ AgTwin Simulator\r\n- 축사 내외부 환경 데이터 분석을 통한 최적 제어 알고리즘 및 디지털트윈 시스템\r\n▣ AquaTwin Simulator\r\n- 양어장 생육 환경 정보 분석을 통한 최적제어 알고리즘 및 디지털트윈 시스템"
+            },
+            "task_solutions": {
+              "N013": [
+                "AgTwin Simulator",
+                "AquaTwin Simulator"
+              ]
+            },
+            "task_evidence": {
+              "N013": [
+                {
+                  "quote": "- 축사 내외부 환경 데이터 분석을 통한 최적 제어 알고리즘 및 디지털트윈 시스템",
+                  "url": "https://pms.ai-voucher.or.kr/supply/pool"
+                }
+              ]
+            },
+            "task_advice": {
+              "N013": {
+                "task_id": "N013",
+                "supplier_id": "I149",
+                "solution_name": "AquaTwin Simulator",
+                "source_span_id": "S006",
+                "supported_output_id": "O1",
+                "supported_component": "관리 방향",
+                "why": "AquaTwin Simulator는 양어장 생육 환경 정보를 분석하는 최적제어 알고리즘을 제공합니다. 그 결과를 담당자가 검토할 관리 방향의 참고자료로 활용하도록 제안합니다.",
+                "how": "양어장 생육 환경 정보를 연결하는 구성을 제안하고, 알고리즘의 최적제어 결과를 관리 방향 검토 자료로 사용합니다. 담당자가 현장 상황과 대조해 최종 조치를 결정합니다.",
+                "change": "담당자는 제안된 관리 방향을 현장 상황과 함께 검토하고 조치를 결정합니다. 환경 제어를 자동으로 맡기는 방식으로 제안하지 않습니다.",
+                "check": "연결할 생육 환경 정보의 항목과 기간, 운영 기록 연계 가능성을 확인합니다. 결과를 담당자가 검토할 관리 방향으로 제공할 수 있는지와 양어장 데이터 적용 경험을 상담합니다.",
+                "supported_output": "검토할 관리 방향",
+                "source_quote": "- 양어장 생육 환경 정보 분석을 통한 최적제어 알고리즘 및 디지털트윈 시스템",
+                "coverage_level": "partial",
+                "coverage_note": "일부 단계 지원 · 추가 확인 필요\n지원 범위: 관리 방향\n미확인 기능: 생육 데이터와 환경 관측값을 함께 분석한 추세·이상 징후 요약은 확인되지 않았다. / 사육·관리 기록을 분석에 연계할 수 있는지는 확인되지 않았다."
+              }
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "model": "gpt-6-luna",
+        "input_pairs": [
+          {
+            "task_id": "N013",
+            "supplier_id": "I149",
+            "supplier_name": "나모웹비즈주식회사",
+            "supplier_source": "▣ HealthTwin Simulator\r\n- 생체 데이터 기반 질병 발병 예측 알고리즘 및 건강관리\r\n▣ AgTwin Simulator\r\n- 축사 내외부 환경 데이터 분석을 통한 최적 제어 알고리즘 및 디지털트윈 시스템\r\n▣ AquaTwin Simulator\r\n- 양어장 생육 환경 정보 분석을 통한 최적제어 알고리즘 및 디지털트윈 시스템",
+            "source_spans": [
+              {
+                "id": "S001",
+                "text": "▣ HealthTwin Simulator"
+              },
+              {
+                "id": "S002",
+                "text": "- 생체 데이터 기반 질병 발병 예측 알고리즘 및 건강관리"
+              },
+              {
+                "id": "S003",
+                "text": "▣ AgTwin Simulator"
+              },
+              {
+                "id": "S004",
+                "text": "- 축사 내외부 환경 데이터 분석을 통한 최적 제어 알고리즘 및 디지털트윈 시스템"
+              },
+              {
+                "id": "S005",
+                "text": "▣ AquaTwin Simulator"
+              },
+              {
+                "id": "S006",
+                "text": "- 양어장 생육 환경 정보 분석을 통한 최적제어 알고리즘 및 디지털트윈 시스템"
+              }
+            ],
+            "task_solutions": [
+              "AgTwin Simulator",
+              "AquaTwin Simulator"
+            ],
+            "task_evidence": [
+              {
+                "quote": "- 축사 내외부 환경 데이터 분석을 통한 최적 제어 알고리즘 및 디지털트윈 시스템",
+                "url": "https://pms.ai-voucher.or.kr/supply/pool"
+              }
+            ],
+            "demand": {
+              "task_id": "N013",
+              "status": "conditional",
+              "priority": "high",
+              "solution_name": "생육·양식환경 상태와 관리 방향 좁히기",
+              "target_function": "양식장 생육 모니터링 및 운영관리",
+              "inputs": [
+                "어류 생장·행동 데이터",
+                "양식장 환경 관측 데이터",
+                "사육·관리 기록"
+              ],
+              "ai_process": [
+                "생육 변화와 환경 관측값의 추세·이상 징후를 함께 분석합니다."
+              ],
+              "outputs": [
+                "생육·환경 추세와 이상 징후 요약",
+                "검토할 관리 방향"
+              ],
+              "mechanism": "생육 데이터와 환경 관측값을 함께 분석해 변화 추세와 이상 징후를 정리하고, 담당자가 검토할 관리 방향을 제시합니다.",
+              "process_change": "담당자가 생육 변화와 환경 상태를 함께 비교하고 점검할 대상을 좁히기 쉽게 합니다.",
+              "expected_effects": [
+                "생육·환경 상태를 함께 검토하는 데 도움을 줍니다.",
+                "이상 징후 확인과 관리 검토의 일관성을 지원합니다."
+              ],
+              "kpis": [
+                "이상 징후 검토 소요시간",
+                "담당자 검토 후 유효하다고 판단한 경보 비율",
+                "관리 검토에 활용된 분석 결과 비율"
+              ],
+              "required_data": [
+                "어류 생장·행동 데이터",
+                "환경 센서 또는 관측 데이터",
+                "사육·관리 기록과 시간 정보"
+              ],
+              "unknowns": [
+                "필요한 생육·환경 데이터의 항목, 기간, 품질을 확인해야 합니다. IoT 데이터와 운영 기록을 연계할 수 있는지 확인합니다."
+              ],
+              "safeguard": "AI 결과는 참고 정보로 제공하며, 환경 제어와 관리 조치는 담당자가 검토·결정합니다.",
+              "reason": "성장 모니터링, 사료 최적화, 원격 모니터링 및 양식장 운영 지원이 확인되어 업무 목적과 가깝습니다. 환경 데이터와 운영 기록의 확보 여부는 확인되지 않아 조건부 기회입니다.",
+              "task_name": "생육 모니터링·재배환경 제어 지원",
+              "business_function": "양식장 생육 모니터링 및 운영관리",
+              "business_evidence": [
+                {
+                  "fact_id": "F004",
+                  "quote": "Growth Monitoring\nFeed Optimization\nDamage Monitoring",
+                  "url": "https://tidepool.kr/"
+                },
+                {
+                  "fact_id": "F005",
+                  "quote": "Growth Monitoring\nFeed Optimization\nDamage Monitoring",
+                  "url": "https://tidepool.kr/"
+                },
+                {
+                  "fact_id": "F007",
+                  "quote": "IoT 원격 모니터링, AI 운영 자동화 기능을 통해",
+                  "url": "https://tidepool.kr/"
+                },
+                {
+                  "fact_id": "F009",
+                  "quote": "양식장 운영 · 관리를 편하게 합니다.",
+                  "url": "https://tidepool.kr/"
+                }
+              ],
+              "mapping_reason": "The company supports fish growth monitoring, feed optimization, remote monitoring, and farm operations. This supports a new AI opportunity for integrated growth and rearing-environment analysis with management recommendations; availability of suitable historical and environmental data is unknown.",
+              "data_feasibility": "unknown",
+              "priority_label": "높음"
+            }
+          }
+        ],
+        "draft_cards": [
+          {
+            "task_id": "N013",
+            "supplier_id": "I149",
+            "solution_name": "AquaTwin Simulator",
+            "source_span_id": "S006",
+            "supported_output_id": "O1",
+            "supported_component": "관리 방향",
+            "why": "AquaTwin Simulator는 양어장 생육 환경 정보를 분석하는 최적제어 알고리즘을 제공합니다. 그 결과를 담당자가 검토할 관리 방향의 참고자료로 활용하도록 제안합니다.",
+            "how": "양어장 생육 환경 정보를 연결하는 구성을 제안하고, 알고리즘의 최적제어 결과를 관리 방향 검토 자료로 사용합니다. 담당자가 현장 상황과 대조해 최종 조치를 결정합니다.",
+            "change": "담당자는 제안된 관리 방향을 현장 상황과 함께 검토하고 조치를 결정합니다. 환경 제어를 자동으로 맡기는 방식으로 제안하지 않습니다.",
+            "check": "연결할 생육 환경 정보의 항목과 기간, 운영 기록 연계 가능성을 확인합니다. 결과를 담당자가 검토할 관리 방향으로 제공할 수 있는지와 양어장 데이터 적용 경험을 상담합니다."
+          }
+        ],
+        "validated_cards": [
+          {
+            "task_id": "N013",
+            "supplier_id": "I149",
+            "solution_name": "AquaTwin Simulator",
+            "source_span_id": "S006",
+            "supported_output_id": "O1",
+            "supported_component": "관리 방향",
+            "why": "AquaTwin Simulator는 양어장 생육 환경 정보를 분석하는 최적제어 알고리즘을 제공합니다. 그 결과를 담당자가 검토할 관리 방향의 참고자료로 활용하도록 제안합니다.",
+            "how": "양어장 생육 환경 정보를 연결하는 구성을 제안하고, 알고리즘의 최적제어 결과를 관리 방향 검토 자료로 사용합니다. 담당자가 현장 상황과 대조해 최종 조치를 결정합니다.",
+            "change": "담당자는 제안된 관리 방향을 현장 상황과 함께 검토하고 조치를 결정합니다. 환경 제어를 자동으로 맡기는 방식으로 제안하지 않습니다.",
+            "check": "연결할 생육 환경 정보의 항목과 기간, 운영 기록 연계 가능성을 확인합니다. 결과를 담당자가 검토할 관리 방향으로 제공할 수 있는지와 양어장 데이터 적용 경험을 상담합니다.",
+            "supported_output": "검토할 관리 방향",
+            "source_quote": "- 양어장 생육 환경 정보 분석을 통한 최적제어 알고리즘 및 디지털트윈 시스템"
+          }
+        ],
+        "audit_checks": [
+          {
+            "task_id": "N013",
+            "supplier_id": "I149",
+            "supplier_supported": true,
+            "demand_fit": true,
+            "honest": true,
+            "safe_scope": true,
+            "capability_fit": true,
+            "intrinsic_domain_fit": true,
+            "workflow_scope_supported": true,
+            "conditions_explicit": true,
+            "outputs_aligned": true,
+            "supported_scope": "AquaTwin Simulator는 양어장 생육 환경 정보를 분석하는 최적제어 알고리즘을 제공하며, 그 결과를 담당자가 검토할 관리 방향의 참고자료로 활용하는 제한된 단계를 지원한다. 담당자가 최종 조치를 결정한다.",
+            "consultation_conditions": [
+              "연결할 생육 환경 정보의 항목과 기간을 확인해야 한다.",
+              "운영 기록 연계 가능성과 필요한 데이터 구성을 확인해야 한다.",
+              "최적제어 결과를 담당자가 검토할 관리 방향 자료로 제공할 수 있는지, 양어장 데이터 적용 경험이 있는지 확인해야 한다."
+            ],
+            "repairable_within_scope": false,
+            "repair_solution_name": "",
+            "repair_source_span_id": "",
+            "coverage_level": "partial",
+            "component_aligned": true,
+            "uncovered_requirements": [
+              "생육 데이터와 환경 관측값을 함께 분석한 추세·이상 징후 요약은 확인되지 않았다.",
+              "사육·관리 기록을 분석에 연계할 수 있는지는 확인되지 않았다."
+            ],
+            "issues": []
+          }
+        ],
+        "dispositions": [
+          {
+            "task_id": "N013",
+            "supplier_id": "I149",
+            "disposition": "supported",
+            "reason": "Controlled draft input only; acceptance determined by the real independent audit.",
+            "source_quote": ""
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "input_ids": [
+              [
+                "N013",
+                "I149"
+              ]
+            ],
+            "draft_cards": [
+              {
+                "task_id": "N013",
+                "supplier_id": "I149",
+                "solution_name": "AquaTwin Simulator",
+                "source_span_id": "S006",
+                "supported_output_id": "O1",
+                "supported_component": "관리 방향",
+                "why": "AquaTwin Simulator는 양어장 생육 환경 정보를 분석하는 최적제어 알고리즘을 제공합니다. 그 결과를 담당자가 검토할 관리 방향의 참고자료로 활용하도록 제안합니다.",
+                "how": "양어장 생육 환경 정보를 연결하는 구성을 제안하고, 알고리즘의 최적제어 결과를 관리 방향 검토 자료로 사용합니다. 담당자가 현장 상황과 대조해 최종 조치를 결정합니다.",
+                "change": "담당자는 제안된 관리 방향을 현장 상황과 함께 검토하고 조치를 결정합니다. 환경 제어를 자동으로 맡기는 방식으로 제안하지 않습니다.",
+                "check": "연결할 생육 환경 정보의 항목과 기간, 운영 기록 연계 가능성을 확인합니다. 결과를 담당자가 검토할 관리 방향으로 제공할 수 있는지와 양어장 데이터 적용 경험을 상담합니다."
+              }
+            ],
+            "audit_checks": [
+              {
+                "task_id": "N013",
+                "supplier_id": "I149",
+                "supplier_supported": true,
+                "demand_fit": true,
+                "honest": true,
+                "safe_scope": true,
+                "capability_fit": true,
+                "intrinsic_domain_fit": true,
+                "workflow_scope_supported": true,
+                "conditions_explicit": true,
+                "outputs_aligned": true,
+                "supported_scope": "AquaTwin Simulator는 양어장 생육 환경 정보를 분석하는 최적제어 알고리즘을 제공하며, 그 결과를 담당자가 검토할 관리 방향의 참고자료로 활용하는 제한된 단계를 지원한다. 담당자가 최종 조치를 결정한다.",
+                "consultation_conditions": [
+                  "연결할 생육 환경 정보의 항목과 기간을 확인해야 한다.",
+                  "운영 기록 연계 가능성과 필요한 데이터 구성을 확인해야 한다.",
+                  "최적제어 결과를 담당자가 검토할 관리 방향 자료로 제공할 수 있는지, 양어장 데이터 적용 경험이 있는지 확인해야 한다."
+                ],
+                "repairable_within_scope": false,
+                "repair_solution_name": "",
+                "repair_source_span_id": "",
+                "coverage_level": "partial",
+                "component_aligned": true,
+                "uncovered_requirements": [
+                  "생육 데이터와 환경 관측값을 함께 분석한 추세·이상 징후 요약은 확인되지 않았다.",
+                  "사육·관리 기록을 분석에 연계할 수 있는지는 확인되지 않았다."
+                ],
+                "issues": []
+              }
+            ],
+            "dispositions": [
+              {
+                "task_id": "N013",
+                "supplier_id": "I149",
+                "disposition": "supported",
+                "reason": "Controlled draft input only; acceptance determined by the real independent audit."
+              }
+            ],
+            "unexpected_audit_checks": [],
+            "validation_issues": []
+          }
+        ],
+        "unexamined_pairs": [],
+        "excluded_pairs": []
+      }
+    }
+  ]
+}

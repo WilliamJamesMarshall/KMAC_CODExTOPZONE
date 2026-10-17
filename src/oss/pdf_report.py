@@ -17,6 +17,7 @@ from reportlab.lib.units import mm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import HRFlowable, PageBreak, Paragraph, SimpleDocTemplate, Spacer
+from .supplier_policy import MAX_SUPPLIERS_PER_WORK
 
 
 KST = timezone(timedelta(hours=9))
@@ -39,7 +40,7 @@ def _text(value: object) -> str:
 
 
 def validate_report(payload: object) -> dict:
-    """Accept only display fields, with the same three-work/three-supplier limits."""
+    """Accept display fields with the shared per-work supplier limit."""
     if not isinstance(payload, dict):
         raise ValueError("보고서 데이터가 올바르지 않습니다.")
     report = {key: _text(payload.get(key, "")) for key in
@@ -58,8 +59,8 @@ def validate_report(payload: object) -> dict:
         if not work["title"]:
             raise ValueError("추천 업무명이 없습니다.")
         suppliers = item.get("suppliers")
-        if not isinstance(suppliers, list) or len(suppliers) > 3:
-            raise ValueError("업무별 공급기업은 최대 3곳이어야 합니다.")
+        if not isinstance(suppliers, list) or len(suppliers) > MAX_SUPPLIERS_PER_WORK:
+            raise ValueError("업무별 공급기업은 최대 2곳이어야 합니다.")
         work["suppliers"] = []
         for supplier in suppliers:
             if not isinstance(supplier, dict):

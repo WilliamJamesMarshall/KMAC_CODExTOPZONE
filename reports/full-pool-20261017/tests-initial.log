@@ -1,0 +1,284 @@
+test_api_request_uses_strict_schema_and_no_storage (test_ax_llm.AxLlmTests.test_api_request_uses_strict_schema_and_no_storage) ... ok
+test_llm_sql_rechecks_source_hash_and_quote (test_ax_llm.AxLlmTests.test_llm_sql_rechecks_source_hash_and_quote) ... skipped 'Workbook and pool snapshot required for SQL contract check'
+test_source_quote_validation_rejects_invented_or_duplicate_claims (test_ax_llm.AxLlmTests.test_source_quote_validation_rejects_invented_or_duplicate_claims) ... ok
+test_targets_exclude_existing_matches (test_ax_llm.AxLlmTests.test_targets_exclude_existing_matches) ... ok
+test_empty_or_overlong_display_answer_is_rejected (test_ax_opportunity.AxOpportunityTests.test_empty_or_overlong_display_answer_is_rejected) ... ok
+test_invented_numeric_effect_is_rejected (test_ax_opportunity.AxOpportunityTests.test_invented_numeric_effect_is_rejected) ... ok
+test_long_or_technical_display_copy_is_rejected (test_ax_opportunity.AxOpportunityTests.test_long_or_technical_display_copy_is_rejected) ... ok
+test_mapping_requires_active_task_and_function_fact (test_ax_opportunity.AxOpportunityTests.test_mapping_requires_active_task_and_function_fact) ... ok
+test_only_audited_opportunity_reaches_supplier_crosswalk (test_ax_opportunity.AxOpportunityTests.test_only_audited_opportunity_reaches_supplier_crosswalk) ... ok
+test_short_concrete_explanation_is_accepted (test_ax_opportunity.AxOpportunityTests.test_short_concrete_explanation_is_accepted) ... ok
+test_top_three_use_evidence_instead_of_assumed_urgency (test_ax_opportunity.AxOpportunityTests.test_top_three_use_evidence_instead_of_assumed_urgency) ... ok
+test_activity_without_value_chain_reference_is_removed (test_business_profile.BusinessProfileTests.test_activity_without_value_chain_reference_is_removed) ... ok
+test_failed_generated_summary_keeps_only_exact_business_quotes (test_business_profile.BusinessProfileTests.test_failed_generated_summary_keeps_only_exact_business_quotes) ... ok
+test_invented_quote_or_structure_reference_is_rejected (test_business_profile.BusinessProfileTests.test_invented_quote_or_structure_reference_is_rejected) ... ok
+test_navigation_links_are_discovered_without_menu_text_in_body (test_business_profile.BusinessProfileTests.test_navigation_links_are_discovered_without_menu_text_in_body) ... ok
+test_product_families_get_separate_page_coverage (test_business_profile.BusinessProfileTests.test_product_families_get_separate_page_coverage) ... ok
+test_repeated_menu_copy_is_removed_before_fact_extraction (test_business_profile.BusinessProfileTests.test_repeated_menu_copy_is_removed_before_fact_extraction) ... ok
+test_single_verified_business_fact_does_not_require_value_chain (test_business_profile.BusinessProfileTests.test_single_verified_business_fact_does_not_require_value_chain) ... ok
+test_two_fields_come_from_verified_facts_and_separate_quality_check (test_business_profile.BusinessProfileTests.test_two_fields_come_from_verified_facts_and_separate_quality_check) ... ok
+test_site_nul_characters_are_removed_before_postgres_import (test_crawl_import.CrawlImportTests.test_site_nul_characters_are_removed_before_postgres_import) ... ok
+test_cross_domain_subdomain_private_address_and_port_redirects_are_blocked (test_crawler.CrawlerRedirectTests.test_cross_domain_subdomain_private_address_and_port_redirects_are_blocked) ... ok
+test_destination_crawl_delay_also_applies_to_links_using_original_alias (test_crawler.CrawlerRedirectTests.test_destination_crawl_delay_also_applies_to_links_using_original_alias) ... ok
+test_destination_robots_is_checked_before_redirected_body (test_crawler.CrawlerRedirectTests.test_destination_robots_is_checked_before_redirected_body) ... ok
+test_diagnostics_exclude_query_values (test_crawler.CrawlerRedirectTests.test_diagnostics_exclude_query_values) ... ok
+test_dns_error_is_reported_before_fetch_as_dns_failure (test_crawler.CrawlerRedirectTests.test_dns_error_is_reported_before_fetch_as_dns_failure) ... ok
+test_heading_does_not_discard_adjacent_div_business_copy (test_crawler.CrawlerRedirectTests.test_heading_does_not_discard_adjacent_div_business_copy) ... ok
+test_html_robots_soft_404_parses_rules_and_does_not_imply_network_failure (test_crawler.CrawlerRedirectTests.test_html_robots_soft_404_parses_rules_and_does_not_imply_network_failure) ... ok
+test_http_charset_has_precedence_and_unknown_charset_is_safe (test_crawler.CrawlerRedirectTests.test_http_charset_has_precedence_and_unknown_charset_is_safe) ... ok
+test_javascript_shell_is_rendered_and_internal_page_is_discovered (test_crawler.CrawlerRedirectTests.test_javascript_shell_is_rendered_and_internal_page_is_discovered) ... ok
+test_legacy_meta_charset_preserves_company_name_and_business_functions (test_crawler.CrawlerRedirectTests.test_legacy_meta_charset_preserves_company_name_and_business_functions) ... ok
+test_linked_external_article_does_not_discard_homepage (test_crawler.CrawlerRedirectTests.test_linked_external_article_does_not_discard_homepage) ... ok
+test_loading_and_title_are_not_collected_business_content (test_crawler.CrawlerRedirectTests.test_loading_and_title_are_not_collected_business_content) ... ok
+test_meta_refresh_is_collected_as_same_host_navigation_without_browser (test_crawler.CrawlerRedirectTests.test_meta_refresh_is_collected_as_same_host_navigation_without_browser) ... ok
+test_page_errors_have_specific_codes (test_crawler.CrawlerRedirectTests.test_page_errors_have_specific_codes) ... ok
+test_redirect_loop_is_bounded (test_crawler.CrawlerRedirectTests.test_redirect_loop_is_bounded) ... ok
+test_redirected_robots_disallow_stops_before_homepage (test_crawler.CrawlerRedirectTests.test_redirected_robots_disallow_stops_before_homepage) ... ok
+test_rendering_does_not_bypass_asset_robots_policy (test_crawler.CrawlerRedirectTests.test_rendering_does_not_bypass_asset_robots_policy) ... ok
+test_reverse_www_and_http_to_https_redirects (test_crawler.CrawlerRedirectTests.test_reverse_www_and_http_to_https_redirects) ... ok
+test_robots_absent_allows_pages_and_invalid_policies_stop (test_crawler.CrawlerRedirectTests.test_robots_absent_allows_pages_and_invalid_policies_stop) ... ok
+test_static_content_never_launches_browser_and_renderer_is_closed_on_error (test_crawler.CrawlerRedirectTests.test_static_content_never_launches_browser_and_renderer_is_closed_on_error) ... ok
+test_unreadable_dynamic_subpage_preserves_collected_homepage (test_crawler.CrawlerRedirectTests.test_unreadable_dynamic_subpage_preserves_collected_homepage) ... ok
+test_www_alias_resolving_to_private_ip_is_blocked (test_crawler.CrawlerRedirectTests.test_www_alias_resolving_to_private_ip_is_blocked) ... ok
+test_www_redirects_for_robots_and_homepage_keep_canonical_internal_links (test_crawler.CrawlerRedirectTests.test_www_redirects_for_robots_and_homepage_keep_canonical_internal_links) ... ok
+test_another_project_is_not_stopped (test_dev_launcher.DevLauncherTests.test_another_project_is_not_stopped) ... ok
+test_current_server_is_reused_and_url_has_revision (test_dev_launcher.DevLauncherTests.test_current_server_is_reused_and_url_has_revision) ... ok
+test_outdated_server_is_restarted_before_opening (test_dev_launcher.DevLauncherTests.test_outdated_server_is_restarted_before_opening) ... ok
+test_incomplete_success_response_is_recorded_after_the_full_pipeline (test_empty_output.EmptyOutputEndpointTests.test_incomplete_success_response_is_recorded_after_the_full_pipeline) ... ERROR:root:Supplier profile stage failed; retaining buyer analysis
+Traceback (most recent call last):
+  File "C:\KMAC_CODExTOPZONE\src\oss\web_server.py", line 71, in result_with_profiles
+    catalog = profiles.catalog(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\KMAC_CODExTOPZONE\src\oss\supplier_profile.py", line 62, in catalog
+    raise RuntimeError('Supabase ���ޱ�� ��õ������ ��ȸ�� �� �����ϴ�.')
+RuntimeError: Supabase ���ޱ�� ��õ������ ��ȸ�� �� �����ϴ�.
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 65188)
+Traceback (most recent call last):
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\KMAC_CODExTOPZONE\src\oss\web_server.py", line 116, in __init__
+    super().__init__(*args, directory=str(WEB_DIR), **kwargs)
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\http\server.py", line 672, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\http\server.py", line 436, in handle
+    self.handle_one_request()
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\http\server.py", line 424, in handle_one_request
+    method()
+  File "C:\KMAC_CODExTOPZONE\src\oss\web_server.py", line 255, in do_POST
+    result = result_with_profiles(pages, business, ax_analysis, diagnostics=pipeline)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\KMAC_CODExTOPZONE\src\oss\web_server.py", line 90, in result_with_profiles
+    item["supplier_profile"] = available[item["supplier_id"]]
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'F001'
+----------------------------------------
+ERROR
+test_supplier_stage_failure_preserves_buyer_results_without_unverified_cards (test_empty_output.EmptyOutputEndpointTests.test_supplier_stage_failure_preserves_buyer_results_without_unverified_cards) ... ERROR:root:Supplier profile stage failed; retaining buyer analysis
+Traceback (most recent call last):
+  File "C:\KMAC_CODExTOPZONE\src\oss\web_server.py", line 71, in result_with_profiles
+    catalog = profiles.catalog(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\KMAC_CODExTOPZONE\src\oss\supplier_profile.py", line 62, in catalog
+    raise RuntimeError('Supabase ���ޱ�� ��õ������ ��ȸ�� �� �����ϴ�.')
+RuntimeError: Supabase ���ޱ�� ��õ������ ��ȸ�� �� �����ϴ�.
+ERROR:root:Supplier profile stage failed; retaining buyer analysis
+Traceback (most recent call last):
+  File "C:\KMAC_CODExTOPZONE\src\oss\web_server.py", line 71, in result_with_profiles
+    catalog = profiles.catalog(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\KMAC_CODExTOPZONE\src\oss\supplier_profile.py", line 62, in catalog
+    raise RuntimeError('Supabase ���ޱ�� ��õ������ ��ȸ�� �� �����ϴ�.')
+RuntimeError: Supabase ���ޱ�� ��õ������ ��ȸ�� �� �����ϴ�.
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 65191)
+Traceback (most recent call last):
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\KMAC_CODExTOPZONE\src\oss\web_server.py", line 116, in __init__
+    super().__init__(*args, directory=str(WEB_DIR), **kwargs)
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\http\server.py", line 672, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\http\server.py", line 436, in handle
+    self.handle_one_request()
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\http\server.py", line 424, in handle_one_request
+    method()
+  File "C:\KMAC_CODExTOPZONE\src\oss\web_server.py", line 255, in do_POST
+    result = result_with_profiles(pages, business, ax_analysis, diagnostics=pipeline)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\KMAC_CODExTOPZONE\src\oss\web_server.py", line 90, in result_with_profiles
+    item["supplier_profile"] = available[item["supplier_id"]]
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'F001'
+----------------------------------------
+
+  test_supplier_stage_failure_preserves_buyer_results_without_unverified_cards (test_empty_output.EmptyOutputEndpointTests.test_supplier_stage_failure_preserves_buyer_results_without_unverified_cards) (stage='advice') ... ERROR
+test_analysis_errors_retain_the_failed_stage (test_empty_output.EmptyOutputRecorderTests.test_analysis_errors_retain_the_failed_stage) ... ok
+test_concurrent_incidents_have_separate_files_and_survive_restart (test_empty_output.EmptyOutputRecorderTests.test_concurrent_incidents_have_separate_files_and_survive_restart) ... ok
+test_explicit_audit_mode_records_normal_decisions_with_contact_redaction (test_empty_output.EmptyOutputRecorderTests.test_explicit_audit_mode_records_normal_decisions_with_contact_redaction) ... ok
+test_only_incomplete_cases_are_saved_with_evidence_and_without_contact_values (test_empty_output.EmptyOutputRecorderTests.test_only_incomplete_cases_are_saved_with_evidence_and_without_contact_values) ... ok
+test_all_empty_sections_and_hidden_by_fallback_values_are_detected (test_empty_output.MissingFieldsTests.test_all_empty_sections_and_hidden_by_fallback_values_are_detected) ... ok
+test_complete_data_is_not_missing_just_because_no_work_is_selected (test_empty_output.MissingFieldsTests.test_complete_data_is_not_missing_just_because_no_work_is_selected) ... ok
+test_one_work_without_suppliers_is_detected_even_when_another_has_them (test_empty_output.MissingFieldsTests.test_one_work_without_suppliers_is_detected_even_when_another_has_them) ... ok
+test_demand_inspection_does_not_become_quality_prediction (test_logic.LogicTests.test_demand_inspection_does_not_become_quality_prediction) ... ok
+test_each_work_has_its_own_supplier_limit_and_shared_supplier (test_logic.LogicTests.test_each_work_has_its_own_supplier_limit_and_shared_supplier) ... FAIL
+test_front_result_backfills_after_excluding_incomplete_suppliers (test_logic.LogicTests.test_front_result_backfills_after_excluding_incomplete_suppliers) ... FAIL
+test_front_result_limits_suppliers_and_shows_two_business_fields (test_logic.LogicTests.test_front_result_limits_suppliers_and_shows_two_business_fields) ... ok
+test_html_extraction_falls_back_to_div_text (test_logic.LogicTests.test_html_extraction_falls_back_to_div_text) ... ok
+test_html_extraction_omits_navigation (test_logic.LogicTests.test_html_extraction_omits_navigation) ... ok
+test_malformed_site_url_is_rejected_before_fetch (test_logic.LogicTests.test_malformed_site_url_is_rejected_before_fetch) ... ok
+test_project_requires_explicit_page_support (test_logic.LogicTests.test_project_requires_explicit_page_support) ... ok
+test_structured_proposals_can_use_any_active_task_with_exact_quote (test_logic.LogicTests.test_structured_proposals_can_use_any_active_task_with_exact_quote) ... ok
+test_supplier_claim_requires_quote_and_stays_unreviewed (test_logic.LogicTests.test_supplier_claim_requires_quote_and_stays_unreviewed) ... ok
+test_task_matching_flags_identity_without_combining_evidence (test_logic.LogicTests.test_task_matching_flags_identity_without_combining_evidence) ... ok
+test_bad_json_bad_shape_and_large_body_receive_json_errors (test_pdf_report.PdfEndpointTests.test_bad_json_bad_shape_and_large_body_receive_json_errors) ... ok
+test_download_is_pdf_and_never_reanalyzes (test_pdf_report.PdfEndpointTests.test_download_is_pdf_and_never_reanalyzes) ... ok
+test_failure_diagnostic_download_never_reanalyzes_or_invents_results (test_pdf_report.PdfEndpointTests.test_failure_diagnostic_download_never_reanalyzes_or_invents_results) ... ok
+test_screen_files_disable_caching_and_health_identifies_the_server (test_pdf_report.PdfEndpointTests.test_screen_files_disable_caching_and_health_identifies_the_server) ... ok
+test_all_work_pairs_contacts_and_literal_text_are_included (test_pdf_report.PdfReportTests.test_all_work_pairs_contacts_and_literal_text_are_included) ... ok
+test_empty_recommendations_and_demo_label (test_pdf_report.PdfReportTests.test_empty_recommendations_and_demo_label) ... ok
+test_filename_cannot_inject_paths_or_response_headers (test_pdf_report.PdfReportTests.test_filename_cannot_inject_paths_or_response_headers) ... ok
+test_invalid_shapes_and_oversized_lists_are_rejected (test_pdf_report.PdfReportTests.test_invalid_shapes_and_oversized_lists_are_rejected) ... ok
+test_long_korean_text_wraps_and_finishes_without_truncation (test_pdf_report.PdfReportTests.test_long_korean_text_wraps_and_finishes_without_truncation) ... ok
+test_missing_cjk_glyphs_preserve_literal_text_with_an_embedded_fallback (test_pdf_report.PdfReportTests.test_missing_cjk_glyphs_preserve_literal_text_with_an_embedded_fallback) ... ok
+test_subscript_and_legacy_bullet_have_readable_glyphs (test_pdf_report.PdfReportTests.test_subscript_and_legacy_bullet_have_readable_glyphs) ... ok
+test_supplier_boundary_does_not_create_header_only_page (test_pdf_report.PdfReportTests.test_supplier_boundary_does_not_create_header_only_page) ... ok
+test_annotated_multiple_urls_are_kept_separate (test_pool_prepare.PoolPrepareTests.test_annotated_multiple_urls_are_kept_separate) ... ok
+test_email_is_not_treated_as_homepage (test_pool_prepare.PoolPrepareTests.test_email_is_not_treated_as_homepage) ... ok
+test_only_explicitly_named_solutions_are_extracted (test_pool_solutions.PoolSolutionTests.test_only_explicitly_named_solutions_are_extracted) ... ok
+test_aborted_image_retry_loop_is_prevented_without_fetching_image (test_residual_fixes.BoundedRendererTests.test_aborted_image_retry_loop_is_prevented_without_fetching_image) ... ok
+test_content_dependency_allowlist_does_not_include_write_or_unrelated_api (test_residual_fixes.BoundedRendererTests.test_content_dependency_allowlist_does_not_include_write_or_unrelated_api) ... ok
+test_public_content_api_get_is_rendered_after_its_robots_check (test_residual_fixes.BoundedRendererTests.test_public_content_api_get_is_rendered_after_its_robots_check) ... ok
+test_repeated_blocked_fetches_stop_without_discarding_business_content (test_residual_fixes.BoundedRendererTests.test_repeated_blocked_fetches_stop_without_discarding_business_content) ... ok
+test_failure_is_downloadable_without_inventing_business_or_recommendations (test_residual_fixes.FailureReportTests.test_failure_is_downloadable_without_inventing_business_or_recommendations) ... ok
+test_only_valid_cached_robots_are_reused_until_expiry (test_residual_fixes.FailureReportTests.test_only_valid_cached_robots_are_reused_until_expiry) ... ok
+test_source_retrieval_keeps_identity_eligibility_and_candidate_budget (test_residual_fixes.FunctionalRetrievalTests.test_source_retrieval_keeps_identity_eligibility_and_candidate_budget) ... ok
+test_verified_source_can_be_candidate_without_a_preexisting_exact_task_link (test_residual_fixes.FunctionalRetrievalTests.test_verified_source_can_be_candidate_without_a_preexisting_exact_task_link) ... ok
+test_catalog_tags_are_distinct_from_exclusive_task_boundaries (test_residual_fixes.PartialAxRepairTests.test_catalog_tags_are_distinct_from_exclusive_task_boundaries) ... ok
+test_causal_repair_cannot_change_work_inputs_outputs_or_grounding (test_residual_fixes.PartialAxRepairTests.test_causal_repair_cannot_change_work_inputs_outputs_or_grounding) ... ok
+test_grounding_failure_is_not_repaired_and_missing_reaudit_is_not_accepted (test_residual_fixes.PartialAxRepairTests.test_grounding_failure_is_not_repaired_and_missing_reaudit_is_not_accepted) ... ok
+test_repair_service_failure_preserves_other_audited_work (test_residual_fixes.PartialAxRepairTests.test_repair_service_failure_preserves_other_audited_work) ... ok
+test_korean_product_path_and_space_query_are_encoded_before_http (test_residual_fixes.RobotsAndDomainTests.test_korean_product_path_and_space_query_are_encoded_before_http) ... ok
+test_legacy_verified_script_navigation_checks_new_policy_without_browser (test_residual_fixes.RobotsAndDomainTests.test_legacy_verified_script_navigation_checks_new_policy_without_browser) ... ok
+test_official_linked_pdf_is_checked_and_collected_as_page_sources (test_residual_fixes.RobotsAndDomainTests.test_official_linked_pdf_is_checked_and_collected_as_page_sources) ... ok
+test_public_cross_authority_robots_policy_applies_to_original_site (test_residual_fixes.RobotsAndDomainTests.test_public_cross_authority_robots_policy_applies_to_original_site) ... ok
+test_robots_403_allows_public_page_but_does_not_bypass_page_403 (test_residual_fixes.RobotsAndDomainTests.test_robots_403_allows_public_page_but_does_not_bypass_page_403) ... ok
+test_verified_domain_redirect_still_checks_destination_robots (test_residual_fixes.RobotsAndDomainTests.test_verified_domain_redirect_still_checks_destination_robots) ... ok
+test_customer_questions_and_account_pages_are_not_company_evidence (test_residual_fixes.SourceProvenanceTests.test_customer_questions_and_account_pages_are_not_company_evidence) ... ok
+test_official_pdf_page_references_remain_distinct_sources (test_residual_fixes.SourceProvenanceTests.test_official_pdf_page_references_remain_distinct_sources) ... ok
+test_template_fragments_are_not_readable_content_or_fact_quotes (test_residual_fixes.SourceProvenanceTests.test_template_fragments_are_not_readable_content_or_fact_quotes) ... ok
+test_tracking_query_variants_do_not_consume_source_budget (test_residual_fixes.SourceProvenanceTests.test_tracking_query_variants_do_not_consume_source_budget) ... ok
+test_a_supplier_cannot_substitute_a_new_output_for_document_checking (test_residual_fixes.SupplierScopeTests.test_a_supplier_cannot_substitute_a_new_output_for_document_checking) ... ok
+test_correct_output_label_does_not_override_failed_output_alignment_audit (test_residual_fixes.SupplierScopeTests.test_correct_output_label_does_not_override_failed_output_alignment_audit) ... ok
+test_dimension_failure_cannot_be_hidden_by_legacy_fit_flag (test_residual_fixes.SupplierScopeTests.test_dimension_failure_cannot_be_hidden_by_legacy_fit_flag) ... ok
+test_direct_partial_support_discloses_the_missing_feature_without_changing_work (test_residual_fixes.SupplierScopeTests.test_direct_partial_support_discloses_the_missing_feature_without_changing_work) ... ok
+test_every_omitted_pair_keeps_reason_and_missing_disposition_gets_one_retry (test_residual_fixes.SupplierScopeTests.test_every_omitted_pair_keeps_reason_and_missing_disposition_gets_one_retry) ... ok
+test_invented_repair_reference_or_intrinsic_conflict_cannot_force_retry (test_residual_fixes.SupplierScopeTests.test_invented_repair_reference_or_intrinsic_conflict_cannot_force_retry) ... ok
+test_missing_source_id_cannot_fall_back_to_a_fabricated_quote (test_residual_fixes.SupplierScopeTests.test_missing_source_id_cannot_fall_back_to_a_fabricated_quote) ... ok
+test_partial_label_cannot_hide_adjacent_operation_missing_source_or_unspecified_gaps (test_residual_fixes.SupplierScopeTests.test_partial_label_cannot_hide_adjacent_operation_missing_source_or_unspecified_gaps) ... ok
+test_seventh_candidate_is_examined_if_first_six_have_no_fit (test_residual_fixes.SupplierScopeTests.test_seventh_candidate_is_examined_if_first_six_have_no_fit) ... ok
+test_source_id_resolves_to_original_characters_without_model_transcription (test_residual_fixes.SupplierScopeTests.test_source_id_resolves_to_original_characters_without_model_transcription) ... ok
+test_unrequested_or_duplicate_audits_do_not_authorize_cards (test_residual_fixes.SupplierScopeTests.test_unrequested_or_duplicate_audits_do_not_authorize_cards) ... ok
+test_wrong_product_reference_can_be_repaired_with_verified_same_supplier_source (test_residual_fixes.SupplierScopeTests.test_wrong_product_reference_can_be_repaired_with_verified_same_supplier_source) ... ok
+test_ai_failure_message_is_separate_from_crawl_failure (test_search_timing.SearchTimingEndpointTests.test_ai_failure_message_is_separate_from_crawl_failure) ... ok
+test_crawl_failure_has_actionable_message_and_structured_diagnostics (test_search_timing.SearchTimingEndpointTests.test_crawl_failure_has_actionable_message_and_structured_diagnostics) ... ok
+test_failed_analysis_is_counted_separately (test_search_timing.SearchTimingEndpointTests.test_failed_analysis_is_counted_separately) ... ok
+test_malformed_requests_are_not_search_samples (test_search_timing.SearchTimingEndpointTests.test_malformed_requests_are_not_search_samples) ... ok
+test_successful_analysis_records_only_the_elapsed_time (test_search_timing.SearchTimingEndpointTests.test_successful_analysis_records_only_the_elapsed_time) ... ERROR:root:Supplier profile stage failed; retaining buyer analysis
+Traceback (most recent call last):
+  File "C:\KMAC_CODExTOPZONE\src\oss\web_server.py", line 71, in result_with_profiles
+    catalog = profiles.catalog(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\KMAC_CODExTOPZONE\src\oss\supplier_profile.py", line 62, in catalog
+    raise RuntimeError('Supabase ���ޱ�� ��õ������ ��ȸ�� �� �����ϴ�.')
+RuntimeError: Supabase ���ޱ�� ��õ������ ��ȸ�� �� �����ϴ�.
+ok
+test_an_interrupted_tail_does_not_erase_previous_measurements (test_search_timing.SearchTimingTests.test_an_interrupted_tail_does_not_erase_previous_measurements) ... ok
+test_brief_windows_reader_lock_is_retried (test_search_timing.SearchTimingTests.test_brief_windows_reader_lock_is_retried) ... ok
+test_concurrent_searches_do_not_lose_entries_or_counts (test_search_timing.SearchTimingTests.test_concurrent_searches_do_not_lose_entries_or_counts) ... ok
+test_empty_average_is_not_a_fake_measurement (test_search_timing.SearchTimingTests.test_empty_average_is_not_a_fake_measurement) ... ok
+test_success_and_failure_means_survive_restart (test_search_timing.SearchTimingTests.test_success_and_failure_means_survive_restart) ... ok
+test_audit_removes_only_unsupported_task_pair (test_supplier_advice.SupplierAdviceTests.test_audit_removes_only_unsupported_task_pair) ... ok
+test_invalid_source_name_is_repaired_and_reaudited (test_supplier_advice.SupplierAdviceTests.test_invalid_source_name_is_repaired_and_reaudited) ... ok
+test_invented_solution_quote_or_numeric_gain_is_rejected (test_supplier_advice.SupplierAdviceTests.test_invented_solution_quote_or_numeric_gain_is_rejected) ... ok
+test_missing_audit_is_not_accepted (test_supplier_advice.SupplierAdviceTests.test_missing_audit_is_not_accepted) ... ok
+test_real_domain_mismatch_is_not_repaired_into_recommendation (test_supplier_advice.SupplierAdviceTests.test_real_domain_mismatch_is_not_repaired_into_recommendation) ... ok
+test_shared_supplier_gets_distinct_answers_for_each_work (test_supplier_advice.SupplierAdviceTests.test_shared_supplier_gets_distinct_answers_for_each_work) ... ok
+test_unused_candidate_is_reviewed_after_first_three_are_omitted (test_supplier_advice.SupplierAdviceTests.test_unused_candidate_is_reviewed_after_first_three_are_omitted) ... ok
+test_available_profiles_excludes_missing_display_field (test_supplier_profile.SupplierProfileTests.test_available_profiles_excludes_missing_display_field) ... ok
+test_exact_quote_adds_only_selected_source_fields (test_supplier_profile.SupplierProfileTests.test_exact_quote_adds_only_selected_source_fields) ... ok
+test_same_name_without_quote_or_homepage_stays_unmatched (test_supplier_profile.SupplierProfileTests.test_same_name_without_quote_or_homepage_stays_unmatched) ... ok
+test_v03_source_relationships_are_preserved (test_workbook_contract.WorkbookContractTests.test_v03_source_relationships_are_preserved) ... skipped 'Set OSS_WORKBOOK_PATH to run the source contract check'
+
+======================================================================
+ERROR: test_incomplete_success_response_is_recorded_after_the_full_pipeline (test_empty_output.EmptyOutputEndpointTests.test_incomplete_success_response_is_recorded_after_the_full_pipeline)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\KMAC_CODExTOPZONE\tests\test_empty_output.py", line 168, in test_incomplete_success_response_is_recorded_after_the_full_pipeline
+    response = connection.getresponse()
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1430, in getresponse
+    response.begin()
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+======================================================================
+ERROR: test_supplier_stage_failure_preserves_buyer_results_without_unverified_cards (test_empty_output.EmptyOutputEndpointTests.test_supplier_stage_failure_preserves_buyer_results_without_unverified_cards) (stage='advice')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\KMAC_CODExTOPZONE\tests\test_empty_output.py", line 203, in test_supplier_stage_failure_preserves_buyer_results_without_unverified_cards
+    response = connection.getresponse()
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1430, in getresponse
+    response.begin()
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ujkio\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+======================================================================
+FAIL: test_each_work_has_its_own_supplier_limit_and_shared_supplier (test_logic.LogicTests.test_each_work_has_its_own_supplier_limit_and_shared_supplier)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\KMAC_CODExTOPZONE\tests\test_logic.py", line 183, in test_each_work_has_its_own_supplier_limit_and_shared_supplier
+    self.assertEqual(len(result["suppliers_by_task"]["J014"]), 3)
+AssertionError: 2 != 3
+
+======================================================================
+FAIL: test_front_result_backfills_after_excluding_incomplete_suppliers (test_logic.LogicTests.test_front_result_backfills_after_excluding_incomplete_suppliers)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\KMAC_CODExTOPZONE\tests\test_logic.py", line 159, in test_front_result_backfills_after_excluding_incomplete_suppliers
+    self.assertEqual([item["supplier_id"] for item in result["suppliers"]],
+AssertionError: Lists differ: ['F003', 'F004'] != ['F003', 'F004', 'F005']
+
+Second list contains 1 additional elements.
+First extra element 2:
+'F005'
+
+- ['F003', 'F004']
++ ['F003', 'F004', 'F005']
+?                ++++++++
+
+
+----------------------------------------------------------------------
+Ran 136 tests in 14.205s
+
+FAILED (failures=2, errors=2, skipped=2)
+http://127.0.0.1:8765/?v=current
+Restarting the development server with the current code.
+http://127.0.0.1:8765/?v=current

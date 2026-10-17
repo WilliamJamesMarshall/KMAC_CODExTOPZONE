@@ -1,0 +1,3408 @@
+{
+  "result": {
+    "input_url": "https://noul.kr/",
+    "site_name": "노을 | Beyond Diagnostics",
+    "business_model": [
+      {
+        "key": "value",
+        "label": "가치 제안",
+        "value": "혈액·조직 진단을 위한 miLab 플랫폼과 말라리아, CBC·세포형태분석, 자궁경부암 세포분석 솔루션을 제공합니다. 플랫폼은 검체 전처리와 염색을 자동화하고 디지털 현미경으로 이미지를 촬영해 내장 AI로 분석합니다. 전문 인력의 원격 판독 지원과 검사 인력 대상 판독 훈련도 제공합니다.",
+        "status": "inferred",
+        "source_url": null,
+        "evidence": [
+          {
+            "fact_id": "F001",
+            "quote": "혈액 및 조직 진단 분야에서 혁신적인 진단 솔루션의 제공으로 의료 접근성을 극적으로 향상시키고 암정복을 앞당깁니다.",
+            "source_url": "https://noul.com:443/"
+          },
+          {
+            "fact_id": "F002",
+            "quote": "디지털현미경 기반 말라리아 진단 솔루션, miLab™ MAL",
+            "source_url": "https://noul.com/product-mal/"
+          },
+          {
+            "fact_id": "F004",
+            "quote": "샘플 프랩까지 완전 자동화된 CBC 및 세포형태분석 자동화 솔루션 miLab™ BCM",
+            "source_url": "https://noul.com:443/"
+          },
+          {
+            "fact_id": "F006",
+            "quote": "정확한 자궁경부암 조기진단을 위한 AI 기반 세포분석 miLab™ CER",
+            "source_url": "https://noul.com:443/"
+          },
+          {
+            "fact_id": "F007",
+            "quote": "정밀 판독이 필요할 경우 뷰어를 통해 전문 인력의 원격 지원이 가능합니다.",
+            "source_url": "https://noul.com/product-mal/"
+          },
+          {
+            "fact_id": "F012",
+            "quote": "샘플 프렙부터 AI 결과 판독까지\n현미경 진단의 전과정을 자동화한 세계 유일의 플랫폼 디바이스",
+            "source_url": "https://noul.com:443/milab"
+          },
+          {
+            "fact_id": "F013",
+            "quote": "마이랩 플랫폼은 모든 분석 결과들이 디지털데이터로 저장되기 때문에 검사 인력을 대상으로 다양한 검체 종류에 대한 판독 훈련을 제공할 수 있습니다.",
+            "source_url": "https://noul.com/product-mal/"
+          },
+          {
+            "fact_id": "F015",
+            "quote": "완전 자동화된 샘플 프렙 고체염색 카트리지로 도말과 염색을 한 번에 완성합니다.",
+            "source_url": "https://noul.com:443/milab"
+          },
+          {
+            "fact_id": "F016",
+            "quote": "고화질 디지털이미지 촬영 고성능의 디지털현미경으로 초당 500개 이상의 세포 이미지를 획득합니다.",
+            "source_url": "https://noul.com:443/milab"
+          },
+          {
+            "fact_id": "F017",
+            "quote": "AI 알고리즘 분석 디바이스에 탑재된 Embedded AI로 사람보다 더 빠르고 일관된 결과 분석을 실행합니다.",
+            "source_url": "https://noul.com:443/milab"
+          }
+        ]
+      },
+      {
+        "key": "activity",
+        "label": "핵심 활동",
+        "value": "검체 전처리 및 고체염색 자동화 → 디지털 현미경 이미지 촬영 → 내장 AI 기반 이미지 분석 → 암 진단 카트리지 개발 및 암 정밀진단 선행 연구 → 원격 판독 지원 및 진단 결과 원격 확인 제공 → 검사 인력 대상 판독 훈련 제공",
+        "status": "inferred",
+        "source_url": null,
+        "evidence": [
+          {
+            "fact_id": "F015",
+            "quote": "완전 자동화된 샘플 프렙 고체염색 카트리지로 도말과 염색을 한 번에 완성합니다.",
+            "source_url": "https://noul.com:443/milab"
+          },
+          {
+            "fact_id": "F021",
+            "quote": "NGSI (Next Generation Staining and Immunostaining) 고체염색 방식은 염색 시약을 포함한 하이드로겔로 검체를 도장찍듯이 누르면서 염색하는 방식입니다.",
+            "source_url": "https://noul.com:443/milab"
+          },
+          {
+            "fact_id": "F016",
+            "quote": "고화질 디지털이미지 촬영 고성능의 디지털현미경으로 초당 500개 이상의 세포 이미지를 획득합니다.",
+            "source_url": "https://noul.com:443/milab"
+          },
+          {
+            "fact_id": "F017",
+            "quote": "AI 알고리즘 분석 디바이스에 탑재된 Embedded AI로 사람보다 더 빠르고 일관된 결과 분석을 실행합니다.",
+            "source_url": "https://noul.com:443/milab"
+          },
+          {
+            "fact_id": "F022",
+            "quote": "Noul-Net은 노을에서 자체 개발한 AI 알고리즘으로 마이랩 플랫폼에 탑재되어 있습니다.",
+            "source_url": "https://noul.com:443/milab"
+          },
+          {
+            "fact_id": "F019",
+            "quote": "현재 자궁경부암, 유방암, 갑상선암 검사를 위한 카트리지 개발을 진행 중입니다.",
+            "source_url": "https://noul.com:443/milab"
+          },
+          {
+            "fact_id": "F020",
+            "quote": "암 프로파일링 분야의 다양한 암 정밀진단 제품 개발을 위한 선행 연구를 수행하고 있습니다.",
+            "source_url": "https://noul.com:443/milab"
+          },
+          {
+            "fact_id": "F007",
+            "quote": "정밀 판독이 필요할 경우 뷰어를 통해 전문 인력의 원격 지원이 가능합니다.",
+            "source_url": "https://noul.com/product-mal/"
+          },
+          {
+            "fact_id": "F018",
+            "quote": "원격 결과 확인 네트워크 접속을 통해 언제 어디서나 원격으로 결과를 확인합니다.",
+            "source_url": "https://noul.com:443/milab"
+          },
+          {
+            "fact_id": "F013",
+            "quote": "마이랩 플랫폼은 모든 분석 결과들이 디지털데이터로 저장되기 때문에 검사 인력을 대상으로 다양한 검체 종류에 대한 판독 훈련을 제공할 수 있습니다.",
+            "source_url": "https://noul.com/product-mal/"
+          }
+        ]
+      }
+    ],
+    "business_profile": {
+      "sources": [
+        {
+          "id": "P0",
+          "url": "https://noul.com:443/",
+          "title": "노을 | Beyond Diagnostics",
+          "page_type": "home",
+          "source_role": "corporate",
+          "template_residue_detected": false,
+          "sha256": "7118429aee694cbc9599320003c8a19c53cd225a0b6de7939b5c9d326887fece"
+        },
+        {
+          "id": "P1",
+          "url": "https://noul.com/about/",
+          "title": "노을 | 노을 소개 - 노을",
+          "page_type": "about",
+          "source_role": "corporate",
+          "template_residue_detected": false,
+          "sha256": "9a99a917331bb0d904dcb7cc37192ed7f876122cb5df41396d607e1de9cd39e4"
+        },
+        {
+          "id": "P2",
+          "url": "https://noul.com:443/milab",
+          "title": "노을 | 마이랩 플랫폼 - 노을",
+          "page_type": "other",
+          "source_role": "corporate",
+          "template_residue_detected": false,
+          "sha256": "0a528a67d0015e29dde0d03f0d3bb5c9f3f59d1e23847554994391d7bbec2cda"
+        },
+        {
+          "id": "P3",
+          "url": "https://noul.com/product-mal/",
+          "title": "노을 | 말라리아(MAL) - 노을",
+          "page_type": "product",
+          "source_role": "corporate",
+          "template_residue_detected": false,
+          "sha256": "611e6cae2cdcf889450cb70738f5b9207eb3e6b6ebd9c253b033681d55347192"
+        },
+        {
+          "id": "P4",
+          "url": "https://noul.com/app/uploads/sites/2/2023/04/Malaria-Diagnostics-Market-and-Technology-Landscape.pdf#page=1",
+          "title": "공식 카탈로그 · 1쪽",
+          "page_type": "official_document",
+          "source_role": "corporate",
+          "template_residue_detected": false,
+          "sha256": "e27468d74caa7be8be74df61e90c4fa50b1a6271fbe5bdbc355dd1cad08d1b57"
+        },
+        {
+          "id": "P5",
+          "url": "https://noul.com/app/uploads/sites/2/2023/04/Malaria-Diagnostics-Market-and-Technology-Landscape.pdf#page=6",
+          "title": "공식 카탈로그 · 6쪽",
+          "page_type": "official_document",
+          "source_role": "corporate",
+          "template_residue_detected": false,
+          "sha256": "df87b556717e99992e1e5e67dfae29de1e14ba757679f6307f27d696aeefc7bd"
+        },
+        {
+          "id": "P6",
+          "url": "https://noul.com/app/uploads/sites/2/2023/04/Malaria-Diagnostics-Market-and-Technology-Landscape.pdf#page=7",
+          "title": "공식 카탈로그 · 7쪽",
+          "page_type": "official_document",
+          "source_role": "corporate",
+          "template_residue_detected": false,
+          "sha256": "e1f2c574d0b1aa313d24653b345da915ab97613a25284ca90e9615137c24340f"
+        },
+        {
+          "id": "P7",
+          "url": "https://noul.com/app/uploads/sites/2/2023/04/Malaria-Diagnostics-Market-and-Technology-Landscape.pdf#page=2",
+          "title": "공식 카탈로그 · 2쪽",
+          "page_type": "official_document",
+          "source_role": "corporate",
+          "template_residue_detected": false,
+          "sha256": "3015d43733528b047455a6e3b30e797625f594efcc07a10566e800d7b540acb5"
+        },
+        {
+          "id": "P8",
+          "url": "https://noul.com/app/uploads/sites/2/2023/04/Malaria-Diagnostics-Market-and-Technology-Landscape.pdf#page=4",
+          "title": "공식 카탈로그 · 4쪽",
+          "page_type": "official_document",
+          "source_role": "corporate",
+          "template_residue_detected": false,
+          "sha256": "cd82e4ec5e5be085bfa810974aaba10175df85af3f3d13b57f9eb67a1a89202e"
+        },
+        {
+          "id": "P9",
+          "url": "https://noul.com/app/uploads/sites/2/2023/04/Malaria-Diagnostics-Market-and-Technology-Landscape.pdf#page=3",
+          "title": "공식 카탈로그 · 3쪽",
+          "page_type": "official_document",
+          "source_role": "corporate",
+          "template_residue_detected": false,
+          "sha256": "7333134a2281b1ccd571bf8db44462f93158488156daf89afb5b345d08059ece"
+        },
+        {
+          "id": "P10",
+          "url": "https://noul.com/app/uploads/sites/2/2023/04/Malaria-Diagnostics-Market-and-Technology-Landscape.pdf#page=5",
+          "title": "공식 카탈로그 · 5쪽",
+          "page_type": "official_document",
+          "source_role": "corporate",
+          "template_residue_detected": false,
+          "sha256": "31fa67038221c4a180cb1b3283b289f61d09d0f39ec450d9cf762f293f0befa4"
+        }
+      ],
+      "facts": [
+        {
+          "id": "F001",
+          "kind": "business_line",
+          "label": "혈액·조직 진단 솔루션",
+          "source_id": "P0",
+          "quote": "혈액 및 조직 진단 분야에서 혁신적인 진단 솔루션의 제공으로 의료 접근성을 극적으로 향상시키고 암정복을 앞당깁니다.",
+          "source_url": "https://noul.com:443/",
+          "status": "fact",
+          "source_role": "corporate"
+        },
+        {
+          "id": "F002",
+          "kind": "product",
+          "label": "말라리아 진단 솔루션",
+          "source_id": "P3",
+          "quote": "디지털현미경 기반 말라리아 진단 솔루션, miLab™ MAL",
+          "source_url": "https://noul.com/product-mal/",
+          "status": "fact",
+          "source_role": "corporate"
+        },
+        {
+          "id": "F003",
+          "kind": "product",
+          "label": "miLab MAL",
+          "source_id": "P0",
+          "quote": "말라리아 진단을 위한 혁신적인 디지털 현미경 솔루션 miLab™ MAL",
+          "source_url": "https://noul.com:443/",
+          "status": "fact",
+          "source_role": "corporate"
+        },
+        {
+          "id": "F004",
+          "kind": "product",
+          "label": "miLab BCM",
+          "source_id": "P0",
+          "quote": "샘플 프랩까지 완전 자동화된 CBC 및 세포형태분석 자동화 솔루션 miLab™ BCM",
+          "source_url": "https://noul.com:443/",
+          "status": "fact",
+          "source_role": "corporate"
+        },
+        {
+          "id": "F005",
+          "kind": "technology",
+          "label": "형태학적 진단",
+          "source_id": "P3",
+          "quote": "miLab은 형태학적 진단 방식을 활용하고 있어 최근 아프리카 중심으로 확산되고 있는 pfhrp2/3 유전자 결손 여부와 상관없이 정확한 진단검사가 가능합니다.",
+          "source_url": "https://noul.com/product-mal/",
+          "status": "fact",
+          "source_role": "corporate"
+        },
+        {
+          "id": "F006",
+          "kind": "product",
+          "label": "miLab CER",
+          "source_id": "P0",
+          "quote": "정확한 자궁경부암 조기진단을 위한 AI 기반 세포분석 miLab™ CER",
+          "source_url": "https://noul.com:443/",
+          "status": "fact",
+          "source_role": "corporate"
+        },
+        {
+          "id": "F007",
+          "kind": "service",
+          "label": "원격 판독 지원",
+          "source_id": "P3",
+          "quote": "정밀 판독이 필요할 경우 뷰어를 통해 전문 인력의 원격 지원이 가능합니다.",
+          "source_url": "https://noul.com/product-mal/",
+          "status": "fact",
+          "source_role": "corporate"
+        },
+        {
+          "id": "F008",
+          "kind": "business_line",
+          "label": "접근성 중심 진단 사업",
+          "source_id": "P1",
+          "quote": "혁신적 진단 솔루션으로\n체외진단 프로세스를 변화시키고\n의료접근성을 획기적으로 높입니다.",
+          "source_url": "https://noul.com/about/",
+          "status": "fact",
+          "source_role": "corporate"
+        },
+        {
+          "id": "F009",
+          "kind": "customer",
+          "label": "진단검사실",
+          "source_id": "P3",
+          "quote": "말라리아 진단 검사를 수행해야 하는 국가 지정 진단검사실",
+          "source_url": "https://noul.com/product-mal/",
+          "status": "fact",
+          "source_role": "corporate"
+        },
+        {
+          "id": "F010",
+          "kind": "customer",
+          "label": "글로벌 연구·의료 협력기관",
+          "source_id": "P1",
+          "quote": "파트너/협력기관\nFIND (Foundation for Innovative New Diagnostics)\n스위스 열대 및 공중 보건 연구소",
+          "source_url": "https://noul.com/about/",
+          "status": "fact",
+          "source_role": "corporate"
+        },
+        {
+          "id": "F011",
+          "kind": "customer",
+          "label": "보건시설",
+          "source_id": "P3",
+          "quote": "pfhrp2/3 유전자 결손이 발생하는 지역에서 신속진단키트를 사용해 말라리아 진단 검사를 수행하는 보건시설",
+          "source_url": "https://noul.com/product-mal/",
+          "status": "fact",
+          "source_role": "corporate"
+        },
+        {
+          "id": "F012",
+          "kind": "product",
+          "label": "miLab 진단 플랫폼",
+          "source_id": "P2",
+          "quote": "샘플 프렙부터 AI 결과 판독까지\n현미경 진단의 전과정을 자동화한 세계 유일의 플랫폼 디바이스",
+          "source_url": "https://noul.com:443/milab",
+          "status": "fact",
+          "source_role": "corporate"
+        },
+        {
+          "id": "F013",
+          "kind": "other_activity",
+          "label": "검사 인력 교육",
+          "source_id": "P3",
+          "quote": "마이랩 플랫폼은 모든 분석 결과들이 디지털데이터로 저장되기 때문에 검사 인력을 대상으로 다양한 검체 종류에 대한 판독 훈련을 제공할 수 있습니다.",
+          "source_url": "https://noul.com/product-mal/",
+          "status": "fact",
+          "source_role": "corporate"
+        },
+        {
+          "id": "F014",
+          "kind": "product",
+          "label": "스마트 카트리지",
+          "source_id": "P2",
+          "quote": "혈액과 조직 분야의 다양한 진단검사로 확장 가능한 스마트 카트리지",
+          "source_url": "https://noul.com:443/milab",
+          "status": "fact",
+          "source_role": "corporate"
+        },
+        {
+          "id": "F015",
+          "kind": "technology",
+          "label": "자동화 진단 워크플로우",
+          "source_id": "P2",
+          "quote": "완전 자동화된 샘플 프렙 고체염색 카트리지로 도말과 염색을 한 번에 완성합니다.",
+          "source_url": "https://noul.com:443/milab",
+          "status": "fact",
+          "source_role": "corporate"
+        },
+        {
+          "id": "F016",
+          "kind": "technology",
+          "label": "디지털 현미경 이미징",
+          "source_id": "P2",
+          "quote": "고화질 디지털이미지 촬영 고성능의 디지털현미경으로 초당 500개 이상의 세포 이미지를 획득합니다.",
+          "source_url": "https://noul.com:443/milab",
+          "status": "fact",
+          "source_role": "corporate"
+        },
+        {
+          "id": "F017",
+          "kind": "technology",
+          "label": "내장 AI 분석",
+          "source_id": "P2",
+          "quote": "AI 알고리즘 분석 디바이스에 탑재된 Embedded AI로 사람보다 더 빠르고 일관된 결과 분석을 실행합니다.",
+          "source_url": "https://noul.com:443/milab",
+          "status": "fact",
+          "source_role": "corporate"
+        },
+        {
+          "id": "F018",
+          "kind": "service",
+          "label": "원격 진단 결과 확인",
+          "source_id": "P2",
+          "quote": "원격 결과 확인 네트워크 접속을 통해 언제 어디서나 원격으로 결과를 확인합니다.",
+          "source_url": "https://noul.com:443/milab",
+          "status": "fact",
+          "source_role": "corporate"
+        },
+        {
+          "id": "F019",
+          "kind": "rnd",
+          "label": "신규 암 진단 카트리지 개발",
+          "source_id": "P2",
+          "quote": "현재 자궁경부암, 유방암, 갑상선암 검사를 위한 카트리지 개발을 진행 중입니다.",
+          "source_url": "https://noul.com:443/milab",
+          "status": "fact",
+          "source_role": "corporate"
+        },
+        {
+          "id": "F020",
+          "kind": "rnd",
+          "label": "암 정밀진단 선행 연구",
+          "source_id": "P2",
+          "quote": "암 프로파일링 분야의 다양한 암 정밀진단 제품 개발을 위한 선행 연구를 수행하고 있습니다.",
+          "source_url": "https://noul.com:443/milab",
+          "status": "fact",
+          "source_role": "corporate"
+        },
+        {
+          "id": "F021",
+          "kind": "technology",
+          "label": "NGSI 고체염색",
+          "source_id": "P2",
+          "quote": "NGSI (Next Generation Staining and Immunostaining) 고체염색 방식은 염색 시약을 포함한 하이드로겔로 검체를 도장찍듯이 누르면서 염색하는 방식입니다.",
+          "source_url": "https://noul.com:443/milab",
+          "status": "fact",
+          "source_role": "corporate"
+        },
+        {
+          "id": "F022",
+          "kind": "technology",
+          "label": "자체 개발 AI 알고리즘",
+          "source_id": "P2",
+          "quote": "Noul-Net은 노을에서 자체 개발한 AI 알고리즘으로 마이랩 플랫폼에 탑재되어 있습니다.",
+          "source_url": "https://noul.com:443/milab",
+          "status": "fact",
+          "source_role": "corporate"
+        }
+      ],
+      "structure": {
+        "core_businesses": [
+          {
+            "name": "Blood and tissue diagnostic solutions using the miLab platform",
+            "fact_ids": [
+              "F001",
+              "F004",
+              "F006",
+              "F012",
+              "F014"
+            ]
+          }
+        ],
+        "adjacent_businesses": [],
+        "inputs": [
+          {
+            "name": "Smart diagnostic cartridges, including cartridges using staining reagents",
+            "fact_ids": [
+              "F014",
+              "F021"
+            ]
+          }
+        ],
+        "products": [
+          {
+            "name": "Malaria diagnostics: miLab MAL and its digital microscopy solution",
+            "fact_ids": [
+              "F002",
+              "F003"
+            ]
+          },
+          {
+            "name": "CBC and cell-morphology analysis: miLab BCM",
+            "fact_ids": [
+              "F004"
+            ]
+          },
+          {
+            "name": "Cervical cancer cell analysis and early-detection diagnostics: miLab CER",
+            "fact_ids": [
+              "F006"
+            ]
+          },
+          {
+            "name": "miLab automated microscopy diagnostic platform",
+            "fact_ids": [
+              "F012",
+              "F014"
+            ]
+          }
+        ],
+        "customers": [
+          {
+            "name": "Designated diagnostic laboratories performing malaria testing",
+            "fact_ids": [
+              "F009"
+            ]
+          },
+          {
+            "name": "Health facilities performing malaria testing in areas affected by pfhrp2/3 gene deletions",
+            "fact_ids": [
+              "F011"
+            ]
+          },
+          {
+            "name": "Global research and healthcare partner organizations",
+            "fact_ids": [
+              "F010"
+            ]
+          }
+        ],
+        "channels": [],
+        "functions": [
+          {
+            "name": "Develop diagnostic products and conduct cancer-diagnostics research",
+            "fact_ids": [
+              "F019",
+              "F020"
+            ]
+          },
+          {
+            "name": "Develop AI algorithms for the miLab platform",
+            "fact_ids": [
+              "F022"
+            ]
+          },
+          {
+            "name": "Automate sample preparation and solid staining",
+            "fact_ids": [
+              "F015",
+              "F021"
+            ]
+          },
+          {
+            "name": "Capture diagnostic images with digital microscopy",
+            "fact_ids": [
+              "F016"
+            ]
+          },
+          {
+            "name": "Analyze diagnostic images using embedded AI",
+            "fact_ids": [
+              "F017",
+              "F022"
+            ]
+          },
+          {
+            "name": "Provide remote review support and remote access to results",
+            "fact_ids": [
+              "F007",
+              "F018"
+            ]
+          },
+          {
+            "name": "Provide interpretation training for testing personnel",
+            "fact_ids": [
+              "F013"
+            ]
+          }
+        ],
+        "value_chain": [
+          {
+            "name": "Diagnostic product and cartridge development",
+            "fact_ids": [
+              "F019",
+              "F020",
+              "F022"
+            ]
+          },
+          {
+            "name": "Sample preparation and staining",
+            "fact_ids": [
+              "F015",
+              "F021"
+            ]
+          },
+          {
+            "name": "Digital microscopy image capture",
+            "fact_ids": [
+              "F016"
+            ]
+          },
+          {
+            "name": "AI-based image analysis",
+            "fact_ids": [
+              "F017",
+              "F022"
+            ]
+          },
+          {
+            "name": "Remote result review or specialist reading support",
+            "fact_ids": [
+              "F007",
+              "F018"
+            ]
+          },
+          {
+            "name": "Interpretation training for testing personnel",
+            "fact_ids": [
+              "F013"
+            ]
+          }
+        ]
+      }
+    },
+    "business_quality": {
+      "status": "grounded",
+      "issues": [],
+      "source_count": 11,
+      "fact_count": 22,
+      "core_coverage_ok": true
+    },
+    "opportunities": [
+      {
+        "task_id": "J020",
+        "status": "conditional",
+        "priority": "medium",
+        "solution_name": "연구 자료에서 근거와 답 찾기",
+        "target_function": "신규 진단 제품 연구자의 기술·연구자료 활용",
+        "inputs": [
+          "기술문헌, 내부 연구자료 또는 제품 관련 문서",
+          "연구자의 질의와 검토 맥락"
+        ],
+        "ai_process": [
+          "질의와 관련된 자료를 찾아 답변 초안과 근거 위치를 제시합니다."
+        ],
+        "outputs": [
+          "관련 자료와 인용 근거",
+          "질의에 대한 답변 초안"
+        ],
+        "mechanism": "연구자가 질문과 자료를 입력하면 관련 문서의 근거를 찾아 답변과 해당 근거 위치를 제공합니다.",
+        "process_change": "연구자는 흩어진 자료에서 질문과 연관된 근거를 확인하고, 답변이 원문에 부합하는지 비교할 수 있습니다.",
+        "expected_effects": [
+          "관련 자료와 근거를 질의별로 모아 검토할 수 있습니다."
+        ],
+        "kpis": [
+          "답변의 근거 포함률",
+          "근거가 원문을 뒷받침하는 비율",
+          "연구자 답변 수정·반려 비율"
+        ],
+        "required_data": [
+          "검색 대상 문서와 문서 내 검색 가능한 본문",
+          "접근 권한과 자료의 최신성 정보"
+        ],
+        "unknowns": [
+          "검색할 문서의 범위·형식과 접근 권한을 확인합니다. 연구자가 답변 근거를 원문에서 확인할 수 있도록 결과 연결 방식이 업무 환경과 맞는지 검토해야 합니다."
+        ],
+        "safeguard": "답변은 참고용으로 제공하며, 연구자는 원문 근거를 확인합니다.",
+        "reason": "연구 활동은 확인되지만 기업 문서와 연구자료의 보유·검색 가능 여부는 확인되지 않았습니다.",
+        "task_name": "기업·전문 지식 검색·질의응답",
+        "business_function": "신규 진단 제품 연구자의 기술·연구자료 활용",
+        "business_evidence": [
+          {
+            "fact_id": "F019",
+            "quote": "현재 자궁경부암, 유방암, 갑상선암 검사를 위한 카트리지 개발을 진행 중입니다.",
+            "url": "https://noul.com:443/milab"
+          },
+          {
+            "fact_id": "F020",
+            "quote": "암 프로파일링 분야의 다양한 암 정밀진단 제품 개발을 위한 선행 연구를 수행하고 있습니다.",
+            "url": "https://noul.com:443/milab"
+          }
+        ],
+        "mapping_reason": "Researchers developing new cancer diagnostic cartridges and precision-diagnostics products could use evidence-grounded search and Q&A across technical research materials. The facts establish the research function, though the available document corpus is unknown.",
+        "data_feasibility": "unknown",
+        "priority_label": "중간"
+      }
+    ],
+    "ax_quality": {
+      "status": "reviewed",
+      "issues": [],
+      "candidate_count": 10,
+      "accepted_count": 3
+    },
+    "suppliers": [
+      {
+        "supplier_id": "09bd71ac-26f2-5e86-b154-2bec2c12c525",
+        "name": "(주)워트인텔리전스",
+        "homepage_url": "https://www.wertcorp.com/kr/main",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [
+          "WERT-GPT 1.0"
+        ],
+        "task_solutions": {
+          "J020": [
+            "WERT-GPT 1.0"
+          ]
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "ㅇ (솔루션명 1 : Pluto-Chat)\r\n - (솔루션 설명 : 특허나 논문 등의 기술 관련 문서, 민사법, 지식재산권법 등의 법률 관련 문서에 대한 방대한 데이터를 기반으로 자체 구축 LLM모델임.)\r\n - (솔루션 설명 : 기술분야, 전문분야에 대한 다양한 질문에 대한 대응, 기술개발과 관련된 인사이트 도출, 객관적인 기술문헌 레퍼런스 기반의 응답에 탁월한 성능을 보임.)\r\n\r\nㅇ (솔루션명 2 : Pluto-Summary)\r\n - (솔루션 설명 : 문서의 핵심 요소를 요약해주는 AI로, 문서의 핵심사항을 파악해 신속한 분석을 지원 가능하고, 특히, 특허정보에 특화되어있음)\r\n\r\nㅇ (솔루션명 3 : Pluto-Classifier)\r\n - (솔루션 설명 : 문헌을 자동으로 분류해주는 AI. ex_ KSIC 산업분류, 국가전략/과학기술분류 등의 기준을 이용하여 특허 문서를 분류가능)\r\n\r\nㅇ (솔루션명 4 : Pluto-Segment)\r\n - (솔루션 설명 : 문헌 속 관심 구역을 인식하여 분류하는 AI로, 실험과 관련된 영역을 자동으로 인식하여 분류 [단락분류])\r\n\r\nㅇ (솔루션명 5 : Pluto-Extract)\r\n - (솔루션 설명 : 물질, 물성 등 실험과 관련된 핵심용어를 인식하여 분류하는 AI로, 실험과 관련된 영역 속 핵심요소를 자동으로 인식하여 분류 [용어 인식])\r\n\r\nㅇ (솔루션명 6 : Pluto-Image)\r\n - (솔루션 설명 : 도면의 다양한 기호와 문자를 정확하게 식별하고 분류)\r\n\r\nㅇ (솔루션명 7 : Pluto-Pinpoint)\r\n - (솔루션 설명 : 문서의 핵심 요소에 대한 사용자의 질문에 대답하는 대화형 AI로, 특히 특허문서에 대한 높은 이해도를 보임)\r\n\r\nㅇ (솔루션명 8 : Pluto-RISE)\r\n - (솔루션 설명 : 기술문서데이터를 기반으로 사용자의 질문에 대한 최적의 정보를 제공해주는 AI 솔루션으로, 협업매칭(전문가추천), 기획지원(정부과제추천), 기술상담(물성측정장비추천) 기능이 있음)",
+              "url": "https://www.wertcorp.com/kr/main"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "ㅇ (솔루션명 1 : Pluto-Chat)\r\n - (솔루션 설명 : 특허나 논문 등의 기술 관련 문서, 민사법, 지식재산권법 등의 법률 관련 문서에 대한 방대한 데이터를 기반으로 자체 구축 LLM모델임.)\r\n - (솔루션 설명 : 기술분야, 전문분야에 대한 다양한 질문에 대한 대응, 기술개발과 관련된 인사이트 도출, 객관적인 기술문헌 레퍼런스 기반의 응답에 탁월한 성능을 보임.)\r\n\r\nㅇ (솔루션명 2 : Pluto-Summary)\r\n - (솔루션 설명 : 문서의 핵심 요소를 요약해주는 AI로, 문서의 핵심사항을 파악해 신속한 분석",
+            "url": "https://www.wertcorp.com/kr/main",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "시각지능,언어·음성지능",
+          "ai_solution_description": "ㅇ (솔루션명 1 : Pluto-Chat)\r\n - (솔루션 설명 : 특허나 논문 등의 기술 관련 문서, 민사법, 지식재산권법 등의 법률 관련 문서에 대한 방대한 데이터를 기반으로 자체 구축 LLM모델임.)\r\n - (솔루션 설명 : 기술분야, 전문분야에 대한 다양한 질문에 대한 대응, 기술개발과 관련된 인사이트 도출, 객관적인 기술문헌 레퍼런스 기반의 응답에 탁월한 성능을 보임.)\r\n\r\nㅇ (솔루션명 2 : Pluto-Summary)\r\n - (솔루션 설명 : 문서의 핵심 요소를 요약해주는 AI로, 문서의 핵심사항을 파악해 신속한 분석을 지원 가능하고, 특히, 특허정보에 특화되어있음)\r\n\r\nㅇ (솔루션명 3 : Pluto-Classifier)\r\n - (솔루션 설명 : 문헌을 자동으로 분류해주는 AI. ex_ KSIC 산업분류, 국가전략/과학기술분류 등의 기준을 이용하여 특허 문서를 분류가능)\r\n\r\nㅇ (솔루션명 4 : Pluto-Segment)\r\n - (솔루션 설명 : 문헌 속 관심 구역을 인식하여 분류하는 AI로, 실험과 관련된 영역을 자동으로 인식하여 분류 [단락분류])\r\n\r\nㅇ (솔루션명 5 : Pluto-Extract)\r\n - (솔루션 설명 : 물질, 물성 등 실험과 관련된 핵심용어를 인식하여 분류하는 AI로, 실험과 관련된 영역 속 핵심요소를 자동으로 인식하여 분류 [용어 인식])\r\n\r\nㅇ (솔루션명 6 : Pluto-Image)\r\n - (솔루션 설명 : 도면의 다양한 기호와 문자를 정확하게 식별하고 분류)\r\n\r\nㅇ (솔루션명 7 : Pluto-Pinpoint)\r\n - (솔루션 설명 : 문서의 핵심 요소에 대한 사용자의 질문에 대답하는 대화형 AI로, 특히 특허문서에 대한 높은 이해도를 보임)\r\n\r\nㅇ (솔루션명 8 : Pluto-RISE)\r\n - (솔루션 설명 : 기술문서데이터를 기반으로 사용자의 질문에 대한 최적의 정보를 제공해주는 AI 솔루션으로, 협업매칭(전문가추천), 기획지원(정부과제추천), 기술상담(물성측정장비추천) 기능이 있음)",
+          "address": "강남구 강남대로 464 (역삼동) 6층",
+          "phone": "02-521-0110",
+          "representative": "윤정호",
+          "homepage_url": "https://www.wertcorp.com/kr/main",
+          "source_pool_no": 3739,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "e2f227b2f0df3f0d0215e61f65d646bc9fac54375ee4830161c5142cffe932f4"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "6504bfab-26e0-5ae7-8439-d547ae2e1e7e",
+        "name": "이로운솔루션주식회사",
+        "homepage_url": "https://erounsoft.com",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [],
+        "task_solutions": {
+          "J020": []
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "1. 솔루션 개요\r\n비파괴검사(NDT) 산업에 특화된 RAG(검색 증강 생성) 기반 AI 지식 플랫폼입니다. PDF 문서를 업로드하면 AI가 자동으로 분석·인덱싱하여, 자연어 질문만으로 관련 정보를 즉시 찾아주는 시스템입니다.\r\n\r\n2. 핵심 기능\r\n- PDF 문서 자동 벡터 인덱싱 및 검색\r\n- 답변 시 출처 문서명과 페이지 번호 함께 제공\r\n- 업로드된 문서 내에서만 답변 생성 → 할루시네이션 최소화\r\n\r\n3. 주요 활용 분야\r\n- 기술 문서 검색·질의응답 — 검사 규격·절차 관련 정보 실시간 제공\r\n- 신입 엔지니어 교육 — 현장에서 즉시 문서 참조, 숙련자 의존도 감소\r\n- 품질 관리·감사 대응 — 규격 준수 여부 및 근거 자료 신속 추출\r\n\r\n4. 기술 스택\r\n- API 서버 : Node.js + TypeScript + Fastify\r\n- Worker: Python + PyMuPDF\r\n- DB: PostgreSQL + pgvector (768차원, 코사인 유사도 검색)\r\n- LLM: Gemini / OpenAI / Claude 멀티 지원\r\n\r\n5. 차별점\r\n- 온프레미스 폐쇄망 배포 지원 → 보안 환경 대응 가능\r\n- 환경변수 변경만으로 LLM 공급사 전환 가능\r\n- 테스트 결과 문서 수집·인덱싱 및 RAG 질의응답 모두 100% PASS",
+              "url": "https://erounsoft.com"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "1. 솔루션 개요\r\n비파괴검사(NDT) 산업에 특화된 RAG(검색 증강 생성) 기반 AI 지식 플랫폼입니다. PDF 문서를 업로드하면 AI가 자동으로 분석·인덱싱하여, 자연어 질문만으로 관련 정보를 즉시 찾아주는 시스템입니다.\r\n\r\n2. 핵심 기능\r\n- PDF 문서 자동 벡터 인덱싱 및 검색\r\n- 답변 시 출처 문서명과 페이지 번호 함께 제공\r\n- 업로드된 문서 내에서만 답변 생성 → 할루시네이션 최소화\r\n\r\n3. 주요 활용 분야\r\n- 기술 문서 검색·질의응답 — 검사 규격·절차 관련 정보 실시간 제공\r\n- 신입 엔지니어 교육 — ",
+            "url": "https://erounsoft.com",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "분석지능",
+          "ai_solution_description": "1. 솔루션 개요\r\n비파괴검사(NDT) 산업에 특화된 RAG(검색 증강 생성) 기반 AI 지식 플랫폼입니다. PDF 문서를 업로드하면 AI가 자동으로 분석·인덱싱하여, 자연어 질문만으로 관련 정보를 즉시 찾아주는 시스템입니다.\r\n\r\n2. 핵심 기능\r\n- PDF 문서 자동 벡터 인덱싱 및 검색\r\n- 답변 시 출처 문서명과 페이지 번호 함께 제공\r\n- 업로드된 문서 내에서만 답변 생성 → 할루시네이션 최소화\r\n\r\n3. 주요 활용 분야\r\n- 기술 문서 검색·질의응답 — 검사 규격·절차 관련 정보 실시간 제공\r\n- 신입 엔지니어 교육 — 현장에서 즉시 문서 참조, 숙련자 의존도 감소\r\n- 품질 관리·감사 대응 — 규격 준수 여부 및 근거 자료 신속 추출\r\n\r\n4. 기술 스택\r\n- API 서버 : Node.js + TypeScript + Fastify\r\n- Worker: Python + PyMuPDF\r\n- DB: PostgreSQL + pgvector (768차원, 코사인 유사도 검색)\r\n- LLM: Gemini / OpenAI / Claude 멀티 지원\r\n\r\n5. 차별점\r\n- 온프레미스 폐쇄망 배포 지원 → 보안 환경 대응 가능\r\n- 환경변수 변경만으로 LLM 공급사 전환 가능\r\n- 테스트 결과 문서 수집·인덱싱 및 RAG 질의응답 모두 100% PASS",
+          "address": "송파구법원로114,에이동711호(문정동,엠스테이트)",
+          "phone": "02-3436-0077",
+          "representative": "이선호",
+          "homepage_url": "https://erounsoft.com",
+          "source_pool_no": 4267,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "85f47df851e9611c74b569d1a63d4a2c06eebb0ea8274ef1452fa50e5b01f2e5"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "8e7ad291-342b-5245-87bf-b77edd04a2a5",
+        "name": "(주)페르소나에이아이",
+        "homepage_url": "https://personaai.co.kr",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [
+          "GEN STATION"
+        ],
+        "task_solutions": {
+          "J020": [
+            "GEN STATION"
+          ]
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "ㅇ SONA CHAT\r\n - 온프레미스 기반 AI 챗봇\r\n - 자체 한국어 ML/DL 하이브리드 대화엔진(SONA Engine) 기반 AI 챗봇\r\n - On-Premise 구축으로 기업 내부 데이터 보안 및 운영 통제 강화\r\n - 소량 데이터로도 NLG 기반 데이터 증강을 통해 빠른 챗봇 구축 가능\r\n - 대화 이력 기반 지속 학습으로 한국어 인식 정확도 향상\r\n - GUI 기반 Ontology 관리로 챗봇 운영 및 지식 관리 효율화\r\n\r\nㅇ SONA CALL\r\n - AI 음성 상담 자동화 솔루션\r\n - 자연어 음성 대화를 통해 AI가 고객 상담을 수행하는 AI 콜봇 서비스\r\n - 상담 대기 없이 즉시 응대 가능한 자동 음성 상담 시스템\r\n - 실시간 음성 인식(STT)·음성 합성(TTS) 기반 자연스러운 대화 지원\r\n - 상담 내용 실시간 기록 및 텍스트 변환을 통한 상담 분석 제공\r\n - 다국어 음성 상담 지원으로 다양한 고객 환경 대응\r\n\r\nㅇ KGPT\r\n - 기업 데이터 기반 생성형 AI 업무 지원 솔루션\r\n - sLLM/LLM 기반 한국어 특화 생성형 AI로 문서 작성·요약·번역 등 업무 지원\r\n - 기업 내부 데이터를 활용한 RAG 기반 지식 검색 및 질의응답 기능 제공\r\n - PDF, Word, PPT, Excel 등 다양한 문서를 활용한 AI 지식베이스 구축\r\n - 외부 LLM(ChatGPT, Claude, Gemini) 연동 가능한 하이브리드 AI 구조\r\n - 온프레미스 기반 운영으로 기업 데이터 보안 및 내부 활용 강화",
+              "url": "https://personaai.co.kr"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "ㅇ SONA CHAT\r\n - 온프레미스 기반 AI 챗봇\r\n - 자체 한국어 ML/DL 하이브리드 대화엔진(SONA Engine) 기반 AI 챗봇\r\n - On-Premise 구축으로 기업 내부 데이터 보안 및 운영 통제 강화\r\n - 소량 데이터로도 NLG 기반 데이터 증강을 통해 빠른 챗봇 구축 가능\r\n - 대화 이력 기반 지속 학습으로 한국어 인식 정확도 향상\r\n - GUI 기반 Ontology 관리로 챗봇 운영 및 지식 관리 효율화\r\n\r\nㅇ SONA CALL\r\n - AI 음성 상담 자동화 솔루션\r\n - 자연어 음성 대화를 통해 A",
+            "url": "https://personaai.co.kr",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "언어·음성지능",
+          "ai_solution_description": "ㅇ SONA CHAT\r\n - 온프레미스 기반 AI 챗봇\r\n - 자체 한국어 ML/DL 하이브리드 대화엔진(SONA Engine) 기반 AI 챗봇\r\n - On-Premise 구축으로 기업 내부 데이터 보안 및 운영 통제 강화\r\n - 소량 데이터로도 NLG 기반 데이터 증강을 통해 빠른 챗봇 구축 가능\r\n - 대화 이력 기반 지속 학습으로 한국어 인식 정확도 향상\r\n - GUI 기반 Ontology 관리로 챗봇 운영 및 지식 관리 효율화\r\n\r\nㅇ SONA CALL\r\n - AI 음성 상담 자동화 솔루션\r\n - 자연어 음성 대화를 통해 AI가 고객 상담을 수행하는 AI 콜봇 서비스\r\n - 상담 대기 없이 즉시 응대 가능한 자동 음성 상담 시스템\r\n - 실시간 음성 인식(STT)·음성 합성(TTS) 기반 자연스러운 대화 지원\r\n - 상담 내용 실시간 기록 및 텍스트 변환을 통한 상담 분석 제공\r\n - 다국어 음성 상담 지원으로 다양한 고객 환경 대응\r\n\r\nㅇ KGPT\r\n - 기업 데이터 기반 생성형 AI 업무 지원 솔루션\r\n - sLLM/LLM 기반 한국어 특화 생성형 AI로 문서 작성·요약·번역 등 업무 지원\r\n - 기업 내부 데이터를 활용한 RAG 기반 지식 검색 및 질의응답 기능 제공\r\n - PDF, Word, PPT, Excel 등 다양한 문서를 활용한 AI 지식베이스 구축\r\n - 외부 LLM(ChatGPT, Claude, Gemini) 연동 가능한 하이브리드 AI 구조\r\n - 온프레미스 기반 운영으로 기업 데이터 보안 및 내부 활용 강화",
+          "address": "강남구 테헤란로81길 13, 2층(삼성동, 동원빌딩)",
+          "phone": "02-762-8713",
+          "representative": "유승재",
+          "homepage_url": "https://personaai.co.kr",
+          "source_pool_no": 4162,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "e05fbd011db92f6561ffd42d8081fd3e04638e7c9845852d804d3e5269b84253"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "52efb288-d3c2-55b9-ac38-f65b4ac4b604",
+        "name": "주식회사 빅시프트",
+        "homepage_url": "https://www.bigshift.kr",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [],
+        "task_solutions": {
+          "J020": []
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "1. Apollo-S (STT/TTS 음성 AI 솔루션)\r\nApollo-S는 음성 인식(STT)과 음성 합성(TTS)을 결합해 실시간 상담, 다국어 안내, 음성 기반 응대를 지원하는 음성 AI 솔루션입니다. 전화, 앱, 키오스크 등 다양한 채널에 적용할 수 있으며, 교육·행정·고객지원 분야에 적합합니다. 연계 실사례로는 한국능률협회(KMA)의 영상 내 AI 분석/자막 프로젝트 및 게임업계의 대사 녹음 편집 프로젝트 등이 있습니다.\r\n\r\n2. Apollo-R (RAG 챗봇)\r\nApollo-R은 사내 매뉴얼, 규정집, 내규, 연구자료 등 다양한 내부 문서를 기반으로 정확한 답변을 제공하는 RAG 챗봇 솔루션입니다. 답변과 함께 근거 출처를 제시해 신뢰도와 검증 가능성을 높일 수 있습니다. 실사례로는 분당서울대학교병원의 LLM 임베딩 기반 RAG 시스템 구현, 한국문화관광연구원의 RAG 기반 연구 지원 AI 챗봇 개발, 그 외 다수의 AI 챗봇 구축 경험이 있습니다.",
+              "url": "https://www.bigshift.kr"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "1. Apollo-S (STT/TTS 음성 AI 솔루션)\r\nApollo-S는 음성 인식(STT)과 음성 합성(TTS)을 결합해 실시간 상담, 다국어 안내, 음성 기반 응대를 지원하는 음성 AI 솔루션입니다. 전화, 앱, 키오스크 등 다양한 채널에 적용할 수 있으며, 교육·행정·고객지원 분야에 적합합니다. 연계 실사례로는 한국능률협회(KMA)의 영상 내 AI 분석/자막 프로젝트 및 게임업계의 대사 녹음 편집 프로젝트 등이 있습니다.\r\n\r\n2. Apollo-R (RAG 챗봇)\r\nApollo-R은 사내 매뉴얼, 규정집, 내규, 연구자료 ",
+            "url": "https://www.bigshift.kr",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "분석지능,언어·음성지능",
+          "ai_solution_description": "1. Apollo-S (STT/TTS 음성 AI 솔루션)\r\nApollo-S는 음성 인식(STT)과 음성 합성(TTS)을 결합해 실시간 상담, 다국어 안내, 음성 기반 응대를 지원하는 음성 AI 솔루션입니다. 전화, 앱, 키오스크 등 다양한 채널에 적용할 수 있으며, 교육·행정·고객지원 분야에 적합합니다. 연계 실사례로는 한국능률협회(KMA)의 영상 내 AI 분석/자막 프로젝트 및 게임업계의 대사 녹음 편집 프로젝트 등이 있습니다.\r\n\r\n2. Apollo-R (RAG 챗봇)\r\nApollo-R은 사내 매뉴얼, 규정집, 내규, 연구자료 등 다양한 내부 문서를 기반으로 정확한 답변을 제공하는 RAG 챗봇 솔루션입니다. 답변과 함께 근거 출처를 제시해 신뢰도와 검증 가능성을 높일 수 있습니다. 실사례로는 분당서울대학교병원의 LLM 임베딩 기반 RAG 시스템 구현, 한국문화관광연구원의 RAG 기반 연구 지원 AI 챗봇 개발, 그 외 다수의 AI 챗봇 구축 경험이 있습니다.",
+          "address": "송파구 가락로 114, 6층 601-에이15호",
+          "phone": "010-9363-7305",
+          "representative": "박재균",
+          "homepage_url": "https://www.bigshift.kr",
+          "source_pool_no": 4230,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "c6978c2209e10249917bc4bd1a7d63bc3d106addad2350290b7144174e63a012"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "8c7be395-2a5f-5166-af6f-217799af272d",
+        "name": "주식회사 레인메이커",
+        "homepage_url": "https://rainmaker.co.kr",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [],
+        "task_solutions": {
+          "J020": []
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "o RAIN OCR\r\n본 솔루션은 인공지능이 문서의 단순 텍스트 추출을 넘어 레이아웃과 표 구조까지 정확히 분석하여 데이터화하는 지능형 OCR 플랫폼입니다. 사용자 피드백을 통해 모델이 스스로 성능을 높이는 재학습 구조를 갖추고 있어 새로운 문서 양식에도 추가 개발 없이 신속하게 대응합니다. API 및 모바일 SDK를 통해 기업의 기존 시스템이나 현장 기기에 즉시 연동 가능한 범용성을 제공합니다.\r\n\r\no RAIN DocuMind\r\n본 솔루션은 방대한 비정형 문서에서 필요한 정보를 즉시 찾아 답변하고 보고서까지 생성하는 RAG 기반 지능형 어시스턴트입니다. 문서의 텍스트뿐만 아니라 복잡한 표와 이미지까지 완벽히 분석하여 답변의 근거로 제시하며 , 사용자의 질의에 따라 서론·본문·결과 형태의 전문 보고서를 자동으로 작성합니다. 특히 오픈소스 기반 로컬 LLM을 활용하여 기업 내부 데이터의 외부 유출 없이도 안전하고 경제적인 연구 지원 환경을 제공합니다.",
+              "url": "https://rainmaker.co.kr"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "o RAIN OCR\r\n본 솔루션은 인공지능이 문서의 단순 텍스트 추출을 넘어 레이아웃과 표 구조까지 정확히 분석하여 데이터화하는 지능형 OCR 플랫폼입니다. 사용자 피드백을 통해 모델이 스스로 성능을 높이는 재학습 구조를 갖추고 있어 새로운 문서 양식에도 추가 개발 없이 신속하게 대응합니다. API 및 모바일 SDK를 통해 기업의 기존 시스템이나 현장 기기에 즉시 연동 가능한 범용성을 제공합니다.\r\n\r\no RAIN DocuMind\r\n본 솔루션은 방대한 비정형 문서에서 필요한 정보를 즉시 찾아 답변하고 보고서까지 생성하는 RAG 기반",
+            "url": "https://rainmaker.co.kr",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "분석지능,시각지능",
+          "ai_solution_description": "o RAIN OCR\r\n본 솔루션은 인공지능이 문서의 단순 텍스트 추출을 넘어 레이아웃과 표 구조까지 정확히 분석하여 데이터화하는 지능형 OCR 플랫폼입니다. 사용자 피드백을 통해 모델이 스스로 성능을 높이는 재학습 구조를 갖추고 있어 새로운 문서 양식에도 추가 개발 없이 신속하게 대응합니다. API 및 모바일 SDK를 통해 기업의 기존 시스템이나 현장 기기에 즉시 연동 가능한 범용성을 제공합니다.\r\n\r\no RAIN DocuMind\r\n본 솔루션은 방대한 비정형 문서에서 필요한 정보를 즉시 찾아 답변하고 보고서까지 생성하는 RAG 기반 지능형 어시스턴트입니다. 문서의 텍스트뿐만 아니라 복잡한 표와 이미지까지 완벽히 분석하여 답변의 근거로 제시하며 , 사용자의 질의에 따라 서론·본문·결과 형태의 전문 보고서를 자동으로 작성합니다. 특히 오픈소스 기반 로컬 LLM을 활용하여 기업 내부 데이터의 외부 유출 없이도 안전하고 경제적인 연구 지원 환경을 제공합니다.",
+          "address": "인천광역시 서구 정서진로 410, 본부동 2층 D222호(오류동)",
+          "phone": "010-7942-8591",
+          "representative": "김효철",
+          "homepage_url": "https://rainmaker.co.kr",
+          "source_pool_no": 3312,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "d767fb000ab1bbc3d304b81dd2befe9eddbe70d06b1a7231ac1dcb9c2dbd69c2"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "77332743-e558-5b9c-a3e8-7452abc3b958",
+        "name": "비젠트로(주)",
+        "homepage_url": "http://www.bizentro.com",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [
+          "UNIBI Zenitics v1.2"
+        ],
+        "task_solutions": {
+          "J020": [
+            "UNIBI Zenitics v1.2"
+          ]
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "Zenitics(제니틱스)\r\n1. 제품 소개\r\nZenitics(제니틱스)는 기업의 ERP·MES 등 데이터를 AI로 분석해 경영 의사결정을 돕는 지능형 BI 플랫폼입니다. 사용자가 자연어로 질문하면 데이터 탐색 → SQL 생성 → 통계 분석 → 시각화 → 리포트 작성까지를 역할별 Multi-Agent가 단계적으로 수행해, 복잡한 분석 업무를 빠르고 정확하게 자동화합니다.\r\n\r\n2. 핵심 기능\r\n- 자연어 기반 데이터 분석(NLQ): 질문 입력만으로 테이블/컬럼 식별 및 SQL 자동 생성 \r\n- Multi-Agent 협업 분석 엔진: 질문 이해–쿼리 생성–통계 분석–시각화–인사이트 도출을 분업·연계 \r\n- 자동 인사이트·리포트 생성: 수치 나열이 아닌 “원인·변화·패턴” 중심 요약 및 리포트 제공 \r\n- 지능형 시각화/대시보드: 목적에 맞는 차트 추천 및 대화형 대시보드 생성 \r\n- 연속 질의 대응(맥락 이해): 이전 Q&A 맥락(HISTORY)을 반영해 일관된 분석 지원 \r\n- 질문 보정: 오타/모호한 표현을 자동 보정해 분석 정확도 향상 \r\n\r\nUNIAnalytics(유니어날리틱스)\r\n1. 제품 소개\r\nUNIAnalytics는 다양한 솔루션에서 수집되는 데이터 분석을 위한 솔루션으로 데이터가 보유하고 있지만, 분석 기술의 전문가나 솔루션의 부재로 활용하지 못하는 기업들을 위해 실무에서 바로 활용할 수 있도록 쉽게 분석과정을 진행할 수 있습니다\r\n다양한 파일 포맷을 지원하기 때문에 데이터에 대한 유연함이 높을 뿐　아니라 여러 시각화 차트를 제공함으로써 데이터에서 패턴을 파악하기 용이하도록 개발되었습니다.\r\n\r\n2. 핵심 기능\r\n- 파이프라인 분석 인터페이스: 수집–전처리–학습–배포를 하나의 화면에서 구성·운영하고, 분석 단위 그룹화 및 주기적 재학습/최신 모델 자동 배포 지원\r\n- 컴포넌트 기반 분석: 전처리·군집·학습·평가 등 100여 개 컴포넌트를 Drag & Drop으로 연결해 파이프라인을 생성하며, 코딩 없이 파라미터 설정만으로 분석\r\n- 시각화: 전처리/EDA/학습·검증 과정의 주요 차트를 간단한 설정으로 생성해 결과 확인\r\n- 대시보드: 파이프라인 실행 현황, 엔진 동작 여부, 서버 자원 등을 모니터링",
+              "url": "http://www.bizentro.com"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "Zenitics(제니틱스)\r\n1. 제품 소개\r\nZenitics(제니틱스)는 기업의 ERP·MES 등 데이터를 AI로 분석해 경영 의사결정을 돕는 지능형 BI 플랫폼입니다. 사용자가 자연어로 질문하면 데이터 탐색 → SQL 생성 → 통계 분석 → 시각화 → 리포트 작성까지를 역할별 Multi-Agent가 단계적으로 수행해, 복잡한 분석 업무를 빠르고 정확하게 자동화합니다.\r\n\r\n2. 핵심 기능\r\n- 자연어 기반 데이터 분석(NLQ): 질문 입력만으로 테이블/컬럼 식별 및 SQL 자동 생성 \r\n- Multi-Agent 협업 분석 엔진:",
+            "url": "http://www.bizentro.com",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "분석지능",
+          "ai_solution_description": "Zenitics(제니틱스)\r\n1. 제품 소개\r\nZenitics(제니틱스)는 기업의 ERP·MES 등 데이터를 AI로 분석해 경영 의사결정을 돕는 지능형 BI 플랫폼입니다. 사용자가 자연어로 질문하면 데이터 탐색 → SQL 생성 → 통계 분석 → 시각화 → 리포트 작성까지를 역할별 Multi-Agent가 단계적으로 수행해, 복잡한 분석 업무를 빠르고 정확하게 자동화합니다.\r\n\r\n2. 핵심 기능\r\n- 자연어 기반 데이터 분석(NLQ): 질문 입력만으로 테이블/컬럼 식별 및 SQL 자동 생성 \r\n- Multi-Agent 협업 분석 엔진: 질문 이해–쿼리 생성–통계 분석–시각화–인사이트 도출을 분업·연계 \r\n- 자동 인사이트·리포트 생성: 수치 나열이 아닌 “원인·변화·패턴” 중심 요약 및 리포트 제공 \r\n- 지능형 시각화/대시보드: 목적에 맞는 차트 추천 및 대화형 대시보드 생성 \r\n- 연속 질의 대응(맥락 이해): 이전 Q&A 맥락(HISTORY)을 반영해 일관된 분석 지원 \r\n- 질문 보정: 오타/모호한 표현을 자동 보정해 분석 정확도 향상 \r\n\r\nUNIAnalytics(유니어날리틱스)\r\n1. 제품 소개\r\nUNIAnalytics는 다양한 솔루션에서 수집되는 데이터 분석을 위한 솔루션으로 데이터가 보유하고 있지만, 분석 기술의 전문가나 솔루션의 부재로 활용하지 못하는 기업들을 위해 실무에서 바로 활용할 수 있도록 쉽게 분석과정을 진행할 수 있습니다\r\n다양한 파일 포맷을 지원하기 때문에 데이터에 대한 유연함이 높을 뿐　아니라 여러 시각화 차트를 제공함으로써 데이터에서 패턴을 파악하기 용이하도록 개발되었습니다.\r\n\r\n2. 핵심 기능\r\n- 파이프라인 분석 인터페이스: 수집–전처리–학습–배포를 하나의 화면에서 구성·운영하고, 분석 단위 그룹화 및 주기적 재학습/최신 모델 자동 배포 지원\r\n- 컴포넌트 기반 분석: 전처리·군집·학습·평가 등 100여 개 컴포넌트를 Drag & Drop으로 연결해 파이프라인을 생성하며, 코딩 없이 파라미터 설정만으로 분석\r\n- 시각화: 전처리/EDA/학습·검증 과정의 주요 차트를 간단한 설정으로 생성해 결과 확인\r\n- 대시보드: 파이프라인 실행 현황, 엔진 동작 여부, 서버 자원 등을 모니터링",
+          "address": "경기도 성남시 분당구 대왕판교로 660 유스페이스1, A동 10층 1007호(삼평동, 유스페이스1)",
+          "phone": "080-500-2020",
+          "representative": "김홍근",
+          "homepage_url": "http://www.bizentro.com",
+          "source_pool_no": 3095,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "a0eee46311e3d4da90edbe226e32e89709f3ee960780f55ca53fec51639d35e4"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "d3796bd4-0fae-51d3-80e9-ff4732661a74",
+        "name": "(주)아이와즈",
+        "homepage_url": "https://www.iwaz.co.kr",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [],
+        "task_solutions": {
+          "J020": []
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "1. AI기반 지능형도로관리시스템\r\n○ 도로 안전을 강화하고 유지 관리의 효율성을 극대화하기 위해 주행영상 및 위성/항공 영상을 활용하고, AI 기반 객체 탐지 기술을 적용하여 공공시설 상태를 지속적으로 모니터링 및 분석하는 지능형도로시설관리플랫폼\r\n  - 데이터 분석\r\n    * 위성/항공 이미지, 대중교통(버스, 택시) 주행영상 이미지 등을 분석함\r\n    * 분석 대상으로 부터 이미지 객체 인식 및 이벤트 위치 정보 추출 그리고 개인정보(사람, 차량 번호판 등) 비식별화 수행\r\n  - 위성/항공 이미지 AI 분석\r\n    * AI 기술을 활용하여 위성/항공사진으로 부터 훼손된 도로 객체 검출 및 관리  \r\n    * 횡단보도, 과속방지턱 등의 훼손 검출 결과 표출\r\n  - 주행영상 이미지 AI 분석\r\n    * AI 기술을 활용하여 주행영상으로부터 훼손된 도로 객체 검출 및 관리\r\n    * 주행영상으로 부터 횡단보도, 과속방지턱, 시선유도봉, 차선, 포트홀 검출\r\n  - 관제 시스템(시설 관리)\r\n    * 웹 기반 관제 시스템 제공\r\n    * 훼손 단계 및 보수 이력 관리 가능 \r\n    * 어린이/노인 보호 구역 관리/표출\r\n○ AI기반 지능형도로관리시스템의 혁신성 \r\n  - AI기반 지능형 객체 탐지 기술 활용\r\n  - 위성/주행/CCTV 영상 융합 분석 지원\r\n\r\n2. AI기반 IWAZ AI Chatbot\r\n○ RAG 챗봇 특징\r\n  - 다양한 종류의 문서를 수집하여 적합한 전처리 과정을 거친 후 저장소에 색인\r\n  - 사용자의 질문에 대해 더욱 정교한 답변을 제공하기 위해, 벡터 검색과 키워드 검색을 결합한 하이브리드 검색과 리랭커를 적용하여 검색 결과의 품질을 향상\r\n  - 프롬프트 최적화를 통해 답변 정확성 강화\r\n○ RAG 챗봇 주요 기능\r\n  - 사용자 질문에 대한 답변\r\n  - 관리자 페이지 제공\r\n    * 데이터 업데이트 및 LLM 모델 변경\r\n    * 챗봇 히스토리 조회\r\n○ 다양한 분야로의 확장 가능성\r\n  - 고객 지원\r\n    * FAQ, 기업에서 운영하는 웹사이트 데이터 등에서 필요한 정보를 검색하고, 이를 기반으로 사용자의 질문에 대한 답변 제공\r\n  - 교육 및 학습\r\n    * 학생들의 질문에 대해 관련 교재 및 자료에서 답을 찾아 제공\r\n  - 기업 내부 업무\r\n    * 기업의 문서, 매뉴얼, 보고서 등에서 필요한 정보를 검색하고 답변을 제공하여 업무 효율성 제고\r\n\r\n3. AI기반 IWAZ Crawler\r\n○ 학습데이터 활용이 가능하고 생성된 AI 모델을 통해 판별 또는 추천이 가능한 학습데이터 수집 및 제공 (학습데이터 제공 및 구축된 모델에서 활용) \r\n○ 수집 결과의 텍스트 및 이미지 기반 수집대상 식별, 분류, 추천\r\n○ 웹 서비스 변경 도메인 추적\r\n○ 다양한 유형(hwp, doc, pdf, xls 등)의 문서로부터 텍스트 추출이 가능한 문서 필터 제공\r\n○ 분산 수집 및 저장 지원\r\n\r\n4. AI기반 민감정보 식별 시스템\r\n○ 민감정보 식별\r\n  - 민감정보 식별 대상\r\n    * 인명, 나이, 키, 몸무게, 차량번호, 계좌번호, 핸드폰 번호, 이메일, 주민번호 등 민감정보 식별 \r\n  - 오탈자, 문법 오류 등의 텍스트 데이터 내 인명 식별 기능 제공\r\n○ 문서 필터 기능\r\n  - 텍슽 정보 추출\r\n    * hwp, word, ppt 등의 문서파일에서 텍스트 정보를 추출하는 문서필터 기능 제공\r\n○ AI기반 민감정보 검색을 위한 학습 Corpus 구축 도구 제공 \r\n\r\n5. AI기반 지능형 케어 시스템 \r\n○ 활용처\r\n  - 운동 및 재활 자세 교정, 낙상 및 부동 등의 안전 사고 케어\r\n○ 적용 기술\r\n  - 인체 관절 좌표 추출 딥러닝 모델 적용 및 인체 관절 좌표 인지 기반 Human Pose Estimation AI기술 활용\r\n○ 지원 기능\r\n  - Human Pose Estimation 기술 기반 지능형 생활/헬스/안전 케어 서비스\r\n  - Edge 컴퓨팅기술을 적용한 단일 기기 AI 서비스 지원\r\n  - 인체 관절 좌표의 수치화 및 데이터 비저장으로 개인정보 침해 방지(사생활 보호)\r\n  - PIR(Passive Infrared Sensor) 센서를 활용한 인체 인식 및 시스템 활성화(시스템 운용 최적화)\r\n  \r\n6. 확장형 지능 AI-X 플랫폼\r\n○ 지능형 데이터 인지\r\n  - 이기종 통합: MQTT·5G 등 다중 프로토콜을 표준 인터페이스로 단일화하는 멀티 게이트웨이 구현\r\n  - 상황 맥락 융합: 내부 센서와 외부 공공 데이터(기상·재난)를 결합하여 결함 및 장애 감지 정밀도 극대화\r\n○ 자가 학습 및 적응형 분석 \r\n  - 복합 분석: 데이터 특성(이미지·시계열 등)에 최적화된 DNN/CNN/LSTM 모델 가동\r\n  - 자율 갱신: 예측값과 실측값 비교를 통해 모델을 스스로 재학습하는 Self-Loop 시스템\r\n○ 이벤트 기반 지능형 제어\r\n  - 즉각 대응: 임계치 초과 및 이상 징후 시 Trigger 기반 서비스 로직 즉시 실행\r\n  - 자율 제어: Action CH를 통한 양방향 원격 제어\r\n○ 데이터 가시성 및 서비스 \r\n  - 디지털 트윈: 현황 대시보드 실시간 시각화 및 이력 데이터 기반의 통계적 예측 제공\r\n  - 도메인 최적화: 안전·성능·환경 등 사용자 목적에 맞춘 모듈형 인터페이스 지원",
+              "url": "https://www.iwaz.co.kr"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "1. AI기반 지능형도로관리시스템\r\n○ 도로 안전을 강화하고 유지 관리의 효율성을 극대화하기 위해 주행영상 및 위성/항공 영상을 활용하고, AI 기반 객체 탐지 기술을 적용하여 공공시설 상태를 지속적으로 모니터링 및 분석하는 지능형도로시설관리플랫폼\r\n  - 데이터 분석\r\n    * 위성/항공 이미지, 대중교통(버스, 택시) 주행영상 이미지 등을 분석함\r\n    * 분석 대상으로 부터 이미지 객체 인식 및 이벤트 위치 정보 추출 그리고 개인정보(사람, 차량 번호판 등) 비식별화 수행\r\n  - 위성/항공 이미지 AI 분석\r\n    * ",
+            "url": "https://www.iwaz.co.kr",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "분석지능,시각지능,언어·음성지능,행동지능",
+          "ai_solution_description": "1. AI기반 지능형도로관리시스템\r\n○ 도로 안전을 강화하고 유지 관리의 효율성을 극대화하기 위해 주행영상 및 위성/항공 영상을 활용하고, AI 기반 객체 탐지 기술을 적용하여 공공시설 상태를 지속적으로 모니터링 및 분석하는 지능형도로시설관리플랫폼\r\n  - 데이터 분석\r\n    * 위성/항공 이미지, 대중교통(버스, 택시) 주행영상 이미지 등을 분석함\r\n    * 분석 대상으로 부터 이미지 객체 인식 및 이벤트 위치 정보 추출 그리고 개인정보(사람, 차량 번호판 등) 비식별화 수행\r\n  - 위성/항공 이미지 AI 분석\r\n    * AI 기술을 활용하여 위성/항공사진으로 부터 훼손된 도로 객체 검출 및 관리  \r\n    * 횡단보도, 과속방지턱 등의 훼손 검출 결과 표출\r\n  - 주행영상 이미지 AI 분석\r\n    * AI 기술을 활용하여 주행영상으로부터 훼손된 도로 객체 검출 및 관리\r\n    * 주행영상으로 부터 횡단보도, 과속방지턱, 시선유도봉, 차선, 포트홀 검출\r\n  - 관제 시스템(시설 관리)\r\n    * 웹 기반 관제 시스템 제공\r\n    * 훼손 단계 및 보수 이력 관리 가능 \r\n    * 어린이/노인 보호 구역 관리/표출\r\n○ AI기반 지능형도로관리시스템의 혁신성 \r\n  - AI기반 지능형 객체 탐지 기술 활용\r\n  - 위성/주행/CCTV 영상 융합 분석 지원\r\n\r\n2. AI기반 IWAZ AI Chatbot\r\n○ RAG 챗봇 특징\r\n  - 다양한 종류의 문서를 수집하여 적합한 전처리 과정을 거친 후 저장소에 색인\r\n  - 사용자의 질문에 대해 더욱 정교한 답변을 제공하기 위해, 벡터 검색과 키워드 검색을 결합한 하이브리드 검색과 리랭커를 적용하여 검색 결과의 품질을 향상\r\n  - 프롬프트 최적화를 통해 답변 정확성 강화\r\n○ RAG 챗봇 주요 기능\r\n  - 사용자 질문에 대한 답변\r\n  - 관리자 페이지 제공\r\n    * 데이터 업데이트 및 LLM 모델 변경\r\n    * 챗봇 히스토리 조회\r\n○ 다양한 분야로의 확장 가능성\r\n  - 고객 지원\r\n    * FAQ, 기업에서 운영하는 웹사이트 데이터 등에서 필요한 정보를 검색하고, 이를 기반으로 사용자의 질문에 대한 답변 제공\r\n  - 교육 및 학습\r\n    * 학생들의 질문에 대해 관련 교재 및 자료에서 답을 찾아 제공\r\n  - 기업 내부 업무\r\n    * 기업의 문서, 매뉴얼, 보고서 등에서 필요한 정보를 검색하고 답변을 제공하여 업무 효율성 제고\r\n\r\n3. AI기반 IWAZ Crawler\r\n○ 학습데이터 활용이 가능하고 생성된 AI 모델을 통해 판별 또는 추천이 가능한 학습데이터 수집 및 제공 (학습데이터 제공 및 구축된 모델에서 활용) \r\n○ 수집 결과의 텍스트 및 이미지 기반 수집대상 식별, 분류, 추천\r\n○ 웹 서비스 변경 도메인 추적\r\n○ 다양한 유형(hwp, doc, pdf, xls 등)의 문서로부터 텍스트 추출이 가능한 문서 필터 제공\r\n○ 분산 수집 및 저장 지원\r\n\r\n4. AI기반 민감정보 식별 시스템\r\n○ 민감정보 식별\r\n  - 민감정보 식별 대상\r\n    * 인명, 나이, 키, 몸무게, 차량번호, 계좌번호, 핸드폰 번호, 이메일, 주민번호 등 민감정보 식별 \r\n  - 오탈자, 문법 오류 등의 텍스트 데이터 내 인명 식별 기능 제공\r\n○ 문서 필터 기능\r\n  - 텍슽 정보 추출\r\n    * hwp, word, ppt 등의 문서파일에서 텍스트 정보를 추출하는 문서필터 기능 제공\r\n○ AI기반 민감정보 검색을 위한 학습 Corpus 구축 도구 제공 \r\n\r\n5. AI기반 지능형 케어 시스템 \r\n○ 활용처\r\n  - 운동 및 재활 자세 교정, 낙상 및 부동 등의 안전 사고 케어\r\n○ 적용 기술\r\n  - 인체 관절 좌표 추출 딥러닝 모델 적용 및 인체 관절 좌표 인지 기반 Human Pose Estimation AI기술 활용\r\n○ 지원 기능\r\n  - Human Pose Estimation 기술 기반 지능형 생활/헬스/안전 케어 서비스\r\n  - Edge 컴퓨팅기술을 적용한 단일 기기 AI 서비스 지원\r\n  - 인체 관절 좌표의 수치화 및 데이터 비저장으로 개인정보 침해 방지(사생활 보호)\r\n  - PIR(Passive Infrared Sensor) 센서를 활용한 인체 인식 및 시스템 활성화(시스템 운용 최적화)\r\n  \r\n6. 확장형 지능 AI-X 플랫폼\r\n○ 지능형 데이터 인지\r\n  - 이기종 통합: MQTT·5G 등 다중 프로토콜을 표준 인터페이스로 단일화하는 멀티 게이트웨이 구현\r\n  - 상황 맥락 융합: 내부 센서와 외부 공공 데이터(기상·재난)를 결합하여 결함 및 장애 감지 정밀도 극대화\r\n○ 자가 학습 및 적응형 분석 \r\n  - 복합 분석: 데이터 특성(이미지·시계열 등)에 최적화된 DNN/CNN/LSTM 모델 가동\r\n  - 자율 갱신: 예측값과 실측값 비교를 통해 모델을 스스로 재학습하는 Self-Loop 시스템\r\n○ 이벤트 기반 지능형 제어\r\n  - 즉각 대응: 임계치 초과 및 이상 징후 시 Trigger 기반 서비스 로직 즉시 실행\r\n  - 자율 제어: Action CH를 통한 양방향 원격 제어\r\n○ 데이터 가시성 및 서비스 \r\n  - 디지털 트윈: 현황 대시보드 실시간 시각화 및 이력 데이터 기반의 통계적 예측 제공\r\n  - 도메인 최적화: 안전·성능·환경 등 사용자 목적에 맞춘 모듈형 인터페이스 지원",
+          "address": "대전광역시 유성구 문지로 272-16, 217호(문지동)",
+          "phone": "042-936-9000",
+          "representative": "양중식",
+          "homepage_url": "https://www.iwaz.co.kr",
+          "source_pool_no": 3552,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "7aef30b755036ed5054bb5cb20c80a2a7859b4d72487384c07ae494d470202fa"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "ab76a8b0-e9cc-5eba-8759-16455d7d41fa",
+        "name": "솔트룩스",
+        "homepage_url": "https://www.saltlux.com",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [
+          "루시아 에이젠틱 래그 v3.0"
+        ],
+        "task_solutions": {
+          "J020": [
+            "루시아 에이젠틱 래그 v3.0"
+          ]
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "1. 루시아 온\r\n- 솔트룩스의 루시아 온은 기업 환경에 최적화된 생성형 AI 어플라이언스입니다. \r\n- 보안이 중요한 비즈니스 환경에서도 안전하게 독자적인 AI를 구축할 수 있도록 워크스테이션과 서버 형태로 제공됩니다. \r\n- 문서 초안 자동화 및 데이터 분석을 통해 업무 생산성을 획기적으로 혁신하는 솔루션입니다.\r\n \r\n2. 루시아 플랫폼 \r\n- 다양한 상용 LLM과 멀티모달 기능을 단일 API로 제공하는 기업용 AI 플랫폼입니다. \r\n- MCP 기반 오케스트레이션으로 업무 흐름을 유연하게 구성합니다. \r\n- 사용량 기반 정밀 과금과 운영 대시보드를 통해 비용과 서비스 운영을 체계적으로 통제하는 통합 AI플랫폼입니다.",
+              "url": "https://www.saltlux.com"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "1. 루시아 온\r\n- 솔트룩스의 루시아 온은 기업 환경에 최적화된 생성형 AI 어플라이언스입니다. \r\n- 보안이 중요한 비즈니스 환경에서도 안전하게 독자적인 AI를 구축할 수 있도록 워크스테이션과 서버 형태로 제공됩니다. \r\n- 문서 초안 자동화 및 데이터 분석을 통해 업무 생산성을 획기적으로 혁신하는 솔루션입니다.\r\n \r\n2. 루시아 플랫폼 \r\n- 다양한 상용 LLM과 멀티모달 기능을 단일 API로 제공하는 기업용 AI 플랫폼입니다. \r\n- MCP 기반 오케스트레이션으로 업무 흐름을 유연하게 구성합니다. \r\n- 사용량 기반 정밀 ",
+            "url": "https://www.saltlux.com",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "언어·음성지능",
+          "ai_solution_description": "1. 루시아 온\r\n- 솔트룩스의 루시아 온은 기업 환경에 최적화된 생성형 AI 어플라이언스입니다. \r\n- 보안이 중요한 비즈니스 환경에서도 안전하게 독자적인 AI를 구축할 수 있도록 워크스테이션과 서버 형태로 제공됩니다. \r\n- 문서 초안 자동화 및 데이터 분석을 통해 업무 생산성을 획기적으로 혁신하는 솔루션입니다.\r\n \r\n2. 루시아 플랫폼 \r\n- 다양한 상용 LLM과 멀티모달 기능을 단일 API로 제공하는 기업용 AI 플랫폼입니다. \r\n- MCP 기반 오케스트레이션으로 업무 흐름을 유연하게 구성합니다. \r\n- 사용량 기반 정밀 과금과 운영 대시보드를 통해 비용과 서비스 운영을 체계적으로 통제하는 통합 AI플랫폼입니다.",
+          "address": "송파구 올림픽로35길 123, 9층",
+          "phone": "02-2193-1600",
+          "representative": "이경일",
+          "homepage_url": "https://www.saltlux.com",
+          "source_pool_no": 3861,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "bef8aebe0d3897176199acfab566e43d637cc18e84f236819573a8450a461c48"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "a5f9df78-3dac-5054-bc0d-7ce21cc96c85",
+        "name": "주식회사 써로마인드",
+        "homepage_url": "https://surromind.ai",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [],
+        "task_solutions": {
+          "J020": []
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "솔루션1. SURROMIND AI Studio\r\n- AI 기술분야 : 시각지능 / 산업분야 : 전분야\r\n- 손쉬운 인공지능 개발/운영 플랫폼으로 인공지능 개발 전문가가 없어도, 고객 데이터로 최적의 모델을 만들어 사업에 적용/운영 가능한 “AI Service Platform”\r\n\r\n솔루션2. SURROMIND MCM\r\n- AI 기술분야 : 분석지능 / 산업분야 : 제조\r\n- 소음, 진동 및 센서 신호로 이상감지, 고장진단, 고장예측, 잔여수명을 예측하는 솔루션\r\n\r\n솔루션3. SURRO Vision Inspection\r\n- AI 기술분야 : 시각지능 / 산업분야 : 제조\r\n- 제조 공정에서 발생하는 불량을 AQM(AI Quality Manager) 기반 비전 검사를 통해 정밀 분석하고, 데이터셋 라벨링 품질 향상 및 자동화를 통해 고성능 모델 확보와 시간‧비용 절감을 지원하는 AI 솔루션\r\n\r\n솔루션4. SURRO Vision CCTV\r\n- AI 기술분야 : 시각지능 / 산업분야 : 교통물류\r\n- CCTV 기반 영상 스트림을 딥러닝 모델로 분석하여 산업 현장의 안전 위험 요소, 보안 이상 행위 및 교통 흐름·사고 징후를 자동 감지하는 지능형 비전 AI 솔루션\r\n\r\n솔루션5. SURROMIND Health\r\n- AI 기술분야 : 시각지능 / 산업분야 : 생활\r\n- 시각 인식 및 분석 기술을 활용하여 신체 상태의 초기 진단부터 실시간 자세 교정과 재활 코칭, 그리고 환자 안전 모니터링에 이르기까지 맞춤형 예방 및 정밀 관리를 지원하는 AI 솔루션\r\n\r\n솔루션6. SURRO Q&A\r\n- AI 기술분야 : 언어, 음성지능 / 산업분야 : 전분야\r\n- 기업 내부의 지식 자산(문서)을 기반으로 LLM(거대언어모델)과 RAG(검색 증강 생성) 기술을 활용하여 사용자에게 답변을 제공하는 지식 기반 질의응답 솔루션\r\n\r\n솔루션7. SURROMIND Recommendation\r\n- AI 기술분야 : 분석지능 / 산업분야 : 컨텐츠\r\n- 콘텐츠와 서비스를 개인화하여 사용자 취향을 반영한 콘텐츠를 자동으로 제공하는 솔루션 (서비스 개인화, 공급과 수요 매칭 AI 모델링)\r\n\r\n솔루션8. SURROMIND Education\r\n- AI 기술분야 : 분석지능 / 산업분야 : 교육\r\n- 수험생의 학습 능력 향상, 진학 지도, 면접 훈련을 위한 AI 솔루션\r\n\r\n솔루션9. SURRO Docs Studio\r\n- AI 기술분야 : 언어, 음성지능 / 산업분야 : 전분야\r\n- 사내 문서/정보의 검색과 정리 및 보고서 자동 생성\r\n\r\n솔루션10. SURRO Docs AI OCR\r\n- AI 기술분야 : 시각지능 / 산업분야 : 전분야\r\n- 이미지 속 문자를 인식하여 키워드 추출, 내용 분석, 문서 분류를 자동화하는 AI 솔루션\r\n\r\n솔루션11. SURROMIND TRACE\r\n- AI 기술분야 : 분석지능 / 산업분야 : 제조\r\n- 시계열 데이터 기반 이상 탐지, 근본 원인 분석 및 탐색적 데이터 분석(EDA) 통합 솔루션",
+              "url": "https://surromind.ai"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "솔루션1. SURROMIND AI Studio\r\n- AI 기술분야 : 시각지능 / 산업분야 : 전분야\r\n- 손쉬운 인공지능 개발/운영 플랫폼으로 인공지능 개발 전문가가 없어도, 고객 데이터로 최적의 모델을 만들어 사업에 적용/운영 가능한 “AI Service Platform”\r\n\r\n솔루션2. SURROMIND MCM\r\n- AI 기술분야 : 분석지능 / 산업분야 : 제조\r\n- 소음, 진동 및 센서 신호로 이상감지, 고장진단, 고장예측, 잔여수명을 예측하는 솔루션\r\n\r\n솔루션3. SURRO Vision Inspection\r\n- AI 기",
+            "url": "https://surromind.ai",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "분석지능,시각지능,언어·음성지능,기타",
+          "ai_solution_description": "솔루션1. SURROMIND AI Studio\r\n- AI 기술분야 : 시각지능 / 산업분야 : 전분야\r\n- 손쉬운 인공지능 개발/운영 플랫폼으로 인공지능 개발 전문가가 없어도, 고객 데이터로 최적의 모델을 만들어 사업에 적용/운영 가능한 “AI Service Platform”\r\n\r\n솔루션2. SURROMIND MCM\r\n- AI 기술분야 : 분석지능 / 산업분야 : 제조\r\n- 소음, 진동 및 센서 신호로 이상감지, 고장진단, 고장예측, 잔여수명을 예측하는 솔루션\r\n\r\n솔루션3. SURRO Vision Inspection\r\n- AI 기술분야 : 시각지능 / 산업분야 : 제조\r\n- 제조 공정에서 발생하는 불량을 AQM(AI Quality Manager) 기반 비전 검사를 통해 정밀 분석하고, 데이터셋 라벨링 품질 향상 및 자동화를 통해 고성능 모델 확보와 시간‧비용 절감을 지원하는 AI 솔루션\r\n\r\n솔루션4. SURRO Vision CCTV\r\n- AI 기술분야 : 시각지능 / 산업분야 : 교통물류\r\n- CCTV 기반 영상 스트림을 딥러닝 모델로 분석하여 산업 현장의 안전 위험 요소, 보안 이상 행위 및 교통 흐름·사고 징후를 자동 감지하는 지능형 비전 AI 솔루션\r\n\r\n솔루션5. SURROMIND Health\r\n- AI 기술분야 : 시각지능 / 산업분야 : 생활\r\n- 시각 인식 및 분석 기술을 활용하여 신체 상태의 초기 진단부터 실시간 자세 교정과 재활 코칭, 그리고 환자 안전 모니터링에 이르기까지 맞춤형 예방 및 정밀 관리를 지원하는 AI 솔루션\r\n\r\n솔루션6. SURRO Q&A\r\n- AI 기술분야 : 언어, 음성지능 / 산업분야 : 전분야\r\n- 기업 내부의 지식 자산(문서)을 기반으로 LLM(거대언어모델)과 RAG(검색 증강 생성) 기술을 활용하여 사용자에게 답변을 제공하는 지식 기반 질의응답 솔루션\r\n\r\n솔루션7. SURROMIND Recommendation\r\n- AI 기술분야 : 분석지능 / 산업분야 : 컨텐츠\r\n- 콘텐츠와 서비스를 개인화하여 사용자 취향을 반영한 콘텐츠를 자동으로 제공하는 솔루션 (서비스 개인화, 공급과 수요 매칭 AI 모델링)\r\n\r\n솔루션8. SURROMIND Education\r\n- AI 기술분야 : 분석지능 / 산업분야 : 교육\r\n- 수험생의 학습 능력 향상, 진학 지도, 면접 훈련을 위한 AI 솔루션\r\n\r\n솔루션9. SURRO Docs Studio\r\n- AI 기술분야 : 언어, 음성지능 / 산업분야 : 전분야\r\n- 사내 문서/정보의 검색과 정리 및 보고서 자동 생성\r\n\r\n솔루션10. SURRO Docs AI OCR\r\n- AI 기술분야 : 시각지능 / 산업분야 : 전분야\r\n- 이미지 속 문자를 인식하여 키워드 추출, 내용 분석, 문서 분류를 자동화하는 AI 솔루션\r\n\r\n솔루션11. SURROMIND TRACE\r\n- AI 기술분야 : 분석지능 / 산업분야 : 제조\r\n- 시계열 데이터 기반 이상 탐지, 근본 원인 분석 및 탐색적 데이터 분석(EDA) 통합 솔루션",
+          "address": "관악구 남부순환로 1802, 2층 (봉천동, 관악캠퍼스타워)",
+          "phone": "02-872-5127",
+          "representative": "장하영",
+          "homepage_url": "https://surromind.ai",
+          "source_pool_no": 3751,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "cfaaa1406f7cf24a00c3f83b5e513f3212e6f52c5f595193a131412cd02f680a"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "67fd4c55-7716-506e-8243-6a17cd3d6972",
+        "name": "엔키아",
+        "homepage_url": "https://www.nkia.co.kr",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [
+          "Polestar Ask Lucida"
+        ],
+        "task_solutions": {
+          "J020": [
+            "Polestar Ask Lucida"
+          ]
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "- AI 솔루션명: Polestar AIOps\r\n- AI 솔루션 세부내용: 메트릭, 로그, 트레이스 등 IT 인프라 텔레메트리 데이터의 이상탐지 및 LLM 기반 자연어 분석 기술을 활용하여 장애 근본 원인을 자동으로 진단하고, 시스템 운영 현황을 자연어 질의로 즉시 조회하며, 시계열 및 로그 패턴에서 이상 징후를 실시간으로 감지할 수 있는 AI 기반 IT 운영 자동화 솔루션\r\n- AI 솔루션 활용분야\r\n➀ Polestar RCA(Root Cause Analysis): 기타(다중 AI Agent 오케스트레이션  및 LLM 추론)\r\n➁ Polestar AAD(Advanced Anomaly Detection): 이상탐지(시계열 및 로그 패턴 이상 감지)\r\n    - Polestar AAD 시계열 이상 감지(Timeseries Anomaly Detection)\r\n    - Polestar AAD 로그 이상 감지(Log Anomaly Detection)\r\n➂ Polestar Ask Lucida: 자연어처리(자연어 질의의 의미 해석 및 검색 의도 파악), 생성형 AI(고객 의도에 맞는 답변 생성)",
+              "url": "https://www.nkia.co.kr"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "- AI 솔루션명: Polestar AIOps\r\n- AI 솔루션 세부내용: 메트릭, 로그, 트레이스 등 IT 인프라 텔레메트리 데이터의 이상탐지 및 LLM 기반 자연어 분석 기술을 활용하여 장애 근본 원인을 자동으로 진단하고, 시스템 운영 현황을 자연어 질의로 즉시 조회하며, 시계열 및 로그 패턴에서 이상 징후를 실시간으로 감지할 수 있는 AI 기반 IT 운영 자동화 솔루션\r\n- AI 솔루션 활용분야\r\n➀ Polestar RCA(Root Cause Analysis): 기타(다중 AI Agent 오케스트레이션  및 LLM 추론)\r\n➁",
+            "url": "https://www.nkia.co.kr",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "분석지능",
+          "ai_solution_description": "- AI 솔루션명: Polestar AIOps\r\n- AI 솔루션 세부내용: 메트릭, 로그, 트레이스 등 IT 인프라 텔레메트리 데이터의 이상탐지 및 LLM 기반 자연어 분석 기술을 활용하여 장애 근본 원인을 자동으로 진단하고, 시스템 운영 현황을 자연어 질의로 즉시 조회하며, 시계열 및 로그 패턴에서 이상 징후를 실시간으로 감지할 수 있는 AI 기반 IT 운영 자동화 솔루션\r\n- AI 솔루션 활용분야\r\n➀ Polestar RCA(Root Cause Analysis): 기타(다중 AI Agent 오케스트레이션  및 LLM 추론)\r\n➁ Polestar AAD(Advanced Anomaly Detection): 이상탐지(시계열 및 로그 패턴 이상 감지)\r\n    - Polestar AAD 시계열 이상 감지(Timeseries Anomaly Detection)\r\n    - Polestar AAD 로그 이상 감지(Log Anomaly Detection)\r\n➂ Polestar Ask Lucida: 자연어처리(자연어 질의의 의미 해석 및 검색 의도 파악), 생성형 AI(고객 의도에 맞는 답변 생성)",
+          "address": "성남시 분당구 대왕판교로 660, 비동(삼평동, 유스페이스1 제10층)",
+          "phone": "02-2057-8724",
+          "representative": "이일섭",
+          "homepage_url": "https://www.nkia.co.kr",
+          "source_pool_no": 3670,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "3ec50fd938ad59ef681626461bdc2c043c5f0ad7ee9e0b4ddc88f5d9831e574a"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "737bd7a9-c77f-5585-8967-8f79d4d335fd",
+        "name": "현대에이치티주식회사",
+        "homepage_url": "https://www.hyundaiht.co.kr",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [],
+        "task_solutions": {
+          "J020": []
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "1. HT STT(Domain Specific –Voice to Text Solution)\r\n     - 저성능 마이크 환경에서도 안정적 음성 인식 솔루션\r\n      - 도메인(월패드) 특화 성능 으로 주거 환경에 최적화 된 음성인식 서비스 제공\r\n\r\n2. HT 홈 에이전트 서비스(Home Agent Service)\r\n     - 월패드 앱에서 동작하는 챗봇 및 에이전트를 위한 LLM 모델 활용.\r\n     - LLM 서버와 연동을 통해 지원.\r\n     - 기존 지정어가 아닌 사용자의 일상 대화와 같은 자연어 기반의 명령어를 월패드에서 동작하기 위한 솔루션\r\n\r\n3. HT_RAG_Solution (AI 기반 지식 검색·응답 솔루션)\r\n     - 공동주택 관련 문서(관리규약, 공지사항, 기기 매뉴얼 등)를 기반으로 동작하는 AI 지식 검색·응답 솔루션.\r\n     - 사용자 자연어 질의에 대한 정확한 답변을 제공함.",
+              "url": "https://www.hyundaiht.co.kr"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "1. HT STT(Domain Specific –Voice to Text Solution)\r\n     - 저성능 마이크 환경에서도 안정적 음성 인식 솔루션\r\n      - 도메인(월패드) 특화 성능 으로 주거 환경에 최적화 된 음성인식 서비스 제공\r\n\r\n2. HT 홈 에이전트 서비스(Home Agent Service)\r\n     - 월패드 앱에서 동작하는 챗봇 및 에이전트를 위한 LLM 모델 활용.\r\n     - LLM 서버와 연동을 통해 지원.\r\n     - 기존 지정어가 아닌 사용자의 일상 대화와 같은 자연어 기반의 명령어를 월",
+            "url": "https://www.hyundaiht.co.kr",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "언어·음성지능",
+          "ai_solution_description": "1. HT STT(Domain Specific –Voice to Text Solution)\r\n     - 저성능 마이크 환경에서도 안정적 음성 인식 솔루션\r\n      - 도메인(월패드) 특화 성능 으로 주거 환경에 최적화 된 음성인식 서비스 제공\r\n\r\n2. HT 홈 에이전트 서비스(Home Agent Service)\r\n     - 월패드 앱에서 동작하는 챗봇 및 에이전트를 위한 LLM 모델 활용.\r\n     - LLM 서버와 연동을 통해 지원.\r\n     - 기존 지정어가 아닌 사용자의 일상 대화와 같은 자연어 기반의 명령어를 월패드에서 동작하기 위한 솔루션\r\n\r\n3. HT_RAG_Solution (AI 기반 지식 검색·응답 솔루션)\r\n     - 공동주택 관련 문서(관리규약, 공지사항, 기기 매뉴얼 등)를 기반으로 동작하는 AI 지식 검색·응답 솔루션.\r\n     - 사용자 자연어 질의에 대한 정확한 답변을 제공함.",
+          "address": "서울시 영등포구 여의대방로 107, 현대에이치티빌딩",
+          "phone": "02-2240-9114",
+          "representative": "이건구",
+          "homepage_url": "https://www.hyundaiht.co.kr",
+          "source_pool_no": 3649,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "286780ea98ff38d03df4846153101e76aecb3b974d40de91ff79f8a840b93ca5"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "e748d08a-bd69-5365-a529-8a9844c5766c",
+        "name": "주식회사 넥스트클라우드",
+        "homepage_url": "https://www.nxtcloud.kr",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [],
+        "task_solutions": {
+          "J020": []
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "* 솔루션명 : NxtGen\r\n\r\n* 솔루션 설명1 \r\n본 AI 솔루션은 생성형 AI와 검색증강생성(RAG) 기술을 기반으로 기관 및 기업의 다양한 지식 데이터를 활용하여 사용자 질문에 대해 정확한 답변을 제공하는 AI 지식검색 챗봇 플랫폼입니다. 이를 통해 기존의 키워드 검색 방식보다 더 높은 수준의 정보 접근성과 업무 효율성을 제공합니다. \r\n본 플랫폼은 대학 학사 안내, 공공기관 상담 서비스, 기업 내부 지식검색, 고객 상담 자동화 등 다양한 분야에서 활용이 가능합니다.\r\n\r\n* 솔루션 설명2 (주요기능)\r\n- 자연어 기반 질의응답\r\n- 문서 기반 AI 지식검색\r\n- FAQ 자동 응답\r\n- 정책 및 매뉴얼 안내\r\n- 내부 지식 검색\r\n- 사용자 질문 분석\r\n- AI 서비스 운영 모니터링\r\n- 관리자용 데이터 관리 기능",
+              "url": "https://www.nxtcloud.kr"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "* 솔루션명 : NxtGen\r\n\r\n* 솔루션 설명1 \r\n본 AI 솔루션은 생성형 AI와 검색증강생성(RAG) 기술을 기반으로 기관 및 기업의 다양한 지식 데이터를 활용하여 사용자 질문에 대해 정확한 답변을 제공하는 AI 지식검색 챗봇 플랫폼입니다. 이를 통해 기존의 키워드 검색 방식보다 더 높은 수준의 정보 접근성과 업무 효율성을 제공합니다. \r\n본 플랫폼은 대학 학사 안내, 공공기관 상담 서비스, 기업 내부 지식검색, 고객 상담 자동화 등 다양한 분야에서 활용이 가능합니다.\r\n\r\n* 솔루션 설명2 (주요기능)\r\n- 자연어 기반 질",
+            "url": "https://www.nxtcloud.kr",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "분석지능",
+          "ai_solution_description": "* 솔루션명 : NxtGen\r\n\r\n* 솔루션 설명1 \r\n본 AI 솔루션은 생성형 AI와 검색증강생성(RAG) 기술을 기반으로 기관 및 기업의 다양한 지식 데이터를 활용하여 사용자 질문에 대해 정확한 답변을 제공하는 AI 지식검색 챗봇 플랫폼입니다. 이를 통해 기존의 키워드 검색 방식보다 더 높은 수준의 정보 접근성과 업무 효율성을 제공합니다. \r\n본 플랫폼은 대학 학사 안내, 공공기관 상담 서비스, 기업 내부 지식검색, 고객 상담 자동화 등 다양한 분야에서 활용이 가능합니다.\r\n\r\n* 솔루션 설명2 (주요기능)\r\n- 자연어 기반 질의응답\r\n- 문서 기반 AI 지식검색\r\n- FAQ 자동 응답\r\n- 정책 및 매뉴얼 안내\r\n- 내부 지식 검색\r\n- 사용자 질문 분석\r\n- AI 서비스 운영 모니터링\r\n- 관리자용 데이터 관리 기능",
+          "address": "동대문구 경희대로26, 삼의원314호",
+          "phone": "010-4082-7202",
+          "representative": "이휘원",
+          "homepage_url": "https://www.nxtcloud.kr",
+          "source_pool_no": 4365,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "6e3917f32ba7cbb24c8f9bae009400371f100b13733c3c205e8ddc4313a9ae79"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "3febef5e-c020-5760-b34a-ec3e285eabb6",
+        "name": "오브젠 주식회사",
+        "homepage_url": "https://www.obzen.com",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [],
+        "task_solutions": {
+          "J020": []
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "Obzen Quasar (Enterprise Agentic AI Platform)\r\n생성형 AI 기반 Agentic AI Platform으로 기업의 고객 및 내부 데이터를 통합 수집·분석하여 자연어 질의응답, 자동 문서와 보고서 작성, 경영지원, 생산 품질 향상, 데이터 분석, 업무 프로세스 분석 및 자동화를 지원하는 지능형 AI 에이전트 플랫폼입니다.\r\n① 자연어 기반 지능형 질의응답\r\n② 자동 문서 생성 및 보고서 작성\r\n③ 기업 데이터 분석 및 인사이트 도출\r\n④ 업무 프로세스 분석 및 자동화\r\n⑤ 기업 지식 및 문서 기반 AI 검색",
+              "url": "https://www.obzen.com"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "Obzen Quasar (Enterprise Agentic AI Platform)\r\n생성형 AI 기반 Agentic AI Platform으로 기업의 고객 및 내부 데이터를 통합 수집·분석하여 자연어 질의응답, 자동 문서와 보고서 작성, 경영지원, 생산 품질 향상, 데이터 분석, 업무 프로세스 분석 및 자동화를 지원하는 지능형 AI 에이전트 플랫폼입니다.\r\n① 자연어 기반 지능형 질의응답\r\n② 자동 문서 생성 및 보고서 작성\r\n③ 기업 데이터 분석 및 인사이트 도출\r\n④ 업무 프로세스 분석 및 자동화\r\n⑤ 기업 지식 및 문서 기반 A",
+            "url": "https://www.obzen.com",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "분석지능",
+          "ai_solution_description": "Obzen Quasar (Enterprise Agentic AI Platform)\r\n생성형 AI 기반 Agentic AI Platform으로 기업의 고객 및 내부 데이터를 통합 수집·분석하여 자연어 질의응답, 자동 문서와 보고서 작성, 경영지원, 생산 품질 향상, 데이터 분석, 업무 프로세스 분석 및 자동화를 지원하는 지능형 AI 에이전트 플랫폼입니다.\r\n① 자연어 기반 지능형 질의응답\r\n② 자동 문서 생성 및 보고서 작성\r\n③ 기업 데이터 분석 및 인사이트 도출\r\n④ 업무 프로세스 분석 및 자동화\r\n⑤ 기업 지식 및 문서 기반 AI 검색",
+          "address": "서울특별시 영등포구 여의대로 14, 12층",
+          "phone": "02-3775-4600",
+          "representative": "전배문, 유용희",
+          "homepage_url": "https://www.obzen.com",
+          "source_pool_no": 4217,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "7d95ef452f6782ffa841f4b84475394a6839f04a6101e6d7bf096404077c7581"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "f8f1356a-35b0-5485-a27b-49fedf5413ff",
+        "name": "주식회사 파수",
+        "homepage_url": "https://www.fasoo.com",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [
+          "Ellm v2.0"
+        ],
+        "task_solutions": {
+          "J020": [
+            "Ellm v2.0"
+          ]
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "Ellm\r\n- Ellm은 온프레미스 구축이 가능한 sLLM 서비스로, 조직의 내부 데이터를 활용해 업무와 관련성이 높고, 신뢰도 높은 답변을 생성합니다. \r\n- 대규모 언어모델(LLM)과 연동된 RAG(Retrieval-Augmented Generation) 기술을 활용하여, 기관이 보유한 문서를 기반으로 정확한 정보 검색, 근거 기반 질의응답, 보고서 자동 작성을 지원합니다. \r\n\r\nAIR-Privacy\r\n- AI를 기반으로 개인정보를 검출하고, 검출 결과에 따라 마스킹 처리합니다. \r\n- 기존 패턴 매칭과 딥러닝 기술을 유연하게 활용해 텍스트와 이미지 등 비정형데이터에서 까다로운 민감정보를 검출 및 마스킹 처리해 보안사고를 예방합니다. \r\n\r\nAI-R DLP\r\n- 생성형 AI에서 사용되는 프롬프트와 첨부파일을 모니터링해, 관리자가 정의한 분류 정책에 따라 민감정보나 대외비를 자동으로 검출 및 차단합니다.\r\n- 프롬프트로 전송된 모든 로그는 감사용으로 안전하게 보관되며, 규정 위반 시에는 후처리 정책을 적용할 수 있습니다.",
+              "url": "https://www.fasoo.com"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "Ellm\r\n- Ellm은 온프레미스 구축이 가능한 sLLM 서비스로, 조직의 내부 데이터를 활용해 업무와 관련성이 높고, 신뢰도 높은 답변을 생성합니다. \r\n- 대규모 언어모델(LLM)과 연동된 RAG(Retrieval-Augmented Generation) 기술을 활용하여, 기관이 보유한 문서를 기반으로 정확한 정보 검색, 근거 기반 질의응답, 보고서 자동 작성을 지원합니다. \r\n\r\nAIR-Privacy\r\n- AI를 기반으로 개인정보를 검출하고, 검출 결과에 따라 마스킹 처리합니다. \r\n- 기존 패턴 매칭과 딥러닝 기술을 유연하게",
+            "url": "https://www.fasoo.com",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "분석지능",
+          "ai_solution_description": "Ellm\r\n- Ellm은 온프레미스 구축이 가능한 sLLM 서비스로, 조직의 내부 데이터를 활용해 업무와 관련성이 높고, 신뢰도 높은 답변을 생성합니다. \r\n- 대규모 언어모델(LLM)과 연동된 RAG(Retrieval-Augmented Generation) 기술을 활용하여, 기관이 보유한 문서를 기반으로 정확한 정보 검색, 근거 기반 질의응답, 보고서 자동 작성을 지원합니다. \r\n\r\nAIR-Privacy\r\n- AI를 기반으로 개인정보를 검출하고, 검출 결과에 따라 마스킹 처리합니다. \r\n- 기존 패턴 매칭과 딥러닝 기술을 유연하게 활용해 텍스트와 이미지 등 비정형데이터에서 까다로운 민감정보를 검출 및 마스킹 처리해 보안사고를 예방합니다. \r\n\r\nAI-R DLP\r\n- 생성형 AI에서 사용되는 프롬프트와 첨부파일을 모니터링해, 관리자가 정의한 분류 정책에 따라 민감정보나 대외비를 자동으로 검출 및 차단합니다.\r\n- 프롬프트로 전송된 모든 로그는 감사용으로 안전하게 보관되며, 규정 위반 시에는 후처리 정책을 적용할 수 있습니다.",
+          "address": "서울특별시 마포구 월드컵북로 396, 17층(상암동, 누리꿈스퀘어 비지니스센타)",
+          "phone": "02-300-9090",
+          "representative": "조규곤",
+          "homepage_url": "https://www.fasoo.com",
+          "source_pool_no": 3422,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "5722410f5ed987cdb091a5bfe51661592f68c924eb494d6341f0b8beb1c96afa"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "15e506dc-156f-59eb-ae62-b402383f0ca3",
+        "name": "(주)씨지인사이드",
+        "homepage_url": "https://www.cginside.co.kr",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [],
+        "task_solutions": {
+          "J020": []
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "○ dClaim-iHOPPER (건강보험 급여 청구 업무 보조 iHopper AI Agent 솔루션)\r\n- 보건복지부, 건강보험심사평가원 건강보험 급여 기준 법령 및 가이드라인 문서 등을 기반으로 건강보험 급여 관련 사용자의 질의에 대해 정확한 문서 근거 기반(RAG) 답변 및 보고서를 제공하는 AI 업무 보조 솔루션\r\n- 근거 기반 청구 검토보고서 자동 생성\r\n- AI 건강보험 질의응답(보험심사 업무 보조 Agent)\r\n- RAG 기반 급여 기준 해석 및 쟁점 추출 및 요약",
+              "url": "https://www.cginside.co.kr"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "○ dClaim-iHOPPER (건강보험 급여 청구 업무 보조 iHopper AI Agent 솔루션)\r\n- 보건복지부, 건강보험심사평가원 건강보험 급여 기준 법령 및 가이드라인 문서 등을 기반으로 건강보험 급여 관련 사용자의 질의에 대해 정확한 문서 근거 기반(RAG) 답변 및 보고서를 제공하는 AI 업무 보조 솔루션\r\n- 근거 기반 청구 검토보고서 자동 생성\r\n- AI 건강보험 질의응답(보험심사 업무 보조 Agent)\r\n- RAG 기반 급여 기준 해석 및 쟁점 추출 및 요약",
+            "url": "https://www.cginside.co.kr",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "분석지능,언어·음성지능",
+          "ai_solution_description": "○ dClaim-iHOPPER (건강보험 급여 청구 업무 보조 iHopper AI Agent 솔루션)\r\n- 보건복지부, 건강보험심사평가원 건강보험 급여 기준 법령 및 가이드라인 문서 등을 기반으로 건강보험 급여 관련 사용자의 질의에 대해 정확한 문서 근거 기반(RAG) 답변 및 보고서를 제공하는 AI 업무 보조 솔루션\r\n- 근거 기반 청구 검토보고서 자동 생성\r\n- AI 건강보험 질의응답(보험심사 업무 보조 Agent)\r\n- RAG 기반 급여 기준 해석 및 쟁점 추출 및 요약",
+          "address": "마포구 백범로31길 21, 서울창업허브 본관 714호",
+          "phone": "02-6326-2101",
+          "representative": "박선춘",
+          "homepage_url": "https://www.cginside.co.kr",
+          "source_pool_no": 4359,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "26b74a8967e9a5cd999dd4adf223903f25a3563129bcd91db67e7ffd9466ed6e"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "dd555195-76db-5d55-b725-c44547f7c24b",
+        "name": "도시와농촌",
+        "homepage_url": "https://www.dosiwa.com",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [],
+        "task_solutions": {
+          "J020": []
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "DoPaMin(Document Parse Mining) - AI 기반 사내문서 지능형 검색 분석 솔루션\r\n\r\nDoPaMin은 로컬 및 폐쇄망 환경에서 기업 문서를 자동 인덱싱하고, 파일명·본문 하이브리드 검색과 AI 질의응답을 하나의 워크플로우로 연결하는 문서 기반 AI 워크스페이스입니다.\r\n\r\n폴더를 등록하면 PDF, DOCX, PPTX, HWP 등 다양한 형식의 문서를 자동으로 수집·추출·인덱싱하고, 자연어 질의를 통해 필요한 문서를 즉시 탐색하며, 검색된 문서를 바탕으로 로컬 LLM과 대화하여 요약, 비교, 일정 확인, 인사이트 도출까지 수행할 수 있습니다. 외부 통신 없이 동작하는 폐쇄망 모드와 외부 AI 연동을 통한 산출물 생성 모드를 모두 지원하며, 파일 전체가 아닌 필요한 문맥만 활용하여 정보 유출을 최소화합니다.",
+              "url": "https://www.dosiwa.com"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "DoPaMin(Document Parse Mining) - AI 기반 사내문서 지능형 검색 분석 솔루션\r\n\r\nDoPaMin은 로컬 및 폐쇄망 환경에서 기업 문서를 자동 인덱싱하고, 파일명·본문 하이브리드 검색과 AI 질의응답을 하나의 워크플로우로 연결하는 문서 기반 AI 워크스페이스입니다.\r\n\r\n폴더를 등록하면 PDF, DOCX, PPTX, HWP 등 다양한 형식의 문서를 자동으로 수집·추출·인덱싱하고, 자연어 질의를 통해 필요한 문서를 즉시 탐색하며, 검색된 문서를 바탕으로 로컬 LLM과 대화하여 요약, 비교, 일정 확인, 인사이",
+            "url": "https://www.dosiwa.com",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "분석지능,언어·음성지능",
+          "ai_solution_description": "DoPaMin(Document Parse Mining) - AI 기반 사내문서 지능형 검색 분석 솔루션\r\n\r\nDoPaMin은 로컬 및 폐쇄망 환경에서 기업 문서를 자동 인덱싱하고, 파일명·본문 하이브리드 검색과 AI 질의응답을 하나의 워크플로우로 연결하는 문서 기반 AI 워크스페이스입니다.\r\n\r\n폴더를 등록하면 PDF, DOCX, PPTX, HWP 등 다양한 형식의 문서를 자동으로 수집·추출·인덱싱하고, 자연어 질의를 통해 필요한 문서를 즉시 탐색하며, 검색된 문서를 바탕으로 로컬 LLM과 대화하여 요약, 비교, 일정 확인, 인사이트 도출까지 수행할 수 있습니다. 외부 통신 없이 동작하는 폐쇄망 모드와 외부 AI 연동을 통한 산출물 생성 모드를 모두 지원하며, 파일 전체가 아닌 필요한 문맥만 활용하여 정보 유출을 최소화합니다.",
+          "address": "충청남도 서천군 마서면 장서로 698, 1층",
+          "phone": "010-5292-5200",
+          "representative": "박지경",
+          "homepage_url": "https://www.dosiwa.com",
+          "source_pool_no": 3931,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "87fa36f90f93686d8a710905d5b2ca988d22475baaf00832e82984bbd9606a7e"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "457add05-921a-5379-8fda-27fe90160cd2",
+        "name": "프로텐",
+        "homepage_url": "https://www.proten.co.kr",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [
+          "ProVSearch v1.0"
+        ],
+        "task_solutions": {
+          "J020": [
+            "ProVSearch v1.0"
+          ]
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "1) ProVSearch v1.0 (프로브이서치 v1.0)\r\nProVSearch v1.0은 프로텐이 자체 개발한 벡터 임베딩(Embedding) 기술을 기반으로, 인공지능 모델(LLM)을 이용해 다양한 형식의 데이터 간 유사도를 벡터 공간에서 정밀하게 측정하여, 사용자의 검색 의도에 부합하는 정보를 자연어로 빠르고 정확하게 제공하는 생성형 AI 검색 솔루션입니다. 또한, RAG(검색 증강 생성) 기술을 활용해 지정된 조직 내부 데이터로만 응답할 수 있어 환각현상을 최소화해 신뢰도 높은 정보를 제공하며, 임베딩 모델 관리, 요약 결과 제공 등 다양한 부가 기능을 갖추고 있어 대규모 데이터 처리와 복잡한 인공지능 비즈니스 환경에 최적화된 기업용 AI 솔루션입니다.\r\n\r\n2) ProSearch v2.0 (프로서치 v2.0)\r\n ProSearch v2.0(프로서치 v2.0)은 ElasticSearch 기반에 자체 구축한 한글 형태소분석기 및 다양한 한국형 검색 기능을 탑재하여 개발한 통합검색엔진 솔루션으로 빠른 속도와 안정성, 대량의 데이터(정형/비정형)를 고속으로 처리할 수 있도록 구성되어 있으며, RESTFul 인터페이스를 제공하여 다른 솔루션들과 쉽고 빠르게 연동할 수 있습니다. 수요기관에 다양한 시스템(포탈/그룹웨어, 홈페이지, 전자결재, 문서관리, 쇼핑몰, 내부 기간계시스템 등)에서 발생하는 다양한 데이터 포맷(DB, 파일, 문서, 텍스트 등) 등의 자료와 데이터를 사용자가 원하는 정보를 빠르고 손쉽게 제공 해주는 역할을 합니다.",
+              "url": "https://www.proten.co.kr"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "1) ProVSearch v1.0 (프로브이서치 v1.0)\r\nProVSearch v1.0은 프로텐이 자체 개발한 벡터 임베딩(Embedding) 기술을 기반으로, 인공지능 모델(LLM)을 이용해 다양한 형식의 데이터 간 유사도를 벡터 공간에서 정밀하게 측정하여, 사용자의 검색 의도에 부합하는 정보를 자연어로 빠르고 정확하게 제공하는 생성형 AI 검색 솔루션입니다. 또한, RAG(검색 증강 생성) 기술을 활용해 지정된 조직 내부 데이터로만 응답할 수 있어 환각현상을 최소화해 신뢰도 높은 정보를 제공하며, 임베딩 모델 관리, 요약 결과",
+            "url": "https://www.proten.co.kr",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "분석지능",
+          "ai_solution_description": "1) ProVSearch v1.0 (프로브이서치 v1.0)\r\nProVSearch v1.0은 프로텐이 자체 개발한 벡터 임베딩(Embedding) 기술을 기반으로, 인공지능 모델(LLM)을 이용해 다양한 형식의 데이터 간 유사도를 벡터 공간에서 정밀하게 측정하여, 사용자의 검색 의도에 부합하는 정보를 자연어로 빠르고 정확하게 제공하는 생성형 AI 검색 솔루션입니다. 또한, RAG(검색 증강 생성) 기술을 활용해 지정된 조직 내부 데이터로만 응답할 수 있어 환각현상을 최소화해 신뢰도 높은 정보를 제공하며, 임베딩 모델 관리, 요약 결과 제공 등 다양한 부가 기능을 갖추고 있어 대규모 데이터 처리와 복잡한 인공지능 비즈니스 환경에 최적화된 기업용 AI 솔루션입니다.\r\n\r\n2) ProSearch v2.0 (프로서치 v2.0)\r\n ProSearch v2.0(프로서치 v2.0)은 ElasticSearch 기반에 자체 구축한 한글 형태소분석기 및 다양한 한국형 검색 기능을 탑재하여 개발한 통합검색엔진 솔루션으로 빠른 속도와 안정성, 대량의 데이터(정형/비정형)를 고속으로 처리할 수 있도록 구성되어 있으며, RESTFul 인터페이스를 제공하여 다른 솔루션들과 쉽고 빠르게 연동할 수 있습니다. 수요기관에 다양한 시스템(포탈/그룹웨어, 홈페이지, 전자결재, 문서관리, 쇼핑몰, 내부 기간계시스템 등)에서 발생하는 다양한 데이터 포맷(DB, 파일, 문서, 텍스트 등) 등의 자료와 데이터를 사용자가 원하는 정보를 빠르고 손쉽게 제공 해주는 역할을 합니다.",
+          "address": "금천구 가산디지털1로 145 에이스하이엔드타워3차 1104호",
+          "phone": "02-2624-1020",
+          "representative": "박재완",
+          "homepage_url": "https://www.proten.co.kr",
+          "source_pool_no": 2979,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "0611ebdc81e27727d5546ebd9d436285340ed82d5b90740e144f07d9fdd5f476"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "aa497a60-c50a-52ba-bf9c-cabe23874249",
+        "name": "알소프트",
+        "homepage_url": "http://www.rsoft.kr",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [],
+        "task_solutions": {
+          "J020": []
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "솔루션 명 : Braion(Private Gen-AI Platform)\r\n1. Braion(온프레미스 기반 AI 솔루션)\r\n 가. 목표: 수요기업 내부에 폐쇄형(On-Premise) 생성형 AI 환경을 구축하여, 사내 핵심 기술 자산의 외부 유출 없이 실무자가 즉각 활용 가능한  \r\n              '지능형 지식 비서' 구현.\r\n 나. 주요 내용\r\n  - 기업 특화 LLM(Large Language Model) 최적화 및 서버 설치.\r\n  - 사내 비정형 데이터(매뉴얼, 규정, 보고서 등) 기반의 RAG 엔진 연동.\r\n  - 기존 그룹웨어 및 사내 시스템과의 API 연동을 통한 업무 프로세스 통합.\r\n2. 솔루션의 차별성 및 경쟁력\r\n 가. 보안 특화: 외부 API 호출 방식이 아닌 100% 온프레미스 환경으로, 데이터 보안이 중요한 제조업, 금융, 물류, 연구소에 최적화된 구조.\r\n 나. 환각 현상 극복: 단순 생성형 모델의 한계를 넘어, 기업 내부 문서에서만 근거를 찾아 답변하는 '검색 증강 생성(RAG)' 기술을 적용하여 \r\n      답변의 신뢰도 확보.\r\n 다. 경량화 기술: 대규모 서버 인프라 없이도 기업의 가용 자원 내에서 구동 가능하도록 모델 양자화(Quantization) 및 경량화 기술 적용.\r\n3. 추진 전략 및 방법\r\n 가. 1단계(분석/설계): 수요기업의 데이터 현황 파악 및 하드웨어 인프라 사양 확정.\r\n 나. 2단계(데이터 정제): 사내 흩어진 PDF, Word, Excel 등 비정형 데이터의 텍스트 추출 및 벡터 DB화.\r\n 다. 3단계(모델 튜닝): 기업 고유 용어 및 도메인 지식에 대한 파인튜닝(Fine-tuning) 실시.\r\n 라. 4단계(구축/테스트): 온프레미스 서버 설치 및 UI 커스터마이징, 성능 테스트(정확도측정)\r\n 마. 5단계 (교육/이관): 임직원 활용 교육 및 유지보수 가이드 제공.\r\n4. 기대효과 및 활용방안\r\n 가. 업무 효율성: 평균 문서 검색 및 정보 요약 시간 70% 이상 단축.\r\n 나. 지식 자산화: 퇴사자 발생 시에도 사내 지식 노하우를 AI가 학습하여 지속적인 업무 연속성 확보.\r\n 다. 비용 절감: 클라우드 LLM 사용료 대비 장기적 운영 비용(TCO) 최소 40% 절감 예상.",
+              "url": "http://www.rsoft.kr"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "솔루션 명 : Braion(Private Gen-AI Platform)\r\n1. Braion(온프레미스 기반 AI 솔루션)\r\n 가. 목표: 수요기업 내부에 폐쇄형(On-Premise) 생성형 AI 환경을 구축하여, 사내 핵심 기술 자산의 외부 유출 없이 실무자가 즉각 활용 가능한  \r\n              '지능형 지식 비서' 구현.\r\n 나. 주요 내용\r\n  - 기업 특화 LLM(Large Language Model) 최적화 및 서버 설치.\r\n  - 사내 비정형 데이터(매뉴얼, 규정, 보고서 등) 기반의 RAG 엔진 연동.\r\n  ",
+            "url": "http://www.rsoft.kr",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "기타",
+          "ai_solution_description": "솔루션 명 : Braion(Private Gen-AI Platform)\r\n1. Braion(온프레미스 기반 AI 솔루션)\r\n 가. 목표: 수요기업 내부에 폐쇄형(On-Premise) 생성형 AI 환경을 구축하여, 사내 핵심 기술 자산의 외부 유출 없이 실무자가 즉각 활용 가능한  \r\n              '지능형 지식 비서' 구현.\r\n 나. 주요 내용\r\n  - 기업 특화 LLM(Large Language Model) 최적화 및 서버 설치.\r\n  - 사내 비정형 데이터(매뉴얼, 규정, 보고서 등) 기반의 RAG 엔진 연동.\r\n  - 기존 그룹웨어 및 사내 시스템과의 API 연동을 통한 업무 프로세스 통합.\r\n2. 솔루션의 차별성 및 경쟁력\r\n 가. 보안 특화: 외부 API 호출 방식이 아닌 100% 온프레미스 환경으로, 데이터 보안이 중요한 제조업, 금융, 물류, 연구소에 최적화된 구조.\r\n 나. 환각 현상 극복: 단순 생성형 모델의 한계를 넘어, 기업 내부 문서에서만 근거를 찾아 답변하는 '검색 증강 생성(RAG)' 기술을 적용하여 \r\n      답변의 신뢰도 확보.\r\n 다. 경량화 기술: 대규모 서버 인프라 없이도 기업의 가용 자원 내에서 구동 가능하도록 모델 양자화(Quantization) 및 경량화 기술 적용.\r\n3. 추진 전략 및 방법\r\n 가. 1단계(분석/설계): 수요기업의 데이터 현황 파악 및 하드웨어 인프라 사양 확정.\r\n 나. 2단계(데이터 정제): 사내 흩어진 PDF, Word, Excel 등 비정형 데이터의 텍스트 추출 및 벡터 DB화.\r\n 다. 3단계(모델 튜닝): 기업 고유 용어 및 도메인 지식에 대한 파인튜닝(Fine-tuning) 실시.\r\n 라. 4단계(구축/테스트): 온프레미스 서버 설치 및 UI 커스터마이징, 성능 테스트(정확도측정)\r\n 마. 5단계 (교육/이관): 임직원 활용 교육 및 유지보수 가이드 제공.\r\n4. 기대효과 및 활용방안\r\n 가. 업무 효율성: 평균 문서 검색 및 정보 요약 시간 70% 이상 단축.\r\n 나. 지식 자산화: 퇴사자 발생 시에도 사내 지식 노하우를 AI가 학습하여 지속적인 업무 연속성 확보.\r\n 다. 비용 절감: 클라우드 LLM 사용료 대비 장기적 운영 비용(TCO) 최소 40% 절감 예상.",
+          "address": "금천구 디지털로178, 오에이 1517호",
+          "phone": "070-4773-8945",
+          "representative": "이승재",
+          "homepage_url": "http://www.rsoft.kr",
+          "source_pool_no": 3052,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "ee739136fef0e7299f67276629f5b184c53420df174135f5df4a0304ed599dc4"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "f9f057b1-6bd2-5a02-b114-8f43a75039bb",
+        "name": "(주)오픈컴",
+        "homepage_url": "https://www.opencom.com",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [],
+        "task_solutions": {
+          "J020": []
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "○ 솔루션명 : RAG 기반 FAQ 지식검색 AI 챗봇\r\n- 매뉴얼 및 FAQ 등 사내문서와 LLM을 활용한 지식검색(RAG) 자동 챗봇 솔루션\r\n- 의미 기반 벡터 검색, 문자열 유사도 검색, AI 재정렬(Re-ranking), 근거 기반 생성(Grounded Generation)을 결합하여 정확하고 신뢰 가능한 응답을 제공\r\n\r\n○ 솔루션명 : EvidentAI – 근거기반 질병·질환 지식 AI 솔루션\r\n- 질병·질환 문서를 기반으로 작동하는 근거 중심 의료 지식 AI 솔루션\r\n- 단순 생성형 응답 구조가 아닌 Retrieval-Augmented Generation(RAG) 기반 아키텍처를 적용하여, 문서 검색 결과에 근거한 응답만 생성하도록 설계\r\n- Hybrid Retrieval(벡터 유사도 + BM25 키워드 검색)과 임계값 기반 필터링 구조를 결합하여 문서 외 질문에 대한 응답을 제한하고 근거 인용을 강제함으로써 응답의 신뢰성과 일관성을 확보\r\n※ 본 솔루션은 의료 진단을 대체하지 않으며, 의료 전문인의 판단을 보조하는 참고 정보 제공 목적의 시스템입니다.\r\n\r\n○ 솔루션명 : 문서 기반 지식검색 AI 솔루션\r\n- 계약서, 운영문서, 가이드, FAQ 등 내부 문서를 기반으로 필요한 내용을 자연어로 빠르게 검색하고 답변 받을 수 있는 지식검색 AI 솔루션입니다.\r\n-  단순 키워드 검색이 아닌 의미 기반 검색과 생성형 응답을 결합하여 필요한 정보를 효율적으로 찾을 수 있으며, 근거 문서 기반 응답 구조를 통해 신뢰성을 높일 수 있습니다.\r\n※ 법무, 고객지원, 운영관리, 계약관리 등 문서 활용도가 높은 조직에 적용 가능합니다.\r\n\r\n○ 솔루션명 : 고객 맞춤 상품·콘셉트 추천 AI 솔루션\r\n- 고객의 프로필, 행동 로그, 상품 속성 데이터를 결합해 개인별로 적합한 상품 또는 콘텐츠를 추천하는 개인화 추천 솔루션입니다.\r\n단순 인기순 노출이 아닌 고객 속성, 시즌성, 행동반응을 함께 반영하여 추천 우선순위를 도출하며, 필요 시 생성형 AI를 활용해 추천 이유와 제안 문구까지 자동 생성할 수 있습니다.\r\n※ 본 솔루션은 사진 스튜디오, 교육, 커머스, 멤버십, 예약 서비스 등 고객별 맞춤 제안이 필요한 다양한 업종에 적용 가능합니다.",
+              "url": "https://www.opencom.com"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "○ 솔루션명 : RAG 기반 FAQ 지식검색 AI 챗봇\r\n- 매뉴얼 및 FAQ 등 사내문서와 LLM을 활용한 지식검색(RAG) 자동 챗봇 솔루션\r\n- 의미 기반 벡터 검색, 문자열 유사도 검색, AI 재정렬(Re-ranking), 근거 기반 생성(Grounded Generation)을 결합하여 정확하고 신뢰 가능한 응답을 제공\r\n\r\n○ 솔루션명 : EvidentAI – 근거기반 질병·질환 지식 AI 솔루션\r\n- 질병·질환 문서를 기반으로 작동하는 근거 중심 의료 지식 AI 솔루션\r\n- 단순 생성형 응답 구조가 아닌 Retrieval",
+            "url": "https://www.opencom.com",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "분석지능",
+          "ai_solution_description": "○ 솔루션명 : RAG 기반 FAQ 지식검색 AI 챗봇\r\n- 매뉴얼 및 FAQ 등 사내문서와 LLM을 활용한 지식검색(RAG) 자동 챗봇 솔루션\r\n- 의미 기반 벡터 검색, 문자열 유사도 검색, AI 재정렬(Re-ranking), 근거 기반 생성(Grounded Generation)을 결합하여 정확하고 신뢰 가능한 응답을 제공\r\n\r\n○ 솔루션명 : EvidentAI – 근거기반 질병·질환 지식 AI 솔루션\r\n- 질병·질환 문서를 기반으로 작동하는 근거 중심 의료 지식 AI 솔루션\r\n- 단순 생성형 응답 구조가 아닌 Retrieval-Augmented Generation(RAG) 기반 아키텍처를 적용하여, 문서 검색 결과에 근거한 응답만 생성하도록 설계\r\n- Hybrid Retrieval(벡터 유사도 + BM25 키워드 검색)과 임계값 기반 필터링 구조를 결합하여 문서 외 질문에 대한 응답을 제한하고 근거 인용을 강제함으로써 응답의 신뢰성과 일관성을 확보\r\n※ 본 솔루션은 의료 진단을 대체하지 않으며, 의료 전문인의 판단을 보조하는 참고 정보 제공 목적의 시스템입니다.\r\n\r\n○ 솔루션명 : 문서 기반 지식검색 AI 솔루션\r\n- 계약서, 운영문서, 가이드, FAQ 등 내부 문서를 기반으로 필요한 내용을 자연어로 빠르게 검색하고 답변 받을 수 있는 지식검색 AI 솔루션입니다.\r\n-  단순 키워드 검색이 아닌 의미 기반 검색과 생성형 응답을 결합하여 필요한 정보를 효율적으로 찾을 수 있으며, 근거 문서 기반 응답 구조를 통해 신뢰성을 높일 수 있습니다.\r\n※ 법무, 고객지원, 운영관리, 계약관리 등 문서 활용도가 높은 조직에 적용 가능합니다.\r\n\r\n○ 솔루션명 : 고객 맞춤 상품·콘셉트 추천 AI 솔루션\r\n- 고객의 프로필, 행동 로그, 상품 속성 데이터를 결합해 개인별로 적합한 상품 또는 콘텐츠를 추천하는 개인화 추천 솔루션입니다.\r\n단순 인기순 노출이 아닌 고객 속성, 시즌성, 행동반응을 함께 반영하여 추천 우선순위를 도출하며, 필요 시 생성형 AI를 활용해 추천 이유와 제안 문구까지 자동 생성할 수 있습니다.\r\n※ 본 솔루션은 사진 스튜디오, 교육, 커머스, 멤버십, 예약 서비스 등 고객별 맞춤 제안이 필요한 다양한 업종에 적용 가능합니다.",
+          "address": "강서구 공항대로 212 퀸즈파크 11차 A동 1125호, 1126호",
+          "phone": "02-1544-4256",
+          "representative": "차희덕",
+          "homepage_url": "https://www.opencom.com",
+          "source_pool_no": 4055,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "088e731a35abc9dbbbfb06fa6aece5e27f055ffbc6bcc16d3c0d02783ca9b98a"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "1bc67bfb-23bd-5849-8767-bb77d2c8a10c",
+        "name": "(주)플랜아이",
+        "homepage_url": "https://www.plani.co.kr",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [
+          "싱크인사이트 SYNCINSIGHT"
+        ],
+        "task_solutions": {
+          "J020": [
+            "싱크인사이트 SYNCINSIGHT"
+          ]
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "1. SYNC INSIGHT \r\n   지식 기반 AI서비스 생성,관리 플랫폼으로 고객에 맞는 AI서비스를 간편하고 빠르게 생성하고 관리하는 플랫폼입니다.\r\n2. AIVORY VODA\r\n사용자의 클릭·스크롤·체류·이동 흐름을 시각화하고, AI 패턴 분석 + AI 트래픽 예측 분석하는 웹페이지 분석 솔루션입니다.\r\n3. AIVORY\r\n검색, 자동완성·연관/인기검색어·필터 기능에 AI 추천을 더해 사용자 맞춤형 콘텐츠 탐색과 운영 효율을 높이는 통합검색 AI 솔루션입니다.\r\n4. AI플래니\r\n웹사이트 정보와 고객의 자료를 분석하고 학습한 데이터를 바탕으로 답변을 주는 대화형 웹사이트 솔루션입니다.",
+              "url": "https://www.plani.co.kr"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "1. SYNC INSIGHT \r\n   지식 기반 AI서비스 생성,관리 플랫폼으로 고객에 맞는 AI서비스를 간편하고 빠르게 생성하고 관리하는 플랫폼입니다.\r\n2. AIVORY VODA\r\n사용자의 클릭·스크롤·체류·이동 흐름을 시각화하고, AI 패턴 분석 + AI 트래픽 예측 분석하는 웹페이지 분석 솔루션입니다.\r\n3. AIVORY\r\n검색, 자동완성·연관/인기검색어·필터 기능에 AI 추천을 더해 사용자 맞춤형 콘텐츠 탐색과 운영 효율을 높이는 통합검색 AI 솔루션입니다.\r\n4. AI플래니\r\n웹사이트 정보와 고객의 자료를 분석하고 학습한",
+            "url": "https://www.plani.co.kr",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "분석지능,시각지능,언어·음성지능",
+          "ai_solution_description": "1. SYNC INSIGHT \r\n   지식 기반 AI서비스 생성,관리 플랫폼으로 고객에 맞는 AI서비스를 간편하고 빠르게 생성하고 관리하는 플랫폼입니다.\r\n2. AIVORY VODA\r\n사용자의 클릭·스크롤·체류·이동 흐름을 시각화하고, AI 패턴 분석 + AI 트래픽 예측 분석하는 웹페이지 분석 솔루션입니다.\r\n3. AIVORY\r\n검색, 자동완성·연관/인기검색어·필터 기능에 AI 추천을 더해 사용자 맞춤형 콘텐츠 탐색과 운영 효율을 높이는 통합검색 AI 솔루션입니다.\r\n4. AI플래니\r\n웹사이트 정보와 고객의 자료를 분석하고 학습한 데이터를 바탕으로 답변을 주는 대화형 웹사이트 솔루션입니다.",
+          "address": "유성구 문지로 282-10",
+          "phone": "042-934-3508",
+          "representative": "이명기",
+          "homepage_url": "https://www.plani.co.kr",
+          "source_pool_no": 3316,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "5fc4845baa8b90e84d4903853304f5c2c684e4077ad4d0cfa20382cabf09ad24"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "80c932bc-6909-5de9-aa96-30077ef982e7",
+        "name": "사이버라인",
+        "homepage_url": "https://www.cyber-line.co.kr",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [],
+        "task_solutions": {
+          "J020": []
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "○ Astele ELN AI(제약·바이오 특화)는 규제 산업 현장의 연구원 엄격한 연구 품질 및 공정 관리에 필요한 연구노트를 작성하는 과정에서 발생하는 반복적이고 부수적인 작업을 AI Agent가 지원함으로써, 연구자가 핵심 연구활동에 보다 집중할 수 있도록 하는 것을 목표로 합니다. 아울러 연구노트를 단순 기록물이 아닌 체계적으로 관리·검색·재활용 가능한 조직의 지식자산으로 축적할 수 있도록 지원합니다.\r\n\r\n ○ 주요 기능으로는 연구노트 초안 작성, 작성 중인 내용의 수정·보완, 연구노트 기반 질의응답, 요약 및 번역 기능 등이 있습니다. 사용자가 자연어로 작성한 요청의 의도를 분석하여 질의응답과 연구노트 생성 흐름을 구분 처리하고, 템플릿과 근거자료를 함께 활용하여 일관된 형식과 내용의 결과를 제공합니다.",
+              "url": "https://www.cyber-line.co.kr"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "○ Astele ELN AI(제약·바이오 특화)는 규제 산업 현장의 연구원 엄격한 연구 품질 및 공정 관리에 필요한 연구노트를 작성하는 과정에서 발생하는 반복적이고 부수적인 작업을 AI Agent가 지원함으로써, 연구자가 핵심 연구활동에 보다 집중할 수 있도록 하는 것을 목표로 합니다. 아울러 연구노트를 단순 기록물이 아닌 체계적으로 관리·검색·재활용 가능한 조직의 지식자산으로 축적할 수 있도록 지원합니다.\r\n\r\n ○ 주요 기능으로는 연구노트 초안 작성, 작성 중인 내용의 수정·보완, 연구노트 기반 질의응답, 요약 및 번역 기능 등",
+            "url": "https://www.cyber-line.co.kr",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "분석지능,기타",
+          "ai_solution_description": "○ Astele ELN AI(제약·바이오 특화)는 규제 산업 현장의 연구원 엄격한 연구 품질 및 공정 관리에 필요한 연구노트를 작성하는 과정에서 발생하는 반복적이고 부수적인 작업을 AI Agent가 지원함으로써, 연구자가 핵심 연구활동에 보다 집중할 수 있도록 하는 것을 목표로 합니다. 아울러 연구노트를 단순 기록물이 아닌 체계적으로 관리·검색·재활용 가능한 조직의 지식자산으로 축적할 수 있도록 지원합니다.\r\n\r\n ○ 주요 기능으로는 연구노트 초안 작성, 작성 중인 내용의 수정·보완, 연구노트 기반 질의응답, 요약 및 번역 기능 등이 있습니다. 사용자가 자연어로 작성한 요청의 의도를 분석하여 질의응답과 연구노트 생성 흐름을 구분 처리하고, 템플릿과 근거자료를 함께 활용하여 일관된 형식과 내용의 결과를 제공합니다.",
+          "address": "서초구 사임당로 173 10층 (서초동, 서전빌딩)",
+          "phone": "02-572-8400",
+          "representative": "백해기",
+          "homepage_url": "https://www.cyber-line.co.kr",
+          "source_pool_no": 4028,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "3b43848cde456bb7d4c6b05ae089baf6a441a9d7bccad4b9f6f32345d3f93635"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "cda485a7-3634-554c-8595-61a3dabacf3a",
+        "name": "주식회사 세미콜론즈",
+        "homepage_url": "https://www.semicolons.co.kr",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [],
+        "task_solutions": {
+          "J020": []
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "PDF RAG Chat System\r\n자연어처리(사내 문서 검색, 지식 관리 시스템, 고객센터, 법률/의료 등 전문 지식 기반 챗봇 서비스)\r\n• 고객사 내부망(온프레미스) 서버에 구축하여, 고객사가 보유한 문서를 업로드하면 문서가 자동으로 청킹(분할)→임베딩(벡터화)→지식베이스(컬렉션) 구성됨\r\n• 사용자는 채팅 화면에서 해당 컬렉션(업무/부서/프로젝트별 지식베이스)을 선택한 뒤 자연어로 질문하면, 시스템이 관련 문서를 검색하여 LLM이 문서 근거 기반 답변을 생성함\r\n• 답변에는 참조 문서/페이지 근거가 함께 제공되어 사실 확인과 재검증이 가능하며, 고객 데이터는 외부로 반출되지 않도록 온프레미스 환경에서 처리됨",
+              "url": "https://www.semicolons.co.kr"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "PDF RAG Chat System\r\n자연어처리(사내 문서 검색, 지식 관리 시스템, 고객센터, 법률/의료 등 전문 지식 기반 챗봇 서비스)\r\n• 고객사 내부망(온프레미스) 서버에 구축하여, 고객사가 보유한 문서를 업로드하면 문서가 자동으로 청킹(분할)→임베딩(벡터화)→지식베이스(컬렉션) 구성됨\r\n• 사용자는 채팅 화면에서 해당 컬렉션(업무/부서/프로젝트별 지식베이스)을 선택한 뒤 자연어로 질문하면, 시스템이 관련 문서를 검색하여 LLM이 문서 근거 기반 답변을 생성함\r\n• 답변에는 참조 문서/페이지 근거가 함께 제공되어 사실 확인",
+            "url": "https://www.semicolons.co.kr",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "분석지능",
+          "ai_solution_description": "PDF RAG Chat System\r\n자연어처리(사내 문서 검색, 지식 관리 시스템, 고객센터, 법률/의료 등 전문 지식 기반 챗봇 서비스)\r\n• 고객사 내부망(온프레미스) 서버에 구축하여, 고객사가 보유한 문서를 업로드하면 문서가 자동으로 청킹(분할)→임베딩(벡터화)→지식베이스(컬렉션) 구성됨\r\n• 사용자는 채팅 화면에서 해당 컬렉션(업무/부서/프로젝트별 지식베이스)을 선택한 뒤 자연어로 질문하면, 시스템이 관련 문서를 검색하여 LLM이 문서 근거 기반 답변을 생성함\r\n• 답변에는 참조 문서/페이지 근거가 함께 제공되어 사실 확인과 재검증이 가능하며, 고객 데이터는 외부로 반출되지 않도록 온프레미스 환경에서 처리됨",
+          "address": "금정구 금정로 225, 3층",
+          "phone": "02-1555-3250",
+          "representative": "이재호",
+          "homepage_url": "https://www.semicolons.co.kr",
+          "source_pool_no": 3799,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "f07310b7c4a6e8992eeafae689871296ae365349c216a43aa3ed8841fb58f99d"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "a9e5a34f-f20f-5601-8f5e-1e85b515503c",
+        "name": "이지메타",
+        "homepage_url": "https://www.ezmeta.co.kr",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [],
+        "task_solutions": {
+          "J020": []
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "o 케이노츠(K-Notes) RAG(Retrieval-Augmented Generation)솔루션\r\n\r\n - 주요 기능\r\n   ∙ 주제 기반 문서 자동 생성\r\n   ∙ 다중 에이전트 추론 파이프라인\r\n   ∙ RAG 시스템 기반\r\n   ∙ 대규모 문서 데이터베이스 연동 (초록 및 원문 단락 단위)\r\n   ∙ FAISS 및 Apache Solr 기반 벡터 검색 지원\r\n   ∙ 다국어 문서 처리 지원 (영어, 한국어, 일본어 등)\r\n   ∙ 개요·목차·참고문헌을 포함한 구조화된 출력\r\n   ∙ 확장 가능한 모듈형 아키텍처\r\n\r\n - RAG 시스템\r\n   ∙ Foundation Model 외부에 있는 데이터를 통해 LLM의 성능을 향상시키는 framework.\r\n   ∙ RAG Pipeline에서는 사용자 질의어에 관련된 개념과 데이터를 DB에서 검색한 후 Vector DB에서 해당 데이터 추출 및 응답 생성.\r\n   ∙ Vector DB에는 논문과 특허 등의 전문분야 문서가 수록되며, 사용에 따라 매뉴얼, FAQ, 연구보고서, 고객응대 지침, HR 문서 등도 포함 가능.\r\n\r\n - 에이전트 시스템\r\n   ∙ 주제 입력 및 설정 : 사용자는 연구 주제와 선택적 필터 입력.\r\n   ∙ 근거 수집 : 벡터 의미 검색을 통해 관련 자료를 검색. (초록, 원문 단락, 메타데이터 수집 및 랭킹 계산)\r\n   ∙ 관점 지정 : 서로 다른 분석 관점을 대표하는 다수의 에이전트가 구동.\r\n   ∙ 다중 에이전트 추론 : 각 에이전트는 검색된 근거 문헌을 기반으로 멀티턴 대화 수행 및 분석 결과와 추론 과정 생성.\r\n   ∙ 개요 생성 : 에이전트들의 결과물을 종합하여, 전체 문서의 논리 흐름과 섹션 구성을 정의하는 일관된 개요 생성.\r\n   ∙ 섹션 단위 문서 생성 : 각 섹션은 관련 근거 자료를 활용하여 독립적으로 생성.(논리적 일관성, 기반 근거와 분량 통제 기능.)\r\n   ∙ 참고문헌 구성(인용 정보가 수집·중복 제거·검증)\r\n   ∙ 출력 및 로그 관리(최종 문서, 문서 개요, 참고문헌, 검색 로그)",
+              "url": "https://www.ezmeta.co.kr"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "o 케이노츠(K-Notes) RAG(Retrieval-Augmented Generation)솔루션\r\n\r\n - 주요 기능\r\n   ∙ 주제 기반 문서 자동 생성\r\n   ∙ 다중 에이전트 추론 파이프라인\r\n   ∙ RAG 시스템 기반\r\n   ∙ 대규모 문서 데이터베이스 연동 (초록 및 원문 단락 단위)\r\n   ∙ FAISS 및 Apache Solr 기반 벡터 검색 지원\r\n   ∙ 다국어 문서 처리 지원 (영어, 한국어, 일본어 등)\r\n   ∙ 개요·목차·참고문헌을 포함한 구조화된 출력\r\n   ∙ 확장 가능한 모듈형 아키텍처\r\n\r\n - R",
+            "url": "https://www.ezmeta.co.kr",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "분석지능",
+          "ai_solution_description": "o 케이노츠(K-Notes) RAG(Retrieval-Augmented Generation)솔루션\r\n\r\n - 주요 기능\r\n   ∙ 주제 기반 문서 자동 생성\r\n   ∙ 다중 에이전트 추론 파이프라인\r\n   ∙ RAG 시스템 기반\r\n   ∙ 대규모 문서 데이터베이스 연동 (초록 및 원문 단락 단위)\r\n   ∙ FAISS 및 Apache Solr 기반 벡터 검색 지원\r\n   ∙ 다국어 문서 처리 지원 (영어, 한국어, 일본어 등)\r\n   ∙ 개요·목차·참고문헌을 포함한 구조화된 출력\r\n   ∙ 확장 가능한 모듈형 아키텍처\r\n\r\n - RAG 시스템\r\n   ∙ Foundation Model 외부에 있는 데이터를 통해 LLM의 성능을 향상시키는 framework.\r\n   ∙ RAG Pipeline에서는 사용자 질의어에 관련된 개념과 데이터를 DB에서 검색한 후 Vector DB에서 해당 데이터 추출 및 응답 생성.\r\n   ∙ Vector DB에는 논문과 특허 등의 전문분야 문서가 수록되며, 사용에 따라 매뉴얼, FAQ, 연구보고서, 고객응대 지침, HR 문서 등도 포함 가능.\r\n\r\n - 에이전트 시스템\r\n   ∙ 주제 입력 및 설정 : 사용자는 연구 주제와 선택적 필터 입력.\r\n   ∙ 근거 수집 : 벡터 의미 검색을 통해 관련 자료를 검색. (초록, 원문 단락, 메타데이터 수집 및 랭킹 계산)\r\n   ∙ 관점 지정 : 서로 다른 분석 관점을 대표하는 다수의 에이전트가 구동.\r\n   ∙ 다중 에이전트 추론 : 각 에이전트는 검색된 근거 문헌을 기반으로 멀티턴 대화 수행 및 분석 결과와 추론 과정 생성.\r\n   ∙ 개요 생성 : 에이전트들의 결과물을 종합하여, 전체 문서의 논리 흐름과 섹션 구성을 정의하는 일관된 개요 생성.\r\n   ∙ 섹션 단위 문서 생성 : 각 섹션은 관련 근거 자료를 활용하여 독립적으로 생성.(논리적 일관성, 기반 근거와 분량 통제 기능.)\r\n   ∙ 참고문헌 구성(인용 정보가 수집·중복 제거·검증)\r\n   ∙ 출력 및 로그 관리(최종 문서, 문서 개요, 참고문헌, 검색 로그)",
+          "address": "구로구 디지털로 26길 JNK디지털타워 614호",
+          "phone": "02-584-3489",
+          "representative": "윤택기",
+          "homepage_url": "https://www.ezmeta.co.kr",
+          "source_pool_no": 3108,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "f2c2c6a788b643cdcf68579a805780fdeea5bfea5984be0d88af3cf0abb16b13"
+        },
+        "profile_status": "matched"
+      },
+      {
+        "supplier_id": "c43c1787-b59f-54b1-aaef-5367af3c6a7b",
+        "name": "주식회사 한샘가온",
+        "homepage_url": "https://hanssemgaon.co.kr",
+        "matched_tasks": [
+          {
+            "task_id": "J020",
+            "name": "기업·전문 지식 검색·질의응답"
+          }
+        ],
+        "solution_descriptions": [],
+        "task_solutions": {
+          "J020": []
+        },
+        "task_evidence": {
+          "J020": [
+            {
+              "quote": "o 데이터 분석 기반 이미지-텍스트 생성형 AI\r\n(데이터 분석 시스템) 다양한 형태의 데이터의 정규화를 통해 시각화를 위한 전처리 시스템 제공\r\n(데이터 시각화 시스템) 데이터의 특성 및 형태에 따라 적합한 차트 유형으로 차트이미지 생성\r\n(자연어 처리) 생성된 차트를 분석한 설명문을 제공하여 보고서 형식(이미지와 분석 텍스트 쌍으로 제공)으로 제공\r\n\r\no RAG기반 질의응답 및 추론 생성형 AI\r\n(RAG 기반 질의응답 시스템) 사용자 질의 입력 시 관련 문서를 검색하고 생성형 AI 모델을 통해 근거 기반 응답 생성\r\n(추론 생성 시스템) 검색된 정보를 기반으로 요약, 해석, 비교, 결론 등 추론 데이터 생성\r\n(자연어 생성 시스템) 질의응답 및 추론 결과를 설명문 형태로 자동 생성하여 사용자에게 제공",
+              "url": "https://hanssemgaon.co.kr"
+            }
+          ]
+        },
+        "portfolio_status": "공개 프로젝트 별도 확인 필요",
+        "status": "functional_candidate",
+        "identity_review_required": false,
+        "evidence": [
+          {
+            "quote": "o 데이터 분석 기반 이미지-텍스트 생성형 AI\r\n(데이터 분석 시스템) 다양한 형태의 데이터의 정규화를 통해 시각화를 위한 전처리 시스템 제공\r\n(데이터 시각화 시스템) 데이터의 특성 및 형태에 따라 적합한 차트 유형으로 차트이미지 생성\r\n(자연어 처리) 생성된 차트를 분석한 설명문을 제공하여 보고서 형식(이미지와 분석 텍스트 쌍으로 제공)으로 제공\r\n\r\no RAG기반 질의응답 및 추론 생성형 AI\r\n(RAG 기반 질의응답 시스템) 사용자 질의 입력 시 관련 문서를 검색하고 생성형 AI 모델을 통해 근거 기반 응답 생성\r\n(추론 ",
+            "url": "https://hanssemgaon.co.kr",
+            "source_kind": "supplier_profile_description",
+            "review_status": "미검토"
+          }
+        ],
+        "supplier_profile": {
+          "specialization": "분석지능",
+          "ai_solution_description": "o 데이터 분석 기반 이미지-텍스트 생성형 AI\r\n(데이터 분석 시스템) 다양한 형태의 데이터의 정규화를 통해 시각화를 위한 전처리 시스템 제공\r\n(데이터 시각화 시스템) 데이터의 특성 및 형태에 따라 적합한 차트 유형으로 차트이미지 생성\r\n(자연어 처리) 생성된 차트를 분석한 설명문을 제공하여 보고서 형식(이미지와 분석 텍스트 쌍으로 제공)으로 제공\r\n\r\no RAG기반 질의응답 및 추론 생성형 AI\r\n(RAG 기반 질의응답 시스템) 사용자 질의 입력 시 관련 문서를 검색하고 생성형 AI 모델을 통해 근거 기반 응답 생성\r\n(추론 생성 시스템) 검색된 정보를 기반으로 요약, 해석, 비교, 결론 등 추론 데이터 생성\r\n(자연어 생성 시스템) 질의응답 및 추론 결과를 설명문 형태로 자동 생성하여 사용자에게 제공",
+          "address": "충주시 칠금중앙1길 10(칠금동)",
+          "phone": "010-9923-0995",
+          "representative": "김채린",
+          "homepage_url": "https://hanssemgaon.co.kr",
+          "source_pool_no": 3595,
+          "source_program": "AI바우처",
+          "source_year": 2026,
+          "source_hash": "bf5148c0e8001e870c0cd9caa5661881f8398432e649a2c6f4a9ac1bda06bb16"
+        },
+        "profile_status": "matched"
+      }
+    ],
+    "suppliers_by_task": {
+      "J020": [
+        "09bd71ac-26f2-5e86-b154-2bec2c12c525",
+        "6504bfab-26e0-5ae7-8439-d547ae2e1e7e",
+        "8e7ad291-342b-5245-87bf-b77edd04a2a5",
+        "52efb288-d3c2-55b9-ac38-f65b4ac4b604",
+        "8c7be395-2a5f-5166-af6f-217799af272d",
+        "77332743-e558-5b9c-a3e8-7452abc3b958",
+        "d3796bd4-0fae-51d3-80e9-ff4732661a74",
+        "ab76a8b0-e9cc-5eba-8759-16455d7d41fa",
+        "a5f9df78-3dac-5054-bc0d-7ce21cc96c85",
+        "67fd4c55-7716-506e-8243-6a17cd3d6972",
+        "737bd7a9-c77f-5585-8967-8f79d4d335fd",
+        "e748d08a-bd69-5365-a529-8a9844c5766c",
+        "3febef5e-c020-5760-b34a-ec3e285eabb6",
+        "f8f1356a-35b0-5485-a27b-49fedf5413ff",
+        "15e506dc-156f-59eb-ae62-b402383f0ca3",
+        "dd555195-76db-5d55-b725-c44547f7c24b",
+        "457add05-921a-5379-8fda-27fe90160cd2",
+        "aa497a60-c50a-52ba-bf9c-cabe23874249",
+        "f9f057b1-6bd2-5a02-b114-8f43a75039bb",
+        "1bc67bfb-23bd-5849-8767-bb77d2c8a10c",
+        "80c932bc-6909-5de9-aa96-30077ef982e7",
+        "cda485a7-3634-554c-8595-61a3dabacf3a",
+        "a9e5a34f-f20f-5601-8f5e-1e85b515503c",
+        "c43c1787-b59f-54b1-aaef-5367af3c6a7b"
+      ]
+    },
+    "result_version": 2,
+    "analysis_meta": {
+      "max_suppliers_per_work": 2,
+      "supplier_catalog": {
+        "registered_count": 1428,
+        "recommendable_count": 1329,
+        "legacy_alias_count": 117,
+        "captured_at": "2026-10-17T08:17:18.449653+00:00",
+        "fingerprint": "ceb24e3c44e25de2c6e9da819a0bbb001dbd4031549b7cd2f491b934ef2a7a59"
+      },
+      "pages_analyzed": 1,
+      "basis": "홈페이지 공개 문구와 AX Task Seed 지식베이스",
+      "review_status": "초기 후보 · 추가 확인 필요",
+      "taxonomy_scope": "사업기능을 147개 활성 AX 과업과 대조"
+    }
+  },
+  "retrieval": {
+    "J020": {
+      "candidate_supplier_ids": [
+        "09bd71ac-26f2-5e86-b154-2bec2c12c525",
+        "6d8bb79b-6cdb-5740-9ba6-0f9d9bc90bfd",
+        "6504bfab-26e0-5ae7-8439-d547ae2e1e7e",
+        "8e7ad291-342b-5245-87bf-b77edd04a2a5",
+        "52efb288-d3c2-55b9-ac38-f65b4ac4b604",
+        "8c7be395-2a5f-5166-af6f-217799af272d",
+        "3808130a-beed-592b-9845-d4a1fd58f9f0",
+        "77332743-e558-5b9c-a3e8-7452abc3b958",
+        "d3796bd4-0fae-51d3-80e9-ff4732661a74",
+        "ab76a8b0-e9cc-5eba-8759-16455d7d41fa",
+        "a5f9df78-3dac-5054-bc0d-7ce21cc96c85",
+        "67fd4c55-7716-506e-8243-6a17cd3d6972",
+        "737bd7a9-c77f-5585-8967-8f79d4d335fd",
+        "e748d08a-bd69-5365-a529-8a9844c5766c",
+        "3febef5e-c020-5760-b34a-ec3e285eabb6",
+        "f8f1356a-35b0-5485-a27b-49fedf5413ff",
+        "15e506dc-156f-59eb-ae62-b402383f0ca3",
+        "dd555195-76db-5d55-b725-c44547f7c24b",
+        "457add05-921a-5379-8fda-27fe90160cd2",
+        "aa497a60-c50a-52ba-bf9c-cabe23874249",
+        "f9f057b1-6bd2-5a02-b114-8f43a75039bb",
+        "1bc67bfb-23bd-5849-8767-bb77d2c8a10c",
+        "80c932bc-6909-5de9-aa96-30077ef982e7",
+        "cda485a7-3634-554c-8595-61a3dabacf3a",
+        "a9e5a34f-f20f-5601-8f5e-1e85b515503c",
+        "c43c1787-b59f-54b1-aaef-5367af3c6a7b",
+        "ac896bb2-ca87-562c-a460-4529af60be88",
+        "ff113d96-b0c0-56b1-a8f1-a4bef30bb13a",
+        "68a9b4e4-6747-51ce-8870-5ae2dd7c7284",
+        "1d36df1f-63b2-5f4a-9c24-a77d89346f56",
+        "f596452b-1da8-51f5-a0fc-e678d6578f11",
+        "c868af20-5062-5732-bffb-b6c03349b438",
+        "ae460e2c-a275-5b2b-80af-5e1552e78aa9",
+        "10983334-fb2d-5ec8-ac80-4f69672c8051",
+        "4e9ffaea-f5b5-5588-91f5-35cd3f290a53",
+        "2cf9cb6a-fc2b-5a53-9625-ef58b7714936",
+        "6470d98d-8ee8-573b-b3fe-28fb98217a42",
+        "6f6a4cf5-a138-5ec6-bf33-a7521dcdc27b",
+        "272476e5-6483-5c5b-a4fc-7307071e4e8a",
+        "008f0fdf-3475-5e48-998f-cc0737813c10",
+        "566a9005-125e-5a1b-9714-dc3ecfd7d142",
+        "79be60d5-957a-529e-ad70-9d43ac907da5",
+        "590e4068-862c-5bea-a746-6718ac657f65",
+        "1d106a40-e103-582a-b8b3-6b3fd62805a2",
+        "159a876d-d1eb-5edf-a66a-b58aa8dace9f",
+        "7867d8ad-4f2f-5c44-973f-149f7f2c2d31",
+        "5f3193c2-2711-566d-a3c5-cd90e51ca97a",
+        "3e8b0b87-7146-5594-876b-60dede22d5e5",
+        "ca4aef6f-d076-5b20-8bbc-1093ab2b7c7a",
+        "2778ae53-906f-56da-88c2-17441df191ac",
+        "d669e272-918f-5ac7-a858-17e34cc9b8c0",
+        "ecbd2cff-57e1-5de1-a29e-d636412ce5d3",
+        "0d1e5911-367c-5ef1-bb3f-642e6d34a368",
+        "6497a53c-870b-5d60-90b7-0c7bb028749a",
+        "3c58dc41-667f-5d3a-ab49-66acdff1bd2f",
+        "bc26f5c0-a4d9-56cc-b45c-7f073043b4ea",
+        "313b4891-6811-54f0-9c6f-ecb2917f709d",
+        "d7f63e8e-ca18-5712-80f0-39de68724f63",
+        "ce1a63eb-8c7b-543e-b36f-473686d8e0f2",
+        "b9bc4575-108b-58a0-b6a1-49b8fb591f1e",
+        "b11285e8-a513-594a-878b-442cd712f5dd",
+        "011a0606-913f-529d-b03b-ca91e544a2f7",
+        "c4e165dd-fc92-5102-b013-cb09b6477499",
+        "8592fb10-abab-5fde-a016-0f5be628e080",
+        "620d428f-0ba4-5920-8d92-e676eae7c886",
+        "685ff164-c30f-55bc-a17b-6d9f23ad85ef",
+        "822c4030-756f-55fd-bfbb-b9c497c5a979",
+        "37ab5ca9-2c80-5e35-aa2e-7f0192260924",
+        "54b42209-64d8-5640-85da-3363c4507797",
+        "559e7451-bd0f-5825-85bc-83b11a359599",
+        "d22c4d66-e48b-58d8-8270-d9a0b08b2052",
+        "d30511f5-f823-5a19-bf59-a36e4b54a6b6",
+        "57edbdb2-a86a-5734-92d0-b6b11fd9c55e",
+        "19d48c5b-cfe0-5b35-bb02-a5b6f8d9e7d5",
+        "c46a3b06-3a70-52a2-aee8-9188621a809c",
+        "04ec88aa-55ee-566d-b563-00e1e4412b12",
+        "cc2f0049-9517-562d-ab25-6e9665181857",
+        "38459e6f-2c8d-5f30-a399-013d4a402523",
+        "b2ade83d-071a-5dfa-8ea3-24bba52ea425",
+        "ee77448f-e19b-5b05-9910-29ab3e713f5e",
+        "8350269e-9bad-5da6-9fa9-b93e71a545b7",
+        "4fcadb3d-6366-5767-a4f0-e2a304f54607",
+        "e15d5571-15f4-5274-a568-c7abd5af42c8",
+        "b8862c2e-2a78-5f13-8ba3-b21e7cc2a314",
+        "1d551e7f-9cb9-5bde-a5a5-9f3dc6269621",
+        "9774572e-5672-5e1e-9437-f55be4366c0c",
+        "42b8f9a9-547f-5f96-abf0-1714a4268c7d",
+        "f3b17a90-d2fb-5239-a37c-27f50090e172",
+        "1883b63a-1e80-5df4-88a4-678247e73c96",
+        "a3e4ff1f-9424-5f0d-89b5-16b666b8a892",
+        "f16438a0-a799-5dd7-877b-c62fbe7eb867",
+        "cd6f3a52-1ed9-5fdb-9c0e-b83abeaec1f1",
+        "14e43325-a785-5236-8f1b-fd4df6e98c01",
+        "e1c4ccc5-f99d-583c-bb12-4b501ad35f37",
+        "411313fa-6a18-568b-9cae-412eeabacb08",
+        "95bd312c-1b31-58d6-a7d4-f4f1f74e607f",
+        "44e9a033-4495-575e-8f46-92bcd66a9e09",
+        "a9b3d0ee-b54d-57e7-9781-d4af2715b651",
+        "db56381b-6147-5776-836c-3acf85535f28",
+        "ac206d41-6772-5fe1-a745-f5697d5fcfe6",
+        "053cecc7-02fd-57c7-ad8e-6f47bd21fcff",
+        "4e64b401-6382-59bb-90c4-60970d945036",
+        "0fb02e91-9cfb-5c51-b1cf-1603c91c6b24",
+        "e5ede9bd-308f-5dd7-a313-6a71190b7240",
+        "e2e39413-4d24-5908-841b-a5e4c07c8348",
+        "fb02f41a-5f9a-5a8a-a26c-d828ba88ed3e",
+        "d7b7bf44-f7c0-55d6-8dac-0ea951690c16",
+        "f4ca2cad-75ef-5e24-8b86-a7481fcbf25a",
+        "c7e7e8b5-0a8b-558d-bb7e-8496784d62f9",
+        "eaf31613-55d7-5ba4-9ba0-1db968639c62",
+        "02c5bf1f-205b-5fed-a6a0-e84604f06221",
+        "1da9e803-d01f-5957-b3aa-f204879ca49b",
+        "028712f5-95c4-5c77-b1d8-af00c1897716",
+        "f252f745-20da-5b13-bdb0-f91a6831882a",
+        "d25991e1-476b-5374-b268-1d711a130a84",
+        "bbf3f236-6b42-5931-9120-2c242082761d",
+        "6b2193ee-cec9-5609-a712-b71b1b3f2465",
+        "9f59eed1-caff-56ed-9dc7-509f1a2f25ab",
+        "05ac59df-6593-53a2-b943-2c9c4cf0eb10",
+        "bf719c8e-6ccd-588c-8054-18bc2b9e0948",
+        "bfad47cf-d3c7-53e7-bb96-9219e21bad72",
+        "dc360ed9-3c5d-5667-9997-37d853c08d3f",
+        "46ca431c-9ee6-568b-8f79-3a74276538e6",
+        "dd8501d5-e1b7-5f8a-82d1-8ee93f0919a4",
+        "ee1bd2f6-6850-5436-ac07-8ddb140bad2f",
+        "98372296-5ebc-50c8-94c8-c09f3426ef13",
+        "8ea51243-41a9-52ec-a73e-7b07ad22e349",
+        "e7e7802d-14a3-5603-b393-b06e695bb5d0",
+        "aaa25365-8f03-5133-b87c-0f8d293d9b7c",
+        "50f8a2ec-1ddc-5f44-af04-4c3c67ccd948",
+        "d006ed05-2624-52eb-a245-231bdf7b442a",
+        "68185de4-d07c-5f4a-8dda-21a1cf1ef52d",
+        "0d269d05-8bcc-546c-a58e-97bfaf9ae325",
+        "5cb1f50f-236e-5ff9-9f90-50d32001b938",
+        "116134a7-6c88-51a7-86d0-081de6999a25",
+        "f4e5e8dc-6a4b-5275-ab18-6fab4cca4255",
+        "03f58ae4-65c6-507d-8403-14ad1d4ee530",
+        "5ebcee31-22bc-52e7-9cb7-3438ff2fe548",
+        "8019dd72-6751-5aea-9e47-dd0a5a8f8acc",
+        "6d9f635b-c4f5-5175-8a09-f5918b21bc64",
+        "bfbd4098-3609-5449-9bb6-dad832f6ceae",
+        "ce26f859-32d1-5ff4-9c4b-cf7ecea6076c",
+        "9b6a3e90-9b42-5e27-abda-1109f1368115",
+        "85f6dc22-50fc-5bf2-bcd8-57e8e4a45704",
+        "f010178a-b0fe-563e-9535-6fe927457263",
+        "7e3db17a-c3c0-5b07-b88c-06a6a6bd1b9f",
+        "5a0725c9-8a90-5ca7-85b1-75441003d91d",
+        "3e9c7176-3853-5063-8fd0-0f47036836e0",
+        "2e97149a-83fe-5405-ac01-22d1bf4e1aac",
+        "c6ba91c9-45ee-5178-a249-d56caedd1218",
+        "fc3ebb1c-6d0a-57f1-99e6-1313c619b4c7",
+        "fc35299b-abc3-58bc-a5d6-e9caa7c65e9b",
+        "ed524826-515a-5f54-b299-436162a7bdbe",
+        "190a8041-7b41-578c-b74f-4ff2f82b64cc",
+        "55b6b982-1a4c-5bfc-8b51-7a70c7852794",
+        "40221323-87f4-5887-96ae-3d2a23b3f89e",
+        "26bfac4f-8687-5a36-88cc-1b74eae3ee97",
+        "3387f2bb-68a4-5f92-8f9b-d68d58250cb6",
+        "c3da4a68-915e-506e-88d4-b764598f2285",
+        "7034f766-81e6-59bf-be62-e011e0d0cfe2",
+        "9df7d9e1-602a-5950-a8fe-1b900ef56fcb",
+        "262f2225-c134-522a-9d1d-40676c519b2b",
+        "08a84b28-c2f5-5bdd-9d1f-5f04e0fa8dcd",
+        "961e2dc4-bb06-591c-9619-9926d5de8499",
+        "be941568-2dff-5d27-b749-a28a720ae8fb",
+        "2b1504ce-9fcd-561a-b9e0-ab07931fd609",
+        "87fa1d59-ea3e-5c53-be49-31b07d392348",
+        "bfc06fcc-41ef-5c62-9045-28c4d48a60f5",
+        "e30477e3-293b-506f-8447-4248aaa905ce",
+        "063827f9-96a1-51d8-bd64-e4444e7ca83d",
+        "4d6e9a91-f7c8-5b71-84da-0f806eadf852",
+        "2eb95157-3273-59f0-811f-da2725a141dc",
+        "08dd52d6-29e8-56df-adb3-2d2b24713d8d",
+        "8e50823f-2fc0-57b7-9678-165f0a332a83",
+        "b5f28da5-ebe7-5066-a753-b47129e8b2ca",
+        "85a29638-5c13-5e3a-a5e1-a7db3d063740",
+        "b692950f-4617-5173-ace8-d384e2ab63bf",
+        "83e2ecba-f51f-5d89-879a-27204b17eb71",
+        "6a9f37ce-a987-5c2d-8789-54e7e012d376",
+        "28bf9265-ad11-5757-ad91-85c9fa32b6df",
+        "dd34b63c-a72e-5ebd-93e8-55b510a5074c",
+        "96525048-2b8d-5c9f-bbc0-e980eb59df8f",
+        "ce550f31-e852-5e7b-8f18-7051a4df3baf",
+        "d598c5c2-ad7e-5072-b8a1-9da81b9cd210",
+        "c0ad8f8d-2e8d-5252-abc0-2730a67c2757",
+        "a49e5e9f-4fd5-5f47-a99f-959442fb2b44",
+        "bc3995c0-6902-5fb1-8df0-8ae8a378fc05",
+        "9daf3bbd-af49-5b25-b216-600fb02d0247",
+        "e17ccd8e-d8dd-5597-8d34-fea356e49a63",
+        "9b1282d2-9158-535a-b2e4-1076881f0385",
+        "527db576-75c2-5f8c-a7d8-d52c11731f29",
+        "397788f8-020f-58ba-b431-8e4be5483e52",
+        "e281c2f7-b14d-571a-bb6f-10c8bbebae24",
+        "a8fda969-e76d-5f82-8a84-d2ffdbcc1c28",
+        "6f659d56-daeb-5244-b258-8fc699188ee0",
+        "ac4f33a5-57d0-5dd4-8ddd-c7a82e190d3b",
+        "f73eaf17-ea41-5e7d-830d-ae7dfdd656b9",
+        "f7d17dfb-39bd-5af4-ab13-5d9696fb548e",
+        "3f99245c-4b1e-5121-863c-db8a4a840528",
+        "383a2151-991d-5443-98ee-e35ab9dbac27",
+        "b7f641f4-a919-54ac-8257-5ad3dd610c64",
+        "bac85d14-2d1a-59e4-a992-bf19c82ae50e",
+        "4806c2f6-7f11-5dc4-b48d-3fe7bd07f84b",
+        "a13de84a-104d-5164-9a56-c37f69cba9e1",
+        "4dbbbd0d-4380-5c90-8997-8245335e1640",
+        "0d6b7e17-ab32-518d-81fd-b3f9ab2e8eeb",
+        "b703c670-4fa6-5d18-a062-f77630c34b1d",
+        "5dd9811d-807e-5d70-ba36-55d6c3f8500c",
+        "c2430b03-6b71-5f6a-9219-b7367993c22c",
+        "09870d6c-0c0b-5c0c-912c-c74d37879dc3",
+        "434bef6b-da0f-5084-b263-0493cff64e7d",
+        "053632dc-9b1a-5ae8-bff6-8a5075f2bf9a",
+        "e11ae165-b76c-5bcf-9bff-bd427e24b7c8",
+        "0860a445-7f93-5930-ab42-5612230564e6",
+        "aa49c645-e81c-57ff-ac38-a6549ede4ac9",
+        "a8f138c1-ef5c-5b04-bf82-322f754d8418",
+        "79295737-7747-5864-96fe-d5f0fc34bfd5",
+        "7dbbe035-8dbe-5c2a-952d-81f0fefe92b9",
+        "89d1adb2-911f-5eea-893a-c06e99a2ea8f",
+        "867dff97-9f37-5228-9b86-c8884d67c70f",
+        "99d2a4db-e892-5815-8785-e1b2a8435df7",
+        "bbe50eab-5c6d-542c-9fea-7d1f03f4614b",
+        "27ec9362-0d80-5401-95c1-0dd961476ad8",
+        "61a8c4e1-33b2-53ac-9afa-163f888dc82b",
+        "bb57bd67-057a-54b1-8fb1-3931ff7cb8b3",
+        "0d36744b-8e3b-53f0-b7b9-d042f06d93fb",
+        "0dde295a-2d86-5d73-988c-b20f9b30db2c",
+        "687fd214-4ad9-55a0-932a-10b374154bca",
+        "36ab96fd-e48e-5708-9ba4-1edd83515c62",
+        "c43554a2-612f-5414-8fef-0116e1f88cce",
+        "1124bc69-6be7-5959-99f7-497922e12076",
+        "30d1e2ab-6634-53b3-9f3d-d179cc4bab68",
+        "6846aac3-65b7-5db1-bf26-26f3ee8cc3a5",
+        "9d997667-d937-5f14-93b2-c14d0e1d0931",
+        "1f8c4b1e-31de-5961-8368-68b4285462db",
+        "4394db25-7fda-57bd-982d-d42707d75ede",
+        "39092adc-cbb6-55c7-89ca-168fea6561bd",
+        "be80002d-410e-5d55-953b-0ec6264beeab",
+        "8221ce2e-49f8-5cb7-aabe-3661dbd059de",
+        "4eb85555-b811-5f7e-9ead-dbbff2fc9251",
+        "38e2ab47-bd95-5f5e-97f6-009cf453948f",
+        "e75d87c6-e795-5141-9e5b-f307475db43e",
+        "b6b499bf-6760-59bb-9d3a-e371bb723e28",
+        "46f3090a-21a3-5f47-aa18-34a201a1752c",
+        "af591580-ee52-5d06-962c-bd40aab620b0",
+        "5d8bae94-49a1-577a-8788-1d90eb103145",
+        "c2f46e06-b76b-5d89-b326-fc5df03688e9",
+        "65855e2f-cd29-5228-b5b0-167fdeceec50",
+        "ab310afe-3734-58a7-9fa5-a528464bf378",
+        "f658b043-fe23-540f-9400-ac14cf33d068",
+        "8ebc1dc3-a2ff-54f0-9e3b-a4e8d45fac28",
+        "48698c03-536e-53d8-b6e9-d8d8da3e3f90",
+        "fcd9ed23-79c1-5bcb-94c0-e3cf2da2476d",
+        "66277989-719b-5e7a-b6b6-e2f560cb0f03",
+        "6cee9076-18fe-5eb0-8c9e-35c25250a2e9",
+        "e6516486-a55e-51e1-8e95-e4725499a8bf",
+        "fb558cf9-0604-5f0a-b3a0-5c3a6f5a1b5c",
+        "5f04e128-89d2-5537-ad89-e7e3739b73fb",
+        "4966c35b-9a58-5c87-b419-58aa7910e2f5",
+        "74145274-2424-5b52-b566-4fe5685bba38",
+        "5067627b-db99-5717-a0ed-207efb5bbefc",
+        "bde673b4-8831-529b-9812-9b3c2a777142",
+        "5ad5b397-4a8e-54dd-8b9a-c9baf6cc1bab",
+        "c7160c7a-4aab-5e96-a4e0-67ceb8c72df4",
+        "f9f0be34-0389-52d7-ad0d-3d37e314fa35",
+        "37aabd70-b90f-519a-8a55-a5e534b3684c",
+        "6b7af3f6-b32f-5979-9f49-4ed449c87b79",
+        "0fea989b-e651-596e-807f-4217bd2da6b4",
+        "40404659-6853-519f-9a8c-fb2ea7427c7e",
+        "f8306ec9-0131-584d-822a-1888ddf12575",
+        "85bc9cb1-bc1e-5522-80c5-29cdce5ee88f",
+        "75167edb-bc19-5db2-ba17-9d55a134d795",
+        "a1ab4a24-acf8-5bf8-8a1f-9b99c078005d",
+        "7b26af68-14d8-501d-9f57-dec621fe94ed",
+        "2b99ed54-8ccb-5fbd-88a9-980d9591e23d",
+        "53816755-01f8-5b65-a4ef-05637e8c5545",
+        "06f3d17b-66c5-58be-80e8-b9e7628c9037",
+        "1edc4af7-b0c3-56d9-b8d0-f781c3f288e3",
+        "fa880ecd-8289-5a76-b672-4a874ef5c0e0",
+        "cbce6831-e753-555d-964b-b7eb0afd63c6",
+        "6da7d40e-c21e-52a7-b041-f980f211477a",
+        "fb6ebd6b-f189-5117-b2eb-42ed25aa7024",
+        "e97f0fe7-944e-59f3-83ee-84852c3c1ae3",
+        "76b7382d-11ed-55ee-a186-a870f1db8d5e",
+        "3fadcac3-7076-5952-996d-e98c2ec05fe7",
+        "8d1fdb8e-c51a-57b0-b3f1-6880c08462ca",
+        "a864f354-05dd-5544-b076-4b730d7bbfb1",
+        "1bb1ac5f-adfc-52cb-b75f-e4680fdde12f",
+        "e55b33df-edcd-50b6-b8f7-90544f59de19",
+        "37314033-bab6-590e-bec0-e9140cfdbe30",
+        "a9cad410-ade9-5218-a2dc-ac4a0b09c71f",
+        "5735b05e-1e2a-58e8-97c7-de8190f44a82",
+        "bd2a0341-fd8e-5171-a343-3ec27beefdb9",
+        "3362f8b1-943c-5e7a-92c6-0c5f0fa996e2",
+        "b3eb2734-5c9f-5190-9531-bd4a6404f428",
+        "00adfbce-6a40-502c-88c6-f47061941071",
+        "41d4f30d-03b6-589c-8d19-77923a377076",
+        "d0ccceb6-7420-598d-80ad-8d63434d6306",
+        "3191202d-90d8-506f-acde-e81ceb7bcf15",
+        "bc999f1b-2f87-5369-8e30-ee800ab5e726",
+        "0e959bfe-a4b4-5b2c-ba75-8fae9316c1b6",
+        "884d9f07-5563-59a1-8529-4804a893b54d",
+        "134cba38-301f-516b-ab45-c0134fec7566",
+        "acc63768-a479-5b24-b36f-38b16bcd8799",
+        "40a7dbb5-a6dd-52c5-9659-3b66a2e53af8",
+        "aadf4bb3-3b06-5144-a6ed-7206f7693815",
+        "b7061909-e8c5-5d4f-b3bb-576001c7ec6e",
+        "dd5a34a9-9515-573b-bc86-70a0b961b111",
+        "aeefee86-e2f9-52b4-93f3-becebfc7c570",
+        "f70058f1-be7c-5226-8047-0dabf436badf",
+        "eb117c2f-a2fc-5f5a-9613-4f899afb84fd",
+        "060c8cea-5562-5989-82fb-92352cb8d548",
+        "1dafbb17-432f-53cb-9424-1bec6260c368",
+        "bdf4b736-a1a0-53fe-917e-85f58cbb52a1",
+        "657a07b3-019c-5447-976a-259ed9122a34",
+        "180df37b-51d0-58fd-9d87-fc615050ecc1",
+        "db77a790-c1e9-57f0-9a48-4c3c74815e09",
+        "b168789b-496a-58e6-bc36-4aaada495425",
+        "5dd6aa49-e9e1-5086-a079-286ab9030a23",
+        "10200351-2f8c-5c93-af7b-5891042a3ecc",
+        "2afd553a-3aec-5dfd-bd01-45a8ef8c9653",
+        "9729b552-3972-5cb9-a36f-557ecc47b76a",
+        "e1adb39d-cf40-5796-b836-7e574bea2191",
+        "f170bc73-c73d-5b63-a8a1-d5ec2769e128",
+        "a7394dd3-3921-51eb-ba7a-322b5906a50b",
+        "9a21b295-1d37-522c-828d-812333755669",
+        "645290fe-7eec-5c33-b50e-7c5986dc80e8",
+        "0bb73fef-c88e-55dd-8171-085d45d7e008",
+        "a288e851-f1d1-5e74-b732-4ed98312002b",
+        "578ad6e1-f150-54f8-8d4b-826192f3a21b",
+        "f90d9454-ee94-556b-bf7a-bcb8cb54c681",
+        "9b6654a0-3c58-58ff-aa1f-a1649e3c052c",
+        "75913663-df49-5504-bbbe-86d631ad1593",
+        "586ddf8a-2cd5-581f-9717-cbb674ef173d",
+        "6310e115-76d2-5a03-aa95-aefd56314aef",
+        "87c81690-9288-5623-ad29-3365132ae035",
+        "5b52bd5c-dc5d-50b4-8e4e-7aeaa2f5a7d6",
+        "032fb666-349b-5a54-b27f-23bf691955a6",
+        "65ccbc9c-995d-5ede-8a3e-41f3f986e826",
+        "00b374e8-7309-54a0-a721-681480757d8c",
+        "0f928c98-defd-5d92-8244-d36015394fcc",
+        "8fed9916-8938-5455-a5e1-d19f6d15120d",
+        "bb0d565c-da49-5b95-ab0d-ad632e02d6ef",
+        "9a7546a4-4a72-59b0-a318-2996ccf899cc",
+        "70e42ac4-e24c-5164-b038-97b59ab71d8c",
+        "a5f2910a-47c2-50c8-9b64-7ab9f881a628",
+        "d6a7f69f-e872-572e-8775-2771fcdd54b6",
+        "a91c80e6-dc26-580e-8904-ec9fa52f40c0",
+        "c60146d0-c38d-52dc-a05d-b998538531e5",
+        "bde2e147-c598-5cad-8577-b5e1485561a6",
+        "e3933e68-685f-5ed1-bd70-d8f4a27aa8e3",
+        "9fbfde9b-6bde-5ec1-bfcf-4c37c0611b92",
+        "e1ba4944-f291-5dae-9e4e-4e9be333de3d",
+        "56993417-3b49-550b-a028-4edd40bd7fd1",
+        "8a560727-5b8d-59ac-8a4b-01f137a614cb",
+        "5140b68e-fc7f-5393-9f2c-c8a7745088e4",
+        "1969f5f2-b341-5f92-a4c2-31904cf58864",
+        "ee1be5dd-c57b-5374-a540-c52e5ab7f975",
+        "94ef42a3-e8d1-507d-92b0-a6b0784a6799",
+        "02f8f0ef-9945-53c0-8a54-0ab407cd035f",
+        "ab4cca59-0bc1-5af9-9bb5-f68197dc60ee",
+        "b1aed713-acd6-5ac7-9de4-a26158f74516",
+        "864195dc-e3c7-5fd0-aef1-9a336ccaa304",
+        "d91d2875-a4fa-52d4-80f5-4b1739c6e856",
+        "9f624220-66ed-5110-8d2e-38d7fe46a2f1",
+        "881474e8-56b4-5143-8297-649663e76343",
+        "aeed0ad8-2068-57b2-9f4c-e58372d00b98",
+        "b73bb7bf-84f7-547b-913c-56bc467b5005",
+        "8b4ea3f1-bc1a-5cc7-a2db-f5c483bc4f48",
+        "bdbb2972-8837-588a-8ee6-2d82a18ec1b6",
+        "2eeccf60-bede-5938-adf9-fc09327591c4",
+        "8a8b2e55-74bf-5f1c-9e5e-c41e6fab21bf",
+        "85d5a729-162b-5f63-8762-65096d5ecafc",
+        "c71df428-1646-5953-adb1-af5a4cfa2c41",
+        "5c610b66-b0e8-5b6d-982e-d8476d442b06",
+        "2b476899-a389-5dab-9f57-1558b6fcc6f6",
+        "f33605ed-6c16-559b-929d-6d3678562e90",
+        "28b3c7d8-fc05-5044-a527-36135dd7af16",
+        "42fdeb5f-32ad-58bb-903d-d29d1f72fff2",
+        "1f3fb42c-58f9-5f31-9bf5-b2c1b61ddc13",
+        "592f79d7-6f09-58cd-af37-bed8c0c9dd28",
+        "a8310412-7c43-56f1-814a-b37cc10adfee",
+        "4a9ac0cb-c8a9-5574-a1ac-0995eb886c13",
+        "09d4ed86-4d20-5a7d-a179-e012fc5b66be",
+        "500f189e-a0f1-5193-b9fe-f6a09146603a",
+        "28f9f7c0-8e1f-5a81-aadd-0090d5f52c70",
+        "1a6a82c5-e1bd-51e8-81a2-86738e802eac",
+        "b7ae92bd-861d-545b-8c3b-0016900c8667",
+        "bd73c66d-2f8e-5802-9444-612b7ee92338",
+        "403faaf1-bd9d-5555-bf8c-797176024be9",
+        "595d64c7-7c51-5b94-804e-d643e12eaf92",
+        "4fba72b6-47ea-51db-8c84-8e8f0914cb69",
+        "620f0d5a-0b3c-54e9-88d4-ef7c69155556",
+        "3e4816ab-66fb-586d-b5ac-04679dae9ee9",
+        "387ef581-5c5a-5996-961e-c6bc11edba8d",
+        "441cba86-9276-5a93-9a8e-feb0902c6116",
+        "eeb57177-65e2-53de-99bf-98abdb3aab2e",
+        "4d9acc5c-9e27-5a5f-8574-a75a491fc047",
+        "c38207b2-a7da-5e09-8afe-2ea537cfcac0",
+        "28541a17-9e22-5470-a4a3-4dda6ef2d06d",
+        "41f0bcba-30e6-5220-815f-4aaa665c5575",
+        "8a000b86-faaa-551a-a5e0-7a93eb3d8b20",
+        "a4f1b4a0-bc49-536d-822c-7bbafdb3066d",
+        "d6ccf09a-c6f1-54df-9d99-c5051022f91b",
+        "9f273f3e-599d-55f7-916d-38cf980df188",
+        "a16753ff-7a69-5bf4-8ac8-bdfde84b5505",
+        "af4f7f84-731c-5ede-b074-3539139906ee",
+        "567d80b6-58ba-5a11-8b1a-c7d821b818bd",
+        "97616cf1-84c2-5031-838f-4b754a51d12c",
+        "03b05e14-29ad-5d4d-a297-0b207dfe19d4",
+        "08ea451e-4020-5198-87b5-e8965b5c3678",
+        "56a4187c-85ad-5841-9932-1c1d371bbc09",
+        "209c7b8b-2651-55f6-8ef4-bb8a9713eb0d",
+        "e834499a-f45c-5d41-9f88-c0ca44f284dc",
+        "89d2c0e0-0d78-5443-99fd-c22b92571f76",
+        "d56e2971-bac2-5b88-81b2-8182636b1d95",
+        "a2df5478-a9f2-52f4-8193-02e204c0ef21",
+        "e1b86f9e-80b6-5b8b-a87c-2fb60b92f9c4",
+        "76bdeca0-5eb6-511b-95e1-6542732d28a2",
+        "18b43d96-5f34-52ed-bf91-af9fd010022a",
+        "78f25f8d-7936-5bb3-996a-be0e8ae25bfd",
+        "1700ec7e-21de-5e3c-a0e3-c562118334d9",
+        "cac42e8f-74ff-5198-8192-95430f14185f",
+        "3e875e53-95a9-59ff-a081-61d81b7cc09f",
+        "74750836-9500-58f8-9df5-bb0accb6a47f",
+        "905b729f-ebe2-5c44-af85-cbfb11b4e009",
+        "43b1e0ab-09fb-5982-b568-88fec5d7f8bf",
+        "70fe7d55-b305-5fc5-8c6b-83cd5dc031ae",
+        "94a1ce8d-960d-56c7-b7a1-d4d36bd40e4f",
+        "98948739-a426-5990-a21e-ac1328cbd91e",
+        "1568e42c-24a4-53bd-87f5-15065487e211",
+        "c05dc6de-6615-5191-a900-dbe2e86ce5c0",
+        "01418ed4-4991-5c40-b24b-daee480f6c76",
+        "a9a02934-0074-59f6-a5b5-91aeab850ade",
+        "6020e8b7-b3fd-571e-87e7-7b5fda79ff0e",
+        "4f9be255-ca00-5050-815a-b231509704c4",
+        "4baaa96e-b916-55ae-ade3-d38d72587599",
+        "c129791a-b4e2-5fe6-9e19-d2de81aa52e0",
+        "1892ad94-5263-5f38-a936-b7e94d70f8fc",
+        "657bccf9-1abb-5195-9521-18c5a982947d",
+        "ecd12f2b-303e-5383-b277-7128ac238ebf",
+        "ba6f71d7-35dd-5837-83aa-f59b98c528cd",
+        "15e0de94-3045-5501-9abc-af11ed1e5701",
+        "18a96ee8-100c-52e7-a179-98827ea44dfd",
+        "18344537-2b50-53f8-8526-f4b65487ce4d",
+        "8d45b4fd-cf92-550b-a724-20d30f0029ac",
+        "0b24daf2-e5f7-58d7-9ca9-f799a6c86b28",
+        "6f28ae98-09d9-5502-80f7-b0be43ac3286",
+        "cb6dc74d-3c0a-5794-83e6-f05932e4991f",
+        "bbe087ab-5a19-50c4-a04b-4e3efb438268",
+        "7cd848f0-2c71-54a8-97e3-574d8e271229",
+        "78658237-2568-58eb-8a62-f80f043f803d",
+        "72426672-48cd-549c-b7d9-8e5e3301da1e",
+        "4ccc2a63-0ef0-59bd-b648-f8bad97f1622",
+        "92838d31-03b8-59fd-b64c-7f8a1a509f1c",
+        "158bbb65-c205-5d14-b89e-9e7268e2768b",
+        "616cdeea-0816-56ff-8a96-45ed1bd13f20",
+        "6bbc3477-e543-5a78-b57f-eab46c86bfea",
+        "055683e3-4e13-5e40-9364-c2877fd8c744",
+        "068c76d1-1696-59ce-aadf-4e0ec9780ab5",
+        "cd25ceaa-6708-5043-bd75-b9f90a158274",
+        "c889e733-dcdd-58a0-b0fc-b34249fe7a21",
+        "d7241a2c-4916-596c-8706-c5b5201abb80",
+        "24d70c8d-f076-5759-bac8-0b5eba7fa74e",
+        "84394349-31a9-5719-82d8-cf6d53abe21c",
+        "8853f441-bcbf-5677-99e7-8e6e1b717e33",
+        "88533ae6-1b28-57df-8b1b-ecc76d6e6d5a",
+        "f55e3eba-cc89-58b8-b7e5-1362fde05def",
+        "f282b3f0-36e9-5f0d-aa8e-6dd622c27260",
+        "7bb2b40a-b410-5c71-baf5-0590e0bf38d8",
+        "7e30817e-a1f9-58d9-8b09-3e8ebfba9c73",
+        "9bfda7e5-a456-5a91-b0e1-e721e4944c02",
+        "a05887c8-8b97-5356-be09-efa82ff99963",
+        "28d9cb32-9d1a-53e6-aa81-11f50c22e6b1",
+        "5423aa84-ba7b-5f9c-b2e2-f64f7af9a3e6",
+        "9d7ec585-48d6-597e-8dca-18648e539373",
+        "32e52640-b91b-533b-8a7b-4d7e035b6f4c",
+        "ec55fa40-4494-5267-9ab9-6d425271442f",
+        "50cca1fa-f582-5c63-8c4d-846e49bb4c9a",
+        "ac10fef5-6749-5a05-90fc-66384e2c837d",
+        "b2224298-a7d4-566a-bba4-9e891b9c102f",
+        "efbe15e4-c7dd-5c52-b3d3-5ae6f096ed7a",
+        "eb4939e5-7d16-5d1a-91ee-f06f53e315f0",
+        "6079cd9a-2bf8-56bc-8359-c606f2c3732d",
+        "064ea612-7bbb-5c65-8c0d-a0c3a91bf653",
+        "418638a4-9c0b-5c42-a7d6-31272cb809b8",
+        "6984f3e0-d026-5cf6-b312-3cba811ad52f",
+        "a96c0a7c-12d2-5693-9b4c-d69911f4cdbd",
+        "92f182b2-7785-56b2-9234-d62116e2ee49",
+        "286a525a-db2f-57d5-a32b-517009bb948e",
+        "a43320ba-f234-52e5-a598-98d072423f5c",
+        "3ade7028-c003-5055-ab44-ad85325dff64",
+        "2f44417c-4901-52e5-8612-eacb52111a56",
+        "e2e0fd06-5320-57d8-9773-6750573bf1cb",
+        "ec4856ca-c3b3-5674-ae81-a6175d82dca0",
+        "b7ff68b0-da29-5dc8-a448-a57e24483149",
+        "e9d509ce-68a3-52f9-9fd7-270646a0ca6d",
+        "d86df012-2cce-5002-a087-4a8de6063b33",
+        "696ac793-e254-5be8-844d-814deb9375bf",
+        "bd6aad4c-75d7-5994-a840-352f1c3c862c",
+        "0a21a5e2-3cf8-56c0-bb52-29fb3e087d84",
+        "1754b18c-2956-53ff-bdbc-d10bc3595099",
+        "d7b3585e-9fee-592f-a2ed-b81ff4152cb6",
+        "52a1ee87-23ac-54a2-950e-da39e969b963",
+        "3c6d7f2f-7352-57f7-ba37-0fb7dd44d0f7",
+        "a69b82b6-56d2-579e-86ef-2854ee5c53b2",
+        "2f1879cc-fd9b-5d47-8b70-991f8d65e61e",
+        "65dd50ab-7e71-5e76-ac93-03de2524ef2d",
+        "12ad570d-bef8-584b-ae89-5a67ba3789c4",
+        "35010352-18d1-5b08-9156-ff2d4cbb7fe5",
+        "63082790-68b2-506b-92f0-90ff3819da87",
+        "35dd77c5-57a7-5111-993f-ab040e5fbff1",
+        "a34ab079-9ed9-5031-a883-71414cc1456d",
+        "67e5a2c4-afdd-52cd-92ce-39845ed76a50",
+        "4ac91c41-d25a-5130-866f-798635aedbad",
+        "a2e920bc-d04f-54b1-b958-b782dd0b2375",
+        "9e5371e3-0234-5aea-9d0e-3a889c391978",
+        "161188b0-c4c1-575e-ad1c-122846c279c1",
+        "d7d77982-3c20-5ac0-881f-c4dcccd5b246",
+        "910b4c9a-f165-51a7-a1c8-e861ed0f8807",
+        "6ba6d774-2f49-5823-ac12-f5ca393ae17d",
+        "fbcd3276-3d88-5a59-8c45-2546d9011cb9",
+        "a1f8a738-e2ff-5acf-85f1-3bedc6655803",
+        "01f12e7e-3719-547b-a0f3-d059e1ddec8e",
+        "a761639e-777a-5032-94ac-f81998304790",
+        "31b1e2ff-e728-501d-b12a-40580efc5c7c",
+        "7492ba36-b5e3-57f3-a3a6-f2d15d66582d",
+        "7b705d7e-62b9-5524-a67b-e8018910924d",
+        "634f09a2-65c6-58bf-a1dd-ee97e23c376a",
+        "5082c8e7-2ef9-5f85-9d7c-2ab51f9a4367",
+        "779e5491-798e-521f-a4be-ab0098117497",
+        "cd3e9722-d696-5d66-bd10-011ba90961c7",
+        "532fd149-37ee-5bc5-8898-68555d08d7bf",
+        "d9371c85-8bd3-56ae-a89b-5a00fb0562e4",
+        "e54a7bfc-e61e-5ee9-9126-8e13fc9d56ef",
+        "d41fffc1-3899-53ee-881c-2877c04ae082",
+        "afdbab96-c598-5436-b6a5-37d5cd2563d1",
+        "2badd9ec-d064-5da7-b686-6750a6637334",
+        "7b6f4497-18d9-5089-adb9-f2d592764808",
+        "b98b946e-e815-5b89-a76a-7f1a6b8fc5e2",
+        "d5c1441f-c1ff-5eeb-a71e-6f6ab1974bde",
+        "e2792e84-0a2a-5f18-96aa-a6c283989b2b",
+        "ef852ac6-1da1-5a67-a83a-f886a961d02f",
+        "45013418-af41-561d-b0d5-0f3f91451142",
+        "e36c2903-8d73-5984-bfaa-0a6c1aa48f66",
+        "8f3895df-9c5a-55e9-a6c7-8ed8a4ae614b",
+        "e9f3cd77-4411-5bdd-bba7-7a1b2a6bd734",
+        "368105ab-1023-5260-8891-7f770339a155",
+        "40bc081b-c558-5798-b86a-4575bb43c193",
+        "680c0a03-8403-5ca1-b903-5d57d8b3bc52",
+        "b6f83485-73fd-5509-a860-1e42467a5994",
+        "6b7b217f-a4d8-5056-b474-c7f34de8b07a",
+        "cd6cced3-feec-5c57-a5dc-ecbada89e14c",
+        "cab24647-7652-5d01-aa70-1a66eb257d15",
+        "a600603b-2f3b-5f1d-a6c6-0c8e413ef944",
+        "bccd2d4b-4bd1-5b4c-ab3a-c17a35dd228d",
+        "8359ae51-46f6-5d72-8580-1c2046e022c6",
+        "e7515cf7-103a-55d7-b7cf-84d96fe3d639",
+        "2f946e64-c656-5e12-a62a-7d8d6be33310",
+        "b3d45f06-c8dc-5b08-8c5d-fdfa34720ec6",
+        "66fb672f-b9b0-52fb-957f-b81708213da9",
+        "07434b26-da28-5d3e-9e2a-aad3c0d353e1",
+        "f1433c38-445f-5c6a-83cb-e554034e95e1",
+        "ae7ebf1f-9891-5fad-a1fb-0cf969b549f5",
+        "f0612d68-d97d-565a-bb69-328f60344bd7",
+        "4c40fc25-9af4-562b-883b-1e98f512696e",
+        "f56a5a1c-d541-5492-b1aa-9135b73f0ae7",
+        "e6b8d91f-b0a8-53aa-830c-01664da71d59",
+        "a5518293-4e60-5ff4-b71b-6669500bc649",
+        "886a66d6-1e03-5721-a4be-60e708e106ac",
+        "d8e402b9-16ed-513d-89d7-ca4d596c407e",
+        "2dbfe550-16c0-522f-9a52-d323afab507f",
+        "86d9f079-dbbe-5a71-a67c-5968c216e039",
+        "6b762a5d-eeb4-5cd8-852d-17ae800e0ab2",
+        "17e9be8f-326d-5895-b39c-24d287967399",
+        "e22dd379-e5f1-5061-b876-1dae4309a226",
+        "a2bd1a93-63de-51f8-973f-d12b062616dc",
+        "705a725e-a36c-553b-964f-49f9d2535556",
+        "3f52d1a2-d10b-56f7-b258-583e3b2678b2",
+        "a96e5096-c8bb-50b2-9e73-de4627d26b8d",
+        "76ceeb5b-fb44-5d28-9e23-9cc0f95f8933",
+        "e64763d8-51e0-5447-8afc-3ab89d139157",
+        "c1fa6b3c-ae67-569a-8588-b51043134f6f",
+        "617ec2e8-9b0e-5166-ab45-089184ee016a",
+        "f565cdc7-6425-59d5-be5f-40a77ea71bb3",
+        "904d548b-f2a9-50ec-be6c-71195d304486",
+        "a1513921-ee7a-5928-835d-db670885e3e7",
+        "9d9efd03-56d1-5072-907f-5f7f09be6d69",
+        "6e9c793c-96db-5f4b-b01b-dd81b2c38470",
+        "f1721f54-2970-5420-891a-dfa1685eb9d3",
+        "bd8b3f5d-8960-5333-8314-5517e16e48f9",
+        "2b587f4d-b255-54a4-9e80-8d850641dbaf",
+        "7db14d98-d0a4-520a-86b0-2d05427da04b",
+        "9624a6f9-9f98-5165-804d-1ac70adfaa18",
+        "a220dc05-47f6-5f84-9034-e008e7fbf46a",
+        "9dcad30e-f34d-51ac-93dc-349e76f57bff",
+        "1606377a-628b-5e51-9929-ca3626338378",
+        "512ab867-7679-537e-a41f-8993a66f4fae",
+        "1176ddc0-3f1d-5474-ab11-8c78900a7894",
+        "35bbac90-49d7-5e02-9a1d-10b225e47c4e",
+        "38a004c7-fc98-5966-8802-9318cce59f91",
+        "e9bb30f5-2dd6-53c0-9539-af3f2616082d",
+        "42b21619-c0d2-5943-a56e-bb40c1e7af4a",
+        "c8c76f1d-14e1-5cff-aa31-3b0d3ef37bd4",
+        "77d28098-bf02-5c8b-8dea-5699fbc3a16f",
+        "879f4991-25ef-5a03-9c36-515f216b40a9",
+        "c7f23233-c353-5ca4-8d1e-ccbfce71c3e8",
+        "a9f55d65-9bfc-5e69-8cef-a04e64cb8534",
+        "21787eae-424d-58b7-a951-46b345f1a008",
+        "f08285b4-000f-5e24-8dd6-9c1a92635482",
+        "5eadc925-3318-541d-b143-43bb4a28e5e6",
+        "7f8fe949-934a-5f61-a5a2-13278d61c10b",
+        "c10c27f3-60e6-5ed9-9bb5-354addb07609",
+        "a3bdafe0-c582-52ea-90a6-a160cfdcd1be",
+        "c46141bf-6645-5e1e-9632-309f2680a3aa",
+        "d1eb3f6e-a5e1-5093-869e-d3799d9633fa",
+        "70b9f928-53aa-5e2f-b2cb-9e85d0842890",
+        "d1e1ce3c-d93b-5f60-aea2-cf34fac9ed97",
+        "adcdd4fa-c225-5820-8f94-36347a8aafbf",
+        "0fe3c42c-54cc-59d8-8355-0198fcaa73e5",
+        "0c4b9e57-c8f8-5b05-8a51-f7fa40e02f92",
+        "9cd36843-4495-58d6-8553-46676028c3ab",
+        "d357f478-506a-5dbd-8694-56cbf636ff15",
+        "10e714f5-ccfa-5969-8e80-ed2df11d06ad",
+        "a710564d-241b-5bb5-a4e0-25aa1622fca0",
+        "797f0381-6065-5b11-92ed-7d43bfd6b73e",
+        "f21f96f2-3c0b-5c27-9f7f-2fbafc0f6a74",
+        "3d2e0e76-cbe7-5880-ac13-a223fc66f850",
+        "e57ef149-5aaf-5fbc-9399-191fb0ba2cf4",
+        "deefb92e-1f48-53a5-9a2d-c5e1f9b8b2dd",
+        "a534a111-8cb2-5da1-9118-ada1ea2f747e",
+        "9b758899-f8d6-5dad-8031-c66dc529c3ce",
+        "9aef6f23-fb51-5b5b-89d4-0332e25372a9",
+        "6e8d4dd9-aae6-5606-84d3-45399c443992",
+        "1029e967-4250-5353-83a7-36ede5408776",
+        "8a91d5f0-ddce-5317-97e3-c8b36fb80f66",
+        "7d6e0168-5e28-5c5a-8ea1-f9dfce0c6f6d",
+        "1abc9273-d0ec-5fc0-8d7c-7c77164656b1",
+        "c3d93fd0-8886-595f-b991-ca7f867c01a9",
+        "c1fcd130-c745-5cac-9924-3bf2ee0fb14c",
+        "bd799ea5-fa8e-5972-95c3-08c1957928b6",
+        "02cbd330-8313-56c5-9a2a-650419b6b24f",
+        "6129ed9a-5994-50eb-b503-e2048003c52a",
+        "6e735152-5f3d-563b-a13a-377fbbba5ab2",
+        "4410b49f-2a82-5a8e-99d0-373f2a03acb4",
+        "45e6fb4c-e559-5520-a0fb-9fb138504e74",
+        "47c0bf81-f087-50f1-901d-a53e37b76683",
+        "ab3af471-0d9a-5393-a08a-9bde12e9301f",
+        "f8debdf7-67a9-59f3-86e0-bb1ab82c7479",
+        "d4e07637-c886-5282-ab4f-c6b53db2e55a",
+        "a7eb23e6-e651-5902-918d-d44a7f7b9bb1",
+        "43aef79f-ea85-5f0a-b648-67cd1cbab533",
+        "e10a2c5b-450d-5b28-a7ad-c6ae7bd4eab4",
+        "224a65fa-bea1-56e8-a3cc-820652e500a6",
+        "42bf67fe-c6a9-583d-ba22-5bdefab52aa1",
+        "c9dd4170-32a2-5a8d-96b8-3d7791a47770",
+        "e48fdbf8-4c01-55ad-8fbc-fc9e911bc381",
+        "a19f1a67-4a6a-5ca8-8756-7d7b599ddc88",
+        "f76e862d-2cc0-5290-98b0-6bb2ae9eb4dd",
+        "5b5c1311-9e9e-56fa-a1f9-2c7a36dd8154",
+        "296d0638-901f-5a3f-b607-b1b3ce26c55c",
+        "37df8c18-398f-5ee5-ab93-711f6e8b839b",
+        "522fea06-0cd1-5cc9-8395-c5b19e58c902",
+        "5727198e-db84-53c2-b449-68d8bd4687a8",
+        "1ce639c7-1595-598e-a033-62c32b68fb6f",
+        "0418ae5b-a7fe-521e-a560-6351a1be3116",
+        "b5187727-35dd-50de-b366-1b08cb2976f7",
+        "ff9ba699-099f-506f-804e-2e5b7fbb72ca",
+        "de1f7c4a-e17d-5599-879c-29db85aa1d05",
+        "8b2283d9-66a6-580b-9a9d-f3ebd11cc081",
+        "3933f71c-6da2-54ab-90e4-1d991b1490a6",
+        "897856c8-5f7b-560d-be43-eaf271759203",
+        "4956f2a6-af9a-547e-bc9f-a91e19c5ecc7",
+        "b1087c66-9a5d-5925-a38f-5ba7a850962e",
+        "c765a1ec-1ca9-5f73-b39f-abcd90554b17",
+        "5f8db9e1-2ac8-57d4-b30f-80523fffaede",
+        "a6e4ee77-5597-5c34-aa3b-0d607cd72f31",
+        "5a29db52-2340-5405-8114-fd03eee17f57",
+        "7a6d939d-a825-520e-acea-b39f67ecfdcf",
+        "492f7752-8a1f-5061-8a22-ba36676cbb53",
+        "c7461718-6682-51c5-b837-4ec6244fe018",
+        "d74e04af-229b-5854-81cb-f52f3a7f55af",
+        "c1871e68-8ed2-5105-a1d8-60ae5c3c2544",
+        "619a0f40-0efa-52f9-93a8-7231a7bf1972",
+        "e9485ef6-0f0f-5254-a792-2b28ba8ca956",
+        "c33e0214-e293-556c-bcd8-4638b8b09b19",
+        "b5912f14-c432-50cd-a5b9-150083435469",
+        "4a9019f0-6181-5671-ae2d-ad0fd9caa7b9",
+        "1f5e2ad0-296a-5511-b5cb-5005953eddbd",
+        "d148c845-4cbd-5932-bcd2-1fceeb6266d1",
+        "766d0d0a-b719-5d05-8663-3907fda28432",
+        "dbdaa20a-2e7d-5be6-83be-35d330fc8a64",
+        "c7cb99b1-5634-5810-a3d4-a85a7b3d6c58",
+        "b61adfc7-bf15-5bd3-8bea-87a101689f7e",
+        "237b4c19-60ca-5010-a4ba-7a6f9349c211",
+        "bdd10b14-febb-52a6-9193-50b9f26b4378",
+        "2d398117-d0fd-5636-9d53-2ae50e3fd8d2",
+        "e024814b-cd94-5e5d-915f-b120c79da407",
+        "c2850a11-e6ab-5539-b3a3-2cdb39e735bc",
+        "b6fdbe5c-955c-5abc-a069-d8870e026070",
+        "a0e308e5-73fa-53ad-ae57-da562bd984da",
+        "88997587-954f-5938-a3c5-361316852a60",
+        "ff3805b4-c05b-5804-a346-934b66d60b5d",
+        "b822f270-d3f1-59c2-aad3-360e9b17c2f0",
+        "021d5d32-4020-5ea2-83c3-ee2fb1821360",
+        "1b96240a-911e-5f0c-9517-4a427d98305c",
+        "a4d079e4-20d2-54cc-986d-be1c9d07a277",
+        "19de7936-ed38-5fb6-b2df-f3390b86e746",
+        "9514ed55-7b04-5e1b-9837-c0dc9ca02f19",
+        "28c4dd81-de56-5936-be53-1accc651a035",
+        "951ff3be-8033-5686-a1ce-7bcbb8ae56f6",
+        "144ad099-2eda-5d86-a131-b8f39c389561",
+        "f8260d87-eaa3-5ecd-99a0-3d7e432cc8e6",
+        "eb97ef45-23b5-584d-a501-cc9b62385abb",
+        "1302e348-b61c-54a2-bc38-ebb81ce919e2",
+        "3e87a349-5385-5ffb-bf8d-eae9c1e6ac99",
+        "eb28cb9b-0e1f-51fc-80e6-05c6ad85e73a",
+        "e355a8ec-1a37-54a8-a663-381a3e82dd69",
+        "2299bbc1-49f0-54f1-bb15-0bac559a5f2a",
+        "b5997ccf-8237-56ed-a877-7f0b7aa8540a",
+        "c86d83cb-91d6-56a1-b39e-616f4c7d7da5",
+        "e4f42cf2-e828-5bbf-a426-1429feffaeaf",
+        "2f0a1a7a-1e6b-5474-9ae8-b1c63c0bb7b8",
+        "f61bd0b5-803c-5d16-b8b7-09bbd9b87f8d",
+        "bfe55185-9b4a-58da-82e5-8c53678ed75f",
+        "e26e899b-0aa3-5316-a961-fc193558eb3e",
+        "2119ac7b-ca2c-5935-990b-a8bcb1633300",
+        "f0329d9a-6b86-58f5-954c-2ac01bde8ce3",
+        "2a151adc-d037-52a8-8728-cc857ea67a44",
+        "3a3532fb-c47e-58fb-9ed0-1fcd761fa884",
+        "ebbdc0ea-0019-5a00-a638-f1a3f401ae18",
+        "b496e311-28ea-593b-b793-4b3eb598f200",
+        "651bee7d-f427-5444-802d-088001e1929b",
+        "7b93e82d-a187-5c47-8f0a-c0568a1dc112",
+        "7940567c-37dd-5bbb-a306-1ae4e7c92836",
+        "29aaa7d9-7ff8-59b9-8bea-d856b22c87fa",
+        "3b9fd6b0-cb57-5dde-9fe1-198a2a251b96",
+        "d4a90a71-4764-5f12-94ce-8459a9c589b0",
+        "2d4c3a04-4623-565f-a8c2-c1b4bb3712cc",
+        "32b7cb70-73c0-5625-8bd8-b4d9555cf573",
+        "dfcd8bf6-bb49-51a7-b40e-4e9f2bbdf4d1",
+        "a5f0916f-6138-5cc3-8852-f63cae1c6864",
+        "6c859290-aea7-5dc9-8721-9d796dc42aab",
+        "38837628-fa49-52c3-87be-8a05125d819d",
+        "dc3fecde-ff18-57b5-a0e3-6e536b24fd85",
+        "00042e96-45ce-53c2-b598-8a8f42f8c910",
+        "124be16e-9e89-596b-86b1-55e7fc8a9789",
+        "8ed616a2-bfb5-56d4-b96c-b094876ecf49",
+        "db54dc6e-81c2-5a5c-8943-69264bc3dd7f",
+        "93e7f76a-7de8-5918-80aa-58535eb59e8d",
+        "14e89633-a852-5e7a-a00c-fbaea384e656",
+        "b3e8a3ec-c0d0-5e65-b54e-a62f9830bd9f",
+        "72381e4e-844a-55a2-889d-4bc190e25ad3",
+        "37fe1682-4408-54fa-9fde-7287f0c79608",
+        "0db7be75-d4eb-5159-baca-71fa1db86fbe",
+        "01899aac-241f-528b-a6c9-2755cb15c0e4",
+        "665ba9a0-cfbd-541b-b01f-57400da45ab3",
+        "1c439edc-54db-5fe8-b461-e17383786712",
+        "3e3d6747-dc45-56de-a484-064973150b3c",
+        "75457930-7d6d-5aa6-adf6-eacb1af24220",
+        "a000bba3-9818-51b3-a46d-53a42d48bfb0",
+        "b3caea50-3004-5cfe-a6a8-a06aeba09d61",
+        "844555f7-0484-50d1-8f8c-d6072b7514f8",
+        "5b7b8b0f-6372-59fc-ad92-5ad20a113219",
+        "4f840115-3a4f-528d-b125-a33a02ae5b8f",
+        "43b13446-63f8-5b8e-bde5-404ce137bf9e",
+        "654c4599-941f-5373-b68b-b70a769e8a09",
+        "69f408a2-13ee-5c45-8331-305aaebb2c78",
+        "1acd4930-0b76-566d-a7b9-7edeca54cedb",
+        "2f559562-b4e6-5f30-8769-77d424a09a28",
+        "1c068c11-9054-5a79-90c9-2cee5acefa0d",
+        "8a83ea63-5e35-5dc0-869c-a594829eb7e0",
+        "f4fd8935-135f-56c1-b55b-60ea07649535",
+        "6cd43f9a-30ec-5623-971c-ddb4e967a1cb",
+        "93eed159-82e5-51e2-823c-4aae86f15e4b",
+        "61581018-af40-5590-8b87-822c74b0ad07",
+        "0c1b0759-bf0e-56d0-ac73-69bc5d9b8b8c",
+        "0355f611-953a-5214-a2ba-a0b998d324a9",
+        "12f1c50a-64ea-557e-8430-43c2f44afd40",
+        "bce98db7-01af-59e3-9b93-57f24ff2425b",
+        "284853de-5dde-59ee-8d35-70eb4febca63",
+        "63c70634-ff1a-502c-b979-733d865bb977",
+        "72ee825c-0405-51e0-af2c-e1e1614c72a9",
+        "4fb1557e-dfd7-5df1-83d8-a0952a4b277f",
+        "806915ae-934c-5bb7-9971-8c6d6249d701",
+        "2c073535-bebc-5d96-a151-4259a123849a",
+        "449feda9-03ba-57d9-8333-c3728195f759",
+        "f41e50d9-7145-54d2-8b88-10e635c3a59d",
+        "6ee0b164-7881-580c-a438-467422574ba2",
+        "fa48488b-426e-5607-af76-ab7d533781da",
+        "8f7132d9-9eb6-5acb-ba68-7536bc0cfebc",
+        "ffa8e91d-c136-561b-8691-abfa7787b8ed",
+        "ed1a61c5-f853-52fe-af45-580cb85015c4",
+        "8e5a157b-8829-5e19-9e8d-83a5f195f3e2",
+        "f06d17ee-9b41-5af0-bb75-81e3ae06a3a9",
+        "a743429b-b115-5960-a423-c544f5aa6f16",
+        "97eadfc6-8f36-5c03-a210-84c23f6a6a46",
+        "7eff5420-da38-53f0-8f8b-283e705d67a1",
+        "629d3d28-59b5-5373-9f64-63f243009a8d",
+        "e16971ba-e787-55b1-80bc-395c005f9609",
+        "04f91fea-0951-5e8e-be1f-e7099953a763",
+        "2f23aaf3-0774-555e-a1d5-4bb0b0f706d3",
+        "2f5857e2-8246-5b63-a879-003c380cabc1",
+        "2038b181-e9bb-5bb2-b7e0-a70821f70650",
+        "d13288f9-d184-5f4b-86e3-f51af2da0771",
+        "495fcb4b-87fa-503f-bd1e-22b9a798185e",
+        "f545ef4b-920f-5bbf-acd5-3138ed01228f",
+        "b8e716d4-2a63-53c4-a26c-8249b7d3c22d",
+        "5731683d-8fa2-5c07-9b51-9eff9dd0f78a",
+        "e1a27789-65bf-548b-a7f3-cfcd0adf51bb",
+        "6430a6b6-d5ab-5124-9307-42b23b3d917c",
+        "c714fd0a-17e4-5fd3-bdb9-67c8ba4e2fc4",
+        "e44bd35e-58f3-5ad8-8dba-8aa8c8a1b258",
+        "04c9741e-a767-5db3-a185-7d6c3152f8ee",
+        "69b054ca-5960-59ab-8aa0-db957525878a",
+        "46d94d40-3963-50a9-b7b5-4b4cbd92e67d",
+        "d018bd97-0b42-592f-8938-c9f95383ac09",
+        "52a70a5c-b593-5637-81e4-41a46ccb7890",
+        "a286cddf-dbbf-586d-acc4-c8dcd81df98b",
+        "3f1bbe57-703b-59d7-b82e-a0b09c72b5ed",
+        "641daf38-87d5-582d-a95d-cbfc128a421d",
+        "ccf02154-bc5d-5f6b-bc28-9ff79e66c2c2",
+        "a2e378e5-a53f-540a-8ef3-24204a5f5f47",
+        "973d70bc-b307-512a-a65d-4663ec0e0bd0",
+        "561e7ffe-b996-5cd4-ae27-780a551f3de8",
+        "8a68b361-e4ac-5b1f-878e-19bbd1e948fe",
+        "a1009013-7094-5c7c-a7c9-957801290b74",
+        "a1a6636c-11ae-5033-a22d-10df88b51ce6",
+        "6be2e8d1-cf21-562f-8018-241eb3adccd8",
+        "2ad878b8-6b90-5fc5-9d81-7bc4473d0385",
+        "4a9b8feb-1b10-50cd-9585-2c5794d96556",
+        "5c0382b0-1ac1-5bf7-9e73-d057429a1365",
+        "83471f95-b961-5599-8476-2712cce4f748",
+        "64c51d1a-f148-597d-9f67-0e225caf1081",
+        "c5bf756a-3a9e-541b-9842-62ec449ade84",
+        "c17e9c0d-8dbd-531d-bdb8-aeebf253d9fa",
+        "c1c17a2d-fb7a-5833-b526-a4e5e7dd42cc",
+        "64fa97f3-59ee-50bf-a092-694233185a61",
+        "50c98e50-6210-588c-9e8f-12e3af3c891c",
+        "09117d3c-ff79-5b49-83d1-a0e4a9b545b2",
+        "01beb866-8e8d-5587-93de-4f73d4aa3286",
+        "6da63705-8d71-5457-9289-51dc74f3c674",
+        "72bd079c-5d23-50a7-a14b-b1f7f3fe4e9e",
+        "281b6966-ffc2-58c4-b418-3db58d39821d",
+        "a20b250c-c0e6-5beb-a126-b2571708e3a7",
+        "17bb21bf-230c-5cb2-9dbd-1f32e89d35f7",
+        "6476ea6c-77a7-5b73-a4f7-b5195422914e",
+        "2556351a-9d24-5183-8df0-857bde08242b",
+        "779ce73f-dbb8-5538-a60c-3599b59925d8",
+        "8cf89cb0-8050-581e-b55e-07cd394e875e",
+        "0425cdc1-a8bb-5613-9eb9-a6c0296e232e",
+        "c25060f7-2a40-5138-8a93-d25647db66bb",
+        "e3652b6c-ce6c-52eb-a6ce-f6aae0042bd6",
+        "a58f63a3-a46b-51c9-8405-15da5c7411f6",
+        "efd39d8f-0959-5c90-a447-22dd76bfcf8b",
+        "b41f3b61-6cb4-551c-898c-0825ba68c4b3",
+        "06f7a211-69cf-53af-8cac-251423e35eac",
+        "aaee7ffd-27af-5544-a2fb-20322b00cea7",
+        "6152f63a-ec9f-50db-a075-78d7e99ea547",
+        "0a0cc3d6-fd31-5782-85d4-8446803aaa26",
+        "ba078104-d377-5a48-9c13-2173378fb464",
+        "b1274164-d92a-5dea-acb5-3058ab570c74",
+        "f83c191d-05bb-57b3-97ee-e1451a04e8eb",
+        "6d747835-a220-5bb5-828d-69ef787297ef",
+        "b856ca86-2386-5f39-8772-7ff34f70e447",
+        "d1e661c0-e7d8-59aa-a672-cc55717d9d20",
+        "88048088-7d73-56c2-9460-67cfc51efc20",
+        "42a7a8ec-78cb-56b4-a1ea-e98c82125938",
+        "d1e694ac-6600-5ba0-8fec-5099848a9dc6",
+        "19bfe06c-45ad-579b-b031-9c9773ea5988",
+        "edc09a9a-6abc-5f52-98f5-c5e6b7647ebc",
+        "06d6b83d-a3ea-576e-b912-60b92b58cbd9",
+        "efde4e80-75c4-5837-9f18-7188cd7826e3",
+        "c33cdc1b-b62a-5500-8fe1-3e8e2add5b47",
+        "344a61cb-2db7-584c-a79f-a391ee697f43",
+        "faf6ea6b-e3f4-5469-b3ed-13df0d4f021b",
+        "ea43c877-718e-5033-a7aa-a6ebaf23c971",
+        "f3a4def0-6387-5688-adf8-8a657c9f1e71",
+        "8b012179-9f46-57fc-bff5-69a9035e4e2a",
+        "6ae118e3-5c3f-585e-b30d-1b107ef8e501",
+        "c1e0ef26-78db-5d5b-8dc1-79a8d313e71c",
+        "d4a64873-9e4a-5429-86cf-f1cd53b1427e",
+        "9d4341de-6d7c-5384-bbe1-c10ed936712f",
+        "20ecb285-1a0c-59c3-af15-7477d89af39e",
+        "b0c52716-1ca2-5f0f-bf5a-c62254750bc7",
+        "fb5da9b1-c774-5192-a0be-369c815b380b",
+        "8daddc55-5c57-53a5-a5aa-a226442f80b7",
+        "e05f64b3-1fb5-5b33-adf1-452510c689dc",
+        "10848356-03fb-5a39-b317-bbea9843805b",
+        "df192172-bd5e-5d70-9d89-462ed56d8107",
+        "f1793b7e-7118-54a2-b847-d53386b5b142",
+        "710b2eed-83df-530d-861b-bd8d3a16b00c",
+        "9db1d0d7-a6fb-5d21-b60c-9367f10f07e9",
+        "0e0284a1-1a0f-545e-aa97-66e75e11f22e",
+        "30e2a0aa-3106-58e0-878d-7565f4e5bf6f",
+        "5cd4e160-914d-5976-b94f-417b89c66bee",
+        "320a93cf-f48a-5c24-809a-3f0f5ba304c2",
+        "d24b9599-39bd-53eb-8688-414c2198f83f",
+        "ceb5fb6a-c15d-5adc-aa26-18e4142bd9f1",
+        "8a5e1eb0-3ff1-50f2-8e03-a1e2b488a177",
+        "a676cd0c-1837-54c0-bc6e-2cffc810708a",
+        "3b16b3ae-6e41-527c-bc28-7789abc7e957",
+        "74bc02bf-6c4d-593b-b05b-93d93c1b9345",
+        "3954376c-a86c-5dbe-b1e2-47c3d67de795",
+        "e94538ff-885d-55e8-b433-4511b97cb67e",
+        "d0326b91-2677-5758-a0e7-ef70dfba8d76",
+        "82529912-af5e-5484-82d2-aec8ea5ed5a5",
+        "ad793d87-7eb4-5c2c-b579-182cdb6b4a6b",
+        "16f42b6b-9d8f-585c-84b1-82051e6747bb",
+        "981cc3cd-2a2f-5582-ba12-7009da0f5a8d",
+        "a3364332-2a66-5eef-9cac-a9f18e3f56ec",
+        "064c7a1d-fc9a-5a09-b445-97892c32b1e7",
+        "792e27e8-83c1-53b4-8c9e-6d0652622676",
+        "2722757e-b364-560f-b1ee-677fdaa2b2d2",
+        "bfabdcce-5184-5b31-905d-786909aad26b",
+        "efc9c4d3-2e66-556f-8702-df71d0ff85a4",
+        "e962ac8a-6206-504b-ae43-8effe45c8553",
+        "93a82597-bedc-50fc-ada1-a3b783062483",
+        "7cb47cc7-3b9e-585c-93f6-075f521ca2d8",
+        "69cb7399-11c0-5b62-8b08-34b41dc8dcb3",
+        "534eb34b-f6c9-575a-8332-ee0f34168c8c",
+        "4d1940c7-5c00-548c-ba1e-436dd69a4e2d",
+        "29a0f543-0faa-5e16-9a43-d69ef6c42609",
+        "d42d03e5-f183-5326-b1b8-bd088d2e5015",
+        "8d746960-8367-5e30-a515-1c24ed5d40de",
+        "678b6d1c-c925-5318-a9dc-c0f7d6799274",
+        "89e91fa4-9256-54d7-8ec5-902ae210312b",
+        "cf2a3e73-752c-59ae-a35c-59f5ae73484b",
+        "6edd8758-3b1e-5bb5-ba8a-0061570a6c1d",
+        "99c5d336-c10d-59d9-8386-872934866a40",
+        "2e319f4e-4f4f-5247-bc58-cc9967891f3b",
+        "3bed8005-c0c9-57a4-8a6d-9a171ae1a475",
+        "ddd5eca4-84a5-5a7e-9b8d-d058ebc8d501",
+        "e334c09a-6823-5f9c-88ee-c68b332b14ca",
+        "e5f03116-08b1-5d75-8742-20f2559b603f",
+        "d74f8428-ec7f-53ab-8779-a0d894693b81",
+        "6a23f439-ce02-5e07-a5fe-7977cf0ded8d",
+        "898efa01-e7c2-51d6-86d2-4e3f3faf7e02",
+        "1a52907c-062c-5cc4-a3e8-6d4946521333",
+        "0139b292-3e57-56d9-ba9b-09c567b5e13d",
+        "2a8ef21e-eaee-571c-aef9-d12e7b1f509a",
+        "ca1ca48e-db2d-51fb-b267-dbed6074831f",
+        "e54ff9fe-7fa5-502c-9688-63fb3d5609c4",
+        "4770265f-c223-5365-bc4f-2fe32359c591",
+        "a6456170-b274-51c9-bb48-b567cf08d1c9",
+        "233fe9dc-61e9-5756-957c-3fc116760b84",
+        "ed4b0261-5e6f-5460-9dd0-1b5589fe6cd7",
+        "a9ec57ec-dc18-5e26-9f04-d070bcf9a8bb",
+        "a1cb8661-3fdb-5618-88ea-214804f9fd9c",
+        "5d457b29-6b43-5b3c-ad24-0be1a665c3c5",
+        "50dbb97c-66e6-52e5-86ad-35a1f3dd20b3",
+        "9318b897-9bdc-532a-8e44-0d757e46d74a",
+        "e4c7ca72-b80d-5acf-9d14-c613fd5481b8",
+        "7cade534-98c2-51ce-986f-5ca38425f650",
+        "67208edd-693e-5f72-adee-a8e6016f84fd",
+        "963e3fb5-a55d-5d5c-8906-0eb5dbe5a5d2",
+        "63878e98-95fc-50e4-a53b-ca0c1e7f2ba0",
+        "6a579fb0-6e34-51f5-921f-06c1f050c83f",
+        "9458ccdb-8e47-5b52-b490-46f4e347d396",
+        "de5075b3-2359-5906-8250-89eddcdb9034",
+        "d48f2aa9-f811-51d9-bfb7-e33ca6f8ef69",
+        "aafd5749-7069-5c64-a65e-7472b4947673",
+        "0fd88725-5ed4-52d1-bc7b-74b495a9a5ed",
+        "0ec1cc09-54c5-52cd-8d81-0a025327b849",
+        "8dc72752-7b93-5dfa-a2da-f17f7ac70d7a",
+        "97644a67-7b44-5ef2-85c2-6598f990d492",
+        "6b21666f-47c4-541c-ae83-7cc7cce63a7f",
+        "bb686631-db2d-5c79-99f0-b4ac1dd7764b",
+        "57a0114e-58f0-51ee-b025-2bae233cef10",
+        "5a132787-0a03-5ae0-9910-8eb67e63f070",
+        "75c456dd-c4f9-59d7-8a0a-cdf6e0c9d2c1",
+        "9d09768e-3fe3-5ead-99cd-11766c0d4653",
+        "50ad44c6-c972-520a-8f6d-84e628e2422c",
+        "0cff7119-a3dc-59ba-a1fa-4b59492c7290",
+        "58829732-d3a4-59b8-a1d1-e451c6161f9e",
+        "7ef5f1ff-98be-53c3-a5a6-fd317d10cbc8",
+        "fb886ed0-bf16-52ae-8e3f-16121e4d192e",
+        "7d630b96-27d2-5379-8bc3-7e054e975213",
+        "be7bc04f-dac8-5f47-9c88-aa0a39fe83cb",
+        "e8f35171-3f6f-518f-a2b9-3588e6b62f05",
+        "04905f5c-fdff-5fe1-8ed4-49be6dac7b27",
+        "a5387b82-5664-52ac-9a00-05a6f89e1fee",
+        "9ff66569-228b-55e7-94c7-b4eb3b248489",
+        "87a5ef5b-d1c7-5a3d-9370-84f5aaedf3e3",
+        "dccc6935-9044-5fdb-bf42-821b62f7b809",
+        "c45e4819-baa1-5054-9d52-7d348571f184",
+        "f497c120-f3aa-5daf-ad7e-e050cabf85d1",
+        "48d1f57d-dc2e-5c06-9875-f0dead78f3c8",
+        "c2e0eac6-87c6-52e9-840e-ccf78541f938",
+        "88a3bb2b-6268-585b-bb74-18b27625d588",
+        "28a596e3-3df9-5059-af5e-40e984a88e23",
+        "033142dd-401d-5739-a954-803018d606f9",
+        "b554f30a-9a56-5583-9435-178ae007c495",
+        "c348855d-f681-5499-bbd6-9a82678aacda",
+        "ca589d31-7763-5585-8254-4aeafa37e2f7",
+        "de0b284d-6c44-5444-9a45-b9ec3e4fba39",
+        "efebaada-8b54-53eb-b164-f860da7eb7e0",
+        "5040812e-f347-5177-91fb-df03b6c2fd0b",
+        "bbaae328-23f8-51c1-89ce-d8fd216fdc2a",
+        "891286a8-6e8d-597a-8de2-bc283f9fc4fc",
+        "35c4b02e-697d-5b3c-87b3-1b82ef6d6883",
+        "9b7e3bcc-76a4-55c2-9ead-88ce24860ff8",
+        "51fefdf4-c2d6-5e95-b6b2-ac04ccacdf9c",
+        "01ff4d37-6c35-54b7-b9c6-b37c7094065e",
+        "72b870f1-df2e-58fb-b78a-f835d6059b03",
+        "f6d856c7-eda6-5e03-979e-6f8c464ded62",
+        "e0a77503-ad20-56cf-bddd-956e77c183ae",
+        "178e119c-534a-5c42-b09f-2625136917c8",
+        "08843084-b223-5ee8-9dfe-257d96dd73e9",
+        "725848aa-b1ab-5a01-a3b9-2e90df082d41",
+        "f98f926f-a74c-5ec5-b74e-4d8fa68d396b",
+        "bf8d0b65-5d3f-5eea-9f23-9ae5c0da7cdb",
+        "9927ca68-e6bc-577c-9887-31b0c483423c",
+        "c5266001-58fa-57f2-b09f-97ea4aab445d",
+        "66b30657-301b-5ce9-bbd5-60b0d921b802",
+        "73e4ce5a-69d0-55cc-8fa9-c05adbf3a378",
+        "1ff1e5ee-7227-5dd9-bb70-bc72503ae2c2",
+        "f6395b8d-b087-5743-84e4-0c53802dd92c",
+        "a572bc24-b1f8-597a-92d4-b9268b7aa3a5",
+        "f28b09e9-f07f-58b9-9f82-47390d74cf4f",
+        "23c87dad-0d88-51e4-936b-d4aae6976bd4",
+        "1bf9bd80-2717-5261-a23e-ed6722f05188",
+        "cb242734-f598-55c7-bbfb-a4c0f6112f45",
+        "710301b6-fd39-5cfe-8722-1e2185b213f2",
+        "589fba8c-ad5a-5c1c-9c83-9614d67aa759",
+        "3af27290-498f-5cb4-b608-98b8965c1329",
+        "e8e3dec3-3168-5575-bbac-2d583e24dee4",
+        "951dcfde-8613-5c28-8aff-1de8ac569305",
+        "ff203f25-702a-5e98-bd49-c66e428f7e93",
+        "15a59459-7bca-5413-8976-64d700bb7576",
+        "addd6c48-7a21-55cb-b625-e8947b2d8599",
+        "d1d9e41d-fc01-5b6e-b2a7-ef531f03fc38",
+        "39567903-ec0b-5037-bfaa-0fded302a0a7",
+        "97ad530b-665f-585e-90c6-82cd176a9390",
+        "6004f9cd-7605-5bb5-b6c1-ba72748b2980",
+        "9770efe0-0d29-5e6b-968c-286aba00c1bd",
+        "b3feb819-274e-5fd4-ad68-6f5373ef8bbe",
+        "96d95a21-c4bc-540e-85b2-0fab08be03b5",
+        "78d4f0f1-ce05-5659-9fd7-8a4f2f2c71de",
+        "9ae42648-c558-5a78-87a1-57bbd6b0a1e5",
+        "dd76b29c-b8bb-5e73-9e99-0da9f94f7813",
+        "594e7eac-0002-5956-8546-07a8f845bf36",
+        "17513a2d-3e04-5069-92e1-0538f3482d29",
+        "8db37d67-8a98-5492-99e7-0273a49bec5e",
+        "c5a1a97d-4518-5d19-a096-76a88cc5ea5b",
+        "606924c6-7c79-5af9-9f72-23a606faf141",
+        "0d5383bf-f015-5ff0-976d-22b1ea5f6353",
+        "c7451e28-2508-52cc-90a6-513d7b14944f",
+        "6e8829ce-140c-5850-acd8-4ecbbe1d31c6",
+        "dc1f88bf-7e5c-5ee7-9374-cf17fdf4fbb0",
+        "53dd5f20-12ad-51e6-a411-31ffc7c2f7bd",
+        "734096a5-3a72-5b18-ba7d-efa5bb45062e",
+        "a2d1b2ec-6762-5573-bf45-b401fbc9cee2",
+        "f0bb9da2-cf66-59cd-818c-2b3fdcf1f4ef",
+        "2e488c50-3ee3-5c16-bba1-2b060a43e12d",
+        "6403bb48-3359-57fd-a6b3-db15a2a268b5",
+        "f8d7a170-4d4b-5269-9bb9-a6663b899af7",
+        "960e7477-48b7-5aa8-86d2-af7b4717d47c",
+        "38242c46-4de9-50c6-90e8-865c3cff6a99",
+        "7545c388-9b5c-51de-88a5-ed0bc50d25f4",
+        "2015e224-c99d-5088-8bc2-59867609bbd8",
+        "e81d6512-24a9-5ec0-98fe-aa7fa1b86bd1",
+        "c86d6f5f-b947-5726-80f2-a273eebb8404",
+        "d3d56d01-550d-5a7a-8aa7-ecd74cac2b3e",
+        "48a9ec9e-6d88-58d8-935b-cd52bacc3d29",
+        "7869a4a8-aaf5-59ce-8ca1-90cc9bab687a",
+        "a0636e71-d917-5ad5-9163-3ae91dd5eb52",
+        "5aa7135e-a3dc-5ba1-8f39-3f645a6d2902",
+        "34904a08-dd82-537e-9e58-420e90583a92",
+        "5cfced4a-c71d-540f-987e-c71b8ba0a755",
+        "4cf27810-0ee5-52cf-919a-b29e45bb8914",
+        "6c4477b8-ee9e-5c72-8f23-f90f957899ac",
+        "1e28866c-b038-5a22-9af8-4265b640e148",
+        "d71d6f5b-fe1e-533c-bf8a-f76485b3abed",
+        "82abd866-1d7d-5f54-a33e-738d4fff38ae",
+        "0438d80c-7f4e-5696-a586-15abab99378e",
+        "6d91e277-d5eb-5fd2-b630-32170d19116f",
+        "793e5d7e-d67f-5a8c-9039-24d09e78d950",
+        "47ec3686-f743-5924-bc6d-1410d8e296e8",
+        "98d7e939-0109-50e0-ae79-fac53bd4e9b0",
+        "5bc0f490-6e5b-5af9-a930-45d1e7728386",
+        "6e12d5b3-f932-5a89-984f-ef1a59fe1c7a",
+        "86caf720-bf3a-5be6-b885-acc6bd6b885a",
+        "7e6b170b-3956-5165-b1f0-2b67ef2fbc65",
+        "15e3aa7c-3dca-5bb6-8034-7906b317382b",
+        "fbf00b90-9cc2-5f47-8ea1-1417aad79e90",
+        "b9a03015-1763-5dbd-a1da-1dd68cc48621",
+        "08e8a862-5a18-56d7-aa05-4c715c370b78",
+        "6c0a46a6-0df9-5424-a293-b3602ed41f6f",
+        "e5b42c20-d555-54a2-b286-b6e15c091268",
+        "6fcba586-1ccb-5ad1-b6ef-70aacab82563",
+        "282d0cb9-5b80-51e8-9466-4be1a64b8390",
+        "35ee08d6-82f4-5d2f-9086-fd1b5e903fc8",
+        "c27f8185-8e92-5fc3-8051-e60738e20689",
+        "bf0ffcc3-5947-5a76-b7cd-4d42a147ba9a",
+        "97fbf383-ccc1-52c1-97e2-573bc0376253",
+        "409c0314-fd6c-58f2-af1a-f53d505660ef",
+        "41083429-34dc-5cdf-88da-90b9be7e8b64",
+        "1a1d7dac-6872-51d1-8107-49888a12e5fb",
+        "abd8bb51-8126-5550-b044-d02844f60584",
+        "f9b9c4db-2069-5c7e-8be6-623b97293df3",
+        "4b0e972f-4df5-5002-b38d-a0cc550a5880",
+        "d9d51eac-e469-588a-879e-b26a246a6d70",
+        "4497fe07-581a-5517-9cb0-975214736eb7",
+        "e9939993-155e-5bd2-92cf-6fd6dd14cdda",
+        "9873f8b6-fb87-55f3-8108-4c1119a10787",
+        "126b5acf-8f6b-529a-b706-443cea2ca6a8",
+        "1e8864c8-39da-5837-a1e6-b29d6c2a70e7",
+        "96690756-893b-51a4-af1b-257365e30af5",
+        "da5fbae9-b85c-59f2-9eb8-ba105beb1599",
+        "299ed150-a9fd-599b-a6f8-6a2d442d5e14",
+        "d2f56a80-879f-5570-b8bf-fb48a3b57829",
+        "f31de1a3-67c8-53b8-b2a5-3525bc21f74a",
+        "2646a13e-45e8-51d5-b8bd-7d51aa57a0a2",
+        "5145f5ea-6e70-59a6-920d-967f4fb45a37",
+        "fb493c48-1156-5cd5-a856-aef4352c19e9",
+        "241722ce-97ec-5338-b06e-a654711c32a6",
+        "319c092f-e6e7-5baa-89f6-b08d4e6ae345",
+        "9798cd37-a712-51b8-a938-ac8727bb2a4d",
+        "59150777-92aa-5c39-80f6-13b3a095bcd1",
+        "603d53d2-15c5-57b6-b0a3-39946374586e",
+        "51058ca4-7401-525e-a53d-e35f9741a428",
+        "8d2de502-4331-5c18-a111-24f56d9efd7c",
+        "1bb488ac-05a2-5dca-9042-6cabb8fb7a7c",
+        "38b39252-dd46-5dea-be80-e4bd1eb458c6",
+        "7ffa64b2-b8b5-5a2c-b3d8-60a91735c7c6",
+        "742a6e1c-d4f5-5ed5-94ed-c4c8ac21f147",
+        "68588fc4-7f6a-5cd8-bb69-878eaaa039aa",
+        "8c1793fc-8b8f-55e3-857b-c965b6e078b1",
+        "88b15388-5ddd-598e-9faa-d548558cc6bf",
+        "42f3538a-39a9-50b0-b787-5a0f7b77ba08",
+        "4689df6b-a88d-5249-81f6-5a0a32c2fe76",
+        "8b98052c-5752-5c56-ad97-aa511a0755fc",
+        "dc41f2d0-c143-5c18-afb8-22f139eb2d04",
+        "ea48f772-40bc-5125-b88a-b2edb0ebdb2a",
+        "26b1e9f0-0eb9-54a8-be10-7d5e28063242",
+        "6387c14d-fbbe-508c-b54b-f682455641a2",
+        "2624bdaa-d4e9-511a-86b6-db420c877317",
+        "3e15f93d-7ef0-5b15-9abe-bb592977afc6",
+        "f934e7a4-a49c-5891-b7b0-6a4b93b8f933",
+        "a17c43f2-db68-5bb3-b8ef-ef6357c5e9d2",
+        "c6189141-32c2-5a49-a87e-89c98c22f0f8",
+        "6691e885-d778-5f19-9544-6545d17e700e",
+        "f304b96f-2c8a-556d-ba99-a66cac7ee704",
+        "8133cd72-26d0-5cbb-91fa-ae8a56cd30ea",
+        "67d5c18f-ff3a-5e9e-b537-261c879d47cd",
+        "93428cd2-5b17-53f7-b49a-d75ddd51c638",
+        "21a8713b-633e-5f2e-b7f1-9ffa95a6dd34",
+        "d21431ba-524e-5c35-be4f-4281e9dd4bc8",
+        "3bc1affc-ee11-5795-9784-ac7b799ac820",
+        "67793e1c-550e-5da0-a1ab-550f058bfb8b",
+        "eb4e7c69-8fa2-5a89-ac04-ff217612d1a9",
+        "79c20a32-258d-5901-b6d4-f6e9b72c9c1a",
+        "584b289f-bc07-511c-a870-cf6e46d62781",
+        "66adf4f8-8acf-5269-be4d-8d931179692f",
+        "8a7f2bfd-b3c0-59f3-8f10-e14679f81be3",
+        "057182dc-d892-51d0-ae57-729b7f818150",
+        "07ec4552-7809-582a-9530-ef3c07be943d",
+        "0767aef7-9b78-559a-b6fb-063b62ffe050",
+        "bf921144-272b-5dfe-adf3-7e02cb258bef",
+        "f1640acd-e467-51c5-b316-17a904240683",
+        "da1ca8c8-53bc-5082-bb1a-d0b517a814e0",
+        "2c0a8c95-9713-5180-a233-4f7e59cbe177",
+        "8a7ee99b-7667-5fc8-b214-fe6bbd60bff7",
+        "ebbab311-faef-5ef8-ac8f-903a1b5e0159",
+        "b7ece069-b835-5ca1-afb5-210ed167efb6",
+        "587b4e11-4e79-56b4-9491-70910f014c59",
+        "1de36eb4-355a-5b3e-9832-9cca581380d4",
+        "94655f6b-79d4-5eef-b04e-85f21df38a4b",
+        "050440b2-f8b8-5b0d-a11f-07b6304597ce",
+        "8814f137-5036-5b8d-8b81-e5adab4cd6d6",
+        "71dfbb2b-16b6-5295-b94f-7a26f6b8d17a",
+        "b5a578dc-2150-5e84-b113-52832009e1d1",
+        "e97d62a3-32e1-51e3-9452-537e302749ac",
+        "e979f2d4-8379-5342-ad51-f470caa2242a",
+        "ce743f73-a2e6-5852-a477-bbd8b2644116",
+        "5d77c6ed-2a00-5ce3-a374-dc4a7b7c100b",
+        "c8eff0c8-3701-5a54-9164-b8d69cccb412",
+        "d6962b66-d6ba-5f5d-9f74-3c2feeceabf0",
+        "96d897c3-d024-5cf4-bd6b-0db3e7ab52bd",
+        "7ba84318-5dd8-5009-9a2f-d9021b375b9b",
+        "8a2ae116-fc1a-54ab-b3d0-c03e93092e49",
+        "84dc7292-ad29-5892-bb99-63ed75bea160",
+        "b70b5bfd-4db3-5831-b2d1-bde933293f91",
+        "24e1493e-e42d-58cc-a512-3005d5f0704d",
+        "b39a1f8d-d735-5775-9ec9-39ed958f9312",
+        "e836c410-675e-5fc8-826b-403c8ad0a839",
+        "86038e6d-4675-510d-a2be-314eb8a764ac",
+        "47c8d303-6efc-5dcd-9041-0b3e3ffadfc1",
+        "97e2d44a-dd0a-5135-bfe6-3b7209806d24",
+        "1c4cc933-67be-5b9e-be59-4756a4aca723",
+        "464df0ff-30ef-5b29-91b7-108fe706e466",
+        "d7082ecb-5570-5049-87f0-0cb490f9954d",
+        "23fa32df-d7a4-505a-9229-f8babbc7ed0f",
+        "ecd0b895-18c1-5814-9257-df5fc7bd37a1",
+        "e5343641-1b77-5bab-b55f-41737be165d1",
+        "4704c7b0-78dc-5f80-a45a-87e4a309cc7d",
+        "1e207f4c-f9ea-57f0-8996-df050c1e63ca",
+        "ad4d0fc3-f5d7-55b4-9ffa-1999dfbe3bce",
+        "46b52871-a5b4-57e8-92d6-c1704f1df632",
+        "18374f22-46b7-5e9e-b769-b4ca7e60bcdd",
+        "3adf46f1-8559-52a9-97ca-2a6fd40c57b5",
+        "244df216-3f0e-5b91-9bdd-70ddb379dc9d",
+        "5a513a68-87b2-565c-94f4-7642beb11f5f",
+        "72854f16-0132-5f61-9704-7e5e006fa5a4",
+        "172c8efd-5754-5719-be11-961c88df0119",
+        "7afd72ad-9929-58ce-aac0-754631f45955",
+        "01eedd4c-36e6-596e-9453-e8e3c1f9365e",
+        "c3dd7600-c6cb-5bb4-a231-e1f171f467f6",
+        "07ebc2e3-09af-5f2f-8314-99d709617cd0",
+        "67d43688-2e7c-54fd-93f5-b360c8745032",
+        "ab45182b-7005-5a94-a494-a23be5593d09",
+        "650ba65c-6eb6-5ec1-8ad3-140b3108bc39",
+        "469abfcb-ba38-53e1-be88-eb143b20ea91",
+        "f9321dff-46d1-5eb4-b9b4-80fdad1b6751",
+        "b693f1db-e838-5501-b64b-c843aa36e91c",
+        "5e3dcf2e-f363-5e3e-a778-d9b6121f2db3",
+        "44f987e1-74ad-56a6-8569-a1e4e23a321f",
+        "705c0251-98b0-5e53-886d-556ef2019446",
+        "00b9a229-5bd4-5404-8c7b-b23be8f3903b",
+        "92ad0647-acfe-5b5f-8e28-18b59a86b43c",
+        "8e572e77-c3c1-5918-acc0-7e1d4a7e0306",
+        "dc56297a-4150-5c78-a93e-d3851aa0ab6e",
+        "d9a63846-b69f-5b45-8dac-4919310e3a4b",
+        "1076d195-dbf1-59e1-9a2c-b72497d2bb0d",
+        "933aa8bf-9571-52c1-a7b1-88bb6299e401",
+        "c99dcb22-25d0-5fc3-b49c-c1caa98686a6",
+        "26e601de-8e4a-5254-8546-18664d7c641b",
+        "bf713222-9d9d-5dca-b0c7-29564347f90d",
+        "44276664-3ec0-533e-8016-8b90bf84f569",
+        "e30248bb-0c18-518b-809c-66682706a6f6",
+        "662405a6-7288-564a-9ed8-a83a8fc11cf2",
+        "e93513b4-bf07-5c2e-a23e-e1c61db1354c",
+        "079abf9a-e208-5fbd-8a89-daa177637753",
+        "fc51e2b2-4b32-5bc4-a4b1-d731de668718",
+        "7742d86d-d7bc-5759-8959-f16aced4d9dc",
+        "51796d4d-6d90-5c9f-895a-41f24a389ea7",
+        "5bb30670-242a-5896-976a-d2b376870ab3",
+        "b07dd8b1-19af-5958-a1a7-394d527e2a8a",
+        "49eefce1-8ae6-530e-8e2c-a998e5fd80b9",
+        "151ee950-8f5c-562a-8ee7-fb3dac200c71",
+        "d5b47ed8-1c04-59ca-bb8b-64c7850b1a8f",
+        "b01b05ee-62f0-566e-b0c0-dee2e50764f9",
+        "05e6cffc-bcb7-5b06-826b-96032a710e2d",
+        "b2e88be8-b25a-54ba-a35c-c8ffc80952b6",
+        "9d208a8f-edf5-55dc-ab8a-5ff588df7d78",
+        "290cd0e3-39e5-5ae1-a431-5210ec711aba",
+        "4fa32b5a-adbe-5403-8c4e-8e1ebc9aee1a",
+        "148a14a8-35e6-5e8a-a51f-bfa1d4169d13",
+        "2b0f333b-4f91-5211-b632-4c5430c182c1",
+        "fbb446be-2d48-576a-b435-94baeb41c01a",
+        "b567cdd4-2dae-5a74-9c33-4f12ecbb46f5",
+        "8f69fe07-c615-503c-bd27-40e5f5996749",
+        "9a6f48e5-c0a2-5eeb-8ce0-ea5e411b504e",
+        "556c8741-9bc7-5886-b4cd-181e8d400f4c",
+        "a8294073-b626-5beb-b20a-572f45e98e9f",
+        "30ee5c58-840b-5990-906a-5d4e04575667",
+        "0676954b-40c3-53a3-a2d0-4e6426e1e7b3",
+        "e37358c2-7dda-5303-aa73-56880bce1d0a",
+        "96db4687-cf35-5749-9102-86f9e4fafddd",
+        "4e878d40-78ff-5006-ad2d-0b926102a657",
+        "4e7fb06a-ab27-5723-913c-61425a1a96a1",
+        "37f5a1c5-d613-5b50-92e1-262829ecc6ab",
+        "ce35a950-90fd-5848-aed2-4c481c86dba8",
+        "a1c9e0ad-0efe-5b5e-a8e9-16e7030663a7",
+        "d601b2a2-4367-523b-ad3e-8fc15dad5745",
+        "cc5e70f3-d8c5-5048-bd3d-00bd76d21b62",
+        "12a62d64-e969-58da-9d50-2211aef418f4",
+        "74cb238b-d7a1-5653-b01a-68dcbfe78df7",
+        "f80555cf-7e4c-5b73-bc91-6a91dc209832",
+        "e5d561b7-c7bb-503c-bec5-29ec471b3beb",
+        "4adefa8f-bffd-5396-9d0a-d1be4bb2d117",
+        "452ec9da-0f49-51da-80a4-4e6170bc95fe",
+        "36bfaff9-7a34-5282-9d40-0c268b22dbe4",
+        "7c8955d5-5811-59df-b310-88e2ef620707",
+        "9b88a871-6ddd-55d1-a981-c5f7eef9e743",
+        "06b88097-1c22-5b4c-abac-39ee9dac0947",
+        "9431c695-c2e3-57ad-a96a-632c8452c504",
+        "307162b2-7700-522b-aade-37c3cfd9b112",
+        "2c4df114-ecc7-55b1-b18a-27bf333d9eb8",
+        "36e4d3b0-40a8-540d-b17e-34aaab337660",
+        "437f9ed9-249b-523e-b4f4-04ec31beeb53",
+        "626ee419-06a3-510b-9bae-1cee965dc827",
+        "ec072bda-7dbc-5fc7-a95b-2cb3711ba49a",
+        "791917fa-b2a6-53ec-ba13-5bbd5e4564e2",
+        "09cfdb82-ce61-579e-b477-f42f9340f4f6",
+        "3a592fa8-66bf-5387-82ad-848a0bcbce3a",
+        "fb47882e-ddad-5d7d-b96d-f57c5ad6b09f",
+        "2913edfb-23a0-5c7c-8e27-abbe2856a5c9",
+        "34a57167-e9e3-51d1-aa8a-d2a0b2931f3c",
+        "5d5c403a-458b-5afe-aca3-aa05fe4284dd",
+        "7c588a68-c48c-5825-9d16-76d76add5b7b",
+        "ba772ea7-04cb-5f1d-9bfd-e07f7dc21ab2",
+        "bea1b6ff-1e37-5454-8788-cacf83180819",
+        "19574fb4-4a72-51c2-8ee1-054d3643e3c3",
+        "8a2e46c5-2104-5c5a-a0c1-949dbd610fdc",
+        "10c4d581-7d8c-5ef1-b00d-207f01514623",
+        "ddd827f1-3872-5786-8a5a-d7337c2d657b",
+        "0e8b1822-4647-57fe-a195-90c2a6494334",
+        "79fe45ab-3832-597e-9755-940a812d0a5c",
+        "fa2a0087-8552-521a-81d0-86376145922d",
+        "5089e483-2005-5cf2-8677-4db8dce3b6a3",
+        "738b0ab4-da93-58f3-afaa-2b7010795042",
+        "14e8badc-d3dd-57e9-9c31-5e4f39f4edcb",
+        "ee5c5740-36c1-5922-b323-3c6c1f95633e",
+        "e4940508-689a-5acf-bbc6-00218b9a2eb3",
+        "d59cc315-679b-58de-9b47-f9b038ac01ae",
+        "6254ec44-c814-50bc-a0bc-450b76c4472f",
+        "02d44ab4-5b37-578d-af32-df4bf82d2ae0",
+        "4ce053b9-94ee-5464-b3fb-669ed6ec40cd",
+        "37a4276a-f47a-5674-8846-5e7a889aaca4",
+        "44390c20-580e-5c8c-a05d-a7cf61ef72c2",
+        "3709cf53-4061-5570-acd4-3a87b24a2b1c",
+        "a95c8f2d-a255-5698-a8cf-dde7172e61ab",
+        "ec47f099-00fb-5eec-b1fa-6e820f0233b6",
+        "e5fd2875-6f36-5544-9188-4f8c1bc135b5",
+        "2e8e16e0-9954-5305-9d89-f545eec3a0d0",
+        "47d74f75-20ed-53ec-b748-e2d84d6838c2",
+        "89569c04-cd44-5001-bcf5-1cdb1b4921f3",
+        "49a15291-d205-54c9-898a-d2189e2ddbbd",
+        "757ebd03-87fe-5893-9bf9-90dc55420290",
+        "07fed807-4ee4-5743-9a0f-a7ce98d604b4",
+        "70364154-8b8b-5ac7-a177-06c9d55db2b9",
+        "f9a8b1ae-6356-5750-a5d2-321ca7cea7c6",
+        "cecf4af1-9d36-5020-9514-9a8f21ea8702",
+        "41543bb6-dd23-5c97-8a1c-1c8520dd1d4c",
+        "25ac2a1e-3003-548d-a6e1-cf989f241091",
+        "a34e457b-881e-5b85-a41f-0f4c50d3d4a9",
+        "22113cd2-d2bf-524b-a068-d097a6fd1bea",
+        "873a8540-9731-5d73-a285-c35bd62c24b6",
+        "0f3ba285-d5c0-585d-ab48-3d458729531c",
+        "192b50bd-d16c-5ccb-b9cf-65183d249d5b",
+        "6f6f65af-86f5-5faf-a8eb-644a983eaf77",
+        "f7f3c40d-235b-5250-8e6c-70fa3f380b32",
+        "fff0729e-fd66-50c9-87ba-1554eb6afd87",
+        "b9ce427a-f1fe-542c-aee2-24920ef4dce6",
+        "e3cfc6ca-7a33-5ed3-8d03-8f889f279877",
+        "bcbb5c0c-f97c-5c6d-aba4-8b5ba5a4f277",
+        "f905cd46-a402-589f-b29a-7cb6ccbdee46",
+        "466145bf-2017-51c6-8e70-c14f43db206d",
+        "4806ca03-4c59-5a29-9b4b-f5d5ae8afc3e",
+        "0e0222be-225b-5600-aba4-58f313421ae9",
+        "e7fe45d2-f50d-5e7a-804a-6f17239ed8aa",
+        "22b54515-22f9-5529-90d8-8907e5d5f08b",
+        "364cec8c-949b-5a0d-b002-06d016318024",
+        "e3cd20a5-8cba-57d9-a378-af05bdf51196",
+        "ad667144-23c4-56f4-aecb-945f6c7efad5",
+        "bf2dd50c-6456-52b6-bf15-fe5b37660fc1",
+        "b29fce37-30e9-5970-87fa-2b688fa5fe4b",
+        "04e3a4d5-ef81-577d-8aab-d917b054e5ae",
+        "95ef39bc-d2fc-5e3c-9699-a0b01eebf1d9",
+        "ce0ebe48-1084-5950-82fc-7a6835e4db1a",
+        "7e94ce54-5cd5-5aca-b739-a25bb446fefa",
+        "4db3f512-5a66-53b0-ad86-0fa89e889320",
+        "a77db7f3-e65c-5ae7-8f7a-50363699f982",
+        "ca8c7964-e95a-5219-894f-dbe69fb65e31",
+        "1a32cd74-f67a-584b-b6f1-7b7adf67af57",
+        "a3ffe216-d2fb-55fa-9d69-370c0feda1dd",
+        "2827fca5-9796-52ce-90ff-cf244e6ac551",
+        "dd035826-41b1-5404-8bbc-bd054056c863",
+        "2613b3de-71b8-5a78-8f0f-8b6b97956f69",
+        "e07fce50-081e-5dc3-a228-a4551071d2bf",
+        "72403b7e-ab74-54c4-a6a5-7f06df31b98d",
+        "a5701326-d50c-531b-96fc-95a0ebca7a43",
+        "4755d870-7d1e-5f2b-af20-288c585cf48b",
+        "d6e44c0e-46ce-513b-854d-d3f6dd00f623",
+        "878cd7cb-65aa-5acd-ad65-1bb9286a9db3",
+        "d4b11832-01ce-585b-9268-9a94ed6232af",
+        "ebf1ed39-f02f-5d1c-8114-7fd987208ce0",
+        "1a5dc56d-1213-53f4-a7cf-957eeb90ecbb",
+        "8c40e4d3-8c5d-5648-b26e-85ce5bb2c5b0",
+        "65e800eb-ccc2-5cc4-b762-4499700bbf87",
+        "728e22bd-87d7-5212-a242-5b4bd113c4e5",
+        "03a98862-075b-5ffa-b09d-6fde613c66d6",
+        "ab37ba69-4e84-51b8-9c2e-c36d8e3d94b4",
+        "c03604de-cc9c-58ca-a47a-d92e5c834068",
+        "374aa57d-a9db-5673-a3bb-f3f62d9c87c0",
+        "a603932d-acb9-59e9-ac44-579d51c51dd1",
+        "27123f7f-bb71-571c-a972-d168df52fe79",
+        "33ca53c8-2c4d-5b14-87d1-369cc6aa6a11",
+        "8b391900-9ccb-585a-95d4-fa6c0964c2cc",
+        "aa8e1d03-c955-5ca8-be37-544f53afbfb8",
+        "01f37fe7-e492-54c0-8102-6f588238dea5",
+        "15e60d70-31a0-5356-b7cb-977b7fb48d6e",
+        "98f9798d-15c8-51c2-aa72-8dbb696a4677",
+        "f482480c-e54b-5ff8-83c3-143246e7fb20",
+        "ee813c99-3a50-5bfe-a972-11baa0476d67",
+        "8da8a12f-36ae-5b9f-8d39-0fae09d0d0fd",
+        "84e163e6-721d-5db4-a753-ad6ae9e4a16f",
+        "15b76afa-eff4-584b-a27f-3b14a7f874f3",
+        "c7c1b0ab-18e1-5d0a-b7db-0d7835991eb6",
+        "be9ab2a2-245a-551e-88ae-742c35486f00",
+        "1bb67a3f-7049-58d6-8577-9789226f5a0f",
+        "dab681c3-0162-5b54-adbd-b93862558424",
+        "b297c810-de92-5c98-85db-1c626d5f9264",
+        "24c2b3be-91af-5e7b-a73e-904c5cc30beb",
+        "aeb311ec-1501-50ee-9f1b-b87e4d66ef71",
+        "91236735-3961-5ede-8a81-a0c8afddf970",
+        "faaee73e-76e5-5114-8a03-68ca2f15a15d"
+      ],
+      "excluded_profile_ids": [
+        "6d8bb79b-6cdb-5740-9ba6-0f9d9bc90bfd",
+        "3808130a-beed-592b-9845-d4a1fd58f9f0"
+      ],
+      "excluded_duplicate_name_ids": [],
+      "source_retrieval_ids": [
+        "09bd71ac-26f2-5e86-b154-2bec2c12c525",
+        "6504bfab-26e0-5ae7-8439-d547ae2e1e7e",
+        "8e7ad291-342b-5245-87bf-b77edd04a2a5",
+        "52efb288-d3c2-55b9-ac38-f65b4ac4b604",
+        "8c7be395-2a5f-5166-af6f-217799af272d",
+        "77332743-e558-5b9c-a3e8-7452abc3b958",
+        "d3796bd4-0fae-51d3-80e9-ff4732661a74",
+        "ab76a8b0-e9cc-5eba-8759-16455d7d41fa",
+        "a5f9df78-3dac-5054-bc0d-7ce21cc96c85",
+        "67fd4c55-7716-506e-8243-6a17cd3d6972",
+        "737bd7a9-c77f-5585-8967-8f79d4d335fd",
+        "e748d08a-bd69-5365-a529-8a9844c5766c",
+        "3febef5e-c020-5760-b34a-ec3e285eabb6",
+        "f8f1356a-35b0-5485-a27b-49fedf5413ff",
+        "15e506dc-156f-59eb-ae62-b402383f0ca3",
+        "dd555195-76db-5d55-b725-c44547f7c24b",
+        "457add05-921a-5379-8fda-27fe90160cd2",
+        "aa497a60-c50a-52ba-bf9c-cabe23874249",
+        "f9f057b1-6bd2-5a02-b114-8f43a75039bb",
+        "1bc67bfb-23bd-5849-8767-bb77d2c8a10c",
+        "80c932bc-6909-5de9-aa96-30077ef982e7",
+        "cda485a7-3634-554c-8595-61a3dabacf3a",
+        "a9e5a34f-f20f-5601-8f5e-1e85b515503c",
+        "c43c1787-b59f-54b1-aaef-5367af3c6a7b"
+      ],
+      "domain_query": "기술문헌 연구자료",
+      "route_heads": {
+        "domain_data": [
+          "09bd71ac-26f2-5e86-b154-2bec2c12c525",
+          "52efb288-d3c2-55b9-ac38-f65b4ac4b604"
+        ],
+        "work_output": [
+          "6d8bb79b-6cdb-5740-9ba6-0f9d9bc90bfd",
+          "8c7be395-2a5f-5166-af6f-217799af272d",
+          "d3796bd4-0fae-51d3-80e9-ff4732661a74",
+          "09bd71ac-26f2-5e86-b154-2bec2c12c525",
+          "737bd7a9-c77f-5585-8967-8f79d4d335fd",
+          "52efb288-d3c2-55b9-ac38-f65b4ac4b604",
+          "15e506dc-156f-59eb-ae62-b402383f0ca3",
+          "aa497a60-c50a-52ba-bf9c-cabe23874249",
+          "80c932bc-6909-5de9-aa96-30077ef982e7",
+          "a9e5a34f-f20f-5601-8f5e-1e85b515503c",
+          "ac896bb2-ca87-562c-a460-4529af60be88",
+          "68a9b4e4-6747-51ce-8870-5ae2dd7c7284"
+        ],
+        "task_function": [
+          "6504bfab-26e0-5ae7-8439-d547ae2e1e7e",
+          "3808130a-beed-592b-9845-d4a1fd58f9f0",
+          "d3796bd4-0fae-51d3-80e9-ff4732661a74",
+          "a5f9df78-3dac-5054-bc0d-7ce21cc96c85",
+          "e748d08a-bd69-5365-a529-8a9844c5766c",
+          "3febef5e-c020-5760-b34a-ec3e285eabb6",
+          "dd555195-76db-5d55-b725-c44547f7c24b",
+          "f9f057b1-6bd2-5a02-b114-8f43a75039bb",
+          "cda485a7-3634-554c-8595-61a3dabacf3a",
+          "c43c1787-b59f-54b1-aaef-5367af3c6a7b",
+          "ff113d96-b0c0-56b1-a8f1-a4bef30bb13a",
+          "a9e5a34f-f20f-5601-8f5e-1e85b515503c"
+        ],
+        "legacy_task_link": [
+          "8e7ad291-342b-5245-87bf-b77edd04a2a5",
+          "77332743-e558-5b9c-a3e8-7452abc3b958",
+          "ab76a8b0-e9cc-5eba-8759-16455d7d41fa",
+          "67fd4c55-7716-506e-8243-6a17cd3d6972",
+          "09bd71ac-26f2-5e86-b154-2bec2c12c525",
+          "f8f1356a-35b0-5485-a27b-49fedf5413ff",
+          "457add05-921a-5379-8fda-27fe90160cd2",
+          "1bc67bfb-23bd-5849-8767-bb77d2c8a10c"
+        ]
+      },
+      "legacy_candidate_ids": [
+        "F014",
+        "F029",
+        "F001",
+        "F005",
+        "F004",
+        "F035",
+        "F044",
+        "F043",
+        "F021",
+        "F033"
+      ],
+      "selected_supplier_ids": [
+        "09bd71ac-26f2-5e86-b154-2bec2c12c525",
+        "6504bfab-26e0-5ae7-8439-d547ae2e1e7e",
+        "8e7ad291-342b-5245-87bf-b77edd04a2a5",
+        "52efb288-d3c2-55b9-ac38-f65b4ac4b604",
+        "8c7be395-2a5f-5166-af6f-217799af272d",
+        "77332743-e558-5b9c-a3e8-7452abc3b958",
+        "d3796bd4-0fae-51d3-80e9-ff4732661a74",
+        "ab76a8b0-e9cc-5eba-8759-16455d7d41fa",
+        "a5f9df78-3dac-5054-bc0d-7ce21cc96c85",
+        "67fd4c55-7716-506e-8243-6a17cd3d6972",
+        "737bd7a9-c77f-5585-8967-8f79d4d335fd",
+        "e748d08a-bd69-5365-a529-8a9844c5766c",
+        "3febef5e-c020-5760-b34a-ec3e285eabb6",
+        "f8f1356a-35b0-5485-a27b-49fedf5413ff",
+        "15e506dc-156f-59eb-ae62-b402383f0ca3",
+        "dd555195-76db-5d55-b725-c44547f7c24b",
+        "457add05-921a-5379-8fda-27fe90160cd2",
+        "aa497a60-c50a-52ba-bf9c-cabe23874249",
+        "f9f057b1-6bd2-5a02-b114-8f43a75039bb",
+        "1bc67bfb-23bd-5849-8767-bb77d2c8a10c",
+        "80c932bc-6909-5de9-aa96-30077ef982e7",
+        "cda485a7-3634-554c-8595-61a3dabacf3a",
+        "a9e5a34f-f20f-5601-8f5e-1e85b515503c",
+        "c43c1787-b59f-54b1-aaef-5367af3c6a7b"
+      ]
+    }
+  }
+}

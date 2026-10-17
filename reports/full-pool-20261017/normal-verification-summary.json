@@ -1,0 +1,294 @@
+{
+  "revision": "b297b3ba92144e57",
+  "mode": "DB read-only + frozen work; no buyer URL crawl or new business/work generation",
+  "catalog": {
+    "registered_count": 1428,
+    "recommendable_count": 1329,
+    "legacy_alias_count": 117,
+    "captured_at": "2026-10-17T08:17:18.449653+00:00",
+    "fingerprint": "ceb24e3c44e25de2c6e9da819a0bbb001dbd4031549b7cd2f491b934ef2a7a59"
+  },
+  "old_profile_count": 112,
+  "retained_identical_source_ids": [
+    "F001",
+    "F002",
+    "F003",
+    "F004",
+    "F006",
+    "F007",
+    "F009",
+    "F010",
+    "F011",
+    "F012",
+    "F014",
+    "F016",
+    "F018",
+    "F019",
+    "F020",
+    "F023",
+    "F024",
+    "F025",
+    "F027",
+    "F028",
+    "F029",
+    "F031",
+    "F032",
+    "F033",
+    "F035",
+    "F037",
+    "F038",
+    "F039",
+    "F041",
+    "F043",
+    "F044",
+    "F045",
+    "F046",
+    "F052",
+    "I001",
+    "I002",
+    "I003",
+    "I004",
+    "I010",
+    "I012",
+    "I013",
+    "I014",
+    "I016",
+    "I017",
+    "I018",
+    "I021",
+    "I022",
+    "I029",
+    "I035",
+    "I043",
+    "I045",
+    "I046",
+    "I048",
+    "I050",
+    "I051",
+    "I053",
+    "I065",
+    "I071",
+    "I086",
+    "I088",
+    "I092",
+    "I093",
+    "I097",
+    "I108",
+    "I110",
+    "I118",
+    "I121",
+    "I134",
+    "I137",
+    "I144",
+    "I145",
+    "I148",
+    "I149",
+    "I151",
+    "I165",
+    "I168",
+    "I186",
+    "I188",
+    "I189",
+    "I192",
+    "I200",
+    "I212",
+    "I215",
+    "I252",
+    "I259",
+    "I265",
+    "I270",
+    "I274",
+    "I276",
+    "I282",
+    "I293",
+    "I317",
+    "I318",
+    "I321",
+    "I323",
+    "I348",
+    "I360",
+    "I435",
+    "I439",
+    "I463",
+    "I471",
+    "I473",
+    "I488",
+    "I500",
+    "I515",
+    "I529",
+    "I533",
+    "I535",
+    "I553",
+    "I590",
+    "I594",
+    "I596"
+  ],
+  "lost_or_changed_ids": [],
+  "old_profiles_withheld_by_display_validation": [
+    {
+      "legacy_id": "I010",
+      "missing_fields": [
+        "homepage_url"
+      ]
+    },
+    {
+      "legacy_id": "I108",
+      "missing_fields": [
+        "homepage_url"
+      ]
+    },
+    {
+      "legacy_id": "I317",
+      "missing_fields": [
+        "homepage_url"
+      ]
+    },
+    {
+      "legacy_id": "I318",
+      "missing_fields": [
+        "homepage_url"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "task_id": "J020",
+      "domain_query": "기술문헌 연구자료",
+      "candidates": [
+        {
+          "id": "09bd71ac-26f2-5e86-b154-2bec2c12c525",
+          "pool_no": 3739,
+          "name": "(주)워트인텔리전스"
+        },
+        {
+          "id": "6504bfab-26e0-5ae7-8439-d547ae2e1e7e",
+          "pool_no": 4267,
+          "name": "이로운솔루션주식회사"
+        },
+        {
+          "id": "8e7ad291-342b-5245-87bf-b77edd04a2a5",
+          "pool_no": 4162,
+          "name": "(주)페르소나에이아이"
+        },
+        {
+          "id": "52efb288-d3c2-55b9-ac38-f65b4ac4b604",
+          "pool_no": 4230,
+          "name": "주식회사 빅시프트"
+        },
+        {
+          "id": "8c7be395-2a5f-5166-af6f-217799af272d",
+          "pool_no": 3312,
+          "name": "주식회사 레인메이커"
+        },
+        {
+          "id": "77332743-e558-5b9c-a3e8-7452abc3b958",
+          "pool_no": 3095,
+          "name": "비젠트로(주)"
+        },
+        {
+          "id": "d3796bd4-0fae-51d3-80e9-ff4732661a74",
+          "pool_no": 3552,
+          "name": "(주)아이와즈"
+        },
+        {
+          "id": "ab76a8b0-e9cc-5eba-8759-16455d7d41fa",
+          "pool_no": 3861,
+          "name": "솔트룩스"
+        },
+        {
+          "id": "a5f9df78-3dac-5054-bc0d-7ce21cc96c85",
+          "pool_no": 3751,
+          "name": "주식회사 써로마인드"
+        },
+        {
+          "id": "67fd4c55-7716-506e-8243-6a17cd3d6972",
+          "pool_no": 3670,
+          "name": "엔키아"
+        },
+        {
+          "id": "737bd7a9-c77f-5585-8967-8f79d4d335fd",
+          "pool_no": 3649,
+          "name": "현대에이치티주식회사"
+        },
+        {
+          "id": "e748d08a-bd69-5365-a529-8a9844c5766c",
+          "pool_no": 4365,
+          "name": "주식회사 넥스트클라우드"
+        },
+        {
+          "id": "3febef5e-c020-5760-b34a-ec3e285eabb6",
+          "pool_no": 4217,
+          "name": "오브젠 주식회사"
+        },
+        {
+          "id": "f8f1356a-35b0-5485-a27b-49fedf5413ff",
+          "pool_no": 3422,
+          "name": "주식회사 파수"
+        },
+        {
+          "id": "15e506dc-156f-59eb-ae62-b402383f0ca3",
+          "pool_no": 4359,
+          "name": "(주)씨지인사이드"
+        },
+        {
+          "id": "dd555195-76db-5d55-b725-c44547f7c24b",
+          "pool_no": 3931,
+          "name": "도시와농촌"
+        },
+        {
+          "id": "457add05-921a-5379-8fda-27fe90160cd2",
+          "pool_no": 2979,
+          "name": "프로텐"
+        },
+        {
+          "id": "aa497a60-c50a-52ba-bf9c-cabe23874249",
+          "pool_no": 3052,
+          "name": "알소프트"
+        },
+        {
+          "id": "f9f057b1-6bd2-5a02-b114-8f43a75039bb",
+          "pool_no": 4055,
+          "name": "(주)오픈컴"
+        },
+        {
+          "id": "1bc67bfb-23bd-5849-8767-bb77d2c8a10c",
+          "pool_no": 3316,
+          "name": "(주)플랜아이"
+        },
+        {
+          "id": "80c932bc-6909-5de9-aa96-30077ef982e7",
+          "pool_no": 4028,
+          "name": "사이버라인"
+        },
+        {
+          "id": "cda485a7-3634-554c-8595-61a3dabacf3a",
+          "pool_no": 3799,
+          "name": "주식회사 세미콜론즈"
+        },
+        {
+          "id": "a9e5a34f-f20f-5601-8f5e-1e85b515503c",
+          "pool_no": 3108,
+          "name": "이지메타"
+        },
+        {
+          "id": "c43c1787-b59f-54b1-aaef-5367af3c6a7b",
+          "pool_no": 3595,
+          "name": "주식회사 한샘가온"
+        }
+      ],
+      "seconds": 90,
+      "accepted": [
+        {
+          "name": "주식회사 빅시프트",
+          "pool_no": 4230
+        },
+        {
+          "name": "주식회사 레인메이커",
+          "pool_no": 3312
+        }
+      ],
+      "reviewed": 12,
+      "qualified": 7
+    }
+  ]
+}

@@ -24,6 +24,7 @@ from .presentation import _web_url, build_front_result
 from .search_timing import DEFAULT_TIMING_DIR, KST, SearchTimingRecorder
 from .supplier_profile import SupplierProfileClient
 from .supplier_advice import add_supplier_advice
+from .supplier_policy import MAX_REVIEW_CANDIDATES
 from .workbook import KnowledgeBase, load_knowledge_base
 
 
@@ -67,20 +68,22 @@ def handler_for(kb: KnowledgeBase, *, timing_dir: Path = DEFAULT_TIMING_DIR,
             diagnostics["stage"] = "supplier_profiles"
         stage_errors = []
         try:
-            available = profiles.available_profiles(
+            catalog = profiles.catalog(
                 kb, diagnostics=diagnostics.setdefault("supplier_profiles", {}) if diagnostics is not None else None,
             )
+            available = catalog.profiles
         except RuntimeError:
             logging.exception("Supplier profile stage failed; retaining buyer analysis")
             available = {}
+            catalog = None
             stage_errors.append({"stage": "supplier_profiles", "code": "supplier_lookup_failed",
                                  "message": "공급기업 원천정보를 조회하지 못했습니다."})
         if diagnostics is not None:
             diagnostics["stage"] = "supplier_matching"
             diagnostics["available_profile_count"] = len(available)
         result = build_front_result(
-            pages, kb, business, ax_analysis, eligible_supplier_ids=set(available), candidate_limit=12,
-            supplier_profiles=available,
+            pages, kb, business, ax_analysis, eligible_supplier_ids=set(available),
+            candidate_limit=MAX_REVIEW_CANDIDATES, supplier_profiles=available, supplier_catalog=catalog,
             diagnostics=diagnostics.setdefault("matching", {}) if diagnostics is not None else None,
         )
         for item in result["suppliers"]:

@@ -1,0 +1,9 @@
+OSSFallbackCJK-Regular.ttf is derived from Google Fonts Noto Sans SC.
+Source: https://github.com/google/fonts/tree/main/ofl/notosanssc
+Source SHA-256: a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da
+Derived SHA-256: 955b78be98cd46d5e6788d4d6f7a26c97876fba4eec0f0d8e9bad99dce717e2f
+License: SIL Open Font License 1.1, reproduced in NOTO-OFL.txt.
+Original copyright and license names are retained in the font metadata.
+Build: fontTools instantiateVariableFont(wght=400), then subset to source
+Unicode codepoints missing from NanumGothic-Regular.ttf. Rename the derived
+family to OSS Fallback CJK. The runtime only needs the resulting TTF.

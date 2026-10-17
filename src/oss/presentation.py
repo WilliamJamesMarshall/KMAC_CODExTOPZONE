@@ -9,6 +9,7 @@ from .identity import company_name_key
 from .matching import match_suppliers
 from .models import Evidence, SupplierMatch, WebPage
 from .source_retrieval import SupplierSourceIndex
+from .supplier_policy import MAX_SUPPLIERS_PER_WORK, MAX_REVIEW_CANDIDATES
 from .workbook import KnowledgeBase
 
 
@@ -24,24 +25,28 @@ def _web_url(value: str | None) -> str | None:
 
 def build_front_result(pages: list[WebPage], kb: KnowledgeBase, business_analysis: dict,
                        ax_analysis: dict,
-                       *, max_suppliers: int = 3,
+                       *, max_suppliers: int = MAX_SUPPLIERS_PER_WORK,
                        eligible_supplier_ids: set[str] | None = None,
                        candidate_limit: int | None = None,
                        supplier_profiles: dict[str, dict] | None = None,
+                       supplier_catalog=None,
                        diagnostics: dict | None = None) -> dict:
-    """Select up to three suppliers independently for each audited opportunity."""
+    """Retrieve independent candidate lists; advice auditing selects the final two."""
     if not pages:
         raise ValueError("No readable website pages were collected")
-    if not 1 <= max_suppliers <= 3:
-        raise ValueError("The screen supports one to three suppliers")
+    if not 1 <= max_suppliers <= MAX_SUPPLIERS_PER_WORK:
+        raise ValueError("The screen supports one to two suppliers per work")
     candidate_limit = candidate_limit or max_suppliers
-    if not max_suppliers <= candidate_limit <= 12:
-        raise ValueError("Supplier candidate budget must be between the display limit and twelve")
+    if not max_suppliers <= candidate_limit <= MAX_REVIEW_CANDIDATES:
+        raise ValueError("Supplier candidate budget exceeds the review policy")
     opportunities = ax_analysis["opportunities"]
     descriptions = {sid: profile.get('ai_solution_description') or ''
                     for sid, profile in (supplier_profiles or {}).items() if sid in kb.suppliers
                     and (eligible_supplier_ids is None or sid in eligible_supplier_ids)}
-    source_index = SupplierSourceIndex(descriptions) if descriptions else None
+    if supplier_catalog is not None:
+        descriptions = {sid: item['supplier_profile']['ai_solution_description'] or ''
+                        for sid, item in supplier_catalog.records.items()}
+    source_index = SupplierSourceIndex(descriptions, split_solutions=supplier_catalog is not None) if descriptions else None
     by_supplier: dict[str, dict] = {}
     suppliers_by_task: dict[str, list[str]] = {}
     for opportunity in opportunities:
@@ -53,7 +58,30 @@ def build_front_result(pages: list[WebPage], kb: KnowledgeBase, business_analysi
                  "source_retrieval_ids": []}
         if diagnostics is not None:
             diagnostics[task_id] = trace
-        if source_index is not None:
+        if supplier_catalog is not None and source_index is not None:
+            linked = list(dict.fromkeys(supplier_catalog.aliases[match.supplier_id] for match in matches
+                                       if match.supplier_id in supplier_catalog.aliases))
+            ranking, route_trace = source_index.pool_candidates(kb.tasks[task_id], opportunity, linked)
+            trace.update(route_trace)
+            trace['legacy_candidate_ids'] = trace['candidate_supplier_ids']
+            trace['candidate_supplier_ids'] = ranking.copy()
+            matches = []
+            for sid in ranking:
+                item = supplier_catalog.records[sid]
+                if item['profile_status'] != 'matched' or item['missing_fields']:
+                    trace['excluded_profile_ids'].append(sid)
+                    continue
+                matches.append(SupplierMatch(supplier_id=sid, source_supplier_ids=(sid,),
+                    supplier_name=item['name'], task_fit_score=0, status='functional_candidate',
+                    identity_review_required=False, matched_tasks=(task_id,),
+                    evidence=(Evidence(item['homepage_url'] or '', descriptions[sid][:3000],
+                        'supplier_profile_description', str(item['supplier_profile']['source_pool_no']),
+                        'source_text_retrieval_candidate', '미검토'),),
+                    explanation='전체 DB 원문 검색 후보 · 실제 기능과 업무 적합성 별도 검증'))
+                if len(matches) >= candidate_limit:
+                    break
+            trace['source_retrieval_ids'] = [match.supplier_id for match in matches]
+        elif source_index is not None:
             exact = [match for match in matches if match.supplier_id in descriptions][:min(6, candidate_limit)]
             used = {match.supplier_id for match in exact}
             by_id = {match.supplier_id: match for match in matches}
@@ -92,17 +120,22 @@ def build_front_result(pages: list[WebPage], kb: KnowledgeBase, business_analysi
                 continue  # Never merge evidence from different source identities.
             shown_names.add(normalized_name)
             selected.append(match.supplier_id)
-            supplier = kb.suppliers[match.supplier_id]
+            supplier = kb.suppliers.get(match.supplier_id)
+            record = supplier_catalog.records[match.supplier_id] if supplier_catalog is not None else None
+            sid = match.supplier_id
+            name = record['name'] if record else supplier.name
+            homepage = record['homepage_url'] if record else supplier.homepage_url
             solutions = list(dict.fromkeys(
                 kb.solutions[cap.solution_id].description
                 for cap in kb.detailed_capabilities
-                if cap.supplier_id == supplier.supplier_id and cap.task_id == task_id
+                if (supplier_catalog.aliases.get(cap.supplier_id) == sid if record else cap.supplier_id == sid)
+                and cap.task_id == task_id
                 and cap.solution_id in kb.solutions
             ))
             item = by_supplier.setdefault(match.supplier_id, {
-                "supplier_id": supplier.supplier_id,
-                "name": supplier.name,
-                "homepage_url": _web_url(supplier.homepage_url),
+                "supplier_id": sid,
+                "name": name,
+                "homepage_url": _web_url(homepage),
                 "matched_tasks": [],
                 "solution_descriptions": [],
                 "task_solutions": {},
@@ -116,6 +149,9 @@ def build_front_result(pages: list[WebPage], kb: KnowledgeBase, business_analysi
                     for item in match.evidence[:2]
                 ],
             })
+            if record:
+                item['supplier_profile'] = record['supplier_profile']
+                item['profile_status'] = record['profile_status']
             item["matched_tasks"].append({"task_id": task_id, "name": kb.tasks[task_id].name})
             item["task_solutions"][task_id] = solutions[:2]
             item["task_evidence"][task_id] = [
@@ -141,6 +177,8 @@ def build_front_result(pages: list[WebPage], kb: KnowledgeBase, business_analysi
         "suppliers_by_task": suppliers_by_task,
         "result_version": 2,
         "analysis_meta": {
+            "max_suppliers_per_work": MAX_SUPPLIERS_PER_WORK,
+            "supplier_catalog": supplier_catalog.summary() if supplier_catalog is not None else None,
             "pages_analyzed": len(pages),
             "basis": "홈페이지 공개 문구와 AX Task Seed 지식베이스",
             "review_status": "초기 후보 · 추가 확인 필요",

@@ -127,7 +127,7 @@ class LogicTests(unittest.TestCase):
             "mapping_reason": "품질예측 업무", "priority": "medium",
         }], "quality": {"status": "reviewed"}}
         result = build_front_result([page], self.kb, business, ax_analysis)
-        self.assertLessEqual(len(result["suppliers"]), 3)
+        self.assertLessEqual(len(result["suppliers"]), 2)
         self.assertEqual(result["opportunities"][0]["task_id"], "J014")
         self.assertEqual(result["suppliers"][0]["status"], "provisional")
         self.assertEqual([item["key"] for item in result["business_model"]], ["value", "activity"])
@@ -157,9 +157,9 @@ class LogicTests(unittest.TestCase):
             diagnostics=diagnostics,
         )
         self.assertEqual([item["supplier_id"] for item in result["suppliers"]],
-                         ["F003", "F004", "F005"])
+                         ["F003", "F004"])
         self.assertEqual(set(diagnostics["J014"]["excluded_profile_ids"]), {"F001", "F002"})
-        self.assertEqual(diagnostics["J014"]["selected_supplier_ids"], ["F003", "F004", "F005"])
+        self.assertEqual(diagnostics["J014"]["selected_supplier_ids"], ["F003", "F004"])
 
     def test_each_work_has_its_own_supplier_limit_and_shared_supplier(self) -> None:
         for number in range(2, 6):
@@ -180,10 +180,10 @@ class LogicTests(unittest.TestCase):
         result = build_front_result([page], self.kb,
             {"fields": [], "profile": {}, "quality": {}},
             {"opportunities": opportunities, "quality": {}})
-        self.assertEqual(len(result["suppliers_by_task"]["J014"]), 3)
+        self.assertEqual(len(result["suppliers_by_task"]["J014"]), 2)
         self.assertEqual(set(result["suppliers_by_task"]["J020"]), {"F001", "F005"})
         self.assertEqual(result["suppliers_by_task"]["J016"], [])
-        self.assertEqual(len(result["suppliers"]), 4)
+        self.assertEqual(len(result["suppliers"]), 3)
         shared = next(item for item in result["suppliers"] if item["supplier_id"] == "F001")
         self.assertEqual(set(shared["task_evidence"]), {"J014", "J020"})
         self.assertEqual(shared["task_evidence"]["J020"][0]["quote"], "문서 검색 기능")

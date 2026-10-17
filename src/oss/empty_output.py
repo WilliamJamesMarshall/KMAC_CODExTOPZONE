@@ -11,6 +11,7 @@ from uuid import uuid4
 from .business_profile import build_sources
 from .models import WebPage
 from .search_timing import KST
+from .supplier_policy import MAX_SUPPLIERS_PER_WORK
 
 
 DEFAULT_DIAGNOSTICS_DIR = Path(__file__).resolve().parents[2] / "reports" / "empty-output"
@@ -55,7 +56,9 @@ def missing_output_fields(result: dict) -> list[dict]:
         ids = (result.get("suppliers_by_task") or {}).get(task_id) or []
         if not ids:
             add("03", f"suppliers_by_task.{task_id}", "no_suppliers_for_work")
-        for supplier_id in ids[:3]:
+        if len(ids) > MAX_SUPPLIERS_PER_WORK:
+            add("03", f"suppliers_by_task.{task_id}", "supplier_limit_exceeded")
+        for supplier_id in ids:
             supplier_prefix = f"suppliers.{supplier_id}"
             if supplier_id not in suppliers:
                 add("03", supplier_prefix, "missing_mapped_supplier")

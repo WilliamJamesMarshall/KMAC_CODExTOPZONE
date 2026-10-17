@@ -159,7 +159,7 @@ class EmptyOutputEndpointTests(unittest.TestCase):
         with patch("oss.web_server.crawl_site", return_value=[page]), \
              patch("oss.web_server.analyze_business", return_value={"quality": {"issues": ["근거 부족"]}}), \
              patch("oss.web_server.analyze_ax_opportunities", return_value={"opportunities": result["opportunities"]}), \
-             patch("oss.web_server.SupplierProfileClient.available_profiles", return_value={"F001": profile}), \
+             patch("oss.web_server.SupplierProfileClient.catalog", return_value=type('Catalog', (), {'profiles': {'F001': profile}})()), \
              patch("oss.web_server.build_front_result", return_value=result), \
              patch("oss.web_server.add_supplier_advice"):
             connection = HTTPConnection(*self.server.server_address, timeout=10)
@@ -192,9 +192,9 @@ class EmptyOutputEndpointTests(unittest.TestCase):
                 with patch("oss.web_server.crawl_site", return_value=[page]), \
                      patch("oss.web_server.analyze_business", return_value={}), \
                      patch("oss.web_server.analyze_ax_opportunities", return_value={"opportunities": result["opportunities"]}), \
-                     patch("oss.web_server.SupplierProfileClient.available_profiles",
+                     patch("oss.web_server.SupplierProfileClient.catalog",
                            side_effect=RuntimeError("lookup unavailable") if failed_stage == "profiles" else None,
-                           return_value={"F001": profile}), \
+                           return_value=type('Catalog', (), {'profiles': {'F001': profile}})()), \
                      patch("oss.web_server.build_front_result", return_value=result), \
                      patch("oss.web_server.add_supplier_advice", side_effect=RuntimeError("model unavailable")):
                     connection = HTTPConnection(*self.server.server_address, timeout=10)

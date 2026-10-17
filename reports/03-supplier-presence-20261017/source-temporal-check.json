@@ -1,0 +1,262 @@
+{
+  "metadata": {
+    "suppliers": [
+      {
+        "id": "7492ba36-b5e3-57f3-a3a6-f2d15d66582d",
+        "canonical_name": "주식회사 플렉싱크",
+        "created_at": "2026-10-09T09:11:25.547928+00:00",
+        "updated_at": "2026-10-09T09:59:36.355836+00:00"
+      },
+      {
+        "id": "8853f441-bcbf-5677-99e7-8e6e1b717e33",
+        "canonical_name": "나모웹비즈주식회사",
+        "created_at": "2026-10-09T09:10:08.978604+00:00",
+        "updated_at": "2026-10-09T09:59:36.355836+00:00"
+      },
+      {
+        "id": "bea1b6ff-1e37-5454-8788-cacf83180819",
+        "canonical_name": "주식회사 알티엠",
+        "created_at": "2026-10-09T09:10:48.492676+00:00",
+        "updated_at": "2026-10-09T09:59:36.355836+00:00"
+      },
+      {
+        "id": "eb4939e5-7d16-5d1a-91ee-f06f53e315f0",
+        "canonical_name": "(주)테크다스",
+        "created_at": "2026-10-09T09:11:36.888034+00:00",
+        "updated_at": "2026-10-09T09:59:36.355836+00:00"
+      },
+      {
+        "id": "f497c120-f3aa-5daf-ad7e-e050cabf85d1",
+        "canonical_name": " 아이디비(주)",
+        "created_at": "2026-10-09T09:10:31.755547+00:00",
+        "updated_at": "2026-10-09T09:59:36.355836+00:00"
+      }
+    ],
+    "pool_entries": [
+      {
+        "supplier_id": "eb4939e5-7d16-5d1a-91ee-f06f53e315f0",
+        "sply_pool_no": 3159,
+        "fetched_at": "2026-10-09T09:02:35.768647+00:00",
+        "created_at": "2026-10-09T09:11:36.888034+00:00"
+      },
+      {
+        "supplier_id": "7492ba36-b5e3-57f3-a3a6-f2d15d66582d",
+        "sply_pool_no": 3334,
+        "fetched_at": "2026-10-09T09:02:35.768647+00:00",
+        "created_at": "2026-10-09T09:11:25.547928+00:00"
+      },
+      {
+        "supplier_id": "bea1b6ff-1e37-5454-8788-cacf83180819",
+        "sply_pool_no": 3774,
+        "fetched_at": "2026-10-09T09:02:35.768647+00:00",
+        "created_at": "2026-10-09T09:10:48.492676+00:00"
+      },
+      {
+        "supplier_id": "8853f441-bcbf-5677-99e7-8e6e1b717e33",
+        "sply_pool_no": 4186,
+        "fetched_at": "2026-10-09T09:02:35.768647+00:00",
+        "created_at": "2026-10-09T09:10:08.978604+00:00"
+      },
+      {
+        "supplier_id": "f497c120-f3aa-5daf-ad7e-e050cabf85d1",
+        "sply_pool_no": 4210,
+        "fetched_at": "2026-10-09T09:02:35.768647+00:00",
+        "created_at": "2026-10-09T09:10:31.755547+00:00"
+      }
+    ]
+  },
+  "unchanged_original_sources": [
+    {
+      "index": 14,
+      "task_id": "N013",
+      "supplier_id": "I149",
+      "pool_no": 4186,
+      "same_source": true,
+      "source_sha256": "3ab0df87d8c2e59812ca512aa29d03a52937d8ba43f09ec0029366d2e683c774"
+    },
+    {
+      "index": 14,
+      "task_id": "N013",
+      "supplier_id": "I022",
+      "pool_no": 3612,
+      "same_source": true,
+      "source_sha256": "c2d30b2cd0bfac710f04ba3f304fee93821a6df71d8b071c86e2803d81e8b5ac"
+    },
+    {
+      "index": 14,
+      "task_id": "N013",
+      "supplier_id": "I018",
+      "pool_no": 3700,
+      "same_source": true,
+      "source_sha256": "cb4e3afebb3b954e09777170744ff00dc2f79c2b97dc72be104aa356aeef433f"
+    },
+    {
+      "index": 14,
+      "task_id": "N013",
+      "supplier_id": "I165",
+      "pool_no": 4002,
+      "same_source": true,
+      "source_sha256": "fc607275e71307c37dcd7ebbf9f3d054b70305850604bc759a41b9c15f3fa202"
+    },
+    {
+      "index": 14,
+      "task_id": "N013",
+      "supplier_id": "F012",
+      "pool_no": 3832,
+      "same_source": true,
+      "source_sha256": "569ea3d27f058707522259216eec1f8eea8053ca7f01125fc8af8d97cdf7ceda"
+    },
+    {
+      "index": 14,
+      "task_id": "N013",
+      "supplier_id": "I215",
+      "pool_no": 4155,
+      "same_source": true,
+      "source_sha256": "f872cdf3aa58b33a0e3f3006527c5ccd16475d437270fcbca7becaed76462a47"
+    },
+    {
+      "index": 14,
+      "task_id": "N013",
+      "supplier_id": "I590",
+      "pool_no": 3825,
+      "same_source": true,
+      "source_sha256": "269c86ee78a535160fd26aa9b1fa84e6eba5a7e7191d305e45a8fad2e7fc948a"
+    },
+    {
+      "index": 14,
+      "task_id": "N013",
+      "supplier_id": "I050",
+      "pool_no": 4290,
+      "same_source": true,
+      "source_sha256": "1fd843b61c96e4823c1323a32400119a24faf1e7b645a97c7ac55f612929ee58"
+    },
+    {
+      "index": 14,
+      "task_id": "N013",
+      "supplier_id": "I017",
+      "pool_no": 3721,
+      "same_source": true,
+      "source_sha256": "aa9414ee6821ef001fcb3a23cba5f82659c37cf7135c00c4e324167e52726d15"
+    },
+    {
+      "index": 14,
+      "task_id": "N013",
+      "supplier_id": "I003",
+      "pool_no": 4346,
+      "same_source": true,
+      "source_sha256": "8a59337fa14c5e4e493092b441c800dd38f57947543d069f7da8c69a95ae757e"
+    },
+    {
+      "index": 14,
+      "task_id": "N013",
+      "supplier_id": "I021",
+      "pool_no": 3661,
+      "same_source": true,
+      "source_sha256": "76a700f7a72de4942aa282a42ce31c9c39adf7be994fd5b87362dd4d0bcde10c"
+    },
+    {
+      "index": 14,
+      "task_id": "N013",
+      "supplier_id": "F046",
+      "pool_no": 3203,
+      "same_source": true,
+      "source_sha256": "12780abf1ce813c5c7eb854f9560a3da7b6ff53150c29f56c3557bf389160b10"
+    },
+    {
+      "index": 28,
+      "task_id": "J014",
+      "supplier_id": "F038",
+      "pool_no": 2940,
+      "same_source": true,
+      "source_sha256": "29ada61832b1200a45d5e7eb3aa17670939238dace75a9336b65ec08fc74eea2"
+    },
+    {
+      "index": 28,
+      "task_id": "J014",
+      "supplier_id": "F002",
+      "pool_no": 4291,
+      "same_source": true,
+      "source_sha256": "5275e32321c212178ad61b24892dd415f76b2b5a345b6c09e1a8663d32b85a4e"
+    },
+    {
+      "index": 28,
+      "task_id": "J014",
+      "supplier_id": "F010",
+      "pool_no": 3938,
+      "same_source": true,
+      "source_sha256": "ba70ce1a430a4b88a4752580eab8fe6633f10b1de803b37b41321b8728584456"
+    },
+    {
+      "index": 28,
+      "task_id": "J014",
+      "supplier_id": "I018",
+      "pool_no": 3700,
+      "same_source": true,
+      "source_sha256": "cb4e3afebb3b954e09777170744ff00dc2f79c2b97dc72be104aa356aeef433f"
+    },
+    {
+      "index": 28,
+      "task_id": "J014",
+      "supplier_id": "F039",
+      "pool_no": 3673,
+      "same_source": true,
+      "source_sha256": "bcc568a57810628c96ed54d14a5e2ad4ee9fee003747e4bc7d482b3d4d7cebab"
+    },
+    {
+      "index": 28,
+      "task_id": "J014",
+      "supplier_id": "I471",
+      "pool_no": 4105,
+      "same_source": true,
+      "source_sha256": "e4b52649e351150b36c94980ea15eff7e122f87e2fcb6e01be0aa317f310d356"
+    },
+    {
+      "index": 28,
+      "task_id": "J014",
+      "supplier_id": "I065",
+      "pool_no": 4129,
+      "same_source": true,
+      "source_sha256": "21eb6d03578517e6b61fb5aa86da6d66b9f228e9e06d649eb311b4cbee407460"
+    },
+    {
+      "index": 28,
+      "task_id": "J014",
+      "supplier_id": "I488",
+      "pool_no": 4018,
+      "same_source": true,
+      "source_sha256": "8ef3adb56c27fbaeaa2ee647ad3feef4b5a021c4e1d44135cf1ca96d6a878757"
+    },
+    {
+      "index": 28,
+      "task_id": "J014",
+      "supplier_id": "F028",
+      "pool_no": 4268,
+      "same_source": true,
+      "source_sha256": "b93d2eb3524a31856e5ddcce10539b9e842476b21ae24d627b259042241eebce"
+    },
+    {
+      "index": 28,
+      "task_id": "J014",
+      "supplier_id": "I515",
+      "pool_no": 4073,
+      "same_source": true,
+      "source_sha256": "6b55bffb4ca67dc4bb2357372952e7cdfdd2cc68c2f2bc80f40dc1e8bdd752c6"
+    },
+    {
+      "index": 28,
+      "task_id": "J014",
+      "supplier_id": "I003",
+      "pool_no": 4346,
+      "same_source": true,
+      "source_sha256": "8a59337fa14c5e4e493092b441c800dd38f57947543d069f7da8c69a95ae757e"
+    },
+    {
+      "index": 28,
+      "task_id": "J014",
+      "supplier_id": "I088",
+      "pool_no": 3771,
+      "same_source": true,
+      "source_sha256": "e816ef81b388e8a5e2ce2fea3b5203a802873a861b0b8294aa51a3ae812e151e"
+    }
+  ]
+}

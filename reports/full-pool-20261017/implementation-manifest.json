@@ -1,0 +1,66 @@
+{
+  "revision": "b297b3ba92144e57",
+  "baseline_revision": "a548e37d9093ea07",
+  "url_reaudit_performed": false,
+  "frozen_model_work_count": 3,
+  "frozen_ui_pdf_count": 2,
+  "health": {
+    "revision": "b297b3ba92144e57",
+    "project_dir": "C:\\KMAC_CODExTOPZONE",
+    "pid": 35636
+  },
+  "files": [
+    {
+      "path": "src/oss/supplier_catalog.py",
+      "sha256": "fce274e22e2bdd649e0466d153bb57ed4711ecb406f6f60ddfa698d0b8d365dd"
+    },
+    {
+      "path": "src/oss/supplier_policy.py",
+      "sha256": "a78dc889e2781673afde1b8b5f3f7b115b752148d9604f1a3bdd3ef47f955cfc"
+    },
+    {
+      "path": "src/oss/supplier_profile.py",
+      "sha256": "d40528eeffa339b42adcce4d27237f11ecb9ee720a1a2e07114bc5f2d99e97fd"
+    },
+    {
+      "path": "src/oss/source_retrieval.py",
+      "sha256": "1add0d8e977f08fc2d2f61c884fa4405f67d3cad175799d276b1d0357177d581"
+    },
+    {
+      "path": "src/oss/presentation.py",
+      "sha256": "7ab370909547f90959dfc0f992d8e14365b34dacbb5a421f19d44b338aea1481"
+    },
+    {
+      "path": "src/oss/supplier_advice.py",
+      "sha256": "589d50eec065959651db90ac820113b58cbc5a4c7b4ce74627320e47046f693e"
+    },
+    {
+      "path": "src/oss/web_server.py",
+      "sha256": "800a7942ab92b318e1327b7440769f6c61d01e59463f207ed588244f181dfca5"
+    },
+    {
+      "path": "src/oss/empty_output.py",
+      "sha256": "2393c71c5220ec4bb604bef3f04dbc44fd5203e6f3c2d3e3c8350f1afdf22410"
+    },
+    {
+      "path": "src/oss/pdf_report.py",
+      "sha256": "e02973812606bcc7bf9bdc63a16a2b71987f553aefa8b4625c42bfc6f0f9b64d"
+    },
+    {
+      "path": "web/app.js",
+      "sha256": "153b820abc8f5e475a1eeab5b98f7541f04f966501113fce4d1f5824f6926884"
+    },
+    {
+      "path": "tests/test_full_pool.py",
+      "sha256": "fa0e4862ee23da75e8d03e16727711e7ecaed9fd5ac8d8f886bd3b0bc1739257"
+    },
+    {
+      "path": "tests/test_empty_output.py",
+      "sha256": "8a571a7410d16d780c04c01c90e4f1c1566021d71344f8f24c654e65036a5167"
+    },
+    {
+      "path": "tests/test_logic.py",
+      "sha256": "1197842a600fd1e346053b4fb251444dc5b950736c2c310b269b045f217712c0"
+    }
+  ]
+}

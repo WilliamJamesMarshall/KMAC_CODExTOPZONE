@@ -1,0 +1,34 @@
+"""Public, bounded failure records for the screen and diagnostic PDF export."""
+
+from datetime import datetime
+
+from .crawler import diagnostic_url
+from .search_timing import KST
+
+
+def failure_record(url: str, *, stage: str, code: str, message: str,
+                   revision: str, started_at: datetime, crawl: dict | None = None,
+                   business: dict | None = None) -> dict:
+    crawl = crawl or {}
+    if code == "dns_failed":
+        action = "공식 홈페이지의 현재 주소와 A/AAAA DNS 레코드를 확인한 후 다시 분석합니다."
+    elif code == "redirect_blocked":
+        action = "이동 대상이 같은 회사의 공식 주소인지 확인하고, 검증된 대표 도메인으로 다시 분석합니다."
+    elif code.startswith("robots_"):
+        action = "공식 사이트의 수집 정책과 서버 응답을 확인합니다. 명시적인 수집 금지나 인증은 우회하지 않습니다."
+    elif code.startswith("render_") or code == "no_content":
+        action = "본문을 제공하는 회사 소개·제품 페이지와 공개 콘텐츠 의존 경로를 확인합니다."
+    else:
+        action = "오류 코드와 처리 단계를 확인하고 일시적인 서비스 장애가 해소된 후 다시 분석합니다."
+    record = {"kind": "analysis_failure", "source_url": diagnostic_url(url.strip())[:2000],
+              "started_at": started_at.isoformat(), "failed_at": datetime.now(KST).isoformat(),
+              "stage": stage, "code": code, "message": message[:1000],
+              "action": action, "revision": revision,
+              "request_url": diagnostic_url(crawl.get("request_url", ""))[:2000],
+              "http_status": str(crawl.get("http_status", "")),
+              "partial_business_summary": ""}
+    for field in (business or {}).get("fields", []):
+        if field.get("key") == "value" and field.get("status") != "unknown" and field.get("value"):
+            record["partial_business_summary"] = field["value"][:3000]
+            break
+    return record

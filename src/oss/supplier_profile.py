@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import logging
+import time
 from collections import defaultdict
 from threading import Lock
 from urllib.error import HTTPError, URLError
@@ -42,6 +43,48 @@ class SupplierProfileClient:
         self.secret_key = secret_key or ""
         self._index: dict[str, list[dict]] | None = None
         self._index_lock = Lock()
+        self._catalog = None
+        self._catalog_time = 0.0
+        self._catalog_lock = Lock()
+
+    def _all_rows(self, table: str, **params: object) -> list[dict]:
+        rows = []
+        pages = set()
+        while True:
+            page = self._rows(table, limit=1000, offset=len(rows), **params)
+            fingerprint = json.dumps(page, ensure_ascii=False, sort_keys=True)
+            if page and fingerprint in pages:
+                raise ValueError('Repeated supplier page; pagination did not advance')
+            pages.add(fingerprint)
+            rows.extend(page)
+            if len(page) < 1000:
+                return rows
+
+    def catalog(self, kb: KnowledgeBase, *, diagnostics: dict | None = None):
+        """Load the whole annual pool atomically; never replace it with a partial page."""
+        from .supplier_catalog import build_catalog
+        if not self.secret_key or urlparse(self.url).scheme != 'https':
+            raise RuntimeError('Supabase 공급기업 원천정보를 조회할 수 없습니다.')
+        with self._catalog_lock:
+            if self._catalog is None or time.monotonic() - self._catalog_time >= 3600:
+                try:
+                    suppliers = self._all_rows('suppliers', select='id,canonical_name,homepage_url', order='id.asc')
+                    entries = self._all_rows('pool_entries',
+                        select='supplier_id,sply_pool_no,specialization,ai_solution_text,raw_record',
+                        source_program='eq.AI바우처', source_year='eq.2026', order='sply_pool_no.asc,supplier_id.asc')
+                    if not entries:
+                        raise ValueError('Empty supplier pool')
+                    catalog = build_catalog(suppliers, entries, kb)
+                except (HTTPError, URLError, TimeoutError, OSError, ValueError, KeyError, TypeError) as error:
+                    logging.warning('Supplier catalogue unavailable: %s', type(error).__name__)
+                    raise RuntimeError('Supabase 공급기업 전체 목록을 조회하지 못했습니다.') from error
+                self._catalog = catalog
+                self._catalog_time = time.monotonic()
+            if diagnostics is not None:
+                diagnostics.update(self._catalog.summary())
+                diagnostics['candidates'] = [{'supplier_id': sid, 'status': record['profile_status'],
+                    'missing_fields': record['missing_fields']} for sid, record in self._catalog.records.items()]
+            return self._catalog
 
     def _rows(self, table: str, **params: object) -> list[dict]:
         request = Request(

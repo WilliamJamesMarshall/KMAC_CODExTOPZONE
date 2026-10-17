@@ -1,0 +1,410 @@
+[
+  {
+    "index": 14,
+    "task_id": "N013",
+    "ranked_source_count": 1395,
+    "top30": [
+      {
+        "rank": 1,
+        "pool_no": 4186,
+        "name": "나모웹비즈주식회사",
+        "eligible_ids": [
+          "I149"
+        ]
+      },
+      {
+        "rank": 2,
+        "pool_no": 3284,
+        "name": "(주)카탈로닉스",
+        "eligible_ids": []
+      },
+      {
+        "rank": 3,
+        "pool_no": 3612,
+        "name": "주식회사 조벡스",
+        "eligible_ids": [
+          "I022"
+        ]
+      },
+      {
+        "rank": 4,
+        "pool_no": 3700,
+        "name": "이다웰",
+        "eligible_ids": [
+          "I018"
+        ]
+      },
+      {
+        "rank": 5,
+        "pool_no": 3547,
+        "name": "에이비씨랩스",
+        "eligible_ids": []
+      },
+      {
+        "rank": 6,
+        "pool_no": 3390,
+        "name": "주식회사 웨이브다인",
+        "eligible_ids": []
+      },
+      {
+        "rank": 7,
+        "pool_no": 4002,
+        "name": "주식회사 유니아이",
+        "eligible_ids": [
+          "I165"
+        ]
+      },
+      {
+        "rank": 8,
+        "pool_no": 3417,
+        "name": "팜커넥트(주)",
+        "eligible_ids": []
+      },
+      {
+        "rank": 9,
+        "pool_no": 2931,
+        "name": "엠투어플주식회사",
+        "eligible_ids": []
+      },
+      {
+        "rank": 10,
+        "pool_no": 3356,
+        "name": "(주)큐빅테크",
+        "eligible_ids": []
+      },
+      {
+        "rank": 11,
+        "pool_no": 3832,
+        "name": "(주) 모핑아이",
+        "eligible_ids": [
+          "F012"
+        ]
+      },
+      {
+        "rank": 12,
+        "pool_no": 4155,
+        "name": "유비씨",
+        "eligible_ids": [
+          "I215"
+        ]
+      },
+      {
+        "rank": 13,
+        "pool_no": 4290,
+        "name": "하루두알",
+        "eligible_ids": [
+          "I050"
+        ]
+      },
+      {
+        "rank": 14,
+        "pool_no": 3601,
+        "name": "롤랑 유한책임회사(ROLLAND)",
+        "eligible_ids": []
+      },
+      {
+        "rank": 15,
+        "pool_no": 3465,
+        "name": "주식회사 크리",
+        "eligible_ids": []
+      },
+      {
+        "rank": 16,
+        "pool_no": 4177,
+        "name": "한솔코에버",
+        "eligible_ids": []
+      },
+      {
+        "rank": 17,
+        "pool_no": 3532,
+        "name": "주식회사 팀리부뜨",
+        "eligible_ids": []
+      },
+      {
+        "rank": 18,
+        "pool_no": 3825,
+        "name": "주식회사 튜링테크",
+        "eligible_ids": [
+          "I590"
+        ]
+      },
+      {
+        "rank": 19,
+        "pool_no": 3608,
+        "name": "(주)오픈링크시스템",
+        "eligible_ids": []
+      },
+      {
+        "rank": 20,
+        "pool_no": 3127,
+        "name": "주식회사 페이먼트인앱",
+        "eligible_ids": []
+      },
+      {
+        "rank": 21,
+        "pool_no": 3758,
+        "name": "주식회사 큐엔티",
+        "eligible_ids": []
+      },
+      {
+        "rank": 22,
+        "pool_no": 3247,
+        "name": "주식회사 세르딕",
+        "eligible_ids": []
+      },
+      {
+        "rank": 23,
+        "pool_no": 3827,
+        "name": "주식회사 띵킹프렌즈",
+        "eligible_ids": []
+      },
+      {
+        "rank": 24,
+        "pool_no": 3456,
+        "name": "주식회사 에이아이리더",
+        "eligible_ids": []
+      },
+      {
+        "rank": 25,
+        "pool_no": 3606,
+        "name": "터빈크루",
+        "eligible_ids": []
+      },
+      {
+        "rank": 26,
+        "pool_no": 4346,
+        "name": "알프레드",
+        "eligible_ids": [
+          "I003"
+        ]
+      },
+      {
+        "rank": 27,
+        "pool_no": 3437,
+        "name": "주식회사 어밸브",
+        "eligible_ids": []
+      },
+      {
+        "rank": 28,
+        "pool_no": 4211,
+        "name": "(주)케이엔아이씨",
+        "eligible_ids": []
+      },
+      {
+        "rank": 29,
+        "pool_no": 3407,
+        "name": "에이치에스소프트 주식회사",
+        "eligible_ids": []
+      },
+      {
+        "rank": 30,
+        "pool_no": 3223,
+        "name": "비즈플러그",
+        "eligible_ids": []
+      }
+    ],
+    "named_candidate_positions": {
+      "3334": 124,
+      "3676": 554,
+      "3738": 493,
+      "3742": 60,
+      "4186": 1
+    }
+  },
+  {
+    "index": 28,
+    "task_id": "J014",
+    "ranked_source_count": 1376,
+    "top30": [
+      {
+        "rank": 1,
+        "pool_no": 3881,
+        "name": "주식회사 베이스온",
+        "eligible_ids": []
+      },
+      {
+        "rank": 2,
+        "pool_no": 3700,
+        "name": "이다웰",
+        "eligible_ids": [
+          "I018"
+        ]
+      },
+      {
+        "rank": 3,
+        "pool_no": 3513,
+        "name": "시너지시스템즈(주)",
+        "eligible_ids": []
+      },
+      {
+        "rank": 4,
+        "pool_no": 3767,
+        "name": "주식회사 에이인비",
+        "eligible_ids": []
+      },
+      {
+        "rank": 5,
+        "pool_no": 3238,
+        "name": "주식회사 인터엑스",
+        "eligible_ids": []
+      },
+      {
+        "rank": 6,
+        "pool_no": 4210,
+        "name": " 아이디비(주)",
+        "eligible_ids": []
+      },
+      {
+        "rank": 7,
+        "pool_no": 4329,
+        "name": "(주)연합시스템",
+        "eligible_ids": []
+      },
+      {
+        "rank": 8,
+        "pool_no": 3756,
+        "name": "더블유피솔루션즈(주)",
+        "eligible_ids": []
+      },
+      {
+        "rank": 9,
+        "pool_no": 3033,
+        "name": "유디엠텍",
+        "eligible_ids": []
+      },
+      {
+        "rank": 10,
+        "pool_no": 3886,
+        "name": "홍익정보기술",
+        "eligible_ids": []
+      },
+      {
+        "rank": 11,
+        "pool_no": 4177,
+        "name": "한솔코에버",
+        "eligible_ids": []
+      },
+      {
+        "rank": 12,
+        "pool_no": 3225,
+        "name": "(주)지에스티",
+        "eligible_ids": []
+      },
+      {
+        "rank": 13,
+        "pool_no": 2999,
+        "name": "팀모노리스",
+        "eligible_ids": []
+      },
+      {
+        "rank": 14,
+        "pool_no": 3547,
+        "name": "에이비씨랩스",
+        "eligible_ids": []
+      },
+      {
+        "rank": 15,
+        "pool_no": 3467,
+        "name": "디지포레",
+        "eligible_ids": []
+      },
+      {
+        "rank": 16,
+        "pool_no": 3111,
+        "name": "(주)엔소프트",
+        "eligible_ids": []
+      },
+      {
+        "rank": 17,
+        "pool_no": 2987,
+        "name": "(주)인스카이",
+        "eligible_ids": []
+      },
+      {
+        "rank": 18,
+        "pool_no": 4119,
+        "name": "주식회사 케이에이비랩스",
+        "eligible_ids": []
+      },
+      {
+        "rank": 19,
+        "pool_no": 3277,
+        "name": "(주)비즈포스",
+        "eligible_ids": []
+      },
+      {
+        "rank": 20,
+        "pool_no": 3321,
+        "name": "(주)컴퓨터메이트",
+        "eligible_ids": []
+      },
+      {
+        "rank": 21,
+        "pool_no": 4029,
+        "name": "주식회사 에스에스씨",
+        "eligible_ids": []
+      },
+      {
+        "rank": 22,
+        "pool_no": 4332,
+        "name": "농심엔지니어링",
+        "eligible_ids": []
+      },
+      {
+        "rank": 23,
+        "pool_no": 3357,
+        "name": "주식회사 디엑스솔루션즈",
+        "eligible_ids": []
+      },
+      {
+        "rank": 24,
+        "pool_no": 3110,
+        "name": "주식회사 스마트코어",
+        "eligible_ids": []
+      },
+      {
+        "rank": 25,
+        "pool_no": 3658,
+        "name": "주식회사 에이비에이치",
+        "eligible_ids": []
+      },
+      {
+        "rank": 26,
+        "pool_no": 3813,
+        "name": "주식회사 아이제라",
+        "eligible_ids": []
+      },
+      {
+        "rank": 27,
+        "pool_no": 3532,
+        "name": "주식회사 팀리부뜨",
+        "eligible_ids": []
+      },
+      {
+        "rank": 28,
+        "pool_no": 3356,
+        "name": "(주)큐빅테크",
+        "eligible_ids": []
+      },
+      {
+        "rank": 29,
+        "pool_no": 3985,
+        "name": "주식회사 아이피씨앤비",
+        "eligible_ids": []
+      },
+      {
+        "rank": 30,
+        "pool_no": 3955,
+        "name": "아이씨티피플",
+        "eligible_ids": []
+      }
+    ],
+    "named_candidate_positions": {
+      "4210": 6,
+      "3159": 68,
+      "3774": 36,
+      "3110": 24,
+      "4291": 88
+    }
+  }
+]

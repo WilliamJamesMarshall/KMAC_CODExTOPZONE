@@ -144,7 +144,8 @@ function relatedSuppliers(items, opportunity) {
   const ids = currentResult.suppliers_by_task?.[opportunity.task_id];
   return (ids ? ids.map((id) => items.find((item) => item.supplier_id === id)).filter(Boolean)
     : items.filter((item) => (item.matched_tasks || [])
-      .some((task) => task.task_id === opportunity.task_id))).slice(0, 3);
+      .some((task) => task.task_id === opportunity.task_id)))
+    .slice(0, Math.min(2, currentResult.analysis_meta?.max_suppliers_per_work || 2));
 }
 
 function renderSuppliers(items, opportunity) {
