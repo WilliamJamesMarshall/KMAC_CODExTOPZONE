@@ -1,0 +1,12 @@
+# No application credentials or workbook are supplied to the build.
+steps:
+  - id: build
+    name: gcr.io/cloud-builders/docker
+    args: [build, --platform=linux/amd64, -t, '${_IMAGE_URI}', .]
+  - id: browser-and-pdf-check
+    name: gcr.io/cloud-builders/docker
+    args: [run, --rm, --entrypoint, python, '${_IMAGE_URI}', -m, oss.cloud_smoke]
+images: ['${_IMAGE_URI}']
+timeout: 1200s
+options:
+  logging: CLOUD_LOGGING_ONLY

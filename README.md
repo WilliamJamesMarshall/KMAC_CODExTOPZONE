@@ -56,6 +56,15 @@ oss --workbook "PATH_TO_V0.3.xlsx" analyze --demand-pages demand-pages.json
 
 ## Local front screen
 
+Live service: [OSS AX matching](https://oss-ax-591110969614.asia-northeast3.run.app/).
+Deployment and live checks: [verification record](docs/cloud-run-live-verification-2026-10-17.md).
+
+For Cloud Run deployment, use the production `oss-cloud` entrypoint and the
+repository `Dockerfile`. Account setup, private Excel delivery, durable limits,
+secrets, image checks, and deployment commands are in
+[the Cloud Run setup guide](docs/cloud-run-supabase-deployment-guide.md).
+The local `oss-web` command below remains for development.
+
 The front screen is a local web app. It uses the workbook for Task matching
 and reads 2026 AI voucher supplier details from Supabase on the server:
 
@@ -193,7 +202,7 @@ existing validation or alter supplier selection. See
 The source contract test runs when `OSS_WORKBOOK_PATH` points to the workbook:
 
 ```powershell
-python -m pip install -e ".[ax-llm,test]"
+python -m pip install -e ".[ax-llm,cloud,test]"
 $env:OSS_WORKBOOK_PATH = "PATH_TO_V0.3.xlsx"
 python -m unittest discover -s tests -v
 ```

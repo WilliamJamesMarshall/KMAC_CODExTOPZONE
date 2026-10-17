@@ -128,6 +128,11 @@ class EmptyOutputRecorder:
             "source_pages": build_sources(pages), "business_analysis": business,
             "ax_analysis": ax_analysis, "output": output,
         }
+        self._write_case(summary, detail)
+        return case_id
+
+    def _write_case(self, summary: dict, detail: dict) -> None:
+        filename = summary["detail_file"]
         with self._lock:
             destination = self.directory / filename
             temporary = destination.with_suffix(".json.tmp")
@@ -135,4 +140,3 @@ class EmptyOutputRecorder:
             temporary.replace(destination)
             with self.index_path.open("a", encoding="utf-8") as index:
                 index.write(json.dumps(summary, ensure_ascii=False) + "\n")
-        return case_id

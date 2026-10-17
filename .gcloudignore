@@ -1,0 +1,17 @@
+# Only runtime source and the build recipe may leave this workstation.
+**
+!.gcloudignore
+!cloudbuild.yaml
+!Dockerfile
+!.dockerignore
+!requirements-cloud.lock
+!pyproject.toml
+!src/
+!src/oss/
+!src/oss/**
+!web/
+!web/index.html
+!web/app.js
+!web/styles.css
+**/__pycache__/
+**/*.pyc

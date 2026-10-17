@@ -1,0 +1,42 @@
+{
+  "project_id": "kmac-oss-ax-20261017-0e4a",
+  "project_name": "KMAC OSS AX",
+  "project_number": "591110969614",
+  "region": "asia-northeast3",
+  "service_name": "oss-ax",
+  "artifact_repository": "oss-images",
+  "runtime_service_account": "oss-runtime@kmac-oss-ax-20261017-0e4a.iam.gserviceaccount.com",
+  "build_service_account": "oss-builder@kmac-oss-ax-20261017-0e4a.iam.gserviceaccount.com",
+  "billing_enabled": true,
+  "billing_account_id": "01BA23-14ECAE-59007D",
+  "image_uri": "asia-northeast3-docker.pkg.dev/kmac-oss-ax-20261017-0e4a/oss-images/oss-ax:20261017-201713",
+  "build_id": "3dda215d-3a8f-41a1-8b31-02033d9ff097",
+  "source_bucket": "kmac-oss-ax-20261017-0e4a-build-source",
+  "monthly_alert_krw": 1000,
+  "monthly_cloud_run_gross_spend_cap_krw": 1000,
+  "budget_alert_id": "ca458913-494e-468b-a90f-1b9ecb1fa23e",
+  "cloud_run_spend_cap_id": "29ca965e-f837-44f0-a796-e26f91e651c6",
+  "secret_versions": {
+    "oss-openai-key": "1",
+    "oss-supabase-key": "1"
+  },
+  "cloud_run_deployed": true,
+  "build_status": "SUCCESS",
+  "image_digest": "sha256:3efbd670478e7a1bb03a85c1b6dc30e7b1c8777b1dc78b490dc02c172ec57c18",
+  "build_log_url": "https://console.cloud.google.com/cloud-build/builds;region=asia-northeast3/3dda215d-3a8f-41a1-8b31-02033d9ff097?project=591110969614",
+  "deploy_image_uri": "asia-northeast3-docker.pkg.dev/kmac-oss-ax-20261017-0e4a/oss-images/oss-ax@sha256:3efbd670478e7a1bb03a85c1b6dc30e7b1c8777b1dc78b490dc02c172ec57c18",
+  "public_access": true,
+  "service_url": "https://oss-ax-591110969614.asia-northeast3.run.app",
+  "revision": "oss-ax-00001-xsk",
+  "code_revision": "457f15fb605dc33f",
+  "verification_record": "docs/cloud-run-live-verification-2026-10-17.md",
+  "live_verification": {
+    "private_access": true,
+    "public_access": true,
+    "real_analysis_http_200": 2,
+    "intentional_failure_http_422": 1,
+    "browser_download": true,
+    "dynamic_render_completed": 2,
+    "partial_case": "danble: business summary lacks direct evidence"
+  }
+}

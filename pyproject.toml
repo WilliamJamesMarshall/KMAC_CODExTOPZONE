@@ -12,11 +12,13 @@ dependencies = ["openpyxl==3.1.5", "python-dotenv==1.2.2", "reportlab==4.4.9", "
 [project.optional-dependencies]
 ax-inference = ["scikit-learn==1.9.0"]
 ax-llm = ["openai==2.44.0"]
+cloud = ["fastapi==0.136.3", "uvicorn==0.49.0"]
 test = ["pypdf==6.10.0"]
 
 [project.scripts]
 oss = "oss.cli:main"
 oss-web = "oss.web_server:main"
+oss-cloud = "oss.cloud_server:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

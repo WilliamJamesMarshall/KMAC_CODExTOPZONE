@@ -1,0 +1,14 @@
+# Allow only runtime source and the locked dependencies into the build context.
+**
+!Dockerfile
+!requirements-cloud.lock
+!pyproject.toml
+!src/
+!src/oss/
+!src/oss/**
+!web/
+!web/index.html
+!web/app.js
+!web/styles.css
+**/__pycache__/
+**/*.pyc
